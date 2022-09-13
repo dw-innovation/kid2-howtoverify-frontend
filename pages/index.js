@@ -8,29 +8,6 @@ const IndexPage = () => {
   const [dimensions, setDimensions] = useState({ width: 1000, height: 1000 });
   const ref = useRef();
 
-  const dragStarted = (event, d) => {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
-  };
-
-  const dragging = (event, d) => {
-    d.fx = event.x;
-    d.fy = event.y;
-  };
-
-  const dragEnded = (event, d) => {
-    if (!event.active) simulation.alphaTarget(0);
-    d.fx = null;
-    d.fy = null;
-  };
-
-  const dragHandler = d3
-    .drag()
-    .on("start", dragStarted)
-    .on("drag", dragging)
-    .on("end", dragEnded);
-
   useEffect(() => {
     setDimensions({
       width: ref.current.clientWidth,
@@ -120,6 +97,29 @@ const IndexPage = () => {
     simulation.nodes(data.nodes).on("tick", ticked);
 
     simulation.force("link").links(data.links);
+
+    const dragStarted = (event, d) => {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    };
+
+    const dragging = (event, d) => {
+      d.fx = event.x;
+      d.fy = event.y;
+    };
+
+    const dragEnded = (event, d) => {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    };
+
+    const dragHandler = d3
+      .drag()
+      .on("start", dragStarted)
+      .on("drag", dragging)
+      .on("end", dragEnded);
 
     dragHandler(node);
   }, [data, ref.current]);
