@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 import graph from "@/data/sample.json";
 import { v4 as uuidv4 } from "uuid";
+import * as _ from "lodash";
 
 const IndexPage = () => {
   const [data, setData] = useState(graph);
@@ -78,6 +79,20 @@ const IndexPage = () => {
           case "tool":
             return "green";
         }
+      })
+      .on("click", (d) => {
+        setData((prev) => {
+          const newNodes = _.remove(
+            prev.nodes,
+            ({ id }) => id !== d.target.__data__.id
+          );
+          const newData = {
+            ...prev,
+            nodes: newNodes,
+          };
+          console.log(newData);
+          return newData;
+        });
       });
 
     // attach labels to nodes
