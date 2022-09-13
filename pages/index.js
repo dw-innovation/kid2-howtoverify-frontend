@@ -17,9 +17,13 @@ const IndexPage = () => {
       .forceSimulation()
       .force(
         "link",
-        d3.forceLink().id((d) => d.id)
+        d3
+          .forceLink()
+          .id((d) => d.id)
+          .distance(60)
+          .strength(1)
       )
-      .force("charge", d3.forceManyBody())
+      .force("charge", d3.forceManyBody().strength(-80))
       .force(
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
