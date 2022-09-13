@@ -186,11 +186,6 @@
             "type": "tool"
         },
         {
-            "id": "t-4",
-            "name": "tool 4",
-            "type": "tool"
-        },
-        {
             "id": "t-5",
             "name": "tool 5",
             "type": "tool"
@@ -607,6 +602,18 @@
         {
             "source": "w-10",
             "target": "t-3"
+        },
+        {
+            "source": "w-10",
+            "target": "t-10"
+        },
+        {
+            "source": "w-1",
+            "target": "t-6"
+        },
+        {
+            "source": "w-7",
+            "target": "t-18"
         }
     ]
 }
