@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const IndexPage = () => {
   const [data, setData] = useState(graph);
-  const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
+  const [dimensions, setDimensions] = useState({ width: 1000, height: 1000 });
   const ref = useRef();
 
   const dragStarted = (event, d) => {
@@ -31,16 +31,22 @@ const IndexPage = () => {
     .on("drag", dragging)
     .on("end", dragEnded);
 
-  var simulation = d3
-    .forceSimulation()
-    .force(
-      "link",
-      d3.forceLink().id((d) => d.id)
-    )
-    .force("charge", d3.forceManyBody())
-    .force("center", d3.forceCenter(dimensions.width / 2, dimensions.height / 2));
-
   useEffect(() => {
+    setDimensions({
+      width: ref.current.clientWidth,
+      height: ref.current.clientHeight,
+    });
+    const simulation = d3
+      .forceSimulation()
+      .force(
+        "link",
+        d3.forceLink().id((d) => d.id)
+      )
+      .force("charge", d3.forceManyBody())
+      .force(
+        "center",
+        d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
+      );
     const svgRef = d3.select(ref.current);
 
     // clear svg
@@ -116,7 +122,7 @@ const IndexPage = () => {
     simulation.force("link").links(data.links);
 
     dragHandler(node);
-  }, [data]);
+  }, [data, ref.current]);
 
   return (
     <div className="w-screen h-screen relative">
