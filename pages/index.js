@@ -1,18 +1,29 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import graph from "@/data/sample.json";
 import { v4 as uuidv4 } from "uuid";
+import useAppContext from "src/lib/hooks/useAppContext";
 
 const IndexPage = () => {
-  const [data, setData] = useState(graph);
-  const [dimensions, setDimensions] = useState({ width: 1000, height: 1000 });
+  const {
+    appState: {
+      graph: { data, dimensions },
+    },
+    setAppState,
+  } = useAppContext();
   const ref = useRef();
 
   useEffect(() => {
-    setDimensions({
-      width: ref.current.clientWidth,
-      height: ref.current.clientHeight,
-    });
+    setAppState((prev) => ({
+      ...prev,
+      graph: {
+        ...prev.graph,
+        dimensions: {
+          width: ref.current.clientWidth,
+          height: ref.current.clientHeight,
+        },
+      },
+    }));
+
     const simulation = d3
       .forceSimulation()
       .force(
@@ -133,22 +144,28 @@ const IndexPage = () => {
       <button
         onClick={() => {
           const uuid = uuidv4();
-          setData((prev) => ({
-            nodes: [
-              ...prev.nodes,
-              {
-                id: uuid,
-                name: "Image",
-                type: "inputType",
+          setAppState((prev) => ({
+            ...prev,
+            graph: {
+              ...prev.graph,
+              data: {
+                nodes: [
+                  ...prev.graph.data.nodes,
+                  {
+                    id: uuid,
+                    name: "Image",
+                    type: "inputType",
+                  },
+                ],
+                links: [
+                  ...prev.graph.data.links,
+                  {
+                    source: "t-10",
+                    target: uuid,
+                  },
+                ],
               },
-            ],
-            links: [
-              ...prev.links,
-              {
-                source: "t-10",
-                target: uuid,
-              },
-            ],
+            },
           }));
         }}
         className="py-2 px-4 bg-slate-200 hover:bg-slate-600 absolute top-0 left-0"
