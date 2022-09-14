@@ -4,8 +4,10 @@ const store = new Store();
 const fetcher = new Fetcher(store);
 
 export const load = async () => {
-  const url =
-    "https://raw.githubusercontent.com/apache/jena/main/jena-permissions/src/example/resources/org/apache/jena/security/example/example.ttl";
+  const url = `${typeof window !== "undefined" && window.location.href}${
+    process.env.NEXT_PUBLIC_GRAPH_TTL
+  }`;
+
   try {
     await fetcher.load(url);
 
