@@ -1,5 +1,4 @@
 import { Fetcher, Store, SPARQLToQuery } from "rdflib";
-import { console } from "next/dist/compiled/@edge-runtime/primitives/console";
 
 const store = new Store();
 const fetcher = new Fetcher(store);
