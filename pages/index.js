@@ -1,9 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 import useAppContext from "src/lib/hooks/useAppContext";
 import GraphRenderer from "src/components/graphRenderer";
+import {load} from "../src/lib/api/graphSearch";
+import { useEffect } from "react";
 
 const IndexPage = () => {
   const { setAppState } = useAppContext();
+
+  useEffect(() => {
+      load();
+  }, [])
 
   return (
     <div className="w-screen h-screen relative">
