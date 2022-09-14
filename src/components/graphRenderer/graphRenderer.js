@@ -2,7 +2,7 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-const Graph = () => {
+const GraphRenderer = () => {
   const ref = useRef();
 
   const {
@@ -142,4 +142,4 @@ const Graph = () => {
   return <svg ref={ref} className="h-full w-full" />;
 };
 
-export default Graph;
+export default GraphRenderer;

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import useAppContext from "src/lib/hooks/useAppContext";
-import Graph from "src/components/graph";
+import GraphRenderer from "src/components/graphRenderer";
 
 const IndexPage = () => {
   const { setAppState } = useAppContext();
@@ -38,7 +38,7 @@ const IndexPage = () => {
       >
         add
       </button>
-      <Graph />
+      <GraphRenderer />
     </div>
   );
 };
