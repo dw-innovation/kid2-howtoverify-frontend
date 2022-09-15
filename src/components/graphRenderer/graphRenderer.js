@@ -1,15 +1,18 @@
 import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import useWindowSize from "src/lib/hooks/useWindowSize";
 
 const GraphRenderer = () => {
   const ref = useRef();
+
+  const { width, height } = useWindowSize();
 
   const {
     appState: {
       graph: { data, dimensions },
     },
-    setAppState
+    setAppState,
   } = useAppContext();
 
   useEffect(() => {
@@ -137,7 +140,7 @@ const GraphRenderer = () => {
       .on("end", dragEnded);
 
     dragHandler(node);
-  }, [data, ref.current]);
+  }, [data, ref.current, height, width]);
 
   return <svg ref={ref} className="h-full w-full" />;
 };
