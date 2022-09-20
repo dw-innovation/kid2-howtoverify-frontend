@@ -72,13 +72,13 @@ const GraphRenderer = () => {
       .attr("r", ({ type }) => {
         switch (type) {
           case "inputType":
-            return 15;
+            return 20;
           case "question":
-            return 10;
+            return 12;
           case "workflow":
-            return 5;
+            return 10;
           case "tool":
-            return 2;
+            return 5;
         }
       })
       .attr("fill", ({ type }) => {
