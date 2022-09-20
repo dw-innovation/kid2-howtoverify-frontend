@@ -1,53 +1,33 @@
-import { SPARQLToQuery } from "rdflib";
-import { store } from "@/lib/api/lib"
+import { findLinkedNodes, findLinks, findNodeByID } from "@/lib/api/lib";
 
-export const searchByNodes = (_) => {
-/*
-    let RDF = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-    let DW = Namespace("http://dw.com/");
-    let nodeType = RDF('type');
-    let link = DW('link');
-    let nodeName = DW('name');
-    let nodeQ = DW('q-image-who');
-    let nodeItImage = DW('it-image');
+export const searchByNodes = (nodes) => {
+  const graph = { nodes: [], links: [] };
 
-    let results = store.each(undefined, nodeType, 'inputType');
-    results.map(result => console.log(result))
-*/
+  nodes.map((nodeID) => {
+    const partialGraph = { nodes: [], links: [] };
+    const node = findNodeByID(nodeID);
+    
+    if (node) {
+      partialGraph.nodes.push(node);
 
-    /*
-    var queryString = "PREFIX ex:  <http://example.com/> \n"+
-        "SELECT ?msg \n"+
-        "WHERE {\n"+
-        " ?msg ex:from bob . \n" +
-        "}";
-     */
+      findLinkedNodes(node.id).map((linkedNode) =>
+        partialGraph.nodes.push(linkedNode)
+      );
 
-const queryString = "PREFIX dw:  <http://dw.com/> \n"+
-    "SELECT ?obj \n"+
-    "WHERE {\n"+
-    " dw:it-image dw:link ?obj . \n" +
-    "}";
+      findLinks(node.id).map((link) => partialGraph.links.push(link));
 
+      partialGraph.links.map((link) => graph.links.push(link));
 
-    /*
-    const queryString = `
-                        SELECT ?o
-                        WHERE {
-                            :it-image :link ?o .
-                        }
-                        `;
+      partialGraph.nodes.map((partialNode) => graph.nodes.push(partialNode));
+    }
+  });
 
-     */
+  const uniqueNodes = graph.nodes
+    .map((node) => node.id)
+    .map((id) => graph.nodes.find((a) => a.id === id));
 
-    const query = SPARQLToQuery(queryString, false, store);
+  graph.nodes = uniqueNodes;
+  return graph;
+};
 
-    store.query(query, (result) => {
-        console.log("query ran");
-        console.log("query result: ", result);
-    });
-}
-
-export const searchByText = (_) => {
-
-}
+export const searchByText = (_) => {};
