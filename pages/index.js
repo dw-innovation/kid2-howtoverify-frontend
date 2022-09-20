@@ -1,18 +1,24 @@
 import { v4 as uuidv4 } from "uuid";
 import useAppContext from "src/lib/hooks/useAppContext";
 import GraphRenderer from "src/components/graphRenderer";
-import {load} from "@/lib/api/lib";
-import {searchByNodes} from "@/lib/api/api/graphSearch";
+import { loadGraph } from "@/lib/api/lib";
+import { searchByNodes } from "@/lib/api/api/graphSearch";
 import { useEffect } from "react";
-
 
 const IndexPage = () => {
   const { setAppState } = useAppContext();
 
-  useEffect( () => {
-      load().then(()=> searchByNodes());
-       //console.log(store)
-  }, [])
+  useEffect(() => {
+    loadGraph().then(() =>
+      setAppState((prev) => ({
+        ...prev,
+        graph: {
+          ...prev.graph,
+          data: searchByNodes(["it-image", "q-image-how", "w-9"]),
+        },
+      }))
+    );
+  }, []);
 
   return (
     <div className="w-screen h-screen relative">
