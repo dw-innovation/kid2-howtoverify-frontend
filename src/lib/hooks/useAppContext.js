@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { createContext, useContext } from "react";
-import graphData from "@/data/sample.json";
 
 export const initialState = {
   graph: {
-    data: graphData,
+    data: { nodes: [], links: [] },
     dimensions: { width: 100, height: 100 },
   },
 };
