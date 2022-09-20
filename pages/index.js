@@ -9,7 +9,7 @@ const IndexPage = () => {
   const {
     setAppState,
     appState: {
-      graph: { pathNodes },
+      graph: { pathNodes, data },
     },
   } = useAppContext();
 
@@ -68,7 +68,16 @@ const IndexPage = () => {
       >
         add
       </button>
-      <GraphRenderer />
+      <div className="flex h-full">
+        <div className="h-full w-full">
+          <GraphRenderer />
+        </div>
+
+        <pre className="overflow-y-scroll h-screen w-[50%] text-sm">
+          {JSON.stringify(pathNodes, null, 2)}
+          {JSON.stringify(data, null, 2)}
+        </pre>
+      </div>
     </div>
   );
 };
