@@ -64,7 +64,20 @@ const GraphRenderer = () => {
       .selectAll("g")
       .data(data.nodes)
       .enter()
-      .append("g");
+      .append("g")
+      .on(
+        "click",
+        ({
+          target: {
+            __data__: { id },
+          },
+        }) => {
+          setAppState((prev) => ({
+            ...prev,
+            graph: { ...prev.graph, pathNodes: [...prev.graph.pathNodes, id] },
+          }));
+        }
+      );
 
     // render nodes
     node

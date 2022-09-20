@@ -6,7 +6,12 @@ import { searchByNodes } from "@/lib/api/api/graphSearch";
 import { useEffect } from "react";
 
 const IndexPage = () => {
-  const { setAppState } = useAppContext();
+  const {
+    setAppState,
+    appState: {
+      graph: { pathNodes },
+    },
+  } = useAppContext();
 
   useEffect(() => {
     loadGraph().then(() =>
@@ -14,11 +19,21 @@ const IndexPage = () => {
         ...prev,
         graph: {
           ...prev.graph,
-          data: searchByNodes(["it-image", "q-image-how", "w-9"]),
+          data: searchByNodes(pathNodes),
         },
       }))
     );
   }, []);
+
+  useEffect(() => {
+    setAppState((prev) => ({
+      ...prev,
+      graph: {
+        ...prev.graph,
+        data: searchByNodes(pathNodes),
+      },
+    }));
+  }, [pathNodes]);
 
   return (
     <div className="w-screen h-screen relative">
