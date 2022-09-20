@@ -70,11 +70,11 @@ const GraphRenderer = () => {
         "click",
         ({
           target: {
-            __data__: { id },
+            __data__: { id, type },
           },
         }) => {
-          
-          !pathNodes.includes(id) &&
+          type !== "tool" &&
+            !pathNodes.includes(id) &&
             setAppState((prev) => ({
               ...prev,
               graph: {
