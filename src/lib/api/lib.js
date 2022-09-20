@@ -56,7 +56,7 @@ export const findNodeByID = (nodeID) => {
     nodeType,
     undefined
   );
-  
+
   const node = {};
 
   if (resultType.length > 0) {
@@ -68,5 +68,18 @@ export const findNodeByID = (nodeID) => {
     return node;
   } else {
     return false;
+  }
+};
+
+export const addNodeToPath = (nodeID, pathNodes) => {
+  const newNode = findNodeByID(nodeID);
+
+  switch (newNode.type) {
+    case "inputType":
+      return [nodeID];
+    case "question":
+      return [pathNodes[0], nodeID];
+    case "workflow":
+      return [pathNodes[0], pathNodes[1], nodeID];
   }
 };
