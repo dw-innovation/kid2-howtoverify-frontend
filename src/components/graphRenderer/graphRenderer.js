@@ -10,7 +10,7 @@ const GraphRenderer = () => {
 
   const {
     appState: {
-      graph: { data, dimensions },
+      graph: { data, dimensions, pathNodes },
     },
     setAppState,
   } = useAppContext();
@@ -72,10 +72,14 @@ const GraphRenderer = () => {
             __data__: { id },
           },
         }) => {
-          setAppState((prev) => ({
-            ...prev,
-            graph: { ...prev.graph, pathNodes: [...prev.graph.pathNodes, id] },
-          }));
+          !pathNodes.includes(id) &&
+            setAppState((prev) => ({
+              ...prev,
+              graph: {
+                ...prev.graph,
+                pathNodes: [...prev.graph.pathNodes, id],
+              },
+            }));
         }
       );
 
