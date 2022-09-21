@@ -1,10 +1,10 @@
 import { findLinkedNodes, findLinks, findNodeByID } from "@/lib/api/lib";
 import { uniqBy } from "lodash";
 
-export const searchByNodes = (nodes) => {
+export const searchByNodes = (pathNodes) => {
   const graph = { nodes: [], links: [] };
 
-  nodes.map((nodeID) => {
+  pathNodes.map((nodeID) => {
     const partialGraph = { nodes: [], links: [] };
     const node = findNodeByID(nodeID);
 
