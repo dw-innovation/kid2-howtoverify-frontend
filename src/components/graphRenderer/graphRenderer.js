@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
 import { addNodeToPath } from "@/lib/api/lib";
+import { getNodeStyle } from "@/lib/lib";
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -88,30 +89,8 @@ const GraphRenderer = () => {
     // render nodes
     node
       .append("circle")
-      .attr("r", ({ type }) => {
-        switch (type) {
-          case "inputType":
-            return 20;
-          case "question":
-            return 12;
-          case "workflow":
-            return 10;
-          case "tool":
-            return 5;
-        }
-      })
-      .attr("fill", ({ type }) => {
-        switch (type) {
-          case "inputType":
-            return "blue";
-          case "question":
-            return "yellow";
-          case "workflow":
-            return "red";
-          case "tool":
-            return "green";
-        }
-      });
+      .attr("r", ({ type }) => getNodeStyle(type, "size"))
+      .attr("fill", ({ type }) => getNodeStyle(type, "color"));
 
     // attach labels to nodes
     node
