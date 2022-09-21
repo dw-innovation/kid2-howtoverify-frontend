@@ -23,19 +23,19 @@ export const loadGraph = async () => {
   }
 };
 
-export const findLinkedNodes = (nodeID) => {
+export const getLinkedNodes = (nodeID) => {
   const nodes = [];
 
   let resultLinks = store.each(DW(nodeID), link, undefined);
 
   resultLinks.map(({ value: linkNodeID }) => {
-    nodes.push(findNodeByID(linkNodeID.replace("http://dw.com/", "")));
+    nodes.push(getNodeByID(linkNodeID.replace("http://dw.com/", "")));
   });
 
   return nodes;
 };
 
-export const findLinks = (nodeID) => {
+export const getLinks = (nodeID) => {
   const links = [];
 
   let resultLinks = store.each(DW(nodeID), link, undefined);
@@ -43,14 +43,14 @@ export const findLinks = (nodeID) => {
   resultLinks.map(({ value: linkNodeID }) => {
     links.push({
       source: nodeID,
-      target: findNodeByID(linkNodeID.replace("http://dw.com/", "")).id,
+      target: getNodeByID(linkNodeID.replace("http://dw.com/", "")).id,
     });
   });
 
   return links;
 };
 
-export const findNodeByID = (nodeID) => {
+export const getNodeByID = (nodeID) => {
   let resultType = store.each(
     DW(nodeID.replace("http://dw.com/", "")),
     nodeType,
@@ -72,7 +72,7 @@ export const findNodeByID = (nodeID) => {
 };
 
 export const addNodeToPath = (nodeID, pathNodes) => {
-  const newNode = findNodeByID(nodeID);
+  const newNode = getNodeByID(nodeID);
 
   switch (newNode.type) {
     case "inputType":
