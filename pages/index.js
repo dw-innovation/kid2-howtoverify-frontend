@@ -4,6 +4,7 @@ import { loadGraph } from "@/lib/api/lib";
 import { searchByNodes } from "@/lib/api/api/graphSearch";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { mergeGraphData } from "@/lib/lib";
 
 const IndexPage = () => {
   const {
@@ -32,7 +33,7 @@ const IndexPage = () => {
       ...prev,
       graph: {
         ...prev.graph,
-        data: searchByNodes(pathNodes),
+        data: mergeGraphData(data, searchByNodes(pathNodes)),
       },
     }));
   }, [pathNodes]);
