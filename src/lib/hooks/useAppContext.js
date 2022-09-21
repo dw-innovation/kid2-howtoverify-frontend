@@ -4,6 +4,7 @@ import { createContext, useContext } from "react";
 export const initialState = {
   graph: {
     data: { nodes: [], links: [] },
+    pathNodes: ["it-image"],
     dimensions: { width: 100, height: 100 },
   },
 };

@@ -2,6 +2,7 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
+import { addNodeToPath } from "@/lib/api/lib";
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -10,7 +11,7 @@ const GraphRenderer = () => {
 
   const {
     appState: {
-      graph: { data, dimensions },
+      graph: { data, dimensions, pathNodes },
     },
     setAppState,
   } = useAppContext();
@@ -64,7 +65,25 @@ const GraphRenderer = () => {
       .selectAll("g")
       .data(data.nodes)
       .enter()
-      .append("g");
+      .append("g")
+      .on(
+        "click",
+        ({
+          target: {
+            __data__: { id, type },
+          },
+        }) => {
+          type !== "tool" &&
+            !pathNodes.includes(id) &&
+            setAppState((prev) => ({
+              ...prev,
+              graph: {
+                ...prev.graph,
+                pathNodes: addNodeToPath(id, prev.graph.pathNodes),
+              },
+            }));
+        }
+      );
 
     // render nodes
     node
