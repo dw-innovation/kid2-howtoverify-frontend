@@ -1,4 +1,5 @@
 import { findLinkedNodes, findLinks, findNodeByID } from "@/lib/api/lib";
+import { uniqBy } from "lodash";
 
 export const searchByNodes = (nodes) => {
   const graph = { nodes: [], links: [] };
@@ -6,7 +7,7 @@ export const searchByNodes = (nodes) => {
   nodes.map((nodeID) => {
     const partialGraph = { nodes: [], links: [] };
     const node = findNodeByID(nodeID);
-    
+
     if (node) {
       partialGraph.nodes.push(node);
 
@@ -22,9 +23,11 @@ export const searchByNodes = (nodes) => {
     }
   });
 
-  const uniqueNodes = graph.nodes
-    .map((node) => node.id)
-    .map((id) => graph.nodes.find((a) => a.id === id));
+  const uniqueNodes = uniqBy(graph.nodes, "id").map((node) => ({
+    ...node,
+    vx: 0,
+    vy: 0,
+  }));
 
   graph.nodes = uniqueNodes;
   return graph;
