@@ -1,6 +1,6 @@
 export const STYLES = [
-  { nodeType: "inputType", properties: { color: "green", size: 20 } },
-  { nodeType: "question", properties: { color: "yellow", size: 15 } },
-  { nodeType: "workflow", properties: { color: "red", size: 12 } },
-  { nodeType: "tool", properties: { color: "blue", size: 8 } },
+  { nodeType: "inputType", properties: { color: "green", radius: 20 } },
+  { nodeType: "question", properties: { color: "yellow", radius: 15 } },
+  { nodeType: "workflow", properties: { color: "red", radius: 12 } },
+  { nodeType: "tool", properties: { color: "blue", radius: 8 } },
 ];

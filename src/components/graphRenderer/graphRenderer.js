@@ -89,7 +89,7 @@ const GraphRenderer = () => {
     // render nodes
     node
       .append("circle")
-      .attr("r", ({ type }) => getNodeStyle(type, "size"))
+      .attr("r", ({ type }) => getNodeStyle(type, "radius"))
       .attr("fill", ({ type }) => getNodeStyle(type, "color"));
 
     // attach labels to nodes
