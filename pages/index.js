@@ -40,12 +40,26 @@ const IndexPage = () => {
 
   return (
     <>
-      <button
-        className="bg-slate-200 p-2 m-2 hover:bg-slate-300 absolute top-0 right-0 z-10"
-        onClick={() => setShowData(!showData)}
-      >
-        toggle data view
-      </button>
+      <div className="absolute top-0 right-0 z-10">
+        <button
+          onClick={() =>
+            data.nodes.push({
+              id: "it-video",
+              name: "video",
+              type: "inputType",
+            })
+          }
+          className="bg-slate-200 p-2 m-2 hover:bg-slate-300"
+        >
+          add test node
+        </button>
+        <button
+          className="bg-slate-200 p-2 m-2 hover:bg-slate-300 "
+          onClick={() => setShowData(!showData)}
+        >
+          toggle data view
+        </button>
+      </div>
       <div className="w-screen h-screen relative">
         <div className="flex h-full">
           <div className="h-full w-full">
