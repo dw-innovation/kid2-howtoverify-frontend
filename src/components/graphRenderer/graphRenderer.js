@@ -5,6 +5,9 @@ import useWindowSize from "src/lib/hooks/useWindowSize";
 import { addNodeToPath } from "@/lib/api/lib";
 import { getNodeStyle } from "@/lib/lib";
 
+let d3links = [];
+let d3nodes = [];
+
 const GraphRenderer = () => {
   const ref = useRef();
 
@@ -18,6 +21,30 @@ const GraphRenderer = () => {
   } = useAppContext();
 
   useEffect(() => {
+    if (d3nodes.length === 0) {
+      // initialize d3nodes with data.nodes
+      d3nodes = data.nodes;
+    } else {
+      // if initialized push a test node
+      d3nodes.push({
+        id: "it-video",
+        name: "video",
+        type: "inputType",
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+      });
+    }
+
+    console.log(d3nodes)
+
+    if (d3links.length === 0) {
+      d3links = data.links;
+    }
+
+    console.log(d3links);
+
     setAppState((prev) => ({
       ...prev,
       graph: {
@@ -54,7 +81,7 @@ const GraphRenderer = () => {
       .append("g")
       .attr("class", "links")
       .selectAll("line")
-      .data(data.links)
+      .data(d3links)
       .enter()
       .append("line")
       .attr("stroke-width", (d) => Math.sqrt(d.value));
@@ -64,7 +91,7 @@ const GraphRenderer = () => {
       .append("g")
       .attr("class", "nodes")
       .selectAll("g")
-      .data(data.nodes)
+      .data(d3nodes)
       .enter()
       .append("g")
       .on(
@@ -110,9 +137,9 @@ const GraphRenderer = () => {
     };
 
     // runs at every re-rendering of for force graph simulation
-    simulation.nodes(data.nodes).on("tick", ticked);
+    simulation.nodes(d3nodes).on("tick", ticked);
 
-    simulation.force("link").links(data.links);
+    simulation.force("link").links(d3links);
 
     const dragStarted = (event, d) => {
       if (!event.active) simulation.alphaTarget(0.3).restart();
