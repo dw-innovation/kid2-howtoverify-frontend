@@ -47,6 +47,10 @@ const IndexPage = () => {
               id: "it-video",
               name: "video",
               type: "inputType",
+              x: 0,
+              y: 0,
+              vx: 0,
+              vy: 0,
             })
           }
           className="bg-slate-200 p-2 m-2 hover:bg-slate-300"
