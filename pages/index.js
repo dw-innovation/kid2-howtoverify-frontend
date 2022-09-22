@@ -42,22 +42,6 @@ const IndexPage = () => {
     <>
       <div className="absolute top-0 right-0 z-10">
         <button
-          onClick={() =>
-            data.nodes.push({
-              id: "it-video",
-              name: "video",
-              type: "inputType",
-              x: 0,
-              y: 0,
-              vx: 0,
-              vy: 0,
-            })
-          }
-          className="bg-slate-200 p-2 m-2 hover:bg-slate-300"
-        >
-          add test node
-        </button>
-        <button
           className="bg-slate-200 p-2 m-2 hover:bg-slate-300 "
           onClick={() => setShowData(!showData)}
         >
