@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
 import { addNodeToPath } from "@/lib/api/lib";
 import { getNodeStyle } from "@/lib/lib";
+import { cloneDeep } from "lodash";
 
 let d3links = [];
 let d3nodes = [];
@@ -15,7 +16,7 @@ const GraphRenderer = () => {
 
   const {
     appState: {
-      graph: { data, dimensions, pathNodes },
+      graph: { data, dimensions, pathNodes, origin },
     },
     setAppState,
   } = useAppContext();
@@ -23,24 +24,30 @@ const GraphRenderer = () => {
   useEffect(() => {
     if (d3nodes.length === 0) {
       // initialize d3nodes with data.nodes
-      d3nodes = data.nodes;
+      d3nodes = cloneDeep(data.nodes);
     } else {
       // if initialized push a test node
+      console.log(origin);
       d3nodes.push({
         id: "it-video",
         name: "video",
         type: "inputType",
-        x: 0,
-        y: 0,
-        vx: 0,
-        vy: 0,
+        x: origin[0],
+        y: origin[1],
+        vx: origin.x,
+        vy: origin.y,
       });
     }
 
-    console.log(d3nodes)
+    console.log(d3nodes);
 
     if (d3links.length === 0) {
-      d3links = data.links;
+      d3links = cloneDeep(data.links);
+    } else {
+      d3links.push({
+        source: "it-video",
+        target: "q-image-when",
+      });
     }
 
     console.log(d3links);
@@ -97,20 +104,22 @@ const GraphRenderer = () => {
       .on(
         "click",
         ({
+          x,
+          y,
           target: {
             __data__: { id, type },
           },
-        }) => {
+        }) =>
           type !== "tool" &&
-            !pathNodes.includes(id) &&
-            setAppState((prev) => ({
-              ...prev,
-              graph: {
-                ...prev.graph,
-                pathNodes: addNodeToPath(id, prev.graph.pathNodes),
-              },
-            }));
-        }
+          !pathNodes.includes(id) &&
+          setAppState((prev) => ({
+            ...prev,
+            graph: {
+              ...prev.graph,
+              pathNodes: addNodeToPath(id, prev.graph.pathNodes),
+              origin: [x, y],
+            },
+          }))
       );
 
     // render nodes
