@@ -1,0 +1,303 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dw: <http://dw.com/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+dw:Background_Removal a dw:SoftwareApplication ;
+    dcterms:subject dw:Image_modification ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Background Removal" ;
+    schema:url "https://photoscissors.com/ " .
+
+dw:CropRotateFlip a dw:SoftwareApplication ;
+    dcterms:subject dw:,
+        dw:Image_modification,
+        dw:Reverse_Image_Search ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Edit photo" ;
+    schema:url "https://edit.photo " .
+
+dw:Geohints a dw:SoftwareApplication ;
+    dcterms:subject dw:Object_identification ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Geohints" ;
+    schema:url "https://geohints.com/" .
+
+dw:Google_Earth a dw:SoftwareApplication ;
+    dcterms:subject dw:Manual_geolocation ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Google Earth" ;
+    schema:url "https://earth.google.com/" .
+
+dw:Google_Lens a dw:SoftwareApplication_ ;
+    dcterms:subject dw:Reverse_Image_Search ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Google Lens" ;
+    schema:url "https://images.google.com" .
+
+dw:Image_enhancer a dw:SoftwareApplication ;
+    dcterms:subject dw:Image_modification ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Lets enhance io" ;
+    schema:url "https://letsenhance.io/ " .
+
+dw:Landmark_recognition a dw:SoftwareApplication ;
+    dcterms:subject dw:Object_identification ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Landmark Recognition" ;
+    schema:url "https://landmark.toolpie.com/ " .
+
+dw:LatLong a dw:SoftwareApplication ;
+    dcterms:subject dw:,
+        dw:Manual_geolocation,
+        dw:Metadata ;
+    rdfs:comment "unstructured text" ;
+    schema:name "LatLong" ;
+    schema:url "https://www.latlong.net/" .
+
+dw:Mapillary a dw:SoftwareApplication ;
+    dcterms:subject dw:Manual_geolocation ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Mapillary" ;
+    schema:url "https://www.mapillary.com/app/" .
+
+dw:Metadata2Go a dw:SoftwareApplication ;
+    dcterms:subject dw:Metadata ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Metadata2Go" ;
+    schema:url "https://www.metadata2go.com/" .
+
+dw:Peakfinder a dw:SoftwareApplication ;
+    dcterms:subject dw:Landscape_identification ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Peakfinder" ;
+    schema:url "https://www.peakfinder.org/" .
+
+dw:Suncalc a dw:SoftwareApplication ;
+    dcterms:subject dw:Shadow_Analyses ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Suncalc" ;
+    schema:url "https://www.suncalc.org/" .
+
+dw:Upload_Time a dw:SoftwareApplication,
+        dw:Task ;
+    dcterms:subject dw:Image_Tasks ;
+    rdfs:comment "unstructured text" ;
+    schema:name "FirstDraftNews",
+        "Image Tasks/Upload Time" ;
+    schema:url "https://firstdraftnews.org/articles/the-first-draft-election-tip-sheet/social-network-timestamps/" .
+
+dw:WC_File_Name a dw:Workflow ;
+    dcterms:relation dw:Metadata ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Who ;
+    schema:name "File Name" .
+
+dw:WC_GPS_Data a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Manual_geolocation,
+        dw:Metadata ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Where ;
+    schema:name "GPS Data" .
+
+dw:WC_Image_modification a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Reverse_Image_Search,
+        dw:Visual_Intelligence ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:What ;
+    schema:name "Image modification" .
+
+dw:WC_Landscape_Identification a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Reverse_Image_Search,
+        dw:Visual_Intelligence ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Where ;
+    schema:name "Landscape identification" .
+
+dw:WC_Manual_geolocation a dw:Workflow ;
+    dcterms:relation dw:Visual_Intelligence ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Where ;
+    schema:name "Manual geolocation" .
+
+dw:WC_Metadata a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:File_Name,
+        dw:GPS_Data,
+        dw:Timestamp ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:,
+        dw:When,
+        dw:Where,
+        dw:Who ;
+    schema:name "Metadata" .
+
+dw:WC_Object_Identification a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Reverse_Image_Search,
+        dw:Visual_Intelligence ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Where ;
+    schema:name "Object identification" .
+
+dw:WC_Person_identification a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Reverse_Image_Search,
+        dw:Visual_Intelligence ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:,
+        dw:Where,
+        dw:Who ;
+    schema:name "Person identification" .
+
+dw:WC_Reverse_Image_Search a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Image_modification,
+        dw:Visual_Intelligence_ ;
+    dcterms:subject dw:Image ;
+    rdfs:comment """unstructured text
+Original & Context (manipulation detection)""" ;
+    schema:isPartOf dw:,
+        dw:What,
+        dw:Where,
+        dw:Who ;
+    schema:name "Reverse Image Search" .
+
+dw:WC_Shadow_Analyses a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Manual_geolocation,
+        dw:Timestamp ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:When ;
+    schema:name "Shadow Analyses" .
+
+dw:WC_Timestamp a dw:Workflow ;
+    dcterms:relation dw:Metadata ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:When ;
+    schema:name "Timestamp" .
+
+dw:WC_Upload_Time a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Metadata,
+        dw:Timestamp ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:When ;
+    schema:name "Image Tasks/Upload Time" .
+
+dw:WC_Visual_Intelligence a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Landscape_identification,
+        dw:Manual_geolocation_,
+        dw:Object_identification,
+        dw:Person_identification,
+        dw:Reverse_Image_Search ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:Where ;
+    schema:name "Visual Intelligence" .
+
+dw:WC_Weather_Analyses a dw:Workflow ;
+    dcterms:relation dw:,
+        dw:Manual_geolocation,
+        dw:Timestamp ;
+    dcterms:subject dw:Image ;
+    rdfs:comment "unstructured text" ;
+    schema:isPartOf dw:When ;
+    schema:name "Weather Analyses" .
+
+dw:Wikimapia a dw:SoftwareApplication ;
+    dcterms:subject dw:Manual_geolocation ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Wikimapia" ;
+    schema:url "http://wikimapia.org/" .
+
+dw:WolframAlpha a dw:SoftwareApplication ;
+    dcterms:subject dw:Weather_Analyses ;
+    rdfs:comment "unstructured text" ;
+    schema:name "WolframAlpha" ;
+    schema:url "https://www.wolframalpha.com/" .
+
+dw:File_Name a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "File Name" .
+
+dw:GPS_Data a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Image Tasks/GPS Data" .
+
+dw:Person_identification a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Person identification" .
+
+dw:Shadow_Analyses a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Shadow Analyses" .
+
+dw:Weather_Analyses a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Image Tasks/Weather Analyses" .
+
+dw:Landscape_identification a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Landscape identification" .
+
+dw:What a dw:Question ;
+    schema:name "What" .
+
+dw:Object_identification a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Object identification" .
+
+dw:Image_modification a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Image modification" .
+
+dw:Timestamp a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Image Tasks/Timestamp" .
+
+dw:Who a dw:Question ;
+    schema:name "Who" .
+
+dw:Visual_Intelligence a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Visual Intelligence" .
+
+dw:When a dw:Question ;
+    schema:name "When" .
+
+dw:Metadata a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Metadata" .
+
+dw:Manual_geolocation a dw:Task ;
+    rdfs:comment "unstructured text" ;
+    schema:name "Manual geolocation" .
+
+dw:Reverse_Image_Search a dw:Task ;
+    rdfs:comment """unstructured text
+
+Original & Context (manipulation detection)""" ;
+    schema:name "Reverse Image Search" .
+
+dw:Where a dw:Question ;
+    schema:name "Where" .
+
+dw:Image a dw:MediaObject ;
+    schema:name "Image" .
+

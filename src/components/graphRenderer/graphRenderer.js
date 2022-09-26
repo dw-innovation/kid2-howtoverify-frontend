@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
 import { addNodeToPath } from "@/lib/api/lib";
 import { getNodeStyle } from "@/lib/lib";
+import { graph } from "rdflib";
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -74,7 +75,7 @@ const GraphRenderer = () => {
             __data__: { id, type },
           },
         }) => {
-          type !== "tool" &&
+          type !== "SoftwareApplication" &&
             !pathNodes.includes(id) &&
             setAppState((prev) => ({
               ...prev,
@@ -87,6 +88,7 @@ const GraphRenderer = () => {
       );
 
     // render nodes
+
     node
       .append("circle")
       .attr("r", ({ type }) => getNodeStyle(type, "radius"))
@@ -95,7 +97,7 @@ const GraphRenderer = () => {
     // attach labels to nodes
     node
       .append("text")
-      .text((d) => d.id)
+      .text((d) => d.name)
       .attr("x", 6)
       .attr("y", 3);
 

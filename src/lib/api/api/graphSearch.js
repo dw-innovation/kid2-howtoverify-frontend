@@ -30,6 +30,7 @@ export const searchByNodes = (pathNodes) => {
   }));
 
   graph.nodes = uniqueNodes;
+
   return graph;
 };
 
