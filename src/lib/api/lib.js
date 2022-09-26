@@ -28,10 +28,10 @@ export const getLinkedNodes = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
-  if (resultLinks.length == 0) {
+  if (resultLinks.length === 0) {
     resultLinks = store.match(DW(nodeID), null, null);
     resultLinks.forEach((st) => {
-      if (st.object.termType == "NamedNode") {
+      if (st.object.termType === "NamedNode") {
         let stObject = getNodeByID(
           st.object.value.replace("http://dw.com/", "")
         );
@@ -45,7 +45,7 @@ export const getLinkedNodes = (nodeID) => {
       let stSubject = getNodeByID(
         st.subject.value.replace("http://dw.com/", "")
       );
-      if (st.subject.termType == "NamedNode") {
+      if (st.subject.termType === "NamedNode") {
         if (typeof stSubject.id !== "undefined") {
           nodes.push(stSubject);
         }
@@ -63,13 +63,13 @@ export const getLinks = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
-  if (resultLinks.length == 0) {
+  if (resultLinks.length === 0) {
     resultLinks = store.match(DW(nodeID), null, null);
     resultLinks.forEach((st) => {
       console.log(st);
       if (
-        st.object.termType == "NamedNode" &&
-        st.subject.termType == "NamedNode"
+        st.object.termType === "NamedNode" &&
+        st.subject.termType === "NamedNode"
       ) {
         let target = getNodeByID(
           st.object.value.replace("http://dw.com/", "")
@@ -89,8 +89,8 @@ export const getLinks = (nodeID) => {
     resultLinks.forEach((st) => {
       console.log(st);
       if (
-        st.subject.termType == "NamedNode" &&
-        st.object.termType == "NamedNode"
+        st.subject.termType === "NamedNode" &&
+        st.object.termType === "NamedNode"
       ) {
         let target = getNodeByID(
           st.subject.value.replace("http://dw.com/", "")
