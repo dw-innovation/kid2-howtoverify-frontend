@@ -3,7 +3,7 @@ import { Namespace } from "rdflib";
 
 const RDF = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 const DW = Namespace("http://dw.com/");
-const SCHEMA = Namespace('https://schema.org/')
+const SCHEMA = Namespace("https://schema.org/");
 
 const nodeType = RDF("type");
 const nodeName = SCHEMA("name");
@@ -28,30 +28,32 @@ export const getLinkedNodes = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
-  if (resultLinks.length==0){
+  if (resultLinks.length == 0) {
     resultLinks = store.match(DW(nodeID), null, null);
-    resultLinks.forEach(st => {
-      if (st.object.termType=='NamedNode'){
-        let stObject =getNodeByID(st.object.value.replace("http://dw.com/", ""));
-        if (typeof stObject.id !== "undefined"){
+    resultLinks.forEach((st) => {
+      if (st.object.termType == "NamedNode") {
+        let stObject = getNodeByID(
+          st.object.value.replace("http://dw.com/", "")
+        );
+        if (typeof stObject.id !== "undefined") {
           nodes.push(stObject);
         }
       }
     });
-    }
-  else{
-    resultLinks.forEach(st => {
-      let stSubject=getNodeByID(st.subject.value.replace("http://dw.com/", ""));
-      if (st.subject.termType=='NamedNode'){
-        if (typeof stSubject.id !== "undefined"){
+  } else {
+    resultLinks.forEach((st) => {
+      let stSubject = getNodeByID(
+        st.subject.value.replace("http://dw.com/", "")
+      );
+      if (st.subject.termType == "NamedNode") {
+        if (typeof stSubject.id !== "undefined") {
           nodes.push(stSubject);
         }
       }
     });
-
   }
-  console.log("nodes")
-  console.log(nodes)
+  console.log("nodes");
+  console.log(nodes);
 
   return nodes;
 };
@@ -61,57 +63,57 @@ export const getLinks = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
-  if (resultLinks.length==0){
+  if (resultLinks.length == 0) {
     resultLinks = store.match(DW(nodeID), null, null);
-    resultLinks.forEach(st => {
-      console.log(st)
-      if (st.object.termType=='NamedNode' && st.subject.termType=='NamedNode'){
-        let target=getNodeByID(st.object.value.replace("http://dw.com/", "")).id;
+    resultLinks.forEach((st) => {
+      console.log(st);
+      if (
+        st.object.termType == "NamedNode" &&
+        st.subject.termType == "NamedNode"
+      ) {
+        let target = getNodeByID(
+          st.object.value.replace("http://dw.com/", "")
+        ).id;
 
-        if (typeof target!=="undefined"){
-          links.push(
-            {
-            source: getNodeByID(st.subject.value.replace("http://dw.com/", "")).id,
-            target: target
-            
-          }
-          )
+        if (typeof target !== "undefined") {
+          links.push({
+            source: getNodeByID(st.subject.value.replace("http://dw.com/", ""))
+              .id,
+            target: target,
+          });
         }
-
       }
       console.log(links);
     });
-    }
-  else {
-    resultLinks.forEach(st => {
-      console.log(st)
-      if (st.subject.termType=='NamedNode' && st.object.termType=='NamedNode') {
-        let target=getNodeByID(st.subject.value.replace("http://dw.com/", "")).id;
+  } else {
+    resultLinks.forEach((st) => {
+      console.log(st);
+      if (
+        st.subject.termType == "NamedNode" &&
+        st.object.termType == "NamedNode"
+      ) {
+        let target = getNodeByID(
+          st.subject.value.replace("http://dw.com/", "")
+        ).id;
 
-
-        if (typeof target!=="undefined"){
-        links.push(
-          {
-          source: getNodeByID(st.object.value.replace("http://dw.com/", "")).id,
-          target: getNodeByID(st.subject.value.replace("http://dw.com/", "")).id
-          
+        if (typeof target !== "undefined") {
+          links.push({
+            source: getNodeByID(st.object.value.replace("http://dw.com/", ""))
+              .id,
+            target: getNodeByID(st.subject.value.replace("http://dw.com/", ""))
+              .id,
+          });
         }
-        )
-      }}
+      }
       console.log(links);
     });
-
   }
 
   return links;
 };
 
 export const getNodeByID = (nodeID) => {
-  let resultType = store.each(
-    DW(nodeID),
-    nodeType,
-    undefined
-  );
+  let resultType = store.each(DW(nodeID), nodeType, undefined);
 
   const node = {};
 
