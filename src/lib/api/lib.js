@@ -133,5 +133,7 @@ export const addNodeToPath = (nodeID, pathNodes) => {
       return [pathNodes[0], nodeID];
     case "Workflow":
       return [pathNodes[0], pathNodes[1], nodeID];
+    case "Tool":
+      return [pathNodes[0], pathNodes[1], pathNodes[2], nodeID];
   }
 };
