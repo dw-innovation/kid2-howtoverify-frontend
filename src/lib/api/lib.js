@@ -52,8 +52,6 @@ export const getLinkedNodes = (nodeID) => {
       }
     });
   }
-  console.log("nodes");
-  console.log(nodes);
 
   return nodes;
 };
@@ -66,7 +64,6 @@ export const getLinks = (nodeID) => {
   if (resultLinks.length === 0) {
     resultLinks = store.match(DW(nodeID), null, null);
     resultLinks.forEach((st) => {
-      console.log(st);
       if (
         st.object.termType === "NamedNode" &&
         st.subject.termType === "NamedNode"
@@ -83,11 +80,9 @@ export const getLinks = (nodeID) => {
           });
         }
       }
-      console.log(links);
     });
   } else {
     resultLinks.forEach((st) => {
-      console.log(st);
       if (
         st.subject.termType === "NamedNode" &&
         st.object.termType === "NamedNode"
@@ -105,7 +100,6 @@ export const getLinks = (nodeID) => {
           });
         }
       }
-      console.log(links);
     });
   }
 
