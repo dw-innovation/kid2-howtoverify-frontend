@@ -3,5 +3,5 @@ export const STYLES = [
   { nodeType: "Question", properties: { color: "yellow", radius: 15 } },
   { nodeType: "Workflow", properties: { color: "red", radius: 12 } },
   { nodeType: "Task", properties: { color: "blue", radius: 8 } },
-  { nodeType: "SoftwareApplication", properties: { color: "blue", radius: 4 } },
+  { nodeType: "SoftwareApplication", properties: { color: "black", radius: 4 } },
 ];

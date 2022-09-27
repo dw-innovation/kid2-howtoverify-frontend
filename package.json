@@ -1,7 +1,7 @@
 {
   "name": "kid-knowledge-web-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "This frontend application renders and explorable network graph of knowledge on verification workflows. To get the app up and running perform the following steps: - clone the repository - put the network graph data as `.ttl` file in the `/public` directory - create a `.env` file in the root directory and set the environment variable `NEXT_PUBLIC_GRAPH_TTL` to the file name of the graph data file - run `npm install` to install the dependencies - run `npm run dev` to spin up the development server - run `npm run build` to build the project - run `npm run start` to serve (locally) a previously built version of the app    ## Update the graph data Replace the `.ttl` file that lives in `/public` and change the environment variable accordingly if you change the file name.",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -23,7 +23,7 @@
     "clsx": "^1.2.1",
     "d3": "^7.6.1",
     "lodash": "^4.17.21",
-    "next": "^12.2.5",
+    "next": "^12.3.1",
     "rdflib": "^2.2.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,5 +33,6 @@
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
-  }
+  },
+  "keywords": []
 }

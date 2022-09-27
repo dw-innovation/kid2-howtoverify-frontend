@@ -28,6 +28,7 @@ export const getLinkedNodes = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
+
   if (resultLinks.length === 0) {
     resultLinks = store.match(DW(nodeID), null, null);
     resultLinks.forEach((st) => {
@@ -40,7 +41,8 @@ export const getLinkedNodes = (nodeID) => {
         }
       }
     });
-  } else {
+  }   
+  else {
     resultLinks.forEach((st) => {
       let stSubject = getNodeByID(
         st.subject.value.replace("http://dw.com/", "")
@@ -81,7 +83,9 @@ export const getLinks = (nodeID) => {
         }
       }
     });
-  } else {
+  } 
+  
+  else {
     resultLinks.forEach((st) => {
       if (
         st.subject.termType === "NamedNode" &&
@@ -133,7 +137,9 @@ export const addNodeToPath = (nodeID, pathNodes) => {
       return [pathNodes[0], nodeID];
     case "Workflow":
       return [pathNodes[0], pathNodes[1], nodeID];
-    case "Tool":
-      return [pathNodes[0], pathNodes[1], pathNodes[2], nodeID];
+    case "Task":
+      return [pathNodes[0], pathNodes[1], pathNodes[2], nodeID]
+    case "SoftwareApplication":
+      return [pathNodes[0], pathNodes[1], pathNodes[2],pathNodes[3], nodeID];
   }
 };

@@ -81,7 +81,7 @@ dw:Suncalc a dw:SoftwareApplication ;
 
 dw:Upload_Time a dw:SoftwareApplication,
         dw:Task ;
-    dcterms:subject dw:Image_Tasks ;
+    dcterms:subject dw:Upload_Time ;
     rdfs:comment "unstructured text" ;
     schema:name "FirstDraftNews",
         "Image Tasks/Upload Time" ;
@@ -257,6 +257,7 @@ dw:Landscape_identification a dw:Task ;
     schema:name "Landscape identification" .
 
 dw:What a dw:Question ;
+    dw:investigation dw:Image ;
     schema:name "What" .
 
 dw:Object_identification a dw:Task ;
@@ -272,6 +273,7 @@ dw:Timestamp a dw:Task ;
     schema:name "Image Tasks/Timestamp" .
 
 dw:Who a dw:Question ;
+    dw:investigation dw:Image ;
     schema:name "Who" .
 
 dw:Visual_Intelligence a dw:Task ;
@@ -279,6 +281,7 @@ dw:Visual_Intelligence a dw:Task ;
     schema:name "Visual Intelligence" .
 
 dw:When a dw:Question ;
+    dw:investigation dw:Image ;
     schema:name "When" .
 
 dw:Metadata a dw:Task ;
@@ -296,6 +299,7 @@ Original & Context (manipulation detection)""" ;
     schema:name "Reverse Image Search" .
 
 dw:Where a dw:Question ;
+    dw:investigation dw:Image ;
     schema:name "Where" .
 
 dw:Image a dw:MediaObject ;
