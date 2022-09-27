@@ -28,9 +28,12 @@ export const getLinkedNodes = (nodeID) => {
 
   let resultLinks = store.match(null, null, DW(nodeID));
 
+  console.log(resultLinks)
+
 
   if (resultLinks.length === 0) {
     resultLinks = store.match(DW(nodeID), null, null);
+    console.log("resultLinks", resultLinks)
     resultLinks.forEach((st) => {
       if (st.object.termType === "NamedNode") {
         let stObject = getNodeByID(
@@ -44,6 +47,7 @@ export const getLinkedNodes = (nodeID) => {
   }   
   else {
     resultLinks.forEach((st) => {
+      console.log(resultLinks)
       let stSubject = getNodeByID(
         st.subject.value.replace("http://dw.com/", "")
       );
@@ -129,17 +133,17 @@ export const getNodeByID = (nodeID) => {
 
 export const addNodeToPath = (nodeID, pathNodes) => {
   const newNode = getNodeByID(nodeID);
-
-  switch (newNode.type) {
-    case "MediaObject":
-      return [nodeID];
-    case "Question":
-      return [pathNodes[0], nodeID];
-    case "Workflow":
-      return [pathNodes[0], pathNodes[1], nodeID];
-    case "Task":
-      return [pathNodes[0], pathNodes[1], pathNodes[2], nodeID]
-    case "SoftwareApplication":
-      return [pathNodes[0], pathNodes[1], pathNodes[2],pathNodes[3], nodeID];
-  }
+  return [...pathNodes, nodeID]
+  // switch (newNode.type) {
+  //   case "MediaObject":
+  //     return [nodeID];
+  //   case "Question":
+  //     return [pathNodes[0], nodeID];
+  //   case "Workflow":
+  //     return [pathNodes[0], pathNodes[1], nodeID];
+  //   case "Task":
+  //     return [pathNodes[0], pathNodes[1], pathNodes[2], nodeID]
+  //   case "SoftwareApplication":
+  //     return [pathNodes[0], pathNodes[1], pathNodes[2],pathNodes[3], nodeID];
+  // }
 };
