@@ -95,7 +95,7 @@ const GraphRenderer = () => {
     // attach labels to nodes
     node
       .append("text")
-      .text((d) => d.id)
+      .text((d) => d.id.replace("http://dw.com/", ""))
       .attr("x", 6)
       .attr("y", 3);
 
