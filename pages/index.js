@@ -34,7 +34,6 @@ const IndexPage = () => {
         },
         data: requestData,
       });
-      console.log(result.data)
 
       setAppState((prev) => ({
         ...prev,
