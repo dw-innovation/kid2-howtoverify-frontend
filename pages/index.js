@@ -4,6 +4,7 @@ import { loadGraph } from "@/lib/api/lib";
 import { searchByNodes } from "@/lib/api/api/graphSearch";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import axios from "axios";
 
 const IndexPage = () => {
   const {
@@ -16,7 +17,37 @@ const IndexPage = () => {
   const [showData, setShowData] = useState(false);
 
   useEffect(() => {
-    loadGraph().then(() =>
+    const fetchGraphData = async () => {
+      var requestData = JSON.stringify({
+        click_history: [
+          "http://dw.com/Image",
+          "http://dw.com/Who",
+          "http://dw.com/Who_is_in_content",
+        ],
+      });
+
+      const result = await axios({
+        method: "post",
+        url: process.env.NEXT_PUBLIC_GRAPH_API,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: requestData,
+      });
+      console.log(result.data)
+
+      setAppState((prev) => ({
+        ...prev,
+        graph: {
+          ...prev.graph,
+          data: result.data,
+        },
+      }));
+    };
+
+    fetchGraphData();
+
+    /* loadGraph().then(() =>
       setAppState((prev) => ({
         ...prev,
         graph: {
@@ -24,7 +55,7 @@ const IndexPage = () => {
           data: searchByNodes(pathNodes),
         },
       }))
-    );
+    ); */
   }, []);
 
   useEffect(() => {
