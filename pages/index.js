@@ -57,7 +57,7 @@ const IndexPage = () => {
     ); */
   }, []);
 
-  useEffect(() => {
+ /*  useEffect(() => {
     setAppState((prev) => ({
       ...prev,
       graph: {
@@ -65,7 +65,7 @@ const IndexPage = () => {
         data: searchByNodes(pathNodes),
       },
     }));
-  }, [pathNodes]);
+  }, [pathNodes]); */
 
   return (
     <>
