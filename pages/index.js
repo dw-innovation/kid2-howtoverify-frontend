@@ -2,7 +2,7 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import GraphRenderer from "src/components/graphRenderer";
 import { loadGraph } from "@/lib/api/lib";
 import { searchByNodes } from "@/lib/api/api/graphSearch";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import axios from "axios";
 
@@ -14,36 +14,30 @@ const IndexPage = () => {
     },
   } = useAppContext();
 
+  const textareaRef = useRef(null);
+
   const [showData, setShowData] = useState(false);
 
+  const fetchGraphData = async () => {
+    const result = await axios({
+      method: "post",
+      url: process.env.NEXT_PUBLIC_GRAPH_API,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: pathNodes,
+    });
+
+    setAppState((prev) => ({
+      ...prev,
+      graph: {
+        ...prev.graph,
+        data: result.data,
+      },
+    }));
+  };
+
   useEffect(() => {
-    const fetchGraphData = async () => {
-      var requestData = JSON.stringify({
-        click_history: [
-          "http://dw.com/Image",
-          "http://dw.com/Who",
-          "http://dw.com/Who_is_in_content",
-        ],
-      });
-
-      const result = await axios({
-        method: "post",
-        url: process.env.NEXT_PUBLIC_GRAPH_API,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: requestData,
-      });
-
-      setAppState((prev) => ({
-        ...prev,
-        graph: {
-          ...prev.graph,
-          data: result.data,
-        },
-      }));
-    };
-
     fetchGraphData();
 
     /* loadGraph().then(() =>
@@ -55,9 +49,9 @@ const IndexPage = () => {
         },
       }))
     ); */
-  }, []);
+  }, [pathNodes]);
 
- /*  useEffect(() => {
+  /*  useEffect(() => {
     setAppState((prev) => ({
       ...prev,
       graph: {
@@ -89,7 +83,25 @@ const IndexPage = () => {
           >
             <b>Array of path nodes</b>
             <br />
-            {JSON.stringify(pathNodes, null, 2)}
+            <div className="flex flex-col">
+              <textarea cols={60} rows={10} ref={textareaRef}>
+                {pathNodes}
+              </textarea>
+              <button
+                onClick={() =>
+                  setAppState((prev) => ({
+                    ...prev,
+                    graph: {
+                      ...prev.graph,
+                      pathNodes: textareaRef.current.value,
+                    },
+                  }))
+                }
+                className="bg-slate-200 p-2 m-2 hover:bg-slate-300 font-sans"
+              >
+                save
+              </button>
+            </div>
             <br />
             <br />
             <b>Graph data</b> <br />
