@@ -40,7 +40,6 @@ const IndexPage = () => {
 
   useEffect(() => {
     fetchGraphData();
-    console.log(pathNodes);
   }, [pathNodes]);
 
   /*  useEffect(() => {
