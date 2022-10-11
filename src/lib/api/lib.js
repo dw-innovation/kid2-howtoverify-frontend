@@ -74,12 +74,13 @@ export const getNodeByID = (nodeID) => {
 export const addNodeToPath = (nodeID, pathNodes) => {
   const newNode = getNodeByID(nodeID);
 
-  switch (newNode.type) {
+  /* switch (newNode.type) {
     case "inputType":
       return [nodeID];
     case "question":
       return [pathNodes[0], nodeID];
     case "workflow":
       return [pathNodes[0], pathNodes[1], nodeID];
-  }
+  } */
+  return [...pathNodes, nodeID]
 };
