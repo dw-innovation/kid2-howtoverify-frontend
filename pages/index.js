@@ -53,10 +53,10 @@ const IndexPage = () => {
   }, [pathNodes]); */
 
   const ROOTNODES = [
-    { label: "image", id: "http://dw.com/image" },
-    { label: "video", id: "http://dw.com/video" },
-    { label: "audio", id: "http://dw.com/audio" },
-    { label: "text", id: "http://dw.com/text" },
+    { label: "image", id: "http://dw.com/Image" },
+    { label: "video", id: "http://dw.com/Video" },
+    { label: "audio", id: "http://dw.com/Audio" },
+    { label: "text", id: "http://dw.com/Text" },
   ];
 
   return (
@@ -107,7 +107,7 @@ const IndexPage = () => {
                 cols={60}
                 rows={10}
                 ref={textareaRef}
-                value={pathNodes}
+                defaultValue={pathNodes}
               />
               <button
                 onClick={() =>
