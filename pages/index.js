@@ -28,7 +28,7 @@ const IndexPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: pathNodes,
+      data: JSON.stringify(pathNodes),
     });
 
     setAppState((prev) => ({
@@ -42,18 +42,8 @@ const IndexPage = () => {
 
   useEffect(() => {
     fetchGraphData();
-    setPathNodesEdit(pathNodes)
+    setPathNodesEdit(JSON.stringify(pathNodes));
   }, [pathNodes]);
-
-  /*  useEffect(() => {
-    setAppState((prev) => ({
-      ...prev,
-      graph: {
-        ...prev.graph,
-        data: searchByNodes(pathNodes),
-      },
-    }));
-  }, [pathNodes]); */
 
   const ROOTNODES = [
     { label: "image", id: "http://dw.com/Image" },
@@ -82,9 +72,9 @@ const IndexPage = () => {
                         ...prev,
                         graph: {
                           ...prev.graph,
-                          pathNodes: JSON.stringify({
+                          pathNodes: {
                             click_history: [node.id],
-                          }),
+                          },
                         },
                       }))
                     }
@@ -119,7 +109,7 @@ const IndexPage = () => {
                     ...prev,
                     graph: {
                       ...prev.graph,
-                      pathNodes: pathNodesEdit,
+                      pathNodes: JSON.parse(pathNodesEdit),
                     },
                   }))
                 }
