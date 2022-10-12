@@ -71,16 +71,15 @@ const GraphRenderer = () => {
         "click",
         ({
           target: {
-            __data__: { id, type },
+            __data__: { id, type, level },
           },
         }) => {
           type !== "tool" &&
-            !pathNodes.includes(id) &&
             setAppState((prev) => ({
               ...prev,
               graph: {
                 ...prev.graph,
-                pathNodes: addNodeToPath(id, prev.graph.pathNodes),
+                pathNodes: addNodeToPath(id, level, prev.graph.pathNodes),
               },
             }));
         }
