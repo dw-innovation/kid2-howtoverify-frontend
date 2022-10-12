@@ -15,6 +15,8 @@ const IndexPage = () => {
     },
   } = useAppContext();
 
+  const [pathNodesEdit, setPathNodesEdit] = useState(null);
+
   const textareaRef = useRef(null);
 
   const [showData, setShowData] = useState(false);
@@ -40,6 +42,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     fetchGraphData();
+    setPathNodesEdit(pathNodes)
   }, [pathNodes]);
 
   /*  useEffect(() => {
@@ -107,7 +110,8 @@ const IndexPage = () => {
                 cols={60}
                 rows={10}
                 ref={textareaRef}
-                defaultValue={pathNodes}
+                value={pathNodesEdit}
+                onChange={(e) => setPathNodesEdit(e.target.value)}
               />
               <button
                 onClick={() =>
@@ -115,7 +119,7 @@ const IndexPage = () => {
                     ...prev,
                     graph: {
                       ...prev.graph,
-                      pathNodes: textareaRef.current.value,
+                      pathNodes: pathNodesEdit,
                     },
                   }))
                 }
