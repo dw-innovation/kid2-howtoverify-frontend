@@ -71,16 +71,12 @@ export const getNodeByID = (nodeID) => {
   }
 };
 
-export const addNodeToPath = (nodeID, pathNodes) => {
-  const newNode = getNodeByID(nodeID);
-
-  /* switch (newNode.type) {
-    case "inputType":
-      return [nodeID];
-    case "question":
-      return [pathNodes[0], nodeID];
-    case "workflow":
-      return [pathNodes[0], pathNodes[1], nodeID];
-  } */
-  return [...pathNodes, nodeID]
+export const addNodeToPath = (nodeID, level, pathNodes) => {
+  if (pathNodes.click_history.length <= level) {
+    return { click_history: [...pathNodes.click_history, nodeID] };
+  } else {
+    const history = Object.assign([], pathNodes.click_history);
+    history[level] = nodeID;
+    return { click_history: history.slice(0, level + 1) };
+  }
 };
