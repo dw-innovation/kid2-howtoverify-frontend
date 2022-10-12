@@ -1,9 +1,10 @@
-import useAppContext from "src/lib/hooks/useAppContext";
-import GraphRenderer from "src/components/graphRenderer";
-import { loadGraph } from "@/lib/api/lib";
-import { searchByNodes } from "@/lib/api/api/graphSearch";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, Fragment } from "react";
+import { ROOTNODES } from "@/lib/const";
+import useAppContext from "@/lib/hooks/useAppContext";
+import GraphRenderer from "@/components/graphRenderer";
 import clsx from "clsx";
+import axios from "axios";
+import Button from "@/components/button";
 
 const IndexPage = () => {
   const {
@@ -13,41 +14,66 @@ const IndexPage = () => {
     },
   } = useAppContext();
 
+  const [tempPathNodes, setTempPathNodes] = useState(null);
+
+  const textareaRef = useRef(null);
+
   const [showData, setShowData] = useState(false);
 
-  useEffect(() => {
-    loadGraph().then(() =>
-      setAppState((prev) => ({
-        ...prev,
-        graph: {
-          ...prev.graph,
-          data: searchByNodes(pathNodes),
-        },
-      }))
-    );
-  }, []);
+  const fetchGraphData = async () => {
+    const result = await axios({
+      method: "post",
+      url: process.env.NEXT_PUBLIC_GRAPH_API,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({ click_history: pathNodes }),
+    });
 
-  useEffect(() => {
     setAppState((prev) => ({
       ...prev,
       graph: {
         ...prev.graph,
-        data: searchByNodes(pathNodes),
+        data: result.data,
       },
     }));
+  };
+
+  useEffect(() => {
+    fetchGraphData();
+    setTempPathNodes(JSON.stringify(pathNodes));
   }, [pathNodes]);
 
   return (
     <>
-      <button
-        className="bg-slate-200 p-2 m-2 hover:bg-slate-300 absolute top-0 right-0 z-10"
+      <Button
+        className="absolute top-0 right-0 z-10"
         onClick={() => setShowData(!showData)}
       >
-        toggle data view
-      </button>
+        toggle show data
+      </Button>
       <div className="w-screen h-screen relative">
         <div className="flex h-full">
           <div className="h-full w-full">
+            <div className="flex flex-row">
+              {ROOTNODES.map(({ id, label }, index) => (
+                <Fragment key={index}>
+                  <Button
+                    onClick={() =>
+                      setAppState((prev) => ({
+                        ...prev,
+                        graph: {
+                          ...prev.graph,
+                          pathNodes: [id],
+                        },
+                      }))
+                    }
+                  >
+                    {label}
+                  </Button>
+                </Fragment>
+              ))}
+            </div>
             <GraphRenderer />
           </div>
 
@@ -59,7 +85,29 @@ const IndexPage = () => {
           >
             <b>Array of path nodes</b>
             <br />
-            {JSON.stringify(pathNodes, null, 2)}
+            <div className="flex flex-col">
+              <textarea
+                cols={60}
+                rows={10}
+                ref={textareaRef}
+                value={tempPathNodes}
+                onChange={(e) => setTempPathNodes(e.target.value)}
+              />
+              <button
+                onClick={() =>
+                  setAppState((prev) => ({
+                    ...prev,
+                    graph: {
+                      ...prev.graph,
+                      pathNodes: JSON.parse(tempPathNodes),
+                    },
+                  }))
+                }
+                className="bg-slate-200 p-2 m-2 hover:bg-slate-300 font-sans"
+              >
+                save
+              </button>
+            </div>
             <br />
             <br />
             <b>Graph data</b> <br />

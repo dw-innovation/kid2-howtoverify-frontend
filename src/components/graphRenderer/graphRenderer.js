@@ -2,8 +2,7 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
-import { addNodeToPath } from "@/lib/api/lib";
-import { getNodeStyle } from "@/lib/lib";
+import { addNodeToPath, getNodeStyle } from "@/lib/lib";
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -71,18 +70,17 @@ const GraphRenderer = () => {
         "click",
         ({
           target: {
-            __data__: { id, type },
+            __data__: { id, level, type },
           },
         }) => {
-          type !== "tool" &&
-            !pathNodes.includes(id) &&
-            setAppState((prev) => ({
-              ...prev,
-              graph: {
-                ...prev.graph,
-                pathNodes: addNodeToPath(id, prev.graph.pathNodes),
-              },
-            }));
+          type !== "http://dw.com/SoftwareApplication" &&
+          setAppState((prev) => ({
+            ...prev,
+            graph: {
+              ...prev.graph,
+              pathNodes: addNodeToPath(id, level, prev.graph.pathNodes),
+            },
+          }));
         }
       );
 
@@ -95,7 +93,7 @@ const GraphRenderer = () => {
     // attach labels to nodes
     node
       .append("text")
-      .text((d) => d.id)
+      .text((d) => d.id.replace("http://dw.com/", ""))
       .attr("x", 6)
       .attr("y", 3);
 
