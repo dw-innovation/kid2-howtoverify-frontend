@@ -62,6 +62,7 @@ const GraphRenderer = () => {
     var node = svgRef
       .append("g")
       .attr("class", "nodes")
+      .attr("class", "cursor-pointer")
       .selectAll("g")
       .data(data.nodes)
       .enter()
