@@ -1,8 +1,7 @@
-import useAppContext from "src/lib/hooks/useAppContext";
-import GraphRenderer from "src/components/graphRenderer";
-import { loadGraph } from "@/lib/api/lib";
-import { searchByNodes } from "@/lib/api/api/graphSearch";
 import { useEffect, useState, useRef, Fragment } from "react";
+import { ROOTNODES } from "@/lib/const";
+import useAppContext from "@/lib/hooks/useAppContext";
+import GraphRenderer from "@/components/graphRenderer";
 import clsx from "clsx";
 import axios from "axios";
 import Button from "@/components/button";
@@ -15,7 +14,7 @@ const IndexPage = () => {
     },
   } = useAppContext();
 
-  const [pathNodesEdit, setPathNodesEdit] = useState(null);
+  const [tempPathNodes, setTempPathNodes] = useState(null);
 
   const textareaRef = useRef(null);
 
@@ -28,7 +27,7 @@ const IndexPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: JSON.stringify(pathNodes),
+      data: JSON.stringify({ click_history: pathNodes }),
     });
 
     setAppState((prev) => ({
@@ -42,15 +41,8 @@ const IndexPage = () => {
 
   useEffect(() => {
     fetchGraphData();
-    setPathNodesEdit(JSON.stringify(pathNodes));
+    setTempPathNodes(JSON.stringify(pathNodes));
   }, [pathNodes]);
-
-  const ROOTNODES = [
-    { label: "image", id: "http://dw.com/Image" },
-    { label: "video", id: "http://dw.com/Video" },
-    { label: "audio", id: "http://dw.com/Audio" },
-    { label: "text", id: "http://dw.com/Text" },
-  ];
 
   return (
     <>
@@ -64,7 +56,7 @@ const IndexPage = () => {
         <div className="flex h-full">
           <div className="h-full w-full">
             <div className="flex flex-row">
-              {ROOTNODES.map((node, index) => (
+              {ROOTNODES.map(({ id, label }, index) => (
                 <Fragment key={index}>
                   <Button
                     onClick={() =>
@@ -72,14 +64,12 @@ const IndexPage = () => {
                         ...prev,
                         graph: {
                           ...prev.graph,
-                          pathNodes: {
-                            click_history: [node.id],
-                          },
+                          pathNodes: [id],
                         },
                       }))
                     }
                   >
-                    {node.label}
+                    {label}
                   </Button>
                 </Fragment>
               ))}
@@ -100,8 +90,8 @@ const IndexPage = () => {
                 cols={60}
                 rows={10}
                 ref={textareaRef}
-                value={pathNodesEdit}
-                onChange={(e) => setPathNodesEdit(e.target.value)}
+                value={tempPathNodes}
+                onChange={(e) => setTempPathNodes(e.target.value)}
               />
               <button
                 onClick={() =>
@@ -109,7 +99,7 @@ const IndexPage = () => {
                     ...prev,
                     graph: {
                       ...prev.graph,
-                      pathNodes: JSON.parse(pathNodesEdit),
+                      pathNodes: JSON.parse(tempPathNodes),
                     },
                   }))
                 }
