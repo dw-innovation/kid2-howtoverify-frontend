@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
@@ -14,9 +14,7 @@ const IndexPage = () => {
     },
   } = useAppContext();
 
-  const [tempPathNodes, setTempPathNodes] = useState(null);
-
-  const textareaRef = useRef(null);
+  const [tempPathNodes, setTempPathNodes] = useState("");
 
   const [showData, setShowData] = useState(false);
 
@@ -89,7 +87,6 @@ const IndexPage = () => {
               <textarea
                 cols={60}
                 rows={10}
-                ref={textareaRef}
                 value={tempPathNodes}
                 onChange={(e) => setTempPathNodes(e.target.value)}
               />
