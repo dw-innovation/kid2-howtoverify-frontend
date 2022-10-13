@@ -60,6 +60,14 @@ const IndexPage = () => {
         <div className="flex h-full">
           <div className="h-full w-full">
             <MediaTypeSelector />
+            <Button
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href);
+        }}
+        className="font-bold"
+      >
+        copy link to share
+      </Button>
             <GraphRenderer />
           </div>
           <DevPanel />
