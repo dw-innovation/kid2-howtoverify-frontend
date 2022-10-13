@@ -93,6 +93,14 @@ const IndexPage = () => {
                   </Button>
                 </Fragment>
               ))}
+              <Button
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                }}
+                className="font-bold"
+              >
+                copy link to share
+              </Button>
             </div>
             <GraphRenderer />
           </div>
