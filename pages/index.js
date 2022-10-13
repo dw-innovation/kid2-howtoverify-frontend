@@ -5,6 +5,7 @@ import GraphRenderer from "@/components/graphRenderer";
 import clsx from "clsx";
 import axios from "axios";
 import Button from "@/components/button";
+import { useRouter } from "next/router";
 
 const IndexPage = () => {
   const {
@@ -17,6 +18,19 @@ const IndexPage = () => {
   const [tempPathNodes, setTempPathNodes] = useState("");
 
   const [showData, setShowData] = useState(false);
+
+  const { query } = useRouter();
+
+  useEffect(() => {
+    if (typeof query.path !== "undefined" && query?.path.length > 0) {
+      const queryPath = query.path.map((item) => `http://dw.com/${item}`);
+
+      setAppState((prev) => ({
+        ...prev,
+        graph: { ...prev.graph, pathNodes: queryPath },
+      }));
+    }
+  }, [query]);
 
   const fetchGraphData = async () => {
     const result = await axios({
@@ -40,6 +54,12 @@ const IndexPage = () => {
   useEffect(() => {
     fetchGraphData();
     setTempPathNodes(JSON.stringify(pathNodes));
+
+    const urlPath = `/${pathNodes
+      .map((node) => node.replace("http://dw.com/", ""))
+      .join("/")}`;
+
+    window.history.pushState({}, urlPath, urlPath);
   }, [pathNodes]);
 
   return (
