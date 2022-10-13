@@ -29,6 +29,11 @@ const IndexPage = () => {
         ...prev,
         graph: { ...prev.graph, pathNodes: queryPath },
       }));
+    } else {
+      setAppState((prev) => ({
+        ...prev,
+        graph: { ...prev.graph, pathNodes: ["http://dw.com/Image"] },
+      }));
     }
   }, [query]);
 
@@ -52,14 +57,16 @@ const IndexPage = () => {
   };
 
   useEffect(() => {
-    fetchGraphData();
-    setTempPathNodes(JSON.stringify(pathNodes));
+    if (pathNodes.length !== 0) {
+      fetchGraphData();
+      setTempPathNodes(JSON.stringify(pathNodes));
 
-    const urlPath = `/${pathNodes
-      .map((node) => node.replace("http://dw.com/", ""))
-      .join("/")}`;
+      const urlPath = `/${pathNodes
+        .map((node) => node.replace("http://dw.com/", ""))
+        .join("/")}`;
 
-    window.history.pushState({}, urlPath, urlPath);
+      window.history.pushState({}, urlPath, urlPath);
+    }
   }, [pathNodes]);
 
   return (

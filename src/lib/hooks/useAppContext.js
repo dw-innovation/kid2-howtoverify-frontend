@@ -4,11 +4,7 @@ import { createContext, useContext } from "react";
 export const initialState = {
   graph: {
     data: { nodes: [], links: [] },
-    pathNodes: [
-      "http://dw.com/Image",
-      "http://dw.com/Who",
-      "http://dw.com/Who_is_in_content",
-    ],
+    pathNodes: [],
     dimensions: { width: 100, height: 100 },
   },
 };
