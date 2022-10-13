@@ -29,11 +29,6 @@ const IndexPage = () => {
         ...prev,
         graph: { ...prev.graph, pathNodes: queryPath },
       }));
-    } else {
-      setAppState((prev) => ({
-        ...prev,
-        graph: { ...prev.graph, pathNodes: ["http://dw.com/Image"] },
-      }));
     }
   }, [query]);
 
