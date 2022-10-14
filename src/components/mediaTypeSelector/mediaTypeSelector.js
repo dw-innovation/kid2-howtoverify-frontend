@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
-import Button from "../button";
+import Button from "@/components/button";
 
 const MediaTypeSelector = () => {
   const {
