@@ -7,12 +7,12 @@ const ShareButton = () => {
   return (
     <Button
       onClick={() => {
-        typeof navigator !== "undefined" && navigator.clipboard.writeText(window.location.href);
+        typeof navigator !== "undefined" &&
+          navigator.clipboard.writeText(window.location.href);
       }}
       className="font-bold"
-    >
-      {t("copyPermalink")}
-    </Button>
+      dangerouslySetInnerHTML={{ __html: t("copyPermalink") }}
+    />
   );
 };
 export default ShareButton;

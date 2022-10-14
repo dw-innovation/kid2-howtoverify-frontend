@@ -56,16 +56,18 @@ const IndexPage = () => {
         onClick={() =>
           setAppState((prev) => ({ ...prev, showPanel: !prev.showPanel }))
         }
-      >
-        {t("toggleDevPanel")}
-      </Button>
+        dangerouslySetInnerHTML={{ __html: t("toggleDevPanel") }}
+      />
       <div className="absolute bottom-0 left-0 z-10">
         <ShareButton />
         <FeedbackButton />
       </div>
       <div className="w-screen h-screen relative">
         <div className="flex flex-col h-full">
-          <h1 className="font-bold text-3xl pb-3">{t("title")}</h1>
+          <h1
+            className="font-bold text-3xl pb-3"
+            dangerouslySetInnerHTML={{ __html: t("title") }}
+          />
           <div>
             <MediaTypeSelector />
           </div>

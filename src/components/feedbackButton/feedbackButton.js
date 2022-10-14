@@ -10,9 +10,8 @@ const FeedbackButton = () => {
           typeof window !== "undefined" && window.location.href
         }\n\nBest`
       )}`}
-    >
-      {t("sendFeedback")}
-    </a>
+      dangerouslySetInnerHTML={{ __html: t("sendFeedback") }}
+    />
   );
 };
 export default FeedbackButton;
