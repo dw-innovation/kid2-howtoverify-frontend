@@ -1,8 +1,6 @@
-import { useEffect, useState, Fragment } from "react";
-import { ROOTNODES } from "@/lib/const";
+import { useEffect } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
-import clsx from "clsx";
 import Button from "@/components/button";
 import { useRouter } from "next/router";
 import { fetchGraphData } from "@/lib/lib";
@@ -61,13 +59,13 @@ const IndexPage = () => {
           <div className="h-full w-full">
             <MediaTypeSelector />
             <Button
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
-        }}
-        className="font-bold"
-      >
-        copy link to share
-      </Button>
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+              }}
+              className="font-bold"
+            >
+              copy link to share
+            </Button>
             <GraphRenderer />
           </div>
           <DevPanel />
