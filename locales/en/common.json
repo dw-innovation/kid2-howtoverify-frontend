@@ -1,3 +1,6 @@
 {
-    "title": "KID2 knowledge graph (text coming from internal JSON 💫)"
+    "title": "KID2 knowledge graph (text coming from internal JSON 💫)",
+    "sendFeedback": "send feedback",
+    "copyPermalink": "copy link to share",
+    "toggleDevPanel": "toggle dev panel"
 }

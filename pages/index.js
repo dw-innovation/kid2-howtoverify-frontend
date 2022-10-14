@@ -57,7 +57,7 @@ const IndexPage = () => {
           setAppState((prev) => ({ ...prev, showPanel: !prev.showPanel }))
         }
       >
-        toggle dev panel
+        {t("toggleDevPanel")}
       </Button>
       <div className="absolute bottom-0 left-0">
         <ShareButton />
