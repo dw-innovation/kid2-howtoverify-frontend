@@ -5,7 +5,7 @@ const SEO = () => {
   return (
     <Head>
       <title>KID2</title>
-      <meta charset="UTF-8" />
+      <meta charSet="UTF-8" />
       <meta
         name="description"
         content="An explorable knowledge base for verification processes."
