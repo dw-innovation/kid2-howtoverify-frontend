@@ -10,10 +10,7 @@ const SEO = () => {
       <meta charSet="UTF-8" />
       <meta name="description" content={t("description")} />
       <meta name="keywords" content={t("keywords")} />
-      <meta
-        name="author"
-        content="Deutsche Welle Research and Cooperation Projects"
-      />
+      <meta name="author" content={t("author")} />
       <link
         rel="icon"
         type="image/png"
