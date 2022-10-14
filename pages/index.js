@@ -51,26 +51,31 @@ const IndexPage = () => {
 
   return (
     <>
-      <h1 className="font-bold text-3xl pb-3">{t("title")}</h1>
       <Button
         className="absolute top-0 right-0 z-10"
         onClick={() =>
           setAppState((prev) => ({ ...prev, showPanel: !prev.showPanel }))
         }
       >
-        toggle show data
+        toggle dev panel
       </Button>
+      <div className="absolute bottom-0 left-0">
+        <ShareButton />
+        <FeedbackButton />
+      </div>
       <div className="w-screen h-screen relative">
-        <div className="flex h-full">
-          <div className="h-full w-full">
+        <div className="flex flex-col h-full">
+          <h1 className="font-bold text-3xl pb-3">{t("title")}</h1>
+          <div>
             <MediaTypeSelector />
-            <ShareButton />
-            <FeedbackButton />
-            <GraphRenderer />
           </div>
+          <div className="flex-1 flex">
+            <GraphRenderer />
           <DevPanel />
+          </div>
         </div>
       </div>
+      <div className="w-max-screen h-max-screen relative"></div>
     </>
   );
 };

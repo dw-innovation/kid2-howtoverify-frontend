@@ -16,7 +16,7 @@ const DevPanel = () => {
   return (
     <pre
       className={clsx(
-        "overflow-y-scroll h-screen w-[50%] text-[0.8rem] p-2 bg-amber-200",
+        "overflow-y-scroll h-screen w-[50%] text-[0.8rem] p-2 bg-amber-200 top-0 absolute right-0",
         !showPanel && "hidden"
       )}
     >
