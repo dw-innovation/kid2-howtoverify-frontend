@@ -59,7 +59,7 @@ const IndexPage = () => {
       >
         {t("toggleDevPanel")}
       </Button>
-      <div className="absolute bottom-0 left-0">
+      <div className="absolute bottom-0 left-0 z-10">
         <ShareButton />
         <FeedbackButton />
       </div>
@@ -71,7 +71,7 @@ const IndexPage = () => {
           </div>
           <div className="flex-1 flex">
             <GraphRenderer />
-          <DevPanel />
+            <DevPanel />
           </div>
         </div>
       </div>
