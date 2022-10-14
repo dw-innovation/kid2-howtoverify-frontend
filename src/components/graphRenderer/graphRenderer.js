@@ -67,6 +67,7 @@ const GraphRenderer = () => {
       .data(data.nodes)
       .enter()
       .append("g")
+      .attr("class", "hover:opacity-80 transition-all duration-200")
       .on(
         "click",
         ({
