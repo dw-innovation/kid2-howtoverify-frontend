@@ -34,7 +34,7 @@ const IndexPage = () => {
   }, [query]);
 
   useEffect(() => {
-    if (pathNodes.length !== 0) {
+    if (typeof window !== "undefined" && pathNodes.length !== 0) {
       fetchGraphData(pathNodes, setAppState);
       setAppState((prev) => ({
         ...prev,
@@ -75,7 +75,6 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-max-screen h-max-screen relative"></div>
     </>
   );
 };
