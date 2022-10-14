@@ -1,7 +1,8 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import React from "react";
 import clsx from "clsx";
-import Button from "../button";
+import Button from "@/components/button";
+import useTranslation from "next-translate/useTranslation";
 
 const DevPanel = () => {
   const {
@@ -12,6 +13,8 @@ const DevPanel = () => {
       tempPathNodes,
     },
   } = useAppContext();
+
+  const { t } = useTranslation("common");
 
   return (
     <pre
@@ -41,9 +44,8 @@ const DevPanel = () => {
               },
             }))
           }
-        >
-          save
-        </Button>
+          dangerouslySetInnerHTML={{ __html: t("saveDevPanel") }}
+        />
       </div>
       <br />
       <br />
