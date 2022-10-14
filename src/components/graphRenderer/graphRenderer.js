@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
 import { addNodeToPath, getNodeStyle } from "@/lib/lib";
+import Color from "color";
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -15,6 +16,11 @@ const GraphRenderer = () => {
     },
     setAppState,
   } = useAppContext();
+
+  const maxLevel = Math.max.apply(
+    Math,
+    data.nodes.map(({ level }) => level)
+  );
 
   useEffect(() => {
     setAppState((prev) => ({
@@ -76,13 +82,13 @@ const GraphRenderer = () => {
           },
         }) => {
           type !== "http://dw.com/SoftwareApplication" &&
-          setAppState((prev) => ({
-            ...prev,
-            graph: {
-              ...prev.graph,
-              pathNodes: addNodeToPath(id, level, prev.graph.pathNodes),
-            },
-          }));
+            setAppState((prev) => ({
+              ...prev,
+              graph: {
+                ...prev.graph,
+                pathNodes: addNodeToPath(id, level, prev.graph.pathNodes),
+              },
+            }));
         }
       );
 
@@ -90,7 +96,12 @@ const GraphRenderer = () => {
     node
       .append("circle")
       .attr("r", ({ type }) => getNodeStyle(type, "radius"))
-      .attr("fill", ({ type }) => getNodeStyle(type, "color"));
+      .attr("fill", ({ type, id, level }) => {
+        const color = Color(getNodeStyle(type, "color")).darken(
+          pathNodes.includes(id) || level === maxLevel ? 0 : 0.1
+        );
+        return color;
+      });
 
     // attach labels to nodes
     node
