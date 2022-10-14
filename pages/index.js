@@ -1,11 +1,13 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { fetchGraphData } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
 import Button from "@/components/button";
-import { useRouter } from "next/router";
-import { fetchGraphData } from "@/lib/lib";
 import MediaTypeSelector from "@/components/mediaTypeSelector";
 import DevPanel from "@/components/devPanel";
+import ShareButton from "@/components/shareButton";
+import FeedbackButton from "@/components/feedbackButton";
 
 const IndexPage = () => {
   const {
@@ -58,14 +60,8 @@ const IndexPage = () => {
         <div className="flex h-full">
           <div className="h-full w-full">
             <MediaTypeSelector />
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-              }}
-              className="font-bold"
-            >
-              copy link to share
-            </Button>
+            <ShareButton />
+            <FeedbackButton />
             <GraphRenderer />
           </div>
           <DevPanel />
