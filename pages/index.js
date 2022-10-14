@@ -8,6 +8,7 @@ import MediaTypeSelector from "@/components/mediaTypeSelector";
 import DevPanel from "@/components/devPanel";
 import ShareButton from "@/components/shareButton";
 import FeedbackButton from "@/components/feedbackButton";
+import useTranslation from "next-translate/useTranslation";
 
 const IndexPage = () => {
   const {
@@ -16,6 +17,8 @@ const IndexPage = () => {
       graph: { pathNodes },
     },
   } = useAppContext();
+
+  const { t } = useTranslation("common");
 
   const { query } = useRouter();
 
@@ -48,6 +51,7 @@ const IndexPage = () => {
 
   return (
     <>
+      <h1 className="font-bold text-3xl pb-3">{t("title")}</h1>
       <Button
         className="absolute top-0 right-0 z-10"
         onClick={() =>
