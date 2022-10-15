@@ -4,5 +4,9 @@
     "copyPermalink": "copy link to share",
     "toggleDevPanel": "toggle dev panel",
     "saveDevPanel": "save",
-    "selectMediaType": "select a media type first"
+    "selectMediaType": "select a media type first",
+    "feedbackMail": "innovation@dw.com",
+    "feedbackSubject": "Feedback",
+    "feedbackBody": "Hey,\n\nI got some feedback on {{url}}.\n\nBest"
+
 }

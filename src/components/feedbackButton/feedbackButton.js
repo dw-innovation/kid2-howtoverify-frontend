@@ -5,10 +5,12 @@ const FeedbackButton = () => {
   const { t } = useTranslation("common");
   return (
     <a
-      href={`mailto:innovation@dw.com?subject=Feedback&body=${encodeURIComponent(
-        `Hey,\n\nI have feedback on the ${
-          typeof window !== "undefined" && window.location.href
-        }\n\nBest`
+      href={`mailto:${t("feedbackMail")}?subject=${t(
+        "feedbackSubject"
+      )}&body=${encodeURIComponent(
+        t("feedbackBody", {
+          url: typeof window !== "undefined" ? window.location.href : "",
+        })
       )}`}
       dangerouslySetInnerHTML={{ __html: t("sendFeedback") }}
     />
