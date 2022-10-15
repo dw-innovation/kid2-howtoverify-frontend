@@ -9,6 +9,7 @@ import DevPanel from "@/components/devPanel";
 import ShareButton from "@/components/shareButton";
 import FeedbackButton from "@/components/feedbackButton";
 import useTranslation from "next-translate/useTranslation";
+import useLocation from "@/lib/hooks/useLocation";
 
 const IndexPage = () => {
   const {
@@ -21,6 +22,14 @@ const IndexPage = () => {
   const { t } = useTranslation("common");
 
   const { query } = useRouter();
+
+  const location = typeof window !== "undefined" ? useLocation() : "";
+
+  useEffect(() => {
+    const pathArray = location.substring(1).split("/");
+    const pathNodes = pathArray.map((ITEM) => `http://dw.com/${ITEM}`);
+    fetchGraphData(pathNodes, setAppState);
+  }, [location]);
 
   useEffect(() => {
     if (typeof query.path !== "undefined" && query?.path.length > 0) {
