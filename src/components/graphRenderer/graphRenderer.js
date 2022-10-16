@@ -17,10 +17,42 @@ const GraphRenderer = () => {
     setAppState,
   } = useAppContext();
 
+  // get the maximum level depth of the nodes
   const maxLevel = Math.max.apply(
     Math,
     data.nodes.map(({ level }) => level)
   );
+
+  const handleNodeClick = ({
+    target: {
+      __data__: { id, level, type },
+    },
+  }) => {
+    if (
+      type !== "http://dw.com/SoftwareApplication" &&
+      !pathNodes.includes(id)
+    ) {
+      const newPathNodes = addNodeToPath(id, level, pathNodes);
+
+      // update pathNodes
+      setAppState((prev) => ({
+        ...prev,
+        graph: {
+          ...prev.graph,
+          pathNodes: newPathNodes,
+        },
+      }));
+
+      // create new URL path
+      const urlPath = `/${newPathNodes
+        .map((node) => node.replace("http://dw.com/", ""))
+        .join("/")}`;
+
+      // push new URL path to browser history
+      typeof window !== "undefined" &&
+        window.history.pushState({}, urlPath, urlPath);
+    }
+  };
 
   useEffect(() => {
     setAppState((prev) => ({
@@ -74,23 +106,7 @@ const GraphRenderer = () => {
       .enter()
       .append("g")
       .attr("class", "hover:opacity-80 transition-all duration-200")
-      .on(
-        "click",
-        ({
-          target: {
-            __data__: { id, level, type },
-          },
-        }) => {
-          type !== "http://dw.com/SoftwareApplication" &&
-            setAppState((prev) => ({
-              ...prev,
-              graph: {
-                ...prev.graph,
-                pathNodes: addNodeToPath(id, level, prev.graph.pathNodes),
-              },
-            }));
-        }
-      );
+      .on("click", handleNodeClick);
 
     // render nodes
     node
