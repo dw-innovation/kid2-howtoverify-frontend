@@ -76,7 +76,7 @@ const GraphRenderer = () => {
           .distance(60)
           .strength(1)
       )
-      .force("charge", d3.forceManyBody().strength(-80))
+      .force("charge", d3.forceManyBody().strength(-200))
       .force(
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
