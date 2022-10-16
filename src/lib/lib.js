@@ -1,15 +1,18 @@
-import { STYLES } from "@/lib/const";
+import { STYLES, PREFIX } from "@/lib/const";
 import axios from "axios";
 
+export const addPrefix = (string) => `${PREFIX}${string}`;
+
+export const removePrefix = (string) => string.replace(PREFIX, "");
+
 export const getNodeStyle = (nodeType, property) => {
-  return STYLES.filter(
-    (style) => style.nodeType === nodeType.replace("http://dw.com/", "")
-  )[0]?.properties[property];
+  return STYLES.filter((style) => style.nodeType === removePrefix(nodeType))[0]
+    ?.properties[property];
 };
 
 export const addNodeToPath = (nodeID, level, pathNodes) => {
   if (pathNodes.length <= level) {
-    return [...pathNodes, nodeID] ;
+    return [...pathNodes, nodeID];
   } else {
     const history = Object.assign([], pathNodes);
     history[level] = nodeID;

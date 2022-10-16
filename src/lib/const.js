@@ -12,3 +12,5 @@ export const ROOTNODES = [
   { label: "audio", id: "http://dw.com/Audio" },
   { label: "text", id: "http://dw.com/Text" },
 ];
+
+export const PREFIX = "http://dw.com/"
