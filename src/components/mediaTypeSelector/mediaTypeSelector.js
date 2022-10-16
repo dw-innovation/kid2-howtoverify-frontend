@@ -3,6 +3,7 @@ import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Button from "@/components/button";
 import useTranslation from "next-translate/useTranslation";
+import { removePrefix } from "@/lib/lib";
 
 const MediaTypeSelector = () => {
   const {
@@ -25,15 +26,21 @@ const MediaTypeSelector = () => {
         {ROOTNODES.map(({ id, label }, index) => (
           <Fragment key={index}>
             <Button
-              onClick={() =>
+              onClick={() => {
                 setAppState((prev) => ({
                   ...prev,
                   graph: {
                     ...prev.graph,
                     pathNodes: [id],
                   },
-                }))
-              }
+                }));
+                typeof window !== "undefined" &&
+                  window.history.pushState(
+                    {},
+                    `/${removePrefix(id)}`,
+                    `/${removePrefix(id)}`
+                  );
+              }}
               dangerouslySetInnerHTML={{ __html: label }}
             />
           </Fragment>

@@ -2,7 +2,7 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
-import { addNodeToPath, getNodeStyle } from "@/lib/lib";
+import { addNodeToPath, getNodeStyle, removePrefix } from "@/lib/lib";
 import Color from "color";
 
 const GraphRenderer = () => {
@@ -45,7 +45,7 @@ const GraphRenderer = () => {
 
       // create new URL path
       const urlPath = `/${newPathNodes
-        .map((node) => node.replace("http://dw.com/", ""))
+        .map((node) => removePrefix(node))
         .join("/")}`;
 
       // push new URL path to browser history
@@ -122,7 +122,7 @@ const GraphRenderer = () => {
     // attach labels to nodes
     node
       .append("text")
-      .text((d) => d.id.replace("http://dw.com/", ""))
+      .text(({ id }) => removePrefix(id))
       .attr("x", 6)
       .attr("y", 3);
 
