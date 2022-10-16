@@ -28,7 +28,10 @@ const IndexPage = () => {
   useEffect(() => {
     const pathArray = location.substring(1).split("/");
     const pathNodes = pathArray.map((ITEM) => `http://dw.com/${ITEM}`);
-    fetchGraphData(pathNodes, setAppState);
+    setAppState((prev) => ({
+      ...prev,
+      graph: { ...prev.graph, pathNodes: pathNodes },
+    }));
   }, [location]);
 
   useEffect(() => {
@@ -49,12 +52,6 @@ const IndexPage = () => {
         ...prev,
         tempPathNodes: JSON.stringify(pathNodes),
       }));
-
-      const urlPath = `/${pathNodes
-        .map((node) => node.replace("http://dw.com/", ""))
-        .join("/")}`;
-
-      window.history.pushState({}, urlPath, urlPath);
     }
   }, [pathNodes]);
 
