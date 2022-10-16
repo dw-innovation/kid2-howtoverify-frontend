@@ -28,7 +28,7 @@ const IndexPage = () => {
   useEffect(() => {
     const pathArray = location.substring(1).split("/");
     
-    if (pathArray.length > 1 && pathArray[0] !== "") {
+    if (pathArray[0] !== "") {
       const pathNodes = pathArray.map((item) => addPrefix(item));
       setAppState((prev) => ({
         ...prev,
