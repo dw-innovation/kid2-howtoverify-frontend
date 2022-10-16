@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { fetchGraphData } from "@/lib/lib";
+import { addPrefix, fetchGraphData } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
 import Button from "@/components/button";
@@ -27,16 +27,19 @@ const IndexPage = () => {
 
   useEffect(() => {
     const pathArray = location.substring(1).split("/");
-    const pathNodes = pathArray.map((ITEM) => `http://dw.com/${ITEM}`);
-    setAppState((prev) => ({
-      ...prev,
-      graph: { ...prev.graph, pathNodes: pathNodes },
-    }));
+    
+    if (pathArray.length > 1 && pathArray[0] !== "") {
+      const pathNodes = pathArray.map((item) => addPrefix(item));
+      setAppState((prev) => ({
+        ...prev,
+        graph: { ...prev.graph, pathNodes: pathNodes },
+      }));
+    }
   }, [location]);
 
   useEffect(() => {
     if (typeof query.path !== "undefined" && query?.path.length > 0) {
-      const queryPath = query.path.map((item) => `http://dw.com/${item}`);
+      const queryPath = query.path.map((item) => addPrefix(item));
 
       setAppState((prev) => ({
         ...prev,
