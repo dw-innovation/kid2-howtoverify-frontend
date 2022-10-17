@@ -54,18 +54,7 @@ const GraphRenderer = () => {
     }
   };
 
-  useEffect(() => {
-    setAppState((prev) => ({
-      ...prev,
-      graph: {
-        ...prev.graph,
-        dimensions: {
-          width: ref.current.clientWidth,
-          height: ref.current.clientHeight,
-        },
-      },
-    }));
-
+  const graph = () => {
     const simulation = d3
       .forceSimulation()
       .force(
@@ -81,6 +70,7 @@ const GraphRenderer = () => {
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
       );
+      
     const svgRef = d3.select(ref.current);
 
     // clear svg
@@ -165,6 +155,20 @@ const GraphRenderer = () => {
       .on("end", dragEnded);
 
     dragHandler(node);
+  };
+
+  useEffect(() => {
+    setAppState((prev) => ({
+      ...prev,
+      graph: {
+        ...prev.graph,
+        dimensions: {
+          width: ref.current.clientWidth,
+          height: ref.current.clientHeight,
+        },
+      },
+    }));
+    graph();
   }, [data, ref.current, height, width]);
 
   return <svg ref={ref} className="h-full w-full" />;
