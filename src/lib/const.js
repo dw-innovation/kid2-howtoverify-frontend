@@ -13,4 +13,14 @@ export const ROOTNODES = [
   { label: "text", id: "http://dw.com/Text" },
 ];
 
-export const PREFIX = "http://dw.com/"
+export const PREFIX = "http://dw.com/";
+
+export const SAFELIST = [
+  "id",
+  "commment",
+  "name",
+  "applicationUrl",
+  "publisher",
+  "usageInfo",
+  "aboutUrl",
+];
