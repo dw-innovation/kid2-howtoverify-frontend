@@ -112,7 +112,7 @@ const GraphRenderer = () => {
     // attach labels to nodes
     node
       .append("text")
-      .text(({ id }) => removePrefix(id))
+      .text(({ name }) => name)
       .attr("x", 6)
       .attr("y", 3);
 
