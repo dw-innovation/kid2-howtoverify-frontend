@@ -10,6 +10,7 @@ import ShareButton from "@/components/shareButton";
 import FeedbackButton from "@/components/feedbackButton";
 import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
+import NodeInfo from "@/components/nodeInfo";
 
 const IndexPage = () => {
   const {
@@ -27,7 +28,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     const pathArray = location.substring(1).split("/");
-    
+
     if (pathArray[0] !== "") {
       const pathNodes = pathArray.map((item) => addPrefix(item));
       setAppState((prev) => ({
@@ -82,6 +83,7 @@ const IndexPage = () => {
           </div>
           <div className="flex-1 flex">
             <GraphRenderer />
+            <NodeInfo />
             <DevPanel />
           </div>
         </div>
