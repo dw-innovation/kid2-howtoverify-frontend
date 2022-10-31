@@ -25,33 +25,28 @@ const GraphRenderer = () => {
 
   const handleNodeClick = ({
     target: {
-      __data__: { id, level, type },
+      __data__: { id, level },
     },
   }) => {
-    if (
-      type !== "http://dw.com/SoftwareApplication" &&
-      !pathNodes.includes(id)
-    ) {
-      const newPathNodes = addNodeToPath(id, level, pathNodes);
+    const newPathNodes = addNodeToPath(id, level, pathNodes);
 
-      // update pathNodes
-      setAppState((prev) => ({
-        ...prev,
-        graph: {
-          ...prev.graph,
-          pathNodes: newPathNodes,
-        },
-      }));
+    // update pathNodes
+    setAppState((prev) => ({
+      ...prev,
+      graph: {
+        ...prev.graph,
+        pathNodes: newPathNodes,
+      },
+    }));
 
-      // create new URL path
-      const urlPath = `/${newPathNodes
-        .map((node) => removePrefix(node))
-        .join("/")}`;
+    // create new URL path
+    const urlPath = `/${newPathNodes
+      .map((node) => removePrefix(node))
+      .join("/")}`;
 
-      // push new URL path to browser history
-      typeof window !== "undefined" &&
-        window.history.pushState({}, urlPath, urlPath);
-    }
+    // push new URL path to browser history
+    typeof window !== "undefined" &&
+      window.history.pushState({}, urlPath, urlPath);
   };
 
   const graph = () => {
@@ -70,7 +65,7 @@ const GraphRenderer = () => {
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
       );
-      
+
     const svgRef = d3.select(ref.current);
 
     // clear svg
