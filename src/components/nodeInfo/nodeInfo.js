@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import NodeInfoItem from "./nodeInfoItem";
+import { SAFELIST } from "@/lib/const";
 
 const NodeInfo = () => {
   const {
@@ -22,13 +23,14 @@ const NodeInfo = () => {
   return (
     <div className="bg-teal-100 p-2 w-[20vw]">
       <h3 className="font-bold text-xl">Info on current node</h3>
-      {lastNode !== undefined && (
-        <>
-          <NodeInfoItem name="ID" body={lastNode.id} />
-          <NodeInfoItem name="Name" body={lastNode.name} />
-          <NodeInfoItem name="Comment" body={lastNode.comment} />
-        </>
-      )}
+      {lastNode !== undefined &&
+        Object.keys(lastNode).map((property) =>
+          SAFELIST.includes(property) ? (
+            <NodeInfoItem name={property} body={lastNode[property]} />
+          ) : (
+            <></>
+          )
+        )}
     </div>
   );
 };
