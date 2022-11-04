@@ -1,18 +1,16 @@
-import useTranslation from "next-translate/useTranslation";
 import React from "react";
-import Button from "@/components/button";
+import ShareIcon from "src/assets/svg/share";
 
 const ShareButton = () => {
-  const { t } = useTranslation("common");
   return (
-    <Button
+    <button
       onClick={() => {
         typeof navigator !== "undefined" &&
           navigator.clipboard.writeText(window.location.href);
       }}
-      className="font-bold"
-      dangerouslySetInnerHTML={{ __html: t("copyPermalink") }}
-    />
+    >
+      <ShareIcon />
+    </button>
   );
 };
 export default ShareButton;
