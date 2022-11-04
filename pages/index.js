@@ -75,7 +75,7 @@ const IndexPage = () => {
       <div className="w-screen h-screen relative">
         <div className="flex flex-col h-full">
           <h1
-            className="font-bold text-3xl pb-3"
+            className="font-bold text-3xl pb-3 font-georgia"
             dangerouslySetInnerHTML={{ __html: t("title") }}
           />
           <div>
