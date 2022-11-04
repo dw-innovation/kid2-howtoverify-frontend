@@ -3,14 +3,13 @@ import { useRouter } from "next/router";
 import { addPrefix, fetchGraphData } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
-import Button from "@/components/button";
 import MediaTypeSelector from "@/components/mediaTypeSelector";
-import DevPanel from "@/components/devPanel";
 import ShareButton from "@/components/shareButton";
 import FeedbackButton from "@/components/feedbackButton";
 import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
 import NodeInfo from "@/components/nodeInfo";
+import About from "@/components/about";
 
 const IndexPage = () => {
   const {
@@ -61,30 +60,24 @@ const IndexPage = () => {
 
   return (
     <>
-      <Button
-        className="absolute top-0 right-0 z-10"
-        onClick={() =>
-          setAppState((prev) => ({ ...prev, showPanel: !prev.showPanel }))
-        }
-        dangerouslySetInnerHTML={{ __html: t("toggleDevPanel") }}
-      />
       <div className="absolute bottom-0 left-0 z-10">
-        <ShareButton />
         <FeedbackButton />
       </div>
-      <div className="w-screen h-screen relative">
-        <div className="flex flex-col h-full">
+      <div className="w-screen h-screen relative bg-lightGrey">
+        <div className="flex flex-col h-full p-2">
           <h1
-            className="font-bold text-3xl pb-3 font-georgia"
+            className="font-bold text-3xl pb-3 font-georgia text-blue"
             dangerouslySetInnerHTML={{ __html: t("title") }}
           />
           <div>
             <MediaTypeSelector />
           </div>
-          <div className="flex-1 flex">
+          <div className="flex-1 flex p-2">
             <GraphRenderer />
-            <NodeInfo />
-            <DevPanel />
+            <div className="flex flex-col max-w-[20rem]">
+              <NodeInfo />
+              <About />
+            </div>
           </div>
         </div>
       </div>
