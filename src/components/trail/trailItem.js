@@ -35,7 +35,7 @@ const TrailItem = ({ id: nodeId, position }) => {
   };
 
   return (
-    <button onClick={() => handleClick()}>
+    <button onClick={() => handleClick()} className="hover:text-blue">
       {nodes.filter(({ id }) => id === nodeId)[0]?.name}
     </button>
   );

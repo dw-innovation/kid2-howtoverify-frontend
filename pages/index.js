@@ -10,6 +10,7 @@ import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
 import NodeInfo from "@/components/nodeInfo";
 import About from "@/components/about";
+import Trail from "@/components/trail";
 
 const IndexPage = () => {
   const {
@@ -61,7 +62,16 @@ const IndexPage = () => {
   return (
     <>
       <div className="absolute bottom-0 left-0 z-10">
-        <FeedbackButton />
+        {pathNodes.length > 0 && (
+          <div>
+            <div className="flex flex-row gap-2">
+              <span className="font-bold">Trail: </span>
+              <Trail />
+              <ShareButton />
+            </div>
+            <FeedbackButton />
+          </div>
+        )}
       </div>
       <div className="w-screen h-screen relative bg-lightGrey">
         <div className="flex flex-col h-full p-2">
