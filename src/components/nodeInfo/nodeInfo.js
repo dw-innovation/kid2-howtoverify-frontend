@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import NodeInfoItem from "./nodeInfoItem";
 import { SAFELIST } from "@/lib/const";
@@ -24,13 +24,15 @@ const NodeInfo = () => {
     <div className="bg-teal-100 p-2 w-[20vw]">
       <h3 className="font-bold text-xl">Info on current node</h3>
       {lastNode !== undefined &&
-        Object.keys(lastNode).map((property) =>
-          SAFELIST.includes(property) ? (
-            <NodeInfoItem name={property} body={lastNode[property]} />
-          ) : (
-            <></>
-          )
-        )}
+        Object.keys(lastNode).map((property, index) => (
+          <Fragment key={index}>
+            {SAFELIST.includes(property) ? (
+              <NodeInfoItem name={property} body={lastNode[property]} />
+            ) : (
+              <></>
+            )}
+          </Fragment>
+        ))}
     </div>
   );
 };
