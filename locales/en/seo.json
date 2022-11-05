@@ -4,5 +4,6 @@
     "author": "Deutsche Welle Research and Cooperation Projects",
     "tags": "OSINT",
     "pageURL": "https://kid-knowledge-web-frontend-dw-re-co.vercel.app",
-    "ogImageURL": "https://kid-knowledge-web-frontend-dw-re-co.vercel.app/images/kid2-og.jpg"
+    "ogImageURL": "https://kid-knowledge-web-frontend-dw-re-co.vercel.app/images/kid2-og.jpg",
+    "keywords": "keywords"
 }
