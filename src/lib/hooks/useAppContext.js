@@ -9,6 +9,7 @@ export const initialState = {
     showPanel: false,
     dimensions: { width: 100, height: 100 },
   },
+  showPopOver: false
 };
 
 const context = createContext(initialState);

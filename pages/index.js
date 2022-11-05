@@ -61,20 +61,21 @@ const IndexPage = () => {
 
   return (
     <>
-      <div className="absolute bottom-0 left-0 z-10">
-        {pathNodes.length > 0 && (
-          <div>
-            <div className="flex flex-row gap-2">
-              <span className="font-bold">Trail: </span>
-              <Trail />
-              <ShareButton />
-            </div>
-            <FeedbackButton />
-          </div>
-        )}
-      </div>
       <div className="w-screen h-screen relative bg-lightGrey">
-        <div className="flex flex-col h-full p-2">
+        <div className="absolute bottom-0 left-0 z-10 w-full p-2">
+          {pathNodes.length > 0 && (
+            <div>
+              <div className="flex flex-row gap-2 relative">
+                <span className="font-bold">Trail: </span>
+                <Trail />
+                <ShareButton />
+              </div>
+              <FeedbackButton />
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-col h-full">
           <h1
             className="font-bold text-3xl pb-3 font-georgia text-blue"
             dangerouslySetInnerHTML={{ __html: t("title") }}
