@@ -28,7 +28,6 @@ const TrailItem = ({ id: nodeId, position }) => {
       .map((node) => removePrefix(node))
       .join("/")}`;
 
-    console.log(urlPath);
     // push new URL path to browser history
     typeof window !== "undefined" &&
       window.history.pushState({}, urlPath, urlPath);
