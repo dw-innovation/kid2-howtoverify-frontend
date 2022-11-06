@@ -108,8 +108,8 @@ const GraphRenderer = () => {
     node
       .append("text")
       .text(({ name }) => name)
-      .attr("x", 6)
-      .attr("y", 3);
+      .attr("x", 8)
+      .attr("y", 5);
 
     const ticked = () => {
       link
