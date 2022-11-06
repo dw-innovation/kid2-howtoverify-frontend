@@ -13,7 +13,6 @@
 }
 
 text {
-  @apply font-noto block bg-slate-400;
+  @apply font-noto;
   font-size: 14px;
-
 }
