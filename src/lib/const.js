@@ -7,11 +7,31 @@ export const NODETYPESTYLES = [
 ];
 
 export const ROOTNODES = [
-  { label: "image", id: "http://dw.com/Image", color: "purple" },
-  { label: "video", id: "http://dw.com/Video", color: "blue" },
-  { label: "audio", id: "http://dw.com/Audio", color: "yellow" },
-  { label: "source", id: "http://dw.com/Source", color: "red" },
-  { label: "text", id: "http://dw.com/Text", color: "green" },
+  {
+    label: "image",
+    id: "http://dw.com/Image",
+    color: { name: "purple", value: "#791EBF" },
+  },
+  {
+    label: "video",
+    id: "http://dw.com/Video",
+    color: { name: "blue", value: "#23A6F0" },
+  },
+  {
+    label: "audio",
+    id: "http://dw.com/Audio",
+    color: { name: "yellow", value: "#DBC700" },
+  },
+  {
+    label: "source",
+    id: "http://dw.com/Source",
+    color: { name: "red", value: "#E3336A" },
+  },
+  {
+    label: "text",
+    id: "http://dw.com/Text",
+    color: { name: "green", value: "#40A51A" },
+  },
 ];
 
 export const PREFIX = "http://dw.com/";
