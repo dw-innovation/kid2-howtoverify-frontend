@@ -21,7 +21,7 @@ const NodeInfo = () => {
   }, [nodes]);
 
   return (
-    <div className="bg-teal-100 p-2 w-[20vw]">
+    <div className="bg-teal-100 p-2 w-full">
       <h3 className="font-bold text-xl">Info on current node</h3>
       {lastNode !== undefined &&
         Object.keys(lastNode).map((property, index) => (
