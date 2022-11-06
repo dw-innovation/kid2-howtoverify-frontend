@@ -3,7 +3,8 @@ import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Button from "@/components/button";
 import useTranslation from "next-translate/useTranslation";
-import { removePrefix } from "@/lib/lib";
+import { getNodeColor, removePrefix } from "@/lib/lib";
+import clsx from "clsx";
 
 const MediaTypeSelector = () => {
   const {
@@ -16,15 +17,10 @@ const MediaTypeSelector = () => {
   const { t } = useTranslation("common");
 
   return (
-    <>
-      {pathNodes.length === 0 && (
-        <span className="bg-pink-400 text-white p-2">
-          {t("selectMediaType")}
-        </span>
-      )}
-      <div className="flex flex-row">
-        {ROOTNODES.map(({ id, label }, index) => (
-          <Fragment key={index}>
+    <div className="flex flex-row flex-1 justify-center items-center">
+      {ROOTNODES.map(({ id, label }, index) => (
+        <Fragment key={index}>
+          {id !== pathNodes[0] && (
             <Button
               onClick={() => {
                 setAppState((prev) => ({
@@ -42,11 +38,17 @@ const MediaTypeSelector = () => {
                   );
               }}
               dangerouslySetInnerHTML={{ __html: label }}
+              className={clsx(
+                `rounded-full h-[5rem] w-[5rem] bg-${getNodeColor(
+                  id,
+                  "name"
+                )} m-2 text-white font-bold`
+              )}
             />
-          </Fragment>
-        ))}
-      </div>
-    </>
+          )}
+        </Fragment>
+      ))}
+    </div>
   );
 };
 
