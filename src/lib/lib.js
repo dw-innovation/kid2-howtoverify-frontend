@@ -5,8 +5,8 @@ export const addPrefix = (string) => `${PREFIX}${string}`;
 
 export const removePrefix = (string) => string.replace(PREFIX, "");
 
-export const getNodeColor = (pathNodes) => {
-  return ROOTNODES.filter((node) => node.id === pathNodes[0])[0]?.color;
+export const getNodeColor = (rootNode, property) => {
+  return ROOTNODES.filter((node) => node.id === rootNode)[0]?.color[property];
 };
 
 export const getNodeRadius = (nodeType) =>
