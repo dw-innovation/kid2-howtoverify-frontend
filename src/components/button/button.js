@@ -8,10 +8,7 @@ const Button = ({
   dangerouslySetInnerHTML = {},
 }) => (
   <button
-    className={clsx(
-      "bg-slate-200 p-2 m-2 hover:bg-slate-300 font-sans",
-      className
-    )}
+    className={clsx("font-sans", className)}
     onClick={onClick}
     dangerouslySetInnerHTML={dangerouslySetInnerHTML}
   />
