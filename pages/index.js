@@ -8,9 +8,8 @@ import ShareButton from "@/components/shareButton";
 import FeedbackButton from "@/components/feedbackButton";
 import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
-import NodeInfo from "@/components/nodeInfo";
-import About from "@/components/about";
 import Trail from "@/components/trail";
+import Panel from "@/components/panel";
 
 const IndexPage = () => {
   const {
@@ -75,21 +74,18 @@ const IndexPage = () => {
           )}
         </div>
 
-        <div className="flex flex-col h-full">
-          <h1
-            className="font-bold text-3xl pb-3 font-georgia text-blue"
-            dangerouslySetInnerHTML={{ __html: t("title") }}
-          />
-          <div>
-            <MediaTypeSelector />
-          </div>
-          <div className="flex-1 flex p-2">
-            <GraphRenderer />
-            <div className="flex flex-col max-w-[20rem]">
-              <NodeInfo />
-              <About />
+        <div className="flex flex-row h-full">
+          <div className="flex flex-col flex-1">
+            <div className="flex flex-row items-center">
+              <h1
+                className="font-bold text-3xl pb-3 font-georgia text-blue"
+                dangerouslySetInnerHTML={{ __html: t("title") }}
+              />
+              {pathNodes.length !== 0 && <MediaTypeSelector />}
             </div>
+            {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
           </div>
+          <Panel />
         </div>
       </div>
     </>
