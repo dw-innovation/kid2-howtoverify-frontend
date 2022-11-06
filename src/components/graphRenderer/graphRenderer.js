@@ -2,7 +2,12 @@ import useAppContext from "src/lib/hooks/useAppContext";
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import useWindowSize from "src/lib/hooks/useWindowSize";
-import { addNodeToPath, getNodeRadius, getNodeColor, removePrefix } from "@/lib/lib";
+import {
+  addNodeToPath,
+  getNodeRadius,
+  getNodeColor,
+  removePrefix,
+} from "@/lib/lib";
 import Color from "color";
 
 const GraphRenderer = () => {
@@ -98,8 +103,8 @@ const GraphRenderer = () => {
       .append("circle")
       .attr("r", ({ type }) => getNodeRadius(type))
       .attr("fill", ({ type, id, level }) => {
-        const color = Color(getNodeColor(pathNodes)).lighten(
-          pathNodes.includes(id) || level === maxLevel ? 0 : 0.7
+        const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
+          pathNodes.includes(id) || level === maxLevel ? 0 : 1
         );
         return color;
       });
@@ -110,6 +115,10 @@ const GraphRenderer = () => {
       .text(({ name }) => name)
       .attr("x", 8)
       .attr("y", 5);
+
+    node
+      .append("rect")
+      .attr("x", (node) => console.log(node));
 
     const ticked = () => {
       link
