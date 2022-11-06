@@ -1,14 +1,17 @@
-import { STYLES, PREFIX } from "@/lib/const";
+import { NODETYPESTYLES, ROOTNODES, PREFIX } from "@/lib/const";
 import axios from "axios";
 
 export const addPrefix = (string) => `${PREFIX}${string}`;
 
 export const removePrefix = (string) => string.replace(PREFIX, "");
 
-export const getNodeStyle = (nodeType, property) => {
-  return STYLES.filter((style) => style.nodeType === removePrefix(nodeType))[0]
-    ?.properties[property];
+export const getNodeColor = (pathNodes) => {
+  return ROOTNODES.filter((node) => node.id === pathNodes[0])[0]?.color;
 };
+
+export const getNodeRadius = (nodeType) =>
+  NODETYPESTYLES.filter((style) => style.nodeType === removePrefix(nodeType))[0]
+    ?.properties["radius"];
 
 export const addNodeToPath = (nodeID, level, pathNodes) => {
   if (pathNodes.length <= level) {
