@@ -5,7 +5,7 @@ import NodeInfo from "../nodeInfo";
 
 const Panel = () => {
   return (
-    <div className="w-[30rem] bg-slate-200 p-2">
+    <div className="w-[30rem] bg-slate-200 p-2 flex gap-3 flex-col">
       <SearchBox />
       <NodeInfo />
       <About />

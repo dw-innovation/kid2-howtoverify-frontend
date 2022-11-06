@@ -16,3 +16,13 @@ text {
   @apply font-noto;
   font-size: 14px;
 }
+
+details summary::-webkit-details-marker,
+details summary::marker {
+  display: none;
+  content: "";
+}
+
+summary  {
+  @apply cursor-pointer;
+}

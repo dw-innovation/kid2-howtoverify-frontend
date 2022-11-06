@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import NodeInfoItem from "./nodeInfoItem";
 import { SAFELIST } from "@/lib/const";
+import Accordion from "../accordion";
 
 const NodeInfo = () => {
   const {
@@ -13,6 +14,8 @@ const NodeInfo = () => {
     },
   } = useAppContext();
 
+  const ref = useRef();
+
   const [lastNode, setLastNode] = useState(undefined);
 
   useEffect(() => {
@@ -21,8 +24,7 @@ const NodeInfo = () => {
   }, [nodes]);
 
   return (
-    <div className="bg-teal-100 p-2 w-full">
-      <h3 className="font-bold text-xl">Info on current node</h3>
+    <Accordion title="info on current node">
       {lastNode !== undefined &&
         Object.keys(lastNode).map((property, index) => (
           <Fragment key={index}>
@@ -33,7 +35,7 @@ const NodeInfo = () => {
             )}
           </Fragment>
         ))}
-    </div>
+    </Accordion>
   );
 };
 

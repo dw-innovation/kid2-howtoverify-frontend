@@ -118,7 +118,7 @@ const GraphRenderer = () => {
 
     node
       .append("rect")
-      .attr("x", (node) => console.log(node));
+      .attr("x", (node) => null);
 
     const ticked = () => {
       link
