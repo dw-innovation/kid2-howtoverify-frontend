@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: ["bg-purple", "bg-yellow", "bg-green", "bg-red", "bg-blue"],
   theme: {
     extend: {
       fontFamily: {
