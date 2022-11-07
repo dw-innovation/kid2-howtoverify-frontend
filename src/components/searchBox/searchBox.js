@@ -11,8 +11,8 @@ const SearchBox = () => {
         className="rounded-l-md p-2 flex-1"
         placeholder={t("searchBoxPlaceholder")}
       />{" "}
-      <select name="category" className="bg-white h-full">
-        <option value="" disabled selected>
+      <select name="category" className="bg-white h-full" defaultValue="default">
+        <option value="default" disabled>
           {t("searchCategory")}
         </option>
         {ROOTNODES.map((node, index) => (
