@@ -10,5 +10,7 @@
     "feedbackBody": "Hey,\n\nI got some feedback on {{url}}.\n\nBest",
     "aboutTitle": "About",
     "aboutText": "Stop searching, start finding.\nLearn about verification workflows and tools by exploring this knowledge graph. Start with the type of digital media you aim to verify and work your way down to the tools that can help you.\nIf you miss anything, a workflow or a tool then please let us know via the feedback button so that we can add it.\nSources for this knowlegde graph are; Julia Bayer, Bellingcat, The Verification Handbook, etc., etc..\nThis website has been co-funded by the German BKM under the KID2 Project, XXX funding scheme.",
-    "urlCopied": "URL copied to clipboard"
+    "urlCopied": "URL copied to clipboard",
+    "searchBoxPlaceholder": "Search",
+    "searchCategory": "Category"
 }
