@@ -3,14 +3,15 @@ import React from "react";
 
 const Button = ({
   onClick,
-  children,
   className = "",
   dangerouslySetInnerHTML = {},
+  style
 }) => (
   <button
     className={clsx("font-sans", className)}
     onClick={onClick}
     dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+    style={style}
   />
 );
 

@@ -5,6 +5,7 @@ import Button from "@/components/button";
 import useTranslation from "next-translate/useTranslation";
 import { getNodeColor, removePrefix } from "@/lib/lib";
 import clsx from "clsx";
+import Color from "color";
 
 const MediaTypeSelector = () => {
   const {
@@ -39,11 +40,16 @@ const MediaTypeSelector = () => {
               }}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                `rounded-full h-[5rem] w-[5rem] bg-${getNodeColor(
-                  id,
-                  "name"
-                )} m-2 text-white font-bold`
+                "rounded-full m-2 text-white font-bold",
+                pathNodes?.length === 0
+                  ? `w-[8rem] h-[8rem] text-2xl`
+                  : `w-[5rem] h-[5rem] text-xl`
               )}
+              style={{
+                backgroundColor: Color(getNodeColor(id, "value")).lighten(
+                  pathNodes?.length === 0 ? 0 : 0.6
+                ),
+              }}
             />
           )}
         </Fragment>
