@@ -115,14 +115,21 @@ const GraphRenderer = () => {
         return color;
       });
 
+    node
+      .append("rect")
+      .attr("width", 50)
+      .attr("height", 16)
+      .attr("fill", "white")
+      .attr("x", 6)
+      .attr("y", -8)
+      .attr("rx", 2)
+
     // attach labels to nodes
     node
       .append("text")
       .text(({ name }) => name)
       .attr("x", 8)
       .attr("y", 5);
-
-    node.append("rect").attr("x", (node) => null);
 
     const ticked = () => {
       link
