@@ -14,6 +14,10 @@ const TrailItem = ({ id: nodeId, position }) => {
   } = useAppContext();
 
   const handleClick = () => {
+    if (position === pathNodes.length - 1) {
+      return null;
+    }
+
     const newPathNodes = pathNodes.slice(0, position + 1);
 
     setAppState((prev) => ({
