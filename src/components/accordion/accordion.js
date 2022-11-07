@@ -27,7 +27,7 @@ const Accordion = ({ title, children, open = true, className }) => {
         <span className="flex-1">{title}</span>
         <span>{isOpen ? <MinusIcon /> : <PlusIcon />}</span>
       </summary>
-      {children}
+      <span className="pt-4 block">{children}</span>
     </details>
   );
 };

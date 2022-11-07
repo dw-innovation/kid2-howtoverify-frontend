@@ -3,6 +3,7 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import NodeInfoItem from "./nodeInfoItem";
 import { SAFELIST } from "@/lib/const";
 import Accordion from "../accordion";
+import useTranslation from "next-translate/useTranslation";
 
 const NodeInfo = () => {
   const {
@@ -14,8 +15,7 @@ const NodeInfo = () => {
     },
   } = useAppContext();
 
-  const ref = useRef();
-
+  const { t } = useTranslation("common");
   const [lastNode, setLastNode] = useState(undefined);
 
   useEffect(() => {
@@ -24,18 +24,23 @@ const NodeInfo = () => {
   }, [nodes]);
 
   return (
-    <Accordion title="info on current node">
-      {lastNode !== undefined &&
-        Object.keys(lastNode).map((property, index) => (
-          <Fragment key={index}>
-            {SAFELIST.includes(property) ? (
-              <NodeInfoItem name={property} body={lastNode[property]} />
-            ) : (
-              <></>
-            )}
-          </Fragment>
-        ))}
-    </Accordion>
+    <>
+      {lastNode !== undefined ? (
+        <Accordion title={lastNode["name"]}>
+          {Object.keys(lastNode).map((property, index) => (
+            <Fragment key={index}>
+              {SAFELIST.includes(property) ? (
+                <NodeInfoItem name={property} body={lastNode[property]} />
+              ) : (
+                <></>
+              )}
+            </Fragment>
+          ))}
+        </Accordion>
+      ) : (
+        <Accordion title={t("introTitle")}>{t("introText")}</Accordion>
+      )}
+    </>
   );
 };
 
