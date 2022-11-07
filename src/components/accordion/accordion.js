@@ -1,9 +1,10 @@
+import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
 import MinusIcon from "src/assets/svg/minusIcon";
 import PlusIcon from "src/assets/svg/plusIcon";
 
-const Accordion = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Accordion = ({ title, children, open = true, className }) => {
+  const [isOpen, setIsOpen] = useState(open);
   const ref = useRef(null);
 
   const handleToggle = (event) => {
@@ -12,12 +13,12 @@ const Accordion = ({ title, children }) => {
   };
 
   useEffect(() => {
-    setIsOpen(true);
+    setIsOpen(open);
   }, [ref]);
 
   return (
     <details
-      className="bg-teal-100 p-2 w-full"
+      className={clsx("bg-teal-100 p-2 w-full", className)}
       ref={ref}
       open={isOpen}
       onClick={handleToggle}

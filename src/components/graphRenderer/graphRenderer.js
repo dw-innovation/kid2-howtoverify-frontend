@@ -88,7 +88,7 @@ const GraphRenderer = () => {
       .attr("stroke-width", 3)
       .attr("stroke", (link) =>
         Color(getNodeColor(pathNodes[0], "value")).lighten(
-          validateLink(pathNodes, link) ? 0 : 0.6
+          validateLink(pathNodes, link) ? 0 : 0.5
         )
       );
 
@@ -110,7 +110,7 @@ const GraphRenderer = () => {
       .attr("r", ({ type }) => getNodeRadius(type))
       .attr("fill", ({ type, id, level }) => {
         const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-          pathNodes.includes(id) || level === maxLevel ? 0 : 0.6
+          pathNodes.includes(id) || level === maxLevel ? 0 : 0.5
         );
         return color;
       });

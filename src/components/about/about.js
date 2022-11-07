@@ -7,7 +7,7 @@ const About = () => {
   const { t } = useTranslation("common");
 
   return (
-    <Accordion title="About">
+    <Accordion title="About" open={false}>
       <ReactMarkdown children={t("aboutText")} />
     </Accordion>
   );
