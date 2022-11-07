@@ -7,6 +7,7 @@ import {
   getNodeRadius,
   getNodeColor,
   removePrefix,
+  validateLink,
 } from "@/lib/lib";
 import Color from "color";
 
@@ -65,7 +66,7 @@ const GraphRenderer = () => {
           .distance(60)
           .strength(1)
       )
-      .force("charge", d3.forceManyBody().strength(-300))
+      .force("charge", d3.forceManyBody().strength(-800))
       .force(
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
@@ -84,7 +85,12 @@ const GraphRenderer = () => {
       .data(data.links)
       .enter()
       .append("line")
-      .attr("stroke-width", (d) => Math.sqrt(d.value));
+      .attr("stroke-width", 3)
+      .attr("stroke", (link) =>
+        Color(getNodeColor(pathNodes[0], "value")).lighten(
+          validateLink(pathNodes, link) ? 0 : 0.6
+        )
+      );
 
     // render nodes
     var node = svgRef
@@ -116,9 +122,7 @@ const GraphRenderer = () => {
       .attr("x", 8)
       .attr("y", 5);
 
-    node
-      .append("rect")
-      .attr("x", (node) => null);
+    node.append("rect").attr("x", (node) => null);
 
     const ticked = () => {
       link

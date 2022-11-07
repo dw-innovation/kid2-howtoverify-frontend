@@ -1,34 +1,34 @@
 export const NODETYPESTYLES = [
-  { nodeType: "MediaObject", properties: { radius: 20 } },
-  { nodeType: "Question", properties: { radius: 15 } },
-  { nodeType: "SubQuestion", properties: { radius: 15 } },
-  { nodeType: "Task", properties: { radius: 12 } },
-  { nodeType: "SoftwareApplication", properties: { radius: 8 } },
+  { nodeType: "MediaObject", properties: { radius: 40 } },
+  { nodeType: "Question", properties: { radius: 30 } },
+  { nodeType: "SubQuestion", properties: { radius: 25 } },
+  { nodeType: "Task", properties: { radius: 20 } },
+  { nodeType: "SoftwareApplication", properties: { radius: 15 } },
 ];
 
 export const ROOTNODES = [
   {
-    label: "image",
+    label: "Image",
     id: "http://dw.com/Image",
     color: { name: "purple", value: "#791EBF" },
   },
   {
-    label: "video",
+    label: "Video",
     id: "http://dw.com/Video",
     color: { name: "blue", value: "#23A6F0" },
   },
   {
-    label: "audio",
+    label: "Audio",
     id: "http://dw.com/Audio",
     color: { name: "yellow", value: "#DBC700" },
   },
   {
-    label: "source",
+    label: "Source",
     id: "http://dw.com/Source",
     color: { name: "red", value: "#E3336A" },
   },
   {
-    label: "text",
+    label: "Text",
     id: "http://dw.com/Text",
     color: { name: "green", value: "#40A51A" },
   },

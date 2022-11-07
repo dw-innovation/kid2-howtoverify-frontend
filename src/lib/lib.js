@@ -41,3 +41,10 @@ export const fetchGraphData = async (pathNodes, setAppState) => {
     },
   }));
 };
+
+export const validateLink = (pathNodes, link) => {
+  return (pathNodes.includes(link.source) && pathNodes.includes(link.target)) ||
+    pathNodes.at(-1) === link.source
+    ? true
+    : false;
+};
