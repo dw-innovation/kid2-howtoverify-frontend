@@ -10,7 +10,8 @@ const SearchBox = () => {
       <input
         className="rounded-l-md p-2 flex-1"
         placeholder={t("searchBoxPlaceholder")}
-      />{" "}
+      />
+      <div className="bg-white px-2">
       <select name="category" className="bg-white h-full" defaultValue="default">
         <option value="default" disabled>
           {t("searchCategory")}
@@ -20,7 +21,7 @@ const SearchBox = () => {
             {node.label}
           </option>
         ))}
-      </select>
+      </select></div>
       <button className="rounded-r-md bg-blue hover:bg-darkBlue h-full px-4">
         <LensIcon />
       </button>
