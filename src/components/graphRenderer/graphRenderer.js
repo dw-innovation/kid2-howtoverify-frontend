@@ -120,7 +120,7 @@ const GraphRenderer = () => {
       .attr("width", 50)
       .attr("height", 16)
       .attr("fill", "white")
-      .attr("x", 6)
+      .attr("x", 0)
       .attr("y", -8)
       .attr("rx", 2)
 
@@ -128,7 +128,7 @@ const GraphRenderer = () => {
     node
       .append("text")
       .text(({ name }) => name)
-      .attr("x", 8)
+      .attr("x", 2)
       .attr("y", 5);
 
     const ticked = () => {
