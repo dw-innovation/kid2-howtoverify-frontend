@@ -21,7 +21,9 @@ const SearchBox = () => {
           </option>
         ))}
       </select>
-      <button className="rounded-r-md bg-blue hover:bg-darkBlue h-full px-2"><LensIcon/></button>
+      <button className="rounded-r-md bg-blue hover:bg-darkBlue h-full px-2">
+        <LensIcon />
+      </button>
     </div>
   );
 };
