@@ -53,7 +53,6 @@ const IndexPage = () => {
       fetchGraphData(pathNodes, setAppState);
       setAppState((prev) => ({
         ...prev,
-        tempPathNodes: JSON.stringify(pathNodes),
       }));
     }
   }, [pathNodes]);
@@ -81,7 +80,11 @@ const IndexPage = () => {
                 className="font-bold text-3xl pb-3 font-georgia text-blue"
                 dangerouslySetInnerHTML={{ __html: t("title") }}
               />
-              {pathNodes.length !== 0 ? <MediaTypeSelector />:<div className="h-[5rem] m-2"/>}
+              {pathNodes.length !== 0 ? (
+                <MediaTypeSelector />
+              ) : (
+                <div className="h-[5rem] m-2" />
+              )}
             </div>
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
           </div>

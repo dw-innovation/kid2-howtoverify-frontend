@@ -5,8 +5,6 @@ export const initialState = {
   graph: {
     data: { nodes: [], links: [] },
     pathNodes: [],
-    tempPathNodes: "",
-    showPanel: false,
     dimensions: { width: 100, height: 100 },
   },
   showPopOver: false
