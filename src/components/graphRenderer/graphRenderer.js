@@ -101,7 +101,7 @@ const GraphRenderer = () => {
       .data(data.nodes)
       .enter()
       .append("g")
-      .attr("class", "hover:opacity-80")
+      .attr("class", "hover:brighter")
       .on("click", handleNodeClick);
 
     // render nodes

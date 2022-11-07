@@ -21,3 +21,10 @@ details summary::marker {
 summary  {
   @apply cursor-pointer;
 }
+
+.hover\:brighter {
+  @apply transition-all ease-in-out duration-100;
+}
+.hover\:brighter:hover {
+  filter: brightness(120%);
+}
