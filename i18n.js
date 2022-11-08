@@ -2,6 +2,6 @@ module.exports = {
   locales: ["en"],
   defaultLocale: "en",
   pages: {
-    "*": ["common", "seo"],
+    "*": ["common", "seo", "nodeInfo"],
   },
 };
