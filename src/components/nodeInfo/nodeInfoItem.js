@@ -15,7 +15,7 @@ const NodeInfoItem = ({ name, body }) => {
             />
           )}
           {name === "applicationUrl" ? (
-            <a href={body} target="_blank" rel="noopener noreferrer">
+            <a href={body} target="_blank" rel="noopener noreferrer" className="text-blue hover:underline">
               {body}
             </a>
           ) : (
