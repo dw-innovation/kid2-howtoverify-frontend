@@ -34,3 +34,48 @@ ul li {
   list-style-type: disc;
   margin-left: 1.5rem;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  @apply font-noto;
+  font-size: 14px;
+}
+
+details summary::-webkit-details-marker,
+details summary::marker {
+  display: none;
+  content: "";
+}
+
+summary  {
+  @apply cursor-pointer;
+}
+
+.hover\:brighter {
+  @apply transition-all ease-in-out duration-100;
+}
+
+.hover\:brighter:hover {
+  filter: brightness(120%);
+}
+
+ul li {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+details a {
+  @apply text-blue;
+}
+
+details a:hover {
+  @apply underline;
+}
