@@ -42,4 +42,6 @@ export const SAFELIST = [
   "publisher",
   "usageInfo",
   "aboutUrl",
+  "howTo",
+  "remarks"
 ];
