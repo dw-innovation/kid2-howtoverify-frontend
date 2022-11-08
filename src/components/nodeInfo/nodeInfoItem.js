@@ -1,8 +1,26 @@
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 const NodeInfoItem = ({ name, body }) => {
   const { t } = useTranslation("nodeInfo");
+
+  const parseBody = (body) => {
+    const parsedBody = "";
+    try {
+      parsedBody = JSON.parse(
+        body
+          .replaceAll("['", '["')
+          .replaceAll("', '", '", "')
+          .replaceAll("']", '"]')
+      );
+      parsedBody = parsedBody.map((item) => `- ${item}`);
+      parsedBody = parsedBody.join("\n");
+    } catch {
+      parsedBody = body;
+    }
+    return parsedBody;
+  };
 
   return (
     <>
@@ -15,11 +33,16 @@ const NodeInfoItem = ({ name, body }) => {
             />
           )}
           {name === "applicationUrl" ? (
-            <a href={body} target="_blank" rel="noopener noreferrer" className="text-blue hover:underline">
+            <a
+              href={body}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue hover:underline"
+            >
               {body}
             </a>
           ) : (
-            <span dangerouslySetInnerHTML={{ __html: body }} />
+            <ReactMarkdown children={parseBody(body)} />
           )}
         </div>
       )}
