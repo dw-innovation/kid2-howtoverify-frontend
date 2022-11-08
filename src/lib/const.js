@@ -37,11 +37,11 @@ export const ROOTNODES = [
 export const PREFIX = "http://dw.com/";
 
 export const SAFELIST = [
-  "id",
-  "commment",
-  "name",
+  "comment",
   "applicationUrl",
   "publisher",
   "usageInfo",
   "aboutUrl",
+  "howTo",
+  "remarks"
 ];

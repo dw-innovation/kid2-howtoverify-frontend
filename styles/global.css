@@ -25,6 +25,12 @@ summary  {
 .hover\:brighter {
   @apply transition-all ease-in-out duration-100;
 }
+
 .hover\:brighter:hover {
   filter: brightness(120%);
+}
+
+ul li {
+  list-style-type: disc;
+  margin-left: 1.5rem;
 }
