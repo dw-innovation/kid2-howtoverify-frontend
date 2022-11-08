@@ -50,7 +50,7 @@ export const validateLink = (pathNodes, link) => {
 };
 
 export const getStrength = (graphWidth) => {
-  return graphWidth / -1.3;
+  return graphWidth / -1.6;
 };
 
 export const getSizeFactor = (graphWidth) => {
