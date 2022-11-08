@@ -8,6 +8,8 @@ import {
   getNodeColor,
   removePrefix,
   validateLink,
+  getStrength,
+  getSizeFactor,
 } from "@/lib/lib";
 import Color from "color";
 
@@ -66,7 +68,7 @@ const GraphRenderer = () => {
           .distance(60)
           .strength(1)
       )
-      .force("charge", d3.forceManyBody().strength(-800))
+      .force("charge", d3.forceManyBody().strength(getStrength(ref.current.clientWidth)))
       .force(
         "center",
         d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
@@ -107,7 +109,7 @@ const GraphRenderer = () => {
     // render nodes
     node
       .append("circle")
-      .attr("r", ({ type }) => getNodeRadius(type))
+      .attr("r", ({ type }) => getNodeRadius(type) * getSizeFactor(width))
       .attr("fill", ({ type, id, level }) => {
         const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
           pathNodes.includes(id) || level === maxLevel ? 0 : 0.5
