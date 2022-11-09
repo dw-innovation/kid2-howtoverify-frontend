@@ -56,3 +56,18 @@ export const getStrength = (graphWidth) => {
 export const getSizeFactor = (graphWidth) => {
   return graphWidth / 1500;
 };
+
+export const triggerTracking = async () => {
+  await axios({
+    method: "get",
+    url: process.env.NEXT_PUBLIC_MATOMO_URL,
+    params: {
+      idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+      rec: 1,
+      url: encodeURIComponent(window?.location?.href),
+      rand: Math.floor(Math.random() * 10000000),
+      res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
+      ua: window?.navigator?.userAgent
+    },
+  });
+};
