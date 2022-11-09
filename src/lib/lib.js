@@ -49,12 +49,12 @@ export const validateLink = (pathNodes, link) => {
     : false;
 };
 
-export const getStrength = (graphWidth) => {
-  return graphWidth / -1.6;
+export const getStrength = (graphHeight) => {
+  return graphHeight*-1.2;
 };
 
-export const getSizeFactor = (graphWidth) => {
-  return graphWidth / 1500;
+export const getSizeFactor = (graphHeight) => {
+  return graphHeight / 1200;
 };
 
 export const triggerTracking = async () => {
