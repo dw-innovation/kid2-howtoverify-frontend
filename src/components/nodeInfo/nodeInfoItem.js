@@ -24,7 +24,7 @@ const NodeInfoItem = ({ name, body }) => {
 
   return (
     <>
-      {body !== "" && (
+      {body !== "" && body !== null && (
         <div className="flex flex-col pb-2">
           {name !== "comment" && (
             <span
