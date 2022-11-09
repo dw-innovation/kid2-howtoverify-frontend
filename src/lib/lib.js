@@ -67,7 +67,7 @@ export const triggerTracking = async () => {
       url: encodeURIComponent(window?.location?.href),
       rand: Math.floor(Math.random() * 10000000),
       res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
-      ua: window?.navigator?.userAgent
+      ua: encodeURIComponent(window?.navigator?.userAgent)
     },
   });
 };
