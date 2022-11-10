@@ -6,7 +6,7 @@ import LensIcon from "src/assets/svg/lens";
 const SearchBox = () => {
   const { t } = useTranslation("common");
   return (
-    <div className="flex flex-row gap-1 font-noto">
+    <div className="flex flex-row gap-1 font-montserrat">
       <input
         className="rounded-l-md p-2 flex-1"
         placeholder={t("searchBoxPlaceholder")}
