@@ -47,7 +47,7 @@ const MediaTypeSelector = () => {
               )}
               style={{
                 backgroundColor: Color(getNodeColor(id, "value")).alpha(
-                  pathNodes?.length === 0 ? 0 : 0.6
+                  pathNodes?.length === 0 ? 1 : 0.6
                 ),
               }}
             />
