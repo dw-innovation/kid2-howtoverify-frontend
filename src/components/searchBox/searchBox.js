@@ -16,7 +16,10 @@ const SearchBox = () => {
   } = useAppContext();
 
   const handleSearch = async (queryString, category) => {
-    setAppState((prev) => ({ ...prev, search: { ...prev.search, showResults: true } }));
+    setAppState((prev) => ({
+      ...prev,
+      search: { ...prev.search, showResults: true },
+    }));
     if (category === "default") {
       return setAppState((prev) => ({
         ...prev,
@@ -38,8 +41,13 @@ const SearchBox = () => {
       },
       data: JSON.stringify({ queryString: queryString, category: category }),
     });
-    console.log(queryString, category);
+
+    setAppState((prev) => ({
+      ...prev,
+      search: { ...prev.search, results: result.data },
+    }));
   };
+
   return (
     <div className="flex flex-row gap-1 font-montserrat">
       <input
