@@ -1,8 +1,9 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import { removePrefix } from "@/lib/lib";
 import useTranslation from "next-translate/useTranslation";
-import React from "react";
+import React, { Fragment } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
+import ResultItem from "./resultItem";
 
 const SearchResults = () => {
   const {
@@ -35,7 +36,13 @@ const SearchResults = () => {
               Search Results for{" "}
               <span className="font-bold">"{queryString}"</span> in{" "}
               <span className="font-bold">{removePrefix(category)}</span>
-              <div>{JSON.stringify(results)}</div>
+              <div>
+                {results.map((item, index) => (
+                  <Fragment key={index}>
+                    <ResultItem item={item} />
+                  </Fragment>
+                ))}
+              </div>
             </>
           ) : (
             t("selectCategory")
