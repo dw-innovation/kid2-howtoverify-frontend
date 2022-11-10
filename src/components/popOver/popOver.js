@@ -32,7 +32,7 @@ const PopOver = () => {
       {displayPopOver && (
         <animated.div style={spring}>
           <div
-            className="absolute bg-darkBlue p-2 rounded-sm z-20 mx-auto mb-2 right-0 left-0 w-max shadow-md font-bold text-white"
+            className="absolute bg-darkBlue p-2 rounded-sm z-20 mx-auto mb-2 right-0 left-0 bottom-0 w-max shadow-md font-bold text-white"
             dangerouslySetInnerHTML={{ __html: t("urlCopied") }}
           />
         </animated.div>
