@@ -63,13 +63,13 @@ export const trackAction = async (action, payload = "") => {
     rec: 1,
     rand: Math.floor(Math.random() * 10000000),
     res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
-    ua: encodeURIComponent(window?.navigator?.userAgent),
+    ua: window?.navigator?.userAgent,
   };
 
   if (action === "graphClick") {
     params = {
       ...params,
-      url: encodeURIComponent(window?.location?.href),
+      url: window?.location?.href,
       ca: 1
     };
   }
@@ -77,7 +77,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "historyNavigation") {
     params = {
       ...params,
-      url: encodeURIComponent(window?.location?.href),
+      url: window?.location?.href,
       ca: 2
     };
   }
