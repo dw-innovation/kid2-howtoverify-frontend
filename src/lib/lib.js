@@ -70,7 +70,6 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       url: window?.location?.href,
-      ca: 1
     };
   }
 
@@ -78,7 +77,6 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       url: window?.location?.href,
-      ca: 2
     };
   }
 
@@ -86,7 +84,6 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       search: payload,
-      ca: 3
     };
   }
 
@@ -94,7 +91,6 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       url: encodeURIComponent(window?.location?.href),
-      ca: 4
     };
   }
 
