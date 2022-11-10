@@ -3,11 +3,11 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import Accordion from "../accordion";
 
-const About = () => {
+const About = ({ className }) => {
   const { t } = useTranslation("common");
 
   return (
-    <Accordion title="About" open={false}>
+    <Accordion title="About" open={false} className={className}>
       <ReactMarkdown children={t("aboutText")} />
     </Accordion>
   );

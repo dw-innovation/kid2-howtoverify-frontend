@@ -5,7 +5,7 @@ import { SAFELIST } from "@/lib/const";
 import Accordion from "../accordion";
 import useTranslation from "next-translate/useTranslation";
 
-const NodeInfo = () => {
+const NodeInfo = ({className}) => {
   const {
     appState: {
       graph: {
@@ -26,7 +26,7 @@ const NodeInfo = () => {
   return (
     <>
       {lastNode !== undefined ? (
-        <Accordion title={lastNode["name"]}>
+        <Accordion title={lastNode["name"]} className={className}>
           {Object.keys(lastNode).map((property, index) => (
             <Fragment key={index}>
               {SAFELIST.includes(property) ? (

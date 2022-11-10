@@ -18,12 +18,12 @@ const Accordion = ({ title, children, open = true, className }) => {
 
   return (
     <details
-      className={clsx("bg-teal-100 p-2 w-full", className)}
+      className={clsx("p-2 w-full font-montserrat", className)}
       ref={ref}
       open={isOpen}
     >
       <summary
-        className="font-bold font-montserrat text-xl cursor-pointer flex flex-row text-blue items-center"
+        className="font-bold text-xl cursor-pointer flex flex-row text-blue items-center"
         onClick={handleToggle}
       >
         <span className="flex-1">{title}</span>
