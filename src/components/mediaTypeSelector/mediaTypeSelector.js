@@ -46,8 +46,8 @@ const MediaTypeSelector = () => {
                   : `w-[5rem] h-[5rem] text-xl`
               )}
               style={{
-                backgroundColor: Color(getNodeColor(id, "value")).lighten(
-                  pathNodes?.length === 0 ? 0 : 0.5
+                backgroundColor: Color(getNodeColor(id, "value")).alpha(
+                  pathNodes?.length === 0 ? 0 : 0.6
                 ),
               }}
             />
