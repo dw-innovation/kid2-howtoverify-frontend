@@ -50,24 +50,73 @@ export const validateLink = (pathNodes, link) => {
 };
 
 export const getStrength = (graphHeight) => {
-  return graphHeight*-1.2;
+  return graphHeight * -1.2;
 };
 
 export const getSizeFactor = (graphHeight) => {
   return graphHeight / 1200;
 };
 
-export const triggerTracking = async () => {
+export const trackAction = async (action, payload = "") => {
+  const params = {
+    idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    rec: 1,
+    rand: Math.floor(Math.random() * 10000000),
+    res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
+    ua: encodeURIComponent(window?.navigator?.userAgent),
+  };
+
+  if (action === "graphClick") {
+    params = {
+      ...params,
+      url: encodeURIComponent(window?.location?.href),
+      ca: 1
+    };
+  }
+
+  if (action === "historyNavigation") {
+    params = {
+      ...params,
+      url: encodeURIComponent(window?.location?.href),
+      ca: 2
+    };
+  }
+
+  if (action === "search") {
+    params = {
+      ...params,
+      search: payload,
+      ca: 3
+    };
+  }
+
+  if (action === "searchResultClick") {
+    params = {
+      ...params,
+      url: encodeURIComponent(window?.location?.href),
+      ca: 4
+    };
+  }
+
+  if (action === "urlCopied") {
+    params = {
+      ...params,
+      url: encodeURIComponent(window?.location?.href),
+      ca: 5
+    };
+  }
+
+  if (action === "externalLink") {
+    params = {
+      ...params,
+      link: payload,
+      url: payload,
+    };
+  }
+
   await axios({
     method: "get",
     url: process.env.NEXT_PUBLIC_MATOMO_URL,
-    params: {
-      idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-      rec: 1,
-      url: encodeURIComponent(window?.location?.href),
-      rand: Math.floor(Math.random() * 10000000),
-      res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
-      ua: encodeURIComponent(window?.navigator?.userAgent)
-    },
+    params,
   });
 };
