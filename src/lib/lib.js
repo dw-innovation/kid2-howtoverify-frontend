@@ -69,6 +69,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "graphClick") {
     params = {
       ...params,
+      action_name: "graphClick",
       url: window?.location?.href,
     };
   }
@@ -76,6 +77,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "historyNavigation") {
     params = {
       ...params,
+      action_name: "historyNavigation",
       url: window?.location?.href,
     };
   }
@@ -83,6 +85,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "search") {
     params = {
       ...params,
+      action_name: "search",
       search: payload,
     };
   }
@@ -90,6 +93,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "searchResultClick") {
     params = {
       ...params,
+      action_name: "searchResultClick",
       url: encodeURIComponent(window?.location?.href),
     };
   }
@@ -97,6 +101,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "urlCopied") {
     params = {
       ...params,
+      action_name: "urlCopied",
       url: encodeURIComponent(window?.location?.href),
     };
   }
@@ -104,6 +109,7 @@ export const trackAction = async (action, payload = "") => {
   if (action === "externalLink") {
     params = {
       ...params,
+      action_name: "externalLink",
       link: payload,
       url: payload,
     };
