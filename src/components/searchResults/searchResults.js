@@ -17,15 +17,8 @@ const SearchResults = () => {
     <>
       {showResults && (
         <div
-          className="absolute w-full p-2 mt-2 shadow-xl"
-          style={{
-            backgroundColor: Color(
-              getNodeColor(
-                pathNodes?.length > 0 ? pathNodes[0] : "#ccc",
-                "value"
-              )
-            ).alpha(1),
-          }}
+          className="absolute w-full p-2 mt-2 shadow-xl bg-white"
+          
         >
           <button
             onClick={() =>
