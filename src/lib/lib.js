@@ -98,7 +98,6 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       url: encodeURIComponent(window?.location?.href),
-      ca: 5
     };
   }
 
