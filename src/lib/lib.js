@@ -94,7 +94,7 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       action_name: "searchResultClick",
-      url: encodeURIComponent(window?.location?.href),
+      url: window?.location?.href,
     };
   }
 
@@ -102,7 +102,7 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       action_name: "urlCopied",
-      url: encodeURIComponent(window?.location?.href),
+      url: window?.location?.href,
     };
   }
 

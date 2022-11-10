@@ -19,7 +19,7 @@ const Panel = () => {
     <div
       className={clsx(
         "p-2 flex gap-3 flex-col z-50 relative",
-        isOpen ? "md-[20rem] xl:w-[30rem]" : "w-[1.5rem]"
+        isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
         backgroundColor: Color(
