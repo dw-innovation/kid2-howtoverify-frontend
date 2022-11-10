@@ -27,7 +27,7 @@ const SearchResults = () => {
                 search: { ...prev.search, showResults: false },
               }))
             }
-            className="absolute right-0 top-0 aspect-square text-white p-2 rotate-45"
+            className="absolute right-0 top-0 aspect-square text-blue p-2 rotate-45"
           >
             <PlusIcon />
           </button>
