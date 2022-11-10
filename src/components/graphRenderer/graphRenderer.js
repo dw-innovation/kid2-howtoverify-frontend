@@ -117,16 +117,32 @@ const GraphRenderer = () => {
         return color;
       });
 
+    // attach labels to nodes for getting width
+    node
+      .append("text")
+      .text(({ name }) => name)
+      .attr("x", 2)
+      .attr("y", 5);
+
+    // add rectangles with respective width
     node
       .append("rect")
-      .attr("width", 50)
+      .attr("width", (e) => {
+        svgRef.selectAll("text").each(function (d) {
+          d.bbox = this.getBBox();
+        });
+        return e.bbox.width + 2;
+      })
       .attr("height", 16)
       .attr("fill", "white")
       .attr("x", 0)
       .attr("y", -8)
-      .attr("rx", 2)
+      .attr("rx", 2);
 
-    // attach labels to nodes
+    // remove texts
+    d3.selectAll("text").remove();
+
+    // add texts back in
     node
       .append("text")
       .text(({ name }) => name)
