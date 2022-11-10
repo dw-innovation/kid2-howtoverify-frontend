@@ -21,8 +21,9 @@ const Panel = () => {
         isOpen ? "w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
-        backgroundColor:
-          Color(pathNodes?.length > 0 ? getNodeColor(pathNodes[0], "value") : "#000").alpha(0.06),
+        backgroundColor: Color(
+          pathNodes?.length > 0 ? getNodeColor(pathNodes[0], "value") : "#000"
+        ).alpha(0.06),
       }}
     >
       <button
@@ -36,7 +37,15 @@ const Panel = () => {
         <>
           <SearchBox />
           <div className="flex flex-col flex-1 justify-between">
-            <NodeInfo className="bg-blue" />
+            <NodeInfo
+              style={{
+                backgroundColor: Color(
+                  pathNodes?.length > 0
+                    ? getNodeColor(pathNodes[0], "value")
+                    : "#000"
+                ).alpha(0.06),
+              }}
+            />
             <About className="bg-white" />
           </div>
         </>
