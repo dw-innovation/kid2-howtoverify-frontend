@@ -15,9 +15,11 @@ export const initialState = {
       [
         { label: "Video", id: "http://dw.com/Video" },
         { label: "What", id: "http://dw.com/What" },
+        { label: "General Search", id: "http://dw.com/General_Search" },
+        { label: "USearch", id: "http://dw.com/USearch" },
       ],
       [
-        { label: "Image", id: "http://dw.com/Image" },
+        { label: "Video", id: "http://dw.com/Video" },
         { label: "How", id: "http://dw.com/How" },
       ],
     ],
