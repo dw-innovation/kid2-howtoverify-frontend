@@ -23,7 +23,7 @@ const Accordion = ({ title, children, open = true, className }) => {
       open={isOpen}
     >
       <summary
-        className="font-bold text-xl cursor-pointer flex flex-row text-blue items-center"
+        className="font-bold font-montserrat text-xl cursor-pointer flex flex-row text-blue items-center"
         onClick={handleToggle}
       >
         <span className="flex-1">{title}</span>
