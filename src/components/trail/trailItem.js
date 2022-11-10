@@ -1,6 +1,7 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import React from "react";
 import { removePrefix } from "@/lib/lib";
+import clsx from "clsx";
 
 const TrailItem = ({ id: nodeId, position }) => {
   const {
@@ -38,7 +39,14 @@ const TrailItem = ({ id: nodeId, position }) => {
   };
 
   return (
-    <button onClick={() => handleClick()} className="hover:text-blue">
+    <button
+      onClick={() => handleClick()}
+      className={clsx(
+        position === pathNodes.length - 1
+          ? "font-bold"
+          : "text-[#737373] hover:text-blue"
+      )}
+    >
       {nodes.filter(({ id }) => id === nodeId)[0]?.name}
     </button>
   );
