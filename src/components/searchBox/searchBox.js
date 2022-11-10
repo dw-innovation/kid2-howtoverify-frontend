@@ -4,6 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import React, { useRef } from "react";
 import LensIcon from "src/assets/svg/lens";
 import axios from "axios";
+import { trackAction } from "@/lib/lib";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");
@@ -41,6 +42,8 @@ const SearchBox = () => {
       },
       data: JSON.stringify({ queryString: queryString, category: category }),
     });
+
+    trackAction("search", `'${queryString}' in '${category}'`);
 
     setAppState((prev) => ({
       ...prev,
