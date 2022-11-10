@@ -34,7 +34,7 @@ const SearchResults = () => {
           {!error ? (
             <>
               Search Results for{" "}
-              <span className="font-bold">{queryString}</span> in{" "}
+              <span className="font-bold">"{queryString}"</span> in{" "}
               <span className="font-bold">{removePrefix(category)}</span>
               <div>{JSON.stringify(results)}</div>
             </>
