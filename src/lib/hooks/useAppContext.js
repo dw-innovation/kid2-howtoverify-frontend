@@ -7,7 +7,14 @@ export const initialState = {
     pathNodes: [],
     dimensions: { width: 100, height: 100 },
   },
-  showPopOver: false
+  showPopOver: false,
+  search: {
+    queryString: "",
+    category: "default",
+    results: [],
+    showResults: false,
+    error: ""
+  },
 };
 
 const context = createContext(initialState);

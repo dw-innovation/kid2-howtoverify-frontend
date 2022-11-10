@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { getNodeColor } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Color from "color";
+import SearchResults from "../searchResults";
 
 const Panel = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -35,7 +36,10 @@ const Panel = () => {
       </button>
       {isOpen && (
         <>
-          <SearchBox />
+          <div className="relative">
+            <SearchBox />
+            <SearchResults />
+          </div>
           <div className="flex flex-col flex-1 justify-between">
             <NodeInfo
               style={{
