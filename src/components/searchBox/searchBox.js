@@ -1,7 +1,7 @@
 import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
-import React, { useRef } from "react";
+import React from "react";
 import LensIcon from "src/assets/svg/lens";
 import axios from "axios";
 import { trackAction } from "@/lib/lib";
