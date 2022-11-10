@@ -34,8 +34,8 @@ const SearchBox = () => {
       }));
     }
 
-    trackAction("search", `'${queryString}' in '${category}'`);
-    
+    trackAction("search", `${category}: ${queryString}`);
+
     const result = await axios({
       method: "post",
       url: process.env.NEXT_PUBLIC_SEARCH_API,
