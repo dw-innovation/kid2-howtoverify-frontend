@@ -1,7 +1,7 @@
 import useAppContext from "@/lib/hooks/useAppContext";
-import { removePrefix, getNodeColor } from "@/lib/lib";
+import { removePrefix } from "@/lib/lib";
+import useTranslation from "next-translate/useTranslation";
 import React from "react";
-import Color from "color";
 import PlusIcon from "src/assets/svg/plusIcon";
 
 const SearchResults = () => {
@@ -13,13 +13,12 @@ const SearchResults = () => {
     setAppState,
   } = useAppContext();
 
+  const { t } = useTranslation("common");
+
   return (
     <>
       {showResults && (
-        <div
-          className="absolute w-full p-2 mt-2 shadow-xl bg-white"
-          
-        >
+        <div className="absolute w-full p-2 mt-2 shadow-xl bg-white">
           <button
             onClick={() =>
               setAppState((prev) => ({
@@ -31,7 +30,7 @@ const SearchResults = () => {
           >
             <PlusIcon />
           </button>
-          {!error ? (
+          {category !== "default" ? (
             <>
               Search Results for{" "}
               <span className="font-bold">"{queryString}"</span> in{" "}
@@ -39,7 +38,7 @@ const SearchResults = () => {
               <div>{JSON.stringify(results)}</div>
             </>
           ) : (
-            error
+            t("selectCategory")
           )}
         </div>
       )}
