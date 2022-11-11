@@ -2,8 +2,11 @@ import React, { Fragment } from "react";
 import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Button from "@/components/button";
-import useTranslation from "next-translate/useTranslation";
-import { getNodeColor, removePrefix } from "@/lib/lib";
+import {
+  generateURL,
+  getNodeColor,
+  trackAction,
+} from "@/lib/lib";
 import clsx from "clsx";
 import Color from "color";
 
@@ -14,8 +17,6 @@ const MediaTypeSelector = () => {
       graph: { pathNodes },
     },
   } = useAppContext();
-
-  const { t } = useTranslation("common");
 
   return (
     <div className="flex flex-row flex-1 justify-center items-center">
@@ -31,12 +32,7 @@ const MediaTypeSelector = () => {
                     pathNodes: [id],
                   },
                 }));
-                typeof window !== "undefined" &&
-                  window.history.pushState(
-                    {},
-                    `/${removePrefix(id)}`,
-                    `/${removePrefix(id)}`
-                  );
+                trackAction("mediaTypeSelectorClick", generateURL([id]));
               }}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(

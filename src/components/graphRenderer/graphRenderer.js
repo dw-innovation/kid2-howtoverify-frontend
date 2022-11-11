@@ -10,6 +10,8 @@ import {
   validateLink,
   getStrength,
   getSizeFactor,
+  trackAction,
+  generateURL,
 } from "@/lib/lib";
 import Color from "color";
 
@@ -47,14 +49,8 @@ const GraphRenderer = () => {
       },
     }));
 
-    // create new URL path
-    const urlPath = `/${newPathNodes
-      .map((node) => removePrefix(node))
-      .join("/")}`;
-
-    // push new URL path to browser history
-    typeof window !== "undefined" &&
-      window.history.pushState({}, urlPath, urlPath);
+    // track click
+    trackAction("graphClick", generateURL(newPathNodes));
   };
 
   const graph = () => {

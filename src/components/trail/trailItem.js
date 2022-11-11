@@ -1,6 +1,6 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import React from "react";
-import { removePrefix } from "@/lib/lib";
+import { generateURL, removePrefix, trackAction } from "@/lib/lib";
 import clsx from "clsx";
 
 const TrailItem = ({ id: nodeId, position }) => {
@@ -29,13 +29,7 @@ const TrailItem = ({ id: nodeId, position }) => {
       },
     }));
 
-    const urlPath = `/${newPathNodes
-      .map((node) => removePrefix(node))
-      .join("/")}`;
-
-    // push new URL path to browser history
-    typeof window !== "undefined" &&
-      window.history.pushState({}, urlPath, urlPath);
+    trackAction("trailClick", generateURL(newPathNodes));
   };
 
   return (

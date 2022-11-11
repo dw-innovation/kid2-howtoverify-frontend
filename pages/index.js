@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { addPrefix, fetchGraphData, trackAction, triggerTracking } from "@/lib/lib";
+import {
+  addPrefix,
+  fetchGraphData,
+  generateURL,
+  trackAction,
+  triggerTracking,
+} from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
 import MediaTypeSelector from "@/components/mediaTypeSelector";
@@ -54,7 +60,14 @@ const IndexPage = () => {
       setAppState((prev) => ({
         ...prev,
       }));
-      trackAction("graphClick");
+
+      // push new URL path to browser history
+      typeof window !== "undefined" &&
+        window.history.pushState(
+          {},
+          generateURL(pathNodes),
+          generateURL(pathNodes)
+        );
     }
   }, [pathNodes]);
 

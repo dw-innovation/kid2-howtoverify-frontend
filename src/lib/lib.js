@@ -64,55 +64,39 @@ export const trackAction = async (action, payload = "") => {
     rand: Math.floor(Math.random() * 10000000),
     res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
     ua: window?.navigator?.userAgent,
+    action_name: action,
   };
 
-  if (action === "graphClick") {
-    params = {
-      ...params,
-      action_name: "graphClick",
-      url: window?.location?.href,
-    };
-  }
+  switch (action) {
+    case "search":
+      params = {
+        ...params,
+        search: payload,
+      };
+      break;
 
-  if (action === "historyNavigation") {
-    params = {
-      ...params,
-      action_name: "historyNavigation",
-      url: window?.location?.href,
-    };
-  }
+    case "searchResultClick":
+    case "trailClick":
+    case "mediaTypeSelectorClick":
+      params = {
+        ...params,
+        url: payload,
+      };
+      break;
 
-  if (action === "search") {
-    params = {
-      ...params,
-      action_name: "search",
-      search: payload,
-    };
-  }
+    case "externalLink":
+      params = {
+        ...params,
+        link: payload,
+        url: payload,
+      };
+      break;
 
-  if (action === "searchResultClick") {
-    params = {
-      ...params,
-      action_name: "searchResultClick",
-      url: payload,
-    };
-  }
-
-  if (action === "urlCopied") {
-    params = {
-      ...params,
-      action_name: "urlCopied",
-      url: window?.location?.href,
-    };
-  }
-
-  if (action === "externalLink") {
-    params = {
-      ...params,
-      action_name: "externalLink",
-      link: payload,
-      url: payload,
-    };
+    default:
+      params = {
+        ...params,
+        url: window?.location?.href,
+      };
   }
 
   await axios({
