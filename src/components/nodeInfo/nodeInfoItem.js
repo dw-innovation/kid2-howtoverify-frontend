@@ -1,6 +1,7 @@
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { trackAction } from "@/lib/lib";
 
 const NodeInfoItem = ({ name, body }) => {
   const { t } = useTranslation("nodeInfo");
@@ -38,6 +39,9 @@ const NodeInfoItem = ({ name, body }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue hover:underline"
+              onClick={() => {
+                trackAction("externalLink", body);
+              }}
             >
               {body}
             </a>
