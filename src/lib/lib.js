@@ -94,7 +94,7 @@ export const trackAction = async (action, payload = "") => {
     params = {
       ...params,
       action_name: "searchResultClick",
-      url: window?.location?.href,
+      url: payload,
     };
   }
 
@@ -121,3 +121,8 @@ export const trackAction = async (action, payload = "") => {
     params,
   });
 };
+
+export const generateURL = (pathNodes) =>
+  `${window?.location?.origin}${pathNodes
+    .map((node) => `/${removePrefix(node)}`)
+    .join("")}`;

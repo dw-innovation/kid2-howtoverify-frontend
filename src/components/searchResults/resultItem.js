@@ -1,4 +1,5 @@
 import useAppContext from "@/lib/hooks/useAppContext";
+import { generateURL, trackAction } from "@/lib/lib";
 import React, { Fragment } from "react";
 
 const ResultItem = ({ item }) => {
@@ -8,12 +9,13 @@ const ResultItem = ({ item }) => {
 
   return (
     <button
-      onClick={() =>
+      onClick={() => {
         setAppState((prev) => ({
           ...prev,
           graph: { ...prev.graph, pathNodes: itemPath },
-        }))
-      }
+        }));
+        trackAction("searchResultClick", generateURL(itemPath));
+      }}
       className="block hover:text-blue"
     >
       {itemPathLabels.map((label, index) => (
