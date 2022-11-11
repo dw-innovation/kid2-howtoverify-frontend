@@ -33,10 +33,12 @@ const SearchResults = () => {
           </button>
           {category !== "default" ? (
             <>
-              Search Results for{" "}
-              <span className="font-bold">"{queryString}"</span> in{" "}
-              <span className="font-bold">{removePrefix(category)}</span>
-              <div>
+              <div className="border-b-2 border-neutral-200 pb-2">
+                Search Results for{" "}
+                <span className="font-bold">"{queryString}"</span> in{" "}
+                <span className="font-bold">{removePrefix(category)}</span>
+              </div>
+              <div className="pt-2">
                 {results.map((item, index) => (
                   <Fragment key={index}>
                     <ResultItem item={item} />

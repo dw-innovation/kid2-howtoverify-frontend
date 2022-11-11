@@ -1,9 +1,17 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import { generateURL, trackAction } from "@/lib/lib";
 import React, { Fragment } from "react";
+import { isEqual } from "lodash";
+import clsx from "clsx";
 
 const ResultItem = ({ item }) => {
-  const { setAppState } = useAppContext();
+  const {
+    setAppState,
+    appState: {
+      graph: { pathNodes },
+    },
+  } = useAppContext();
+  
   const itemPath = item.map(({ id }) => id);
   const itemPathLabels = item.map(({ label }) => label);
 
@@ -16,7 +24,10 @@ const ResultItem = ({ item }) => {
         }));
         trackAction("searchResultClick", generateURL(itemPath));
       }}
-      className="block hover:text-blue"
+      className={clsx(
+        "block hover:text-blue",
+        isEqual(pathNodes, itemPath) && "text-blue"
+      )}
     >
       {itemPathLabels.map((label, index) => (
         <Fragment key={index}>
