@@ -4,7 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import LensIcon from "src/assets/svg/lens";
 import axios from "axios";
-import { trackAction } from "@/lib/lib";
+import { removePrefix, trackAction } from "@/lib/lib";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");
@@ -34,7 +34,7 @@ const SearchBox = () => {
       }));
     }
 
-    trackAction("search", `${category}: ${queryString}`);
+    trackAction("search", `${removePrefix(category)}: ${queryString}`);
 
     const result = await axios({
       method: "post",
