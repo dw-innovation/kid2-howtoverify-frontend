@@ -1,6 +1,7 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import { removePrefix } from "@/lib/lib";
 import useTranslation from "next-translate/useTranslation";
+import Trans from "next-translate/Trans";
 import React, { Fragment } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
@@ -34,9 +35,17 @@ const SearchResults = () => {
           {category !== "default" ? (
             <>
               <div className="border-b-2 border-neutral-200 pb-2">
-                Search Results for{" "}
-                <span className="font-bold">"{queryString}"</span> in{" "}
-                <span className="font-bold">{removePrefix(category)}</span>
+                <Trans
+                  i18nKey="common:searchResultsTitle"
+                  components={{
+                    b: <b className="red" />,
+                  }}
+                  values={{
+                    queryString: queryString,
+                    category: removePrefix(category),
+                  }}
+                  defaultTrans="<component>The number is <b>{{count}}</b></component>"
+                />
               </div>
               <div className="pt-2">
                 {results.map((item, index) => (
