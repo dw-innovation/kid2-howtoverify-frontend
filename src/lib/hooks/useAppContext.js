@@ -11,18 +11,7 @@ export const initialState = {
   search: {
     queryString: "",
     category: "default",
-    results: [
-      [
-        { label: "Video", id: "http://dw.com/Video" },
-        { label: "What", id: "http://dw.com/What" },
-        { label: "General Search", id: "http://dw.com/General_Search" },
-        { label: "USearch", id: "http://dw.com/USearch" },
-      ],
-      [
-        { label: "Video", id: "http://dw.com/Video" },
-        { label: "How", id: "http://dw.com/How" },
-      ],
-    ],
+    results: [],
     showResults: false,
     error: "",
   },
