@@ -42,7 +42,7 @@ const SearchBox = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: JSON.stringify({ queryString: queryString, category: category }),
+      data: JSON.stringify({ query: queryString, category: category }),
     });
 
 
