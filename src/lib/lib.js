@@ -1,4 +1,4 @@
-import { NODETYPESTYLES, ROOTNODES, PREFIX } from "@/lib/const";
+import { NODETYPESTYLES, ROOTNODES, PREFIX, LINKLENGTHS } from "@/lib/const";
 import axios from "axios";
 
 export const addPrefix = (string) => `${PREFIX}${string}`;
@@ -110,3 +110,6 @@ export const generateURL = (pathNodes) =>
   `${window?.location?.origin}${pathNodes
     .map((node) => `/${removePrefix(node)}`)
     .join("")}`;
+
+export const getLinkLength = (level) =>
+  LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1);

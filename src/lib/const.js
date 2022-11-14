@@ -43,5 +43,7 @@ export const SAFELIST = [
   "usageInfo",
   "aboutUrl",
   "howTo",
-  "remarks"
+  "remarks",
 ];
+
+export const LINKLENGTHS = [50, 40, 30, 15];

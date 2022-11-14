@@ -5,6 +5,7 @@ import {
   validateLink,
   trackAction,
   generateURL,
+  getLinkLength,
 } from "@/lib/lib";
 import * as d3 from "d3";
 import Color from "color";
@@ -48,7 +49,7 @@ export const graph = (ref, setAppState, data, dimensions, pathNodes) => {
       d3
         .forceLink()
         .id((d) => d.id)
-        .distance(60)
+        .distance((d) => getLinkLength(d.source.level))
         .strength(1)
     )
     .force("charge", d3.forceManyBody().strength(-800))
