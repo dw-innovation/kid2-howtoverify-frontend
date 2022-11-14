@@ -16,7 +16,13 @@ const SearchBox = () => {
   } = useAppContext();
 
   return (
-    <div className="flex flex-row gap-1 font-montserrat">
+    <form
+      className="flex flex-row gap-1 font-montserrat"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch(queryString, category, setAppState);
+      }}
+    >
       <div className="rounded-l-md bg-white px-2">
         <select
           name="category"
@@ -59,10 +65,11 @@ const SearchBox = () => {
       <button
         className="rounded-r-md bg-blue hover:bg-darkBlue aspect-square px-4"
         onClick={() => handleSearch(queryString, category, setAppState)}
+        type="submit"
       >
         <LensIcon />
       </button>
-    </div>
+    </form>
   );
 };
 
