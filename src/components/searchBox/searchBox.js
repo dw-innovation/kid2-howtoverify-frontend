@@ -17,21 +17,7 @@ const SearchBox = () => {
 
   return (
     <div className="flex flex-row gap-1 font-montserrat">
-      <input
-        className="rounded-l-md p-2 flex-1"
-        placeholder={t("searchBoxPlaceholder")}
-        onChange={(e) =>
-          setAppState((prev) => ({
-            ...prev,
-            search: {
-              ...prev.search,
-              queryString: e.target.value,
-              showResults: true,
-            },
-          }))
-        }
-      />
-      <div className="bg-white px-2">
+      <div className="rounded-l-md bg-white px-2">
         <select
           name="category"
           className="bg-white h-full"
@@ -53,6 +39,22 @@ const SearchBox = () => {
           ))}
         </select>
       </div>
+      <input
+        className="p-2 flex-1"
+        placeholder={t("searchBoxPlaceholder")}
+        disabled={category === "default"}
+        onChange={(e) =>
+          setAppState((prev) => ({
+            ...prev,
+            search: {
+              ...prev.search,
+              queryString: e.target.value,
+              showResults: true,
+            },
+          }))
+        }
+      />
+
       <button
         className="rounded-r-md bg-blue hover:bg-darkBlue aspect-square px-4"
         onClick={() => handleSearch(queryString, category, setAppState)}
