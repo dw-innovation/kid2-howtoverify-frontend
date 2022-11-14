@@ -78,6 +78,7 @@ export const trackAction = async (action, payload = "") => {
     case "searchResultClick":
     case "trailClick":
     case "mediaTypeSelectorClick":
+    case "graphClick":
       params = {
         ...params,
         url: payload,
