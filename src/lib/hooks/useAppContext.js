@@ -12,6 +12,7 @@ export const initialState = {
     queryString: "",
     category: "default",
     results: [],
+    index: [],
     showResults: false,
     error: "",
   },

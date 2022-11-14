@@ -166,3 +166,8 @@ export const getIndex = async (setAppState) => {
     search: { ...prev.search, index: result.data },
   }));
 };
+
+export const filterIndex = (index, category) =>
+  index
+    .filter(({ categories }) => categories.includes(category))
+    .map((el) => ({ ...el, value: el.name }));
