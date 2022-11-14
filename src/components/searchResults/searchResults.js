@@ -38,7 +38,7 @@ const SearchResults = () => {
                 <Trans
                   i18nKey="common:searchResultsTitle"
                   components={{
-                    b: <b className="red" />,
+                    b: <b />,
                   }}
                   values={{
                     queryString: queryString,

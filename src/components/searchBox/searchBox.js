@@ -4,6 +4,8 @@ import useTranslation from "next-translate/useTranslation";
 import React, { useEffect } from "react";
 import LensIcon from "src/assets/svg/lens";
 import { getIndex, handleSearch } from "@/lib/lib";
+import AutoCompleteResults from "../autoCompleteResults";
+import Navigation from "../navigation";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");
@@ -50,22 +52,7 @@ const SearchBox = () => {
           ))}
         </select>
       </div>
-      <input
-        className="p-2 flex-1"
-        placeholder={t("searchBoxPlaceholder")}
-        disabled={category === "default"}
-        onChange={(e) =>
-          setAppState((prev) => ({
-            ...prev,
-            search: {
-              ...prev.search,
-              queryString: e.target.value,
-              showResults: true,
-            },
-          }))
-        }
-      />
-
+      <AutoCompleteResults/>
       <button
         className="rounded-r-md bg-blue hover:bg-darkBlue aspect-square px-4"
         onClick={() => handleSearch(queryString, category, setAppState)}

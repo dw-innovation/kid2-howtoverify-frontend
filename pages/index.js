@@ -9,6 +9,7 @@ import useLocation from "@/lib/hooks/useLocation";
 import Panel from "@/components/panel";
 import MobileScreen from "@/components/mobileScreen";
 import Navigation from "@/components/navigation";
+import { ROOTNODES } from "@/lib/const";
 
 const IndexPage = () => {
   const {
@@ -50,9 +51,15 @@ const IndexPage = () => {
   useEffect(() => {
     if (typeof window !== "undefined" && pathNodes.length !== 0) {
       fetchGraphData(pathNodes, setAppState);
+
       setAppState((prev) => ({
         ...prev,
-        search: { ...prev.search, category: pathNodes[0] },
+        search: {
+          ...prev.search,
+          category: ROOTNODES.filter(({ id }) => id === pathNodes[0])
+            ? pathNodes[0]
+            : "default",
+        },
       }));
 
       // push new URL path to browser history
