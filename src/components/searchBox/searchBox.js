@@ -22,6 +22,7 @@ const SearchBox = () => {
           name="category"
           className="bg-white h-full"
           defaultValue="default"
+          value={category}
           onChange={(e) =>
             setAppState((prev) => ({
               ...prev,

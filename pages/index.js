@@ -52,6 +52,7 @@ const IndexPage = () => {
       fetchGraphData(pathNodes, setAppState);
       setAppState((prev) => ({
         ...prev,
+        search: { ...prev.search, category: pathNodes[0] },
       }));
 
       // push new URL path to browser history
