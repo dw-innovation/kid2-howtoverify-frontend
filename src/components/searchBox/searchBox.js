@@ -1,9 +1,9 @@
 import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
-import React from "react";
+import React, { useEffect } from "react";
 import LensIcon from "src/assets/svg/lens";
-import { handleSearch } from "@/lib/lib";
+import { getIndex, handleSearch } from "@/lib/lib";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");
@@ -14,6 +14,10 @@ const SearchBox = () => {
       search: { queryString, category },
     },
   } = useAppContext();
+
+  useEffect(() => {
+    getIndex(setAppState);
+  }, []);
 
   return (
     <form

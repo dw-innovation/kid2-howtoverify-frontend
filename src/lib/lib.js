@@ -151,3 +151,18 @@ export const handleSearch = async (queryString, category, setAppState) => {
     search: { ...prev.search, results: result.data },
   }));
 };
+
+export const getIndex = async (setAppState) => {
+  const result = await axios({
+    method: "get",
+    url: process.env.NEXT_PUBLIC_INDEX_API,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  setAppState((prev) => ({
+    ...prev,
+    search: { ...prev.search, index: result.data },
+  }));
+};
