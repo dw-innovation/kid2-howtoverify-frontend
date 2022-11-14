@@ -25,10 +25,11 @@ const ResultItem = ({ item }) => {
         trackAction("searchResultClick", generateURL(itemPath));
       }}
       className={clsx(
-        "block hover:text-blue",
+        "block hover:text-blue text-left leading-4 my-2",
         isEqual(pathNodes, itemPath) && "text-blue"
       )}
     >
+      <div>
       {itemPathLabels.map((label, index) => (
         <Fragment key={index}>
           {label}
@@ -37,6 +38,7 @@ const ResultItem = ({ item }) => {
           )}
         </Fragment>
       ))}
+      </div>
     </button>
   );
 };
