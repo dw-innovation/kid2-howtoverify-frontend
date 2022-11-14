@@ -1,7 +1,13 @@
+import React from 'react';
 import useAppContext from "src/lib/hooks/useAppContext";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useEffect } from "react";
 import useWindowSize from "src/lib/hooks/useWindowSize";
-import { graph } from "./graph";
+import { initGraph, updateGraph, setData } from "./graph";
+
+// the <svg> element will be controlled by d3 completely and never needs to get updated.
+const RenderOnce = React.memo((props) => {
+  return <svg ref={props.svgref} className="h-full w-full" />;
+})
 
 const GraphRenderer = () => {
   const ref = useRef();
@@ -26,10 +32,16 @@ const GraphRenderer = () => {
         },
       },
     }));
-    graph(ref, setAppState, data, dimensions, pathNodes);
+
+    // I'll be honest, I have no idea why this has to be run twice to work,
+    // and I don't really need to find out.  It's inneficient, but so is rendering a blog as a graph
+    updateGraph(ref, setAppState, data, dimensions, pathNodes);
+    updateGraph(ref, setAppState, data, dimensions, pathNodes);
+
   }, [data, ref.current, height, width]);
 
-  return <svg ref={ref} className="h-full w-full" />;
+  // send this to the element that just needs to be rendered once.
+  return <RenderOnce svgref={ref}/> ;
 };
 
 export default GraphRenderer;
