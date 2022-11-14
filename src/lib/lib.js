@@ -113,3 +113,40 @@ export const generateURL = (pathNodes) =>
 
 export const getLinkLength = (level) =>
   LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1);
+
+export const handleSearch = async (queryString, category, setAppState) => {
+  setAppState((prev) => ({
+    ...prev,
+    search: { ...prev.search, showResults: true },
+  }));
+
+  if (category === "default") {
+    return setAppState((prev) => ({
+      ...prev,
+      search: { ...prev.search, error: "DEFAULT_CATEGORY" },
+    }));
+  }
+
+  if (!queryString) {
+    return setAppState((prev) => ({
+      ...prev,
+      search: { ...prev.search, error: "QUERY_EMPTY" },
+    }));
+  }
+
+  trackAction("search", `${removePrefix(category)}: ${queryString}`);
+
+  const result = await axios({
+    method: "post",
+    url: process.env.NEXT_PUBLIC_SEARCH_API,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify({ query: queryString, category: category }),
+  });
+
+  setAppState((prev) => ({
+    ...prev,
+    search: { ...prev.search, results: result.data },
+  }));
+};

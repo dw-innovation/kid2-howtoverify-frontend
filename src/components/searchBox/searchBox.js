@@ -3,8 +3,7 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import LensIcon from "src/assets/svg/lens";
-import axios from "axios";
-import { removePrefix, trackAction } from "@/lib/lib";
+import { handleSearch } from "@/lib/lib";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");
@@ -15,42 +14,6 @@ const SearchBox = () => {
       search: { queryString, category },
     },
   } = useAppContext();
-
-  const handleSearch = async (queryString, category) => {
-    setAppState((prev) => ({
-      ...prev,
-      search: { ...prev.search, showResults: true },
-    }));
-    if (category === "default") {
-      return setAppState((prev) => ({
-        ...prev,
-        search: { ...prev.search, error: "DEFAULT_CATEGORY" },
-      }));
-    }
-    if (!queryString) {
-      return setAppState((prev) => ({
-        ...prev,
-        search: { ...prev.search, error: "QUERY_EMPTY" },
-      }));
-    }
-
-    trackAction("search", `${removePrefix(category)}: ${queryString}`);
-
-    const result = await axios({
-      method: "post",
-      url: process.env.NEXT_PUBLIC_SEARCH_API,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify({ query: queryString, category: category }),
-    });
-
-
-    setAppState((prev) => ({
-      ...prev,
-      search: { ...prev.search, results: result.data },
-    }));
-  };
 
   return (
     <div className="flex flex-row gap-1 font-montserrat">
@@ -92,7 +55,7 @@ const SearchBox = () => {
       </div>
       <button
         className="rounded-r-md bg-blue hover:bg-darkBlue aspect-square px-4"
-        onClick={() => handleSearch(queryString, category)}
+        onClick={() => handleSearch(queryString, category, setAppState)}
       >
         <LensIcon />
       </button>
