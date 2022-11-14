@@ -35,6 +35,10 @@ const handleNodeClick = (
       ...prev.graph,
       pathNodes: newPathNodes,
     },
+    search: {
+      ...prev.search,
+      showResults: false
+    }
   }));
 
   // track click
