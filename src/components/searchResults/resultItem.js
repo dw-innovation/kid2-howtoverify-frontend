@@ -13,7 +13,7 @@ const ResultItem = ({ item }) => {
   } = useAppContext();
   
   const itemPath = item.map(({ id }) => id);
-  const itemPathLabels = item.map(({ label }) => label);
+  const itemPathLabels = item.map(({ name }) => name);
 
   return (
     <button
