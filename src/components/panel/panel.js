@@ -33,7 +33,13 @@ const Panel = () => {
         style={{ height: "2rem", width: "2rem" }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <ArrowRight /> : <div className="rotate-180"><ArrowRight /></div>}
+        {isOpen ? (
+          <ArrowRight />
+        ) : (
+          <div className="rotate-180">
+            <ArrowRight />
+          </div>
+        )}
       </button>
       {isOpen && (
         <>
