@@ -7,6 +7,7 @@ import { getNodeColor } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Color from "color";
 import SearchResults from "../searchResults";
+import ArrowRight from "src/assets/svg/arrow";
 
 const Panel = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,11 +29,11 @@ const Panel = () => {
       }}
     >
       <button
-        className="absolute top-0 bottom-0 left-0 -translate-x-1/2 bg-white h-max my-auto rounded-full shadow-sm font-bold"
+        className="absolute top-0 bottom-0 left-0 -translate-x-1/2 bg-white hover:bg-blue hover:text-white transition-all duration-200 ease-in-out h-max my-auto rounded-full shadow-sm font-bold flex justify-center items-center"
         style={{ height: "2rem", width: "2rem" }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? ">" : "<"}
+        {isOpen ? <ArrowRight /> : <div className="rotate-180"><ArrowRight /></div>}
       </button>
       {isOpen && (
         <>
