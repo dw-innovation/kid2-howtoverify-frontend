@@ -18,7 +18,7 @@ const Panel = () => {
   return (
     <div
       className={clsx(
-        "p-2 flex gap-3 flex-col z-50 relative",
+        "p-2 flex gap-3 flex-col z-50 relative max-h-screen",
         isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
@@ -40,7 +40,7 @@ const Panel = () => {
             <SearchBox />
             <SearchResults />
           </div>
-          <div className="flex flex-col flex-1 justify-between">
+          <div className="flex flex-col flex-1 justify-between gap-2 overflow-scroll">
             <NodeInfo
               style={{
                 backgroundColor: Color(
