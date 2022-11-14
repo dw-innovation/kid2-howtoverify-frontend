@@ -16,6 +16,7 @@ import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
 import Trail from "@/components/trail";
 import Panel from "@/components/panel";
+import MobileScreen from "@/components/mobileScreen";
 
 const IndexPage = () => {
   const {
@@ -73,7 +74,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <div className="w-screen h-screen relative bg-lightGrey">
+      <div className="w-screen h-screen relative bg-lightGrey hidden md:block">
         <div className="absolute bottom-0 left-0 z-10 w-full p-2">
           {pathNodes.length > 0 && (
             <div className="flex flex-row gap-2 relative items-center">
@@ -103,6 +104,7 @@ const IndexPage = () => {
           <Panel />
         </div>
       </div>
+      <MobileScreen />
     </>
   );
 };
