@@ -42,7 +42,7 @@ const AutoCompleteResults = () => {
           highlightedIndex,
           selectedItem,
         }) => (
-          <div className="h-full flex-1 relative">
+          <div className="flex-1 relative">
             <input
               {...getInputProps({
                 onChange: () =>
