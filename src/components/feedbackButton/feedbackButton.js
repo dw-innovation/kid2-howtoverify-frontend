@@ -15,14 +15,10 @@ const FeedbackButton = () => {
     <>
       {isVisible && (
         <a
-          href={`mailto:${t("feedbackMail")}?subject=${t(
-            "feedbackSubject"
-          )}&body=${encodeURIComponent(
-            t("feedbackBody", {
-              url: window.location.href,
-            })
-          )}`}
+          href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
           dangerouslySetInnerHTML={{ __html: t("sendFeedback") }}
+          target="_blank"
+          rel="noopener noreferrer"
         />
       )}
     </>
