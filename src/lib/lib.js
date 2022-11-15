@@ -26,7 +26,7 @@ export const addNodeToPath = (nodeID, level, pathNodes) => {
 export const fetchGraphData = async (pathNodes, setAppState) => {
   const result = await axios({
     method: "post",
-    url: process.env.NEXT_PUBLIC_GRAPH_API,
+    url: `${process.env.NEXT_PUBLIC_API}graph`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -139,7 +139,7 @@ export const handleSearch = async (queryString, category, setAppState) => {
 
   const result = await axios({
     method: "post",
-    url: process.env.NEXT_PUBLIC_SEARCH_API,
+    url: `${process.env.NEXT_PUBLIC_API}search`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -155,7 +155,7 @@ export const handleSearch = async (queryString, category, setAppState) => {
 export const getIndex = async (setAppState) => {
   const result = await axios({
     method: "get",
-    url: process.env.NEXT_PUBLIC_INDEX_API,
+    url: `${process.env.NEXT_PUBLIC_API}getIndex`,
     headers: {
       "Content-Type": "application/json",
     },
