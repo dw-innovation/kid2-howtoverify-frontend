@@ -84,7 +84,7 @@ const AutoCompleteResults = () => {
                           },
                         })}
                         className={clsx(
-                          "list-none cursor-pointer -mx-2 px-2 py-1 hover:text-blue",
+                          "list-none cursor-pointer -mx-2 px-2 py-1 hover:text-white",
                           highlightedIndex === index ? "bg-blue" : "white"
                         )}
                       >
