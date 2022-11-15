@@ -43,6 +43,7 @@ ul li {
 .nodes circle {
   stroke: #fff;
   stroke-width: 1.5px;
+  @apply cursor-pointer;
 }
 
 text {

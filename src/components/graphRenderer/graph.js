@@ -158,8 +158,6 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
       .merge(node)
       .attr("class", "nodes")
       .attr("id", d => nodeId(d))
-  // adding another class overrides the last one so I commented this:
-      // .attr("class", "cursor-pointer")
 
   // render nodes
   var circle = newNode
@@ -208,6 +206,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
 
   // make sure the links are always behind the nodes, this is the d3 way to z-index:
   d3.selectAll(".links").lower()
+  d3.selectAll(".circles").lower()
 
   const ticked = () => {
     line
