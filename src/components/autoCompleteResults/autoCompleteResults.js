@@ -51,9 +51,9 @@ const AutoCompleteResults = () => {
                     search: { ...prev.search, showResults: false },
                   })),
               })}
-              defaultValue="Search"
+              placeholder="Search"
               className={clsx(
-                "h-full w-full relative p-3 bg-white",
+                "h-full w-full relative p-3 bg-white rounded-r-md",
                 items.filter(
                   (item) => !inputValue || item.value.includes(inputValue)
                 ).length === 0 && "text-red"
