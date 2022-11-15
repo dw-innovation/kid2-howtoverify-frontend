@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import LensIcon from "src/assets/svg/lens";
 import { getIndex, handleSearch } from "@/lib/lib";
 import AutoCompleteResults from "../autoCompleteResults";
-import Navigation from "../navigation";
 
 const SearchBox = () => {
   const { t } = useTranslation("common");

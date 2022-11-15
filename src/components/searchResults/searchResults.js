@@ -5,6 +5,7 @@ import Trans from "next-translate/Trans";
 import React, { Fragment } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
+import clsx from "clsx";
 
 const SearchResults = () => {
   const {
@@ -49,9 +50,15 @@ const SearchResults = () => {
               </div>
               <div className="pt-2">
                 {results.map((item, index) => (
-                  <Fragment key={index}>
+                  <div
+                    key={index}
+                    className={clsx(
+                      results.length > index + 1 &&
+                        "border-b-[1px] border-neutral-200"
+                    )}
+                  >
                     <ResultItem item={item} />
-                  </Fragment>
+                  </div>
                 ))}
               </div>
             </>

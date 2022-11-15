@@ -25,7 +25,7 @@ const ResultItem = ({ item }) => {
         trackAction("searchResultClick", generateURL(itemPath));
       }}
       className={clsx(
-        "block hover:text-blue text-left leading-4 my-2",
+        "block hover:text-blue text-left leading-4 my-2 text-sm",
         isEqual(pathNodes, itemPath) && "text-blue"
       )}
     >
