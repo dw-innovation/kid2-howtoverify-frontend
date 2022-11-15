@@ -9,13 +9,16 @@ const AutoCompleteResults = () => {
 
   const {
     appState: {
-      search: { index, category },
+      search: { index, category, queryString },
     },
     setAppState,
   } = useAppContext();
 
   useEffect(() => {
     setItems(filterIndex(index, category));
+    if (category !== "default" && queryString !== "") {
+      handleSearch(queryString, category, setAppState);
+    }
   }, [index, category]);
 
   return (

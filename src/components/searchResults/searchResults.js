@@ -35,7 +35,7 @@ const SearchResults = () => {
           </button>
           {category !== "default" ? (
             <>
-              <div className="border-b-2 border-neutral-200 pb-2">
+              <div className="border-b-2 border-neutral-200 pb-2 pr-4">
                 <Trans
                   i18nKey="common:searchResultsTitle"
                   components={{
@@ -45,7 +45,6 @@ const SearchResults = () => {
                     queryString: queryString,
                     category: removePrefix(category),
                   }}
-                  defaultTrans="<component>The number is <b>{{count}}</b></component>"
                 />
               </div>
               <div className="pt-2">
@@ -60,6 +59,7 @@ const SearchResults = () => {
                     <ResultItem item={item} />
                   </div>
                 ))}
+                {results.length === 0 && t("noResults")}
               </div>
             </>
           ) : (
