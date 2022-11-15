@@ -9,7 +9,7 @@ import {
 } from "@/lib/lib";
 import * as d3 from "d3";
 import Color from "color";
-import { intersection, without } from "lodash/fp";
+import { without } from "lodash/fp";
 import { cloneDeep } from "lodash";
 
 // so the graph does not reset every time, we have to store a mutable copy of the
@@ -221,7 +221,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
 
   const simulation = d3
     .forceSimulation()
-    //.alphaDecay(.1)
+    .alphaDecay(.1)
     //.velocityDecay(.2)
     .force(
       "link",
