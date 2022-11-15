@@ -21,7 +21,7 @@ const SearchResults = () => {
   return (
     <>
       {showResults && (
-        <div className="absolute w-full p-2 mt-2 shadow-xl bg-white">
+        <div className="absolute w-full p-2 mt-2 shadow-xl bg-white rounded-b-md">
           <button
             onClick={() =>
               setAppState((prev) => ({
