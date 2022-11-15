@@ -24,8 +24,8 @@ let clickedX = 0;
 let clickedY = 0;
 
 // two utility functions to add nodes.
-const nodeId = n => n.id;
-const linkId = l => (l.source.id || l.source) + (l.target.id || l.target);
+const nodeId = (n) => n.id;
+const linkId = (l) => (l.source.id || l.source) + (l.target.id || l.target);
 
 // Here is the algorithm to update new nodes based on a new full list of nodes.  We receive new nodes,
 // diff them with the old ones, and then remove any we do not want.
@@ -39,8 +39,10 @@ const updateNodes = (_newNodes) => {
   const toRemoveIds = without(newIds, oldIds);
   // remove nodes that dont exist in there any more
   for (var i = nodes.length - 1; i >= 0; i--) {
-    const currentId = nodeId(nodes[i])
-    if (toRemoveIds.includes(currentId)) { nodes.splice(i, 1); }
+    const currentId = nodeId(nodes[i]);
+    if (toRemoveIds.includes(currentId)) {
+      nodes.splice(i, 1);
+    }
   }
   // add new nodes
   for (var i = newNodes.length - 1; i >= 0; i--) {
@@ -51,9 +53,11 @@ const updateNodes = (_newNodes) => {
       currentNode.x = clickedX;
       currentNode.y = clickedY;
     }
-    if (toAddIds.includes(currentId)) { nodes.push(currentNode);}
+    if (toAddIds.includes(currentId)) {
+      nodes.push(currentNode);
+    }
   }
-}
+};
 
 // get the maximum level depth of the nodes
 const maxLevel = (data) =>
@@ -65,7 +69,8 @@ const maxLevel = (data) =>
 const handleNodeClick = (
   // the event:
   {
-    clientX, clientY,
+    clientX,
+    clientY,
     target: {
       __data__: { id, level },
     },
@@ -89,14 +94,13 @@ const handleNodeClick = (
     },
     search: {
       ...prev.search,
-      showResults: false
-    }
+      showResults: false,
+    },
   }));
 
   // track click
   trackAction("graphClick", generateURL(newPathNodes));
 };
-
 
 export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   //
@@ -110,7 +114,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   const localLinks = data.links;
   const localNodes = nodes;
 
-  console.log("rendering d3 with:", "nodes", localNodes, "links", localLinks)
+  console.log("rendering d3 with:", "nodes", localNodes, "links", localLinks);
 
   const svgRef = d3.select(ref.current);
 
@@ -119,19 +123,16 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   // this saves us some code and mental stability.
   svgRef.selectAll(".links").remove();
 
-  var link = svgRef
-      .selectAll(".links")
-      .data(localLinks, linkId)
+  var link = svgRef.selectAll(".links").data(localLinks, linkId);
 
   var newLink = link
-      .enter()
-      .append("g")
-      .attr("class", "links")
-      .attr("id", d => linkId(d))
-      .attr("from", d => d.source)
-      .attr("to", d => d.target)
-      .merge(link)
-
+    .enter()
+    .append("g")
+    .attr("class", "links")
+    .attr("id", (d) => linkId(d))
+    .attr("from", (d) => d.source)
+    .attr("to", (d) => d.target)
+    .merge(link);
 
   var line = newLink
     .append("line")
@@ -144,20 +145,18 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
 
   // render nodes
   // nodes are different, we make sure that we keep them in memory here.
-  var node = svgRef
-      .selectAll(".nodes")
-      .data(localNodes, nodeId)
+  var node = svgRef.selectAll(".nodes").data(localNodes, nodeId);
 
   // we remove nodes that are no longer in the mutable array
-  var removeNode = node.exit().remove()
+  var removeNode = node.exit().remove();
 
   // new nodes get what we expect added to them
   var newNode = node
-      .enter()
-      .append("g")
-      .merge(node)
-      .attr("class", "nodes")
-      .attr("id", d => nodeId(d))
+    .enter()
+    .append("g")
+    .merge(node)
+    .attr("class", "nodes")
+    .attr("id", (d) => nodeId(d));
 
   // render nodes
   var circle = newNode
@@ -165,12 +164,15 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .attr("r", ({ type }) => getNodeRadius(type))
     .attr("fill", ({ id, level }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id) || level === maxLevel({ nodes: localNodes, links: localLinks }) ? 0 : 0.5
+        pathNodes.includes(id) ||
+          level === maxLevel({ nodes: localNodes, links: localLinks })
+          ? 0
+          : 0.5
       );
       return color;
     })
     .attr("class", "hover:brighter")
-   .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));;
+    .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
 
   // attach labels to nodes for getting width
   var text = newNode
@@ -194,7 +196,6 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .attr("y", -8)
     .attr("rx", 2);
 
-
   // remove texts
   d3.selectAll("text").remove();
   // add texts back in
@@ -202,11 +203,13 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .append("text")
     .text(({ name }) => name)
     .attr("x", 2)
-    .attr("y", 5);
+    .attr("y", 5)
+    .attr("class", "cursor-pointer")
+    .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
 
   // make sure the links are always behind the nodes, this is the d3 way to z-index:
-  d3.selectAll(".links").lower()
-  d3.selectAll(".circles").lower()
+  d3.selectAll(".links").lower();
+  d3.selectAll(".circles").lower();
 
   const ticked = () => {
     line
@@ -215,19 +218,20 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
       .attr("x2", (d) => d.target.x)
       .attr("y2", (d) => d.target.y);
 
-    node.attr("transform", (d) =>  `translate(${d.x}, ${d.y})`);
+    node.attr("transform", (d) => `translate(${d.x}, ${d.y})`);
   };
-
 
   const simulation = d3
     .forceSimulation()
-    .alphaDecay(.1)
+    .alphaDecay(0.1)
     //.velocityDecay(.2)
     .force(
       "link",
       d3
         .forceLink()
-        .id((d) => { return d.id;})
+        .id((d) => {
+          return d.id;
+        })
         .distance((d) => getLinkLength(d.source.level))
         .strength(1)
     )
@@ -236,8 +240,6 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
       "center",
       d3.forceCenter(dimensions.width / 2, dimensions.height / 2)
     );
-
-
 
   const dragStarted = (event, d) => {
     if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -269,8 +271,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
 
   simulation.force("link").links(localLinks);
 
-  simulation.restart()
+  simulation.restart();
 
-  simulation.alpha(1)
-
+  simulation.alpha(1);
 };
