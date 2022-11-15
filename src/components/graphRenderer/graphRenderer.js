@@ -1,8 +1,8 @@
 import React from 'react';
 import useAppContext from "src/lib/hooks/useAppContext";
-import { useRef, useLayoutEffect, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import useWindowSize from "src/lib/hooks/useWindowSize";
-import { initGraph, updateGraph, setData } from "./graph";
+import { updateGraph } from "./graph";
 
 // the <svg> element will be controlled by d3 completely and never needs to get updated.
 const RenderOnce = React.memo((props) => {

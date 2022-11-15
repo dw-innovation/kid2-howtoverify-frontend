@@ -31,7 +31,11 @@ const linkId = (l) => (l.source.id || l.source) + (l.target.id || l.target);
 // diff them with the old ones, and then remove any we do not want.
 // doing this hopefully keeps the system with react in sync.
 // probably not the most efficient, but it works.
-const updateNodes = (_newNodes) => {
+const updateNodes = (_newNodes, pathNodes) => {
+  //nodes = nodes.map((node) => ({ ...node, fx: node.x, fy: node.y }));
+
+  console.log(pathNodes);
+
   const newNodes = cloneDeep(_newNodes);
   const newIds = newNodes.map(nodeId);
   const oldIds = nodes.map(nodeId);
@@ -49,7 +53,12 @@ const updateNodes = (_newNodes) => {
     const currentNode = newNodes[i];
     const currentId = nodeId(currentNode);
     // if a clicked position has been stored, use it as the starting position of the new node
+    if (pathNodes.includes(currentId)) {
+      currentNode.x = pathNodes.indexOf(currentId) * 100;
+      currentNode.y = pathNodes.indexOf(currentId) * 100;
+    }
     if (clickedX && clickedY) {
+      console.log("currentID", currentId);
       currentNode.x = clickedX;
       currentNode.y = clickedY;
     }
@@ -69,10 +78,8 @@ const maxLevel = (data) =>
 const handleNodeClick = (
   // the event:
   {
-    clientX,
-    clientY,
     target: {
-      __data__: { id, level },
+      __data__: { id, level, x, y },
     },
   },
   // the state setting function
@@ -82,8 +89,8 @@ const handleNodeClick = (
   const newPathNodes = addNodeToPath(id, level, pathNodes);
 
   // we received a click so we will hackily store our clicked position
-  clickedX = clientX;
-  clickedY = clientY;
+  clickedX = x;
+  clickedY = y;
 
   // update pathNodes
   setAppState((prev) => ({
@@ -104,7 +111,7 @@ const handleNodeClick = (
 
 export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   //
-  updateNodes(data.nodes);
+  updateNodes(data.nodes, pathNodes);
 
   // reset our clicked position after the nodes have been added
   clickedX = 0;
