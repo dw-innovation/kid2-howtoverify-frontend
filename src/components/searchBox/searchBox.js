@@ -28,9 +28,7 @@ const SearchBox = () => {
         handleSearch(queryString, category, setAppState);
       }}
     >
-      <div
-        className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center"
-      >
+      <div className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center">
         <LensIcon />
       </div>
       <div className="bg-white px-2">
@@ -55,8 +53,7 @@ const SearchBox = () => {
           ))}
         </select>
       </div>
-      <AutoCompleteResults/>
-      
+      <AutoCompleteResults />
     </form>
   );
 };
