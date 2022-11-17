@@ -34,8 +34,6 @@ const linkId = (l) => (l.source.id || l.source) + (l.target.id || l.target);
 const updateNodes = (_newNodes, pathNodes) => {
   //nodes = nodes.map((node) => ({ ...node, fx: node.x, fy: node.y }));
 
-  console.log(pathNodes);
-
   const newNodes = cloneDeep(_newNodes);
   const newIds = newNodes.map(nodeId);
   const oldIds = nodes.map(nodeId);
@@ -61,6 +59,8 @@ const updateNodes = (_newNodes, pathNodes) => {
       console.log("currentID", currentId);
       currentNode.x = clickedX;
       currentNode.y = clickedY;
+
+      console.log(clickedX, clickedY);
     }
     if (toAddIds.includes(currentId)) {
       nodes.push(currentNode);
@@ -86,8 +86,8 @@ const handleNodeClick = (
   setAppState,
   pathNodes
 ) => {
+  if (id === pathNodes.at(-1)) return null;
   const newPathNodes = addNodeToPath(id, level, pathNodes);
-
   // we received a click so we will hackily store our clicked position
   clickedX = x;
   clickedY = y;
