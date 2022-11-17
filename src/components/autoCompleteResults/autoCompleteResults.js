@@ -3,9 +3,13 @@ import { filterIndex, handleSearch } from "@/lib/lib";
 import React, { useEffect, useState } from "react";
 import Downshift from "downshift";
 import clsx from "clsx";
+import useTranslation from "next-translate/useTranslation";
 
 const AutoCompleteResults = () => {
   const [items, setItems] = useState([]);
+  const [inputString, setInputString] = useState("");
+
+  const { t } = useTranslation("common");
 
   const {
     appState: {
@@ -20,6 +24,10 @@ const AutoCompleteResults = () => {
       handleSearch(queryString, category, setAppState);
     }
   }, [index, category]);
+
+  useEffect(() => {
+    setInputString(queryString);
+  }, [queryString]);
 
   return (
     <>
@@ -45,13 +53,20 @@ const AutoCompleteResults = () => {
           <div className="flex-1 relative">
             <input
               {...getInputProps({
-                onChange: () =>
+                onChange: (e) => {
                   setAppState((prev) => ({
                     ...prev,
                     search: { ...prev.search, showResults: false },
-                  })),
+                  }));
+                  setInputString(e.target.value);
+                },
               })}
-              placeholder="Search"
+              placeholder={
+                category === "default"
+                  ? t("selectCategory")
+                  : t("searchStartTyping")
+              }
+              value={inputString}
               className={clsx(
                 "h-full w-full relative p-3 bg-white rounded-r-md",
                 items.filter(
