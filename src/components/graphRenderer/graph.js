@@ -231,7 +231,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   const simulation = d3
     .forceSimulation()
     .alphaDecay(0.1)
-    //.velocityDecay(.2)
+    //.velocityDecay(0.1)
     .force(
       "link",
       d3
@@ -239,7 +239,10 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
         .id((d) => {
           return d.id;
         })
-        .distance((d) => getLinkLength(d.source.level))
+        .distance(
+          (d) =>
+            getLinkLength(d.source.level !== undefined ? d.source.level : 0) * 1
+        )
         .strength(1)
     )
     .force("charge", d3.forceManyBody().strength(-800))
