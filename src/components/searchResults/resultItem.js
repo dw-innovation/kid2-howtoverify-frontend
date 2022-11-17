@@ -11,18 +11,22 @@ const ResultItem = ({ item }) => {
       graph: { pathNodes },
     },
   } = useAppContext();
-  
+
   const itemPath = item.map(({ id }) => id);
   const itemPathLabels = item.map(({ name }) => name);
 
   return (
     <button
       onClick={() => {
-        setAppState((prev) => ({
-          ...prev,
-          graph: { ...prev.graph, pathNodes: itemPath },
-        }));
-        trackAction("searchResultClick", generateURL(itemPath));
+        if (!isEqual(pathNodes, itemPath)) {
+          setAppState((prev) => ({
+            ...prev,
+            graph: { ...prev.graph, pathNodes: itemPath },
+          }));
+          trackAction("searchResultClick", generateURL(itemPath));
+        } else {
+          return null;
+        }
       }}
       className={clsx(
         "block hover:text-blue text-left leading-4 my-2 text-sm",
@@ -30,14 +34,14 @@ const ResultItem = ({ item }) => {
       )}
     >
       <div>
-      {itemPathLabels.map((label, index) => (
-        <Fragment key={index}>
-          {label}
-          {itemPathLabels.length !== index + 1 && (
-            <span className="px-2">&gt;</span>
-          )}
-        </Fragment>
-      ))}
+        {itemPathLabels.map((label, index) => (
+          <Fragment key={index}>
+            {label}
+            {itemPathLabels.length !== index + 1 && (
+              <span className="px-2">&gt;</span>
+            )}
+          </Fragment>
+        ))}
       </div>
     </button>
   );
