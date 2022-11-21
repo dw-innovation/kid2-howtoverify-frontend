@@ -48,7 +48,7 @@ const SearchResults = () => {
               </div>
               <div className="pt-2">
                 {isLoading ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-4">
                     <span>Loading</span>
                     <span className="loader block" />
                   </div>
