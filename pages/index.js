@@ -75,11 +75,9 @@ const IndexPage = () => {
   return (
     <>
       <div className="w-screen h-screen relative bg-lightGrey hidden md:block">
-        <Navigation />
-
         <div className="flex flex-row h-full">
           <div className="flex flex-col flex-1">
-            <div className="flex flex-col lg:flex-row items-center p-2">
+            <div className="flex flex-col lg:flex-row items-center p-2 relative">
               <h1
                 className="font-bold text-3xl pb-3 font-georgia text-blue"
                 dangerouslySetInnerHTML={{ __html: t("title") }}
@@ -91,6 +89,9 @@ const IndexPage = () => {
               )}
             </div>
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
+            <div className="w-full relative">
+              <Navigation />
+            </div>
           </div>
           <Panel />
         </div>

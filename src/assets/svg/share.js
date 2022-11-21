@@ -1,10 +1,10 @@
 import React from "react";
 
-const ShareIcon = () => (
+const ShareIcon = ({ width = 26 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="26"
-    height="26"
+    width={width}
+    height={width}
     fill="none"
     viewBox="0 0 26 26"
   >

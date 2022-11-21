@@ -18,7 +18,7 @@ const ShareButton = () => {
         }}
         className="text-blue hover:text-purple^"
       >
-        <ShareIcon />
+        <ShareIcon width={24} />
       </button>
       <PopOver />
     </>
