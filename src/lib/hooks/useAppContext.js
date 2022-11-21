@@ -15,6 +15,7 @@ export const initialState = {
     index: [],
     showResults: false,
     error: "",
+    isLoading: false
   },
 };
 

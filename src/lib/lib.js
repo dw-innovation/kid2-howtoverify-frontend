@@ -118,7 +118,7 @@ export const getLinkLength = (level) =>
 export const handleSearch = async (queryString, category, setAppState) => {
   setAppState((prev) => ({
     ...prev,
-    search: { ...prev.search, showResults: true },
+    search: { ...prev.search, showResults: true, isLoading: true },
   }));
 
   if (category === "default") {
@@ -148,7 +148,7 @@ export const handleSearch = async (queryString, category, setAppState) => {
 
   setAppState((prev) => ({
     ...prev,
-    search: { ...prev.search, results: result.data },
+    search: { ...prev.search, results: result.data, isLoading: false },
   }));
 };
 

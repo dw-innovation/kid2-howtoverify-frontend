@@ -10,8 +10,7 @@ import clsx from "clsx";
 const SearchResults = () => {
   const {
     appState: {
-      search: { queryString, category, results, showResults, error },
-      graph: { pathNodes },
+      search: { queryString, category, results, showResults, isLoading },
     },
     setAppState,
   } = useAppContext();
@@ -48,18 +47,27 @@ const SearchResults = () => {
                 />
               </div>
               <div className="pt-2">
-                {results.map((item, index) => (
-                  <div
-                    key={index}
-                    className={clsx(
-                      results.length > index + 1 &&
-                        "border-b-[1px] border-neutral-200"
-                    )}
-                  >
-                    <ResultItem item={item} />
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <span>Loading</span>
+                    <span className="loader block" />
                   </div>
-                ))}
-                {results.length === 0 && t("noResults")}
+                ) : (
+                  <>
+                    {results.map((item, index) => (
+                      <div
+                        key={index}
+                        className={clsx(
+                          results.length > index + 1 &&
+                            "border-b-[1px] border-neutral-200"
+                        )}
+                      >
+                        <ResultItem item={item} />
+                      </div>
+                    ))}
+                    {results.length === 0 && t("noResults")}
+                  </>
+                )}
               </div>
             </>
           ) : (

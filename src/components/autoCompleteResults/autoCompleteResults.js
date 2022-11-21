@@ -20,6 +20,7 @@ const AutoCompleteResults = () => {
 
   useEffect(() => {
     setItems(filterIndex(index, category));
+    
     if (category !== "default" && queryString !== "") {
       handleSearch(queryString, category, setAppState);
     }
@@ -39,7 +40,7 @@ const AutoCompleteResults = () => {
           }));
           handleSearch(queryString, category, setAppState);
         }}
-        itemToString={(item) => (item ? item.value : "")}
+        itemToString={(item) => (item ? item.value.toLowerCase() : "")}
       >
         {({
           getInputProps,
@@ -58,6 +59,7 @@ const AutoCompleteResults = () => {
                     ...prev,
                     search: { ...prev.search, showResults: false },
                   }));
+
                   setInputString(e.target.value);
                 },
               })}

@@ -81,3 +81,29 @@ details a {
 details a:hover {
   @apply underline;
 }
+
+.loader {
+  @apply ml-8;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ccc;
+  box-shadow: 32px 0 #ccc, -32px 0 #ccc;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #fff2;
+    box-shadow: 32px 0 #fff2, -32px 0 #ccc;
+  }
+  50% {
+    background-color: #ccc;
+    box-shadow: 32px 0 #fff2, -32px 0 #fff2;
+  }
+  100% {
+    background-color: #fff2;
+    box-shadow: 32px 0 #ccc, -32px 0 #fff2;
+  }
+}
