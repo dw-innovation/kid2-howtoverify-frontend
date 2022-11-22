@@ -1,5 +1,7 @@
 {
     "copyright": "© 2022 Deutsche Welle Research & Cooperation",
     "legalLink": "Legal",
-    "privacyLink": "Pricacy"
+    "privacyLink": "Pricacy",
+    "legalText": "# Legal Text \nLorem",
+    "privacyText": "# Pricacy Statement \nLorem"
 }
