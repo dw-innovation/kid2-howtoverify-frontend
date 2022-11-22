@@ -1,6 +1,5 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import React, { Fragment } from "react";
-import FeedbackButton from "../feedbackButton";
 import ShareButton from "../shareButton";
 import TrailItem from "./trailItem";
 
@@ -23,7 +22,6 @@ const Trail = () => {
         ))}
       </div>
       <ShareButton />
-      <FeedbackButton />
     </div>
   );
 };
