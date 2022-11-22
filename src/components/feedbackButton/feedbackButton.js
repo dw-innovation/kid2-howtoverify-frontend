@@ -1,8 +1,9 @@
 import useTranslation from "next-translate/useTranslation";
 import React, { useEffect, useState } from "react";
+import FeedbackIcon from "src/assets/svg/feedback";
 
 const FeedbackButton = () => {
-  // using the state to avoid hydration errors 
+  // using the state to avoid hydration errors
   const [isVisible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -16,10 +17,13 @@ const FeedbackButton = () => {
       {isVisible && (
         <a
           href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
-          dangerouslySetInnerHTML={{ __html: t("sendFeedback") }}
           target="_blank"
+          className="flex items-center gap-1 text-white bg-blue hover:brighter p-2"
           rel="noopener noreferrer"
-        />
+        >
+          <FeedbackIcon />
+          <span>{t("sendFeedback")}</span>
+        </a>
       )}
     </>
   );

@@ -42,7 +42,7 @@ const Accordion = ({ title, children, open = true, className, style = {} }) => {
         onClick={handleToggle}
       >
         <span className="flex-1">{title}</span>
-        <span>{isOpen ? <MinusIcon /> : <PlusIcon />}</span>
+        <span className="hover:brighter">{isOpen ? <MinusIcon /> : <PlusIcon />}</span>
       </summary>
       <span className="py-4 block px-6">{children}</span>
     </details>
