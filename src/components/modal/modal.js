@@ -1,13 +1,15 @@
+import React, { useRef } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
-import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import PlusIcon from "src/assets/svg/plusIcon";
-import { useDetectClickOutside } from "react-detect-click-outside";
 import clsx from "clsx";
+import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 
 const Modal = () => {
   const { t } = useTranslation("footer");
+
+  const ref = useRef(null);
 
   const {
     appState: {
@@ -22,6 +24,8 @@ const Modal = () => {
       modal: { ...prev.modal, isOpen: false },
     }));
 
+  useOnClickOutside(ref, closeModal);
+
   return (
     <>
       <div
@@ -31,7 +35,7 @@ const Modal = () => {
         )}
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        <div className="bg-white shadow-xl w-3/4 h-3/4 p-2 relative">
+        <div className="bg-white shadow-xl w-3/4 h-3/4 p-2 relative" ref={ref}>
           <button
             onClick={closeModal}
             className="absolute right-0 top-0 p-2 text-blue rotate-45"

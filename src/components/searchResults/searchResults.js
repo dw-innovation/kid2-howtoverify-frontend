@@ -2,10 +2,11 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import { removePrefix } from "@/lib/lib";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-import React from "react";
+import React, { useRef } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
 import clsx from "clsx";
+import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 
 const SearchResults = () => {
   const {
@@ -15,12 +16,24 @@ const SearchResults = () => {
     setAppState,
   } = useAppContext();
 
+  const ref = useRef(null);
+
+  useOnClickOutside(ref, () =>
+    setAppState((prev) => ({
+      ...prev,
+      search: { ...prev.search, showResults: false },
+    }))
+  );
+
   const { t } = useTranslation("common");
 
   return (
     <>
       {showResults && queryString !== "" && (
-        <div className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md">
+        <div
+          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md"
+          ref={ref}
+        >
           <button
             onClick={() =>
               setAppState((prev) => ({
