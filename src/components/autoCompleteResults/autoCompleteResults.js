@@ -74,14 +74,18 @@ const AutoCompleteResults = () => {
               className={clsx(
                 "h-full w-full relative p-3 bg-white rounded-r-md",
                 items.filter(
-                  (item) => !inputValue || item.value.includes(inputValue)
+                  (item) =>
+                    !inputValue ||
+                    item.name.toLowerCase().includes(inputValue.toLowerCase())
                 ).length === 0 && "text-red"
               )}
               disabled={category === "default"}
             />
             {isOpen &&
               items.filter(
-                (item) => !inputValue || item.value.includes(inputValue)
+                (item) =>
+                  !inputValue ||
+                  item.name.toLowerCase().includes(inputValue.toLowerCase())
               ).length > 0 && (
                 <ul
                   {...getMenuProps()}
@@ -89,7 +93,11 @@ const AutoCompleteResults = () => {
                 >
                   {items
                     .filter(
-                      (item) => !inputValue || item.value.includes(inputValue)
+                      (item) =>
+                        !inputValue ||
+                        item.name
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase())
                     )
                     .map((item, index) => (
                       <li
