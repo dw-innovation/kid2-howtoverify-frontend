@@ -41,6 +41,12 @@ const AutoCompleteResults = () => {
           handleSearch(queryString, category, setAppState);
         }}
         itemToString={(item) => (item ? item.value.toLowerCase() : "")}
+        onSelect={() =>
+          setAppState((prev) => ({
+            ...prev,
+            search: { ...prev.search, showResults: true },
+          }))
+        }
       >
         {({
           getInputProps,
