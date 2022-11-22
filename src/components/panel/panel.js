@@ -41,26 +41,24 @@ const Panel = () => {
           </div>
         )}
       </button>
-      {isOpen && (
-        <>
-          <div className="relative">
-            <SearchBox />
-            <SearchResults />
-          </div>
-          <div className="flex flex-col flex-1 justify-between gap-2 overflow-scroll">
-            <NodeInfo
-              style={{
-                backgroundColor: Color(
-                  pathNodes?.length > 0
-                    ? getNodeColor(pathNodes[0], "value")
-                    : "#000"
-                ).alpha(0.06),
-              }}
-            />
-            <About className="bg-white" />
-          </div>
-        </>
-      )}
+      <div className={clsx(isOpen ? "flex flex-col h-full gap-2" : "hidden")}>
+        <div className="relative ">
+          <SearchBox />
+          <SearchResults />
+        </div>
+        <div className="flex flex-col flex-1 justify-between gap-2 overflow-scroll">
+          <NodeInfo
+            style={{
+              backgroundColor: Color(
+                pathNodes?.length > 0
+                  ? getNodeColor(pathNodes[0], "value")
+                  : "#000"
+              ).alpha(0.06),
+            }}
+          />
+          <About className="bg-white" />
+        </div>
+      </div>
     </div>
   );
 };
