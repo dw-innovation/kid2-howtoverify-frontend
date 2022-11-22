@@ -83,7 +83,7 @@ const AutoCompleteResults = () => {
               ).length > 0 && (
                 <ul
                   {...getMenuProps()}
-                  className="absolute mt-2 ml-0 p-2 shadow-xl bg-white max-h-44 overflow-scroll w-full"
+                  className="absolute mt-1 ml-0 p-2 shadow-xl bg-white max-h-44 overflow-scroll w-full"
                 >
                   {items
                     .filter(
