@@ -40,7 +40,9 @@ const NodeInfo = ({ className, style }) => {
           ))}
         </Accordion>
       ) : (
-        <Accordion title={t("introTitle")}>{t("introText")}</Accordion>
+        <Accordion title={t("introTitle")} style={{ backgroundColor: "#fff" }} isBlack>
+          {t("introText")}
+        </Accordion>
       )}
     </>
   );
