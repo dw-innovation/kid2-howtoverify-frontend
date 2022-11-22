@@ -31,6 +31,10 @@ const MediaTypeSelector = () => {
                     ...prev.graph,
                     pathNodes: [id],
                   },
+                  search: {
+                    ...prev.search,
+                    queryString: ""
+                  }
                 }));
                 trackAction("mediaTypeSelectorClick", generateURL([id]));
               }}

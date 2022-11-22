@@ -2,7 +2,7 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import { removePrefix } from "@/lib/lib";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-import React, { Fragment } from "react";
+import React from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
 import clsx from "clsx";
@@ -19,7 +19,7 @@ const SearchResults = () => {
 
   return (
     <>
-      {showResults && (
+      {showResults && queryString !== "" && (
         <div className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md">
           <button
             onClick={() =>
