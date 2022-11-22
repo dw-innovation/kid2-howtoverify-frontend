@@ -23,7 +23,7 @@ const PopOver = () => {
         4000
       );
     } else {
-      setTimeout(()=>setDisplayPopOver(false), 1000)
+      setTimeout(()=>setDisplayPopOver(false), 100000)
     }
   }, [showPopOver]);
 

@@ -19,9 +19,11 @@ const NodeInfo = ({ className, style }) => {
   const [lastNode, setLastNode] = useState(undefined);
 
   useEffect(() => {
-    nodes.filter(({ id }) => pathNodes.at(-1) === id)[0] &&
-      setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]);
-  }, [nodes]);
+    console.log("pathNodes", pathNodes);
+    nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]
+      ? setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0])
+      : setLastNode(undefined);
+  }, [nodes, pathNodes]);
 
   return (
     <>
