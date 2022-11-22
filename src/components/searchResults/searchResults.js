@@ -20,7 +20,7 @@ const SearchResults = () => {
   return (
     <>
       {showResults && (
-        <div className="absolute w-full p-2 mt-2 shadow-xl bg-white rounded-b-md">
+        <div className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md">
           <button
             onClick={() =>
               setAppState((prev) => ({
@@ -28,21 +28,21 @@ const SearchResults = () => {
                 search: { ...prev.search, showResults: false },
               }))
             }
-            className="absolute right-0 top-0 aspect-square text-blue p-2 rotate-45"
+            className="absolute right-0 top-0 aspect-square text-white p-2 rotate-45"
           >
             <PlusIcon />
           </button>
           {category !== "default" ? (
             <>
-              <div className="border-b-2 border-neutral-200 pb-2 pr-4">
+              <div className="pb-2 pr-4 bg-blue text-white -mx-2 -mt-2 p-2">
                 <Trans
                   i18nKey="common:searchResultsTitle"
                   components={{
                     b: <b />,
                   }}
                   values={{
-                    queryString: queryString,
                     category: removePrefix(category),
+                    queryString: queryString,
                   }}
                 />
               </div>
