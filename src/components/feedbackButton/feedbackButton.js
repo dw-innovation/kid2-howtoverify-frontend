@@ -18,7 +18,7 @@ const FeedbackButton = () => {
         <a
           href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
           target="_blank"
-          className="flex items-center gap-1 text-white bg-blue hover:brighter p-2"
+          className="flex items-center gap-1 text-white bg-blue hover:brighter p-2 font-noto"
           rel="noopener noreferrer"
         >
           <FeedbackIcon />

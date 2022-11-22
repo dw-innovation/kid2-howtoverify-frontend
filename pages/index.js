@@ -10,6 +10,7 @@ import Panel from "@/components/panel";
 import MobileScreen from "@/components/mobileScreen";
 import Navigation from "@/components/navigation";
 import { ROOTNODES } from "@/lib/const";
+import Modal from "@/components/modal";
 
 const IndexPage = () => {
   const {
@@ -102,6 +103,7 @@ const IndexPage = () => {
           <Panel />
         </div>
       </div>
+      <Modal />
       <MobileScreen />
     </>
   );

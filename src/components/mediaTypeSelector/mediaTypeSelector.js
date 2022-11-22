@@ -36,7 +36,7 @@ const MediaTypeSelector = () => {
               }}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                "rounded-full m-2 text-white font-bold hover:brighter",
+                "rounded-full m-2 text-white font-bold hover:brighter font-noto",
                 pathNodes?.length === 0
                   ? `w-[8rem] h-[8rem] text-2xl`
                   : `w-[5rem] h-[5rem] text-xl`

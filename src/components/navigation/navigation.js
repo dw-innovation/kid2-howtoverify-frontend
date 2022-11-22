@@ -14,7 +14,7 @@ const Navigation = () => {
       <div className="flex-1 flex flex-row gap-2 relative items-start">
         {pathNodes.length > 0 && (
           <>
-            <span className="font-bold">Trail: </span>
+            <span className="font-bold font-noto">Trail: </span>
             <Trail />
           </>
         )}

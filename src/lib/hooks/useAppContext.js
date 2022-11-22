@@ -8,6 +8,10 @@ export const initialState = {
     dimensions: { width: 100, height: 100 },
   },
   showPopOver: false,
+  modal: {
+    isOpen: false,
+    content: "",
+  },
   search: {
     queryString: "",
     category: "default",
@@ -15,7 +19,7 @@ export const initialState = {
     index: [],
     showResults: false,
     error: "",
-    isLoading: false
+    isLoading: false,
   },
 };
 

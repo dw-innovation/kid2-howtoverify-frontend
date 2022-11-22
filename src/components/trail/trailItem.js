@@ -38,7 +38,8 @@ const TrailItem = ({ id: nodeId, position }) => {
       className={clsx(
         position === pathNodes.length - 1
           ? "font-bold"
-          : "text-[#737373] hover:text-blue"
+          : "text-[#737373] hover:text-blue",
+        "font-noto"
       )}
     >
       {nodes.filter(({ id }) => id === nodeId)[0]?.name}

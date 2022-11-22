@@ -16,7 +16,7 @@ const Trail = () => {
           <Fragment key={index}>
             <TrailItem id={node} position={index} />
             {index + 1 < pathNodes.length && (
-              <span className="font-bold px-2">–</span>
+              <span className="font-bold px-2 font-noto">–</span>
             )}
           </Fragment>
         ))}
