@@ -1,14 +1,17 @@
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
+import Div100vh from "react-div-100vh";
 
 const MobileScreen = () => {
   const { t } = useTranslation("common");
   return (
-    <div className="md:hidden w-screen h-screen flex items-center justify-center flex-col p-3">
-      <h1 className="font-bold font-georgia text-blue text-2xl mb-2">{t("mobileTitle")}</h1>
+    <Div100vh className="md:hidden w-screen flex items-center justify-center flex-col p-3">
+      <h1 className="font-bold font-georgia text-blue text-2xl mb-2">
+        {t("mobileTitle")}
+      </h1>
       <span className="text-center">{t("mobileDescription")}</span>
       <span className="text-center">{t("mobileAlert")}</span>
-    </div>
+    </Div100vh>
   );
 };
 
