@@ -56,11 +56,8 @@ const updateNodes = (_newNodes, pathNodes) => {
       currentNode.y = pathNodes.indexOf(currentId) * 100;
     }
     if (clickedX && clickedY) {
-      console.log("currentID", currentId);
       currentNode.x = clickedX;
       currentNode.y = clickedY;
-
-      console.log(clickedX, clickedY);
     }
     if (toAddIds.includes(currentId)) {
       nodes.push(currentNode);
@@ -121,7 +118,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   const localLinks = data.links;
   const localNodes = nodes;
 
-  console.log("rendering d3 with:", "nodes", localNodes, "links", localLinks);
+  // console.log("rendering d3 with:", "nodes", localNodes, "links", localLinks);
 
   const svgRef = d3.select(ref.current);
 

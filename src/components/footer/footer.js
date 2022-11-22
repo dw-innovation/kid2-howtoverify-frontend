@@ -8,7 +8,6 @@ const Footer = () => {
 
   const handleClick = (e, target) => {
     e.preventDefault();
-    console.log("hallo")
     setAppState((prev) => ({
       ...prev,
       modal: { isOpen: true, content: target },
