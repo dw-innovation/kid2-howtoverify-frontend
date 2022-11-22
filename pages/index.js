@@ -17,6 +17,7 @@ const IndexPage = () => {
     setAppState,
     appState: {
       graph: { pathNodes },
+      modal: { isOpen },
     },
   } = useAppContext();
 
@@ -75,7 +76,10 @@ const IndexPage = () => {
 
   return (
     <>
-      <div className="w-screen h-screen relative bg-lightGrey hidden md:block">
+      <div
+        className="w-screen h-screen relative bg-lightGrey hidden md:block"
+        style={{ filter: isOpen ? "blur(4px)" : "" }}
+      >
         <div className="flex flex-row h-full">
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 relative">
