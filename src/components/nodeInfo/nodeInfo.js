@@ -4,6 +4,7 @@ import NodeInfoItem from "./nodeInfoItem";
 import { SAFELIST } from "@/lib/const";
 import Accordion from "../accordion";
 import useTranslation from "next-translate/useTranslation";
+import ReactMarkdown from "react-markdown";
 
 const NodeInfo = ({ className, style }) => {
   const {
@@ -40,8 +41,12 @@ const NodeInfo = ({ className, style }) => {
           ))}
         </Accordion>
       ) : (
-        <Accordion title={t("introTitle")} style={{ backgroundColor: "#fff" }} isBlack>
-          {t("introText")}
+        <Accordion
+          title={t("introTitle")}
+          style={{ backgroundColor: "#fff" }}
+          isBlack
+        >
+          <ReactMarkdown children={t("introText")} />
         </Accordion>
       )}
     </>
