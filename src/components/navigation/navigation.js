@@ -11,13 +11,15 @@ const Navigation = () => {
   } = useAppContext();
   return (
     <div className="absolute bottom-0 left-0 z-10 w-full p-2 flex items-center">
-      {pathNodes.length > 0 && (
-        <div className="flex-1 flex flex-row gap-2 relative items-start">
-          <span className="font-bold">Trail: </span>
-          <Trail />
-        </div>
-      )}
-      <FeedbackButton/>
+      <div className="flex-1 flex flex-row gap-2 relative items-start">
+        {pathNodes.length > 0 && (
+          <>
+            <span className="font-bold">Trail: </span>
+            <Trail />
+          </>
+        )}
+      </div>
+      <FeedbackButton />
     </div>
   );
 };
