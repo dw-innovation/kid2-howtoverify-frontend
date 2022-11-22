@@ -7,7 +7,12 @@ const About = ({ className }) => {
   const { t } = useTranslation("common");
 
   return (
-    <Accordion title="About" open={false} className={className}>
+    <Accordion
+      title="About"
+      open={false}
+      isBlack
+      style={{ backgroundColor: "#fff" }}
+    >
       <ReactMarkdown children={t("aboutText")} />
     </Accordion>
   );

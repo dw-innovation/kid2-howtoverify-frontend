@@ -5,7 +5,7 @@ import PlusIcon from "src/assets/svg/plusIcon";
 import { getNodeColor } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 
-const Accordion = ({ title, children, open = true, className, style = {} }) => {
+const Accordion = ({ title, children, open = true, isBlack, style = {} }) => {
   const [isOpen, setIsOpen] = useState(open);
 
   const {
@@ -27,7 +27,7 @@ const Accordion = ({ title, children, open = true, className, style = {} }) => {
 
   return (
     <details
-      className={clsx("w-full font-montserrat", className)}
+      className="w-full font-montserrat"
       ref={ref}
       open={isOpen}
       style={style}
@@ -35,14 +35,18 @@ const Accordion = ({ title, children, open = true, className, style = {} }) => {
       <summary
         className="font-bold text-xl cursor-pointer flex flex-row items-center px-6 py-4"
         style={{
-          color: getNodeColor(pathNodes[0], "value"),
+          color: !isBlack ? getNodeColor(pathNodes[0], "value") : "#000",
           borderLeft: "3px solid",
-          borderLeftColor: getNodeColor(pathNodes[0], "value"),
+          borderLeftColor: !isBlack
+            ? getNodeColor(pathNodes[0], "value")
+            : "#000",
         }}
         onClick={handleToggle}
       >
         <span className="flex-1">{title}</span>
-        <span className="hover:brighter">{isOpen ? <MinusIcon /> : <PlusIcon />}</span>
+        <span className="text-blue hover:brighter">
+          {isOpen ? <MinusIcon /> : <PlusIcon />}
+        </span>
       </summary>
       <span className="py-4 block px-6">{children}</span>
     </details>
