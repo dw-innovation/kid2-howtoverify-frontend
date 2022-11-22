@@ -20,7 +20,7 @@ const AutoCompleteResults = () => {
 
   useEffect(() => {
     setItems(filterIndex(index, category));
-    
+
     if (category !== "default" && queryString !== "") {
       handleSearch(queryString, category, setAppState);
     }
@@ -50,6 +50,7 @@ const AutoCompleteResults = () => {
           inputValue,
           highlightedIndex,
           selectedItem,
+          setState,
         }) => (
           <div className="flex-1 relative">
             <input
@@ -63,6 +64,7 @@ const AutoCompleteResults = () => {
                   setInputString(e.target.value);
                 },
               })}
+              onFocus={() => setState({ isOpen: true })}
               placeholder={
                 category === "default"
                   ? t("selectCategory")
