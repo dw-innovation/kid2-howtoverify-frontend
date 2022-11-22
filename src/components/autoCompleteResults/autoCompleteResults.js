@@ -47,7 +47,6 @@ const AutoCompleteResults = () => {
           getItemProps,
           getMenuProps,
           isOpen,
-          inputValue,
           highlightedIndex,
           selectedItem,
           setState,
@@ -75,8 +74,8 @@ const AutoCompleteResults = () => {
                 "h-full w-full relative p-3 bg-white rounded-r-md",
                 items.filter(
                   (item) =>
-                    !inputValue ||
-                    item.name.toLowerCase().includes(inputValue.toLowerCase())
+                    !inputString ||
+                    item.name.toLowerCase().includes(inputString.toLowerCase())
                 ).length === 0 && "text-red"
               )}
               disabled={category === "default"}
@@ -84,8 +83,8 @@ const AutoCompleteResults = () => {
             {isOpen &&
               items.filter(
                 (item) =>
-                  !inputValue ||
-                  item.name.toLowerCase().includes(inputValue.toLowerCase())
+                  !inputString ||
+                  item.name.toLowerCase().includes(inputString.toLowerCase())
               ).length > 0 && (
                 <ul
                   {...getMenuProps()}
@@ -94,10 +93,10 @@ const AutoCompleteResults = () => {
                   {items
                     .filter(
                       (item) =>
-                        !inputValue ||
+                        !inputString ||
                         item.name
                           .toLowerCase()
-                          .includes(inputValue.toLowerCase())
+                          .includes(inputString.toLowerCase())
                     )
                     .map((item, index) => (
                       <li
