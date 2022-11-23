@@ -47,3 +47,22 @@ export const SAFELIST = [
 ];
 
 export const LINKLENGTHS = [50, 40, 30, 15];
+
+export const LINKLENGTHFACTORS = [
+  { minWidth: 0, factor: 0.8 },
+  { minWidth: 640, factor: 0.9 },
+  { minWidth: 768, factor: 1 },
+  { minWidth: 1024, factor: 1.2 },
+  { minWidth: 1280, factor: 1.5 },
+  { minWidth: 1536, factor: 1.8 },
+];
+
+export const RADIUSFACTORS = [
+  { minWidth: 0, factor: 0.8 },
+  { minWidth: 640, factor: 0.9 },
+  { minWidth: 768, factor: 1 },
+  { minWidth: 1024, factor: 1.1 },
+  { minWidth: 1280, factor: 1.2 },
+  { minWidth: 1536, factor: 1.4 },
+];
+

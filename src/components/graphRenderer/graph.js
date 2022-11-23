@@ -165,7 +165,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   // render nodes
   var circle = newNode
     .append("circle")
-    .attr("r", ({ type }) => getNodeRadius(type))
+    .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
     .attr("fill", ({ id, level }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
         pathNodes.includes(id) ||
@@ -236,10 +236,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
         .id((d) => {
           return d.id;
         })
-        .distance(
-          (d) =>
-            getLinkLength(d.source.level !== undefined ? d.source.level : 0) * 1
-        )
+        .distance((d) => getLinkLength(d.source.level, dimensions.width))
         .strength(1)
     )
     .force("charge", d3.forceManyBody().strength(-800))

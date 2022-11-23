@@ -1,4 +1,11 @@
-import { NODETYPESTYLES, ROOTNODES, PREFIX, LINKLENGTHS } from "@/lib/const";
+import {
+  NODETYPESTYLES,
+  ROOTNODES,
+  PREFIX,
+  LINKLENGTHS,
+  LINKLENGTHFACTORS,
+  RADIUSFACTORS,
+} from "@/lib/const";
 import axios from "axios";
 
 export const addPrefix = (string) => `${PREFIX}${string}`;
@@ -11,7 +18,7 @@ export const getNodeColor = (rootNode, property) => {
 
 export const getNodeRadius = (nodeType) =>
   NODETYPESTYLES.filter((style) => style.nodeType === removePrefix(nodeType))[0]
-    ?.properties["radius"];
+    ?.properties["radius"] * getFactor("RADIUS");
 
 export const addNodeToPath = (nodeID, level, pathNodes) => {
   if (pathNodes.length <= level) {
@@ -113,7 +120,8 @@ export const generateURL = (pathNodes) =>
     .join("")}`;
 
 export const getLinkLength = (level) =>
-  LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1);
+  (LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1)) *
+  getFactor("LINKLENGTH");
 
 export const handleSearch = async (queryString, category, setAppState) => {
   setAppState((prev) => ({
@@ -171,3 +179,16 @@ export const filterIndex = (index, category) =>
   index
     .filter(({ categories }) => categories.includes(category))
     .map((el) => ({ ...el, value: el.name }));
+
+const getFactor = (type) => {
+  switch (type) {
+    case "LINKLENGTH":
+      return LINKLENGTHFACTORS.filter(
+        (item) => item.minWidth < window.innerWidth
+      ).at(-1).factor;
+    default:
+      return RADIUSFACTORS.filter(
+        (item) => item.minWidth < window.innerWidth
+      ).at(-1).factor;
+  }
+};
