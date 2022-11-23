@@ -119,9 +119,10 @@ export const generateURL = (pathNodes) =>
     .map((node) => `/${removePrefix(node)}`)
     .join("")}`;
 
-export const getLinkLength = (level) =>
+export const getLinkLength = (level, pathLength) =>
   (LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1)) *
-  getFactor("LINKLENGTH");
+  getFactor("LINKLENGTH") *
+  (1 - 1 / (10 - pathLength));
 
 export const handleSearch = async (queryString, category, setAppState) => {
   setAppState((prev) => ({

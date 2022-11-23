@@ -236,7 +236,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
         .id((d) => {
           return d.id;
         })
-        .distance((d) => getLinkLength(d.source.level, dimensions.width))
+        .distance((d) => getLinkLength(d.source.level, dimensions.width, pathNodes.length))
         .strength(1)
     )
     .force("charge", d3.forceManyBody().strength(-800))
