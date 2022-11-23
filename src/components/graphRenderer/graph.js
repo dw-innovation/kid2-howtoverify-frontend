@@ -99,7 +99,7 @@ const handleNodeClick = (
     search: {
       ...prev.search,
       showResults: false,
-      queryString: ""
+      queryString: "",
     },
   }));
 
@@ -169,8 +169,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
     .attr("fill", ({ id, level }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id) ||
-          level === maxLevel({ nodes: localNodes, links: localLinks })
+        pathNodes.includes(id) 
           ? 0
           : 0.7
       );
@@ -183,7 +182,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   var text = newNode
     .append("text")
     .text(({ name }) => name)
-    .attr("x", 2)
+    .attr("x", 14)
     .attr("y", 5);
 
   // add rectangles with respective width
@@ -193,11 +192,18 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
       svgRef.selectAll("text").each(function (d) {
         d.bbox = this.getBBox();
       });
-      return e.bbox.width + 2;
+      return e.bbox.width + 8;
     })
-    .attr("height", 16)
-    .attr("fill", "white")
-    .attr("x", 0)
+    .attr("height", 20)
+    .attr("fill", ({ id, level }) => {
+      const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
+        pathNodes.includes(id)
+          ? 0
+          : 0.7
+      );
+      return color;
+    })
+    .attr("x", 10)
     .attr("y", -8)
     .attr("rx", 2);
 
@@ -207,8 +213,9 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   newNode
     .append("text")
     .text(({ name }) => name)
-    .attr("x", 2)
-    .attr("y", 5)
+    .attr("x", 14)
+    .attr("y", 6)
+    .attr("fill", "#fff")
     .attr("class", "cursor-pointer")
     .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
 
@@ -237,7 +244,9 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
         .id((d) => {
           return d.id;
         })
-        .distance((d) => getLinkLength(d.source.level, dimensions.width, pathNodes.length))
+        .distance((d) =>
+          getLinkLength(d.source.level, dimensions.width, pathNodes.length)
+        )
         .strength(1)
     )
     .force("charge", d3.forceManyBody().strength(-800))
