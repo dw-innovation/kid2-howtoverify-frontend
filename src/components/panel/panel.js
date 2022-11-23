@@ -42,10 +42,6 @@ const Panel = () => {
         )}
       </button>
       <div className={clsx(isOpen ? "flex flex-col h-full gap-2" : "hidden")}>
-        <div className="relative ">
-          <SearchBox />
-          <SearchResults />
-        </div>
         <div className="flex flex-col flex-1 justify-between gap-2 overflow-y-scroll overflow-x-hidden">
           <NodeInfo
             style={{

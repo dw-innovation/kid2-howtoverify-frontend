@@ -12,6 +12,8 @@ import Navigation from "@/components/navigation";
 import { ROOTNODES } from "@/lib/const";
 import Modal from "@/components/modal";
 import Footer from "@/components/footer";
+import SearchBox from "@/components/searchBox";
+import SearchResults from "@/components/searchResults";
 
 const IndexPage = () => {
   const {
@@ -94,6 +96,10 @@ const IndexPage = () => {
                 <div className="h-[5rem] m-2" />
               )}
             </div>
+            <div className="relative ml-8 max-w-md">
+              <SearchBox />
+              <SearchResults />
+            </div>
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
             <div className="w-full relative pl-8 p-2 bg-lightGrey">
               <Navigation />
@@ -101,7 +107,7 @@ const IndexPage = () => {
           </div>
           <Panel />
         </div>
-        <Footer/>
+        <Footer />
       </div>
       <Modal />
       <MobileScreen />

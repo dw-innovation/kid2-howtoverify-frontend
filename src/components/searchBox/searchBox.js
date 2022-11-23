@@ -31,28 +31,6 @@ const SearchBox = () => {
       <div className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center">
         <LensIcon />
       </div>
-      <div className="bg-white px-2">
-        <select
-          name="category"
-          className="bg-white h-full"
-          value={category}
-          onChange={(e) =>
-            setAppState((prev) => ({
-              ...prev,
-              search: { ...prev.search, category: e.target.value, error: "" },
-            }))
-          }
-        >
-          <option value="default" disabled>
-            {t("searchCategory")}
-          </option>
-          {ROOTNODES.map((node, index) => (
-            <option value={node.id} key={index}>
-              {node.label}
-            </option>
-          ))}
-        </select>
-      </div>
       <AutoCompleteResults />
     </form>
   );
