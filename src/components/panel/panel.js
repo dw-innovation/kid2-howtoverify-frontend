@@ -47,7 +47,7 @@ const Panel = () => {
           <SearchBox />
           <SearchResults />
         </div>
-        <div className="flex flex-col flex-1 justify-between gap-2 overflow-scroll">
+        <div className="flex flex-col flex-1 justify-between gap-2 overflow-y-scroll overflow-x-hidden">
           <NodeInfo
             style={{
               backgroundColor: Color(
