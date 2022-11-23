@@ -12,7 +12,7 @@ const Navigation = () => {
   return (
     <div className="flex">
       <div className="flex-1 flex flex-row gap-2 relative items-center">
-        {pathNodes.length > 0 && <Trail />}
+        <Trail />
       </div>
       <FeedbackButton />
     </div>

@@ -1,6 +1,6 @@
 import useAppContext from "@/lib/hooks/useAppContext";
 import React from "react";
-import { generateURL, removePrefix, trackAction } from "@/lib/lib";
+import { generateURL, trackAction } from "@/lib/lib";
 import clsx from "clsx";
 
 const TrailItem = ({ id: nodeId, position }) => {
@@ -37,7 +37,7 @@ const TrailItem = ({ id: nodeId, position }) => {
       onClick={() => handleClick()}
       className={clsx(
         position === pathNodes.length - 1
-          ? "font-bold"
+          ? "font-bold cursor-default"
           : "text-[#737373] hover:text-blue",
         "font-noto"
       )}

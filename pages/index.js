@@ -85,20 +85,9 @@ const IndexPage = () => {
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
               <h1
-                className="font-bold text-3xl pb-3 font-georgia text-blue cursor-pointer"
+                className="font-bold text-3xl pb-3 font-georgia text-blue"
                 dangerouslySetInnerHTML={{ __html: t("title") }}
-                onClick={() =>
-                  setAppState((prev) => ({
-                    ...prev,
-                    graph: { ...prev.graph, pathNodes: [] },
-                  }))
-                }
-                data-tip
-                data-for="happyFace"
               />
-              <ReactTooltip id="happyFace" type="info">
-                <span>Home</span>
-              </ReactTooltip>
               {pathNodes.length !== 0 ? (
                 <MediaTypeSelector />
               ) : (
