@@ -8,7 +8,6 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import Color from "color";
 import SearchResults from "../searchResults";
 import ArrowRight from "src/assets/svg/arrow";
-import Footer from "../footer";
 
 const Panel = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -59,7 +58,6 @@ const Panel = () => {
           />
           <About className="bg-white" />
         </div>
-        <Footer />
       </div>
     </div>
   );
