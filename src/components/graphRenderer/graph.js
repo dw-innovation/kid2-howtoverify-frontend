@@ -99,6 +99,7 @@ const handleNodeClick = (
     search: {
       ...prev.search,
       showResults: false,
+      queryString: ""
     },
   }));
 
