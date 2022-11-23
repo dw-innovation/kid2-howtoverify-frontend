@@ -108,3 +108,9 @@ details a:hover {
     box-shadow: 32px 0 #ccc, -32px 0 #fff2;
   }
 }
+
+.nodeInfo {
+  p {
+    @apply pb-2;
+  }
+}

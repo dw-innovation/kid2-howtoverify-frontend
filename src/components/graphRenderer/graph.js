@@ -167,11 +167,9 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   var circle = newNode
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
-    .attr("fill", ({ id, level }) => {
+    .attr("fill", ({ id }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id) 
-          ? 0
-          : 0.7
+        pathNodes.includes(id) ? 0 : 0.6
       );
       return color;
     })
@@ -197,9 +195,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .attr("height", 20)
     .attr("fill", ({ id, level }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id)
-          ? 0
-          : 0.7
+        pathNodes.includes(id) ? 0 : 0.6
       );
       return color;
     })
@@ -215,7 +211,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .text(({ name }) => name)
     .attr("x", 14)
     .attr("y", 6)
-    .attr("fill", "#fff")
+    .attr("fill", pathNodes[0] === "http://dw.com/Audio" ? "#000" : "#fff")
     .attr("class", "cursor-pointer")
     .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
 

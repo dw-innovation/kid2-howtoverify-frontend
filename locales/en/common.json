@@ -17,7 +17,7 @@
     "searchBoxPlaceholder": "Search",
     "searchCategory": "Category",
     "introTitle": "What is this all about?",
-    "introText": "Learn about verification workflows and tools by exploring this website. Start with the type of digital media you want to verify and work your way down to the tools that can help you.\nWe have gathered our experience and insights in a knowledge graph to share with you. Sources for this knowledge graph are; Julia Bayer, First Draft, Bellingcat, The Verification Handbook, OSINT community.\nIf you also have valuable verification workflows and tools to share or miss your favorite tool then please let us know via the feedback form.\nThis website has been created by [DW Research & Cooperation](https://innovation.dw.com/) and is co-funded by the German BKM under the KID2 Project, XXX funding scheme.",
+    "introText": "Learn about verification workflows and tools by exploring this website.\n\nStart with the type of digital media you want to verify and work your way down to the tools that can help you.\nWe have gathered our experience and insights in a knowledge graph to share with you.\n\nSources for this knowledge graph are; Julia Bayer, First Draft, Bellingcat, The Verification Handbook, OSINT community.\n\nIf you also have valuable verification workflows and tools to share or miss your favorite tool then please let us know via the feedback form.\nThis website has been created by [DW Research & Cooperation](https://innovation.dw.com/) and is co-funded by the German BKM under the KID2 Project, XXX funding scheme.",
     "selectCategory": "Please select a category first",
     "searchStartTyping": "Start typing",
     "searchResultsTitle": "Search Results in <b>{{category}}</b> for <b>\"{{queryString}}\"</b>:",
