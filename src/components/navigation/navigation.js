@@ -12,12 +12,7 @@ const Navigation = () => {
   return (
     <div className="absolute bottom-0 left-0 z-10 w-full p-2 flex items-center">
       <div className="flex-1 flex flex-row gap-2 relative items-start">
-        {pathNodes.length > 0 && (
-          <>
-            <span className="font-bold font-noto">Trail: </span>
-            <Trail />
-          </>
-        )}
+        {pathNodes.length > 0 && <Trail />}
       </div>
       <FeedbackButton />
     </div>

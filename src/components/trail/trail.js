@@ -10,18 +10,19 @@ const Trail = () => {
     },
   } = useAppContext();
   return (
-    <div className="flex gap-2">
-      <div>
-        {pathNodes.map((node, index) => (
-          <Fragment key={index}>
-            <TrailItem id={node} position={index} />
-            {index + 1 < pathNodes.length && (
-              <span className="font-bold px-2 font-noto">–</span>
-            )}
-          </Fragment>
-        ))}
+    <div className="flex items-center">
+      <div className="font-noto font-bold pr-2">Trail:</div>
+      {pathNodes.map((node, index) => (
+        <Fragment key={index}>
+          <TrailItem id={node} position={index} />
+          {index + 1 < pathNodes.length && (
+            <span className="font-bold px-2 font-noto">–</span>
+          )}
+        </Fragment>
+      ))}
+      <div className="pl-2 flex items-center">
+        <ShareButton />
       </div>
-      <ShareButton />
     </div>
   );
 };
