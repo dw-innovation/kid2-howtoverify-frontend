@@ -11,7 +11,7 @@ import MobileScreen from "@/components/mobileScreen";
 import Navigation from "@/components/navigation";
 import { ROOTNODES } from "@/lib/const";
 import Modal from "@/components/modal";
-import ReactTooltip from "react-tooltip";
+import Footer from "@/components/footer";
 
 const IndexPage = () => {
   const {
@@ -78,10 +78,10 @@ const IndexPage = () => {
   return (
     <>
       <div
-        className="w-screen h-screen relative bg-lightGrey hidden md:block"
+        className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
         style={{ filter: isOpen ? "blur(4px)" : "" }}
       >
-        <div className="flex flex-row h-full">
+        <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
               <h1
@@ -101,6 +101,7 @@ const IndexPage = () => {
           </div>
           <Panel />
         </div>
+        <Footer/>
       </div>
       <Modal />
       <MobileScreen />

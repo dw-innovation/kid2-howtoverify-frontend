@@ -14,7 +14,7 @@ const Footer = () => {
     }));
   };
   return (
-    <div className="font-noto text-xs flex gap-3">
+    <div className="font-noto text-xs flex gap-3 justify-center py-1 border-t-2">
       <span dangerouslySetInnerHTML={{ __html: t("copyright") }} />
       <a
         dangerouslySetInnerHTML={{ __html: t("legalLink") }}
@@ -25,6 +25,13 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: t("privacyLink") }}
         className="text-blue hover:brighter cursor-pointer"
         onClick={(e) => handleClick(e, "privacy")}
+      />
+      <a
+        dangerouslySetInnerHTML={{ __html: t("sendFeedback") }}
+        className="text-blue hover:brighter cursor-pointer"
+        href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
       />
     </div>
   );
