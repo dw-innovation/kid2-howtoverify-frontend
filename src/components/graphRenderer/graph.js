@@ -171,7 +171,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
         pathNodes.includes(id) ||
           level === maxLevel({ nodes: localNodes, links: localLinks })
           ? 0
-          : 0.5
+          : 0.7
       );
       return color;
     })
