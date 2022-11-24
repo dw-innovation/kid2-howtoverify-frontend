@@ -86,10 +86,16 @@ const IndexPage = () => {
         <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
-              <h1
-                className="font-bold text-3xl pb-3 font-georgia text-blue"
-                dangerouslySetInnerHTML={{ __html: t("title") }}
-              />
+              <div>
+                <h1
+                  className="font-bold text-3xl pb-3 font-georgia text-blue"
+                  dangerouslySetInnerHTML={{ __html: t("title") }}
+                />
+                <h2
+                  className="font-noto"
+                  dangerouslySetInnerHTML={{ __html: t("subtitle") }}
+                />
+              </div>
               {pathNodes.length !== 0 ? (
                 <MediaTypeSelector />
               ) : (
