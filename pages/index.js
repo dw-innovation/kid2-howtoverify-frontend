@@ -67,7 +67,7 @@ const IndexPage = () => {
         },
       }));
     }
-    
+
     typeof window !== "undefined" &&
       window.history.pushState(
         {},
@@ -101,9 +101,11 @@ const IndexPage = () => {
                 <div className="h-[5rem] m-2" />
               )}
             </div>
-            <div className="relative ml-8 max-w-md">
-              <SearchBox />
-              <SearchResults />
+            <div className="relative">
+              <div className="absolute ml-8 max-w-md">
+                <SearchBox />
+                <SearchResults />
+              </div>
             </div>
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
             <div className="w-full relative pl-8 p-2 bg-lightGrey">
