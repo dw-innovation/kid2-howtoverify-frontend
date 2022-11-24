@@ -70,11 +70,7 @@ const AutoCompleteResults = () => {
                 },
               })}
               onFocus={() => setState({ isOpen: true })}
-              placeholder={
-                category === "default"
-                  ? t("selectCategory")
-                  : t("searchStartTyping")
-              }
+              placeholder={t("searchStartTyping")}
               value={inputString}
               className={clsx(
                 "h-full w-full relative p-3 bg-white rounded-r-md",
@@ -84,7 +80,9 @@ const AutoCompleteResults = () => {
                     item.name.toLowerCase().includes(inputString.toLowerCase())
                 ).length === 0 && "text-red"
               )}
-              disabled={category === "default"}
+              style={{
+                boxShadow: "inset 0 0 0 2px #23A6F0",
+              }}
             />
             {isOpen &&
               items.filter(

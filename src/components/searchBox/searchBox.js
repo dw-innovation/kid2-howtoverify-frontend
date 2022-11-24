@@ -1,14 +1,10 @@
-import { ROOTNODES } from "@/lib/const";
 import useAppContext from "@/lib/hooks/useAppContext";
-import useTranslation from "next-translate/useTranslation";
 import React, { useEffect } from "react";
 import LensIcon from "src/assets/svg/lens";
 import { getIndex, handleSearch } from "@/lib/lib";
 import AutoCompleteResults from "../autoCompleteResults";
 
 const SearchBox = () => {
-  const { t } = useTranslation("common");
-
   const {
     setAppState,
     appState: {
@@ -22,7 +18,7 @@ const SearchBox = () => {
 
   return (
     <form
-      className="flex flex-row gap-1 font-montserrat"
+      className="flex flex-row gap-1 font-montserrat mt-2"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch(queryString, category, setAppState);

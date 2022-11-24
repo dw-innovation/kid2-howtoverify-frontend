@@ -17,6 +17,11 @@ const Footer = () => {
     <div className="font-noto text-xs flex gap-3 justify-center py-1 border-t-2">
       <span dangerouslySetInnerHTML={{ __html: t("copyright") }} />
       <a
+        dangerouslySetInnerHTML={{ __html: t("aboutTitle") }}
+        className="text-blue hover:brighter cursor-pointer"
+        onClick={(e) => handleClick(e, "about")}
+      />
+      <a
         dangerouslySetInnerHTML={{ __html: t("legalLink") }}
         className="text-blue hover:brighter cursor-pointer"
         onClick={(e) => handleClick(e, "legal")}

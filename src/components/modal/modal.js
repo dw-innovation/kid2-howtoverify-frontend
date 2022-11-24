@@ -35,7 +35,7 @@ const Modal = () => {
         )}
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        <div className="bg-white shadow-xl w-3/4 h-3/4 p-2 relative modal overflow-y-auto overflow-x-hidden" ref={ref}>
+        <div className="bg-white shadow-xl w-3/4 h-3/4 p-5 relative modal overflow-y-auto overflow-x-hidden" ref={ref}>
           <button
             onClick={closeModal}
             className="absolute right-0 top-0 p-2 text-blue rotate-45"

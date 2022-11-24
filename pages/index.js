@@ -85,7 +85,7 @@ const IndexPage = () => {
         <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
-              <div>
+              <div className="text-center lg:text-left">
                 <h1
                   className="font-bold text-3xl pb-3 font-georgia text-blue"
                   dangerouslySetInnerHTML={{ __html: t("title") }}
@@ -102,7 +102,7 @@ const IndexPage = () => {
               )}
             </div>
             <div className="relative">
-              <div className="absolute ml-8 max-w-md">
+              <div className="absolute ml-8">
                 <SearchBox />
                 <SearchResults />
               </div>
