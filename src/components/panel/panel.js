@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import About from "../about";
-import SearchBox from "../searchBox";
 import NodeInfo from "../nodeInfo";
 import clsx from "clsx";
 import { getNodeColor } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import Color from "color";
-import SearchResults from "../searchResults";
 import ArrowRight from "src/assets/svg/arrow";
 
 const Panel = () => {
@@ -52,7 +49,6 @@ const Panel = () => {
               ).alpha(0.06),
             }}
           />
-          <About className="bg-white" />
         </div>
       </div>
     </div>
