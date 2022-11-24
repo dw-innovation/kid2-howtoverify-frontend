@@ -66,15 +66,14 @@ const IndexPage = () => {
             : "default",
         },
       }));
-
-      // push new URL path to browser history
-      typeof window !== "undefined" &&
-        window.history.pushState(
-          {},
-          generateURL(pathNodes),
-          generateURL(pathNodes)
-        );
     }
+    
+    typeof window !== "undefined" &&
+      window.history.pushState(
+        {},
+        generateURL(pathNodes),
+        generateURL(pathNodes)
+      );
   }, [pathNodes]);
 
   return (
