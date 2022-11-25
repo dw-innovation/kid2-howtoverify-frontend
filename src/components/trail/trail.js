@@ -12,7 +12,7 @@ const Trail = () => {
     setAppState,
   } = useAppContext();
   return (
-    <div className="flex items-center text-sm">
+    <div className="flex items-center text-sm md:text-md lg:text-lg">
       <div className="font-noto font-bold pr-2">Trail:</div>
       <button
         className={clsx(

@@ -13,8 +13,9 @@ const Footer = () => {
       modal: { isOpen: true, content: target },
     }));
   };
+  
   return (
-    <div className="font-noto text-xs flex gap-3 justify-center py-1 border-t-2">
+    <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-1 border-t-2">
       <span dangerouslySetInnerHTML={{ __html: t("copyright") }} />
       <a
         dangerouslySetInnerHTML={{ __html: t("aboutTitle") }}

@@ -42,8 +42,8 @@ const MediaTypeSelector = () => {
               className={clsx(
                 "rounded-full m-2 text-white font-bold hover:brighter font-noto",
                 pathNodes?.length === 0
-                  ? `w-[8rem] h-[8rem] text-2xl`
-                  : `w-[5rem] h-[5rem] text-xl`
+                  ? `w-[8rem] h-[8rem] lg:w-[12rem] lg:h-[12rem] text-2xl lg:text-3xl`
+                  : `w-[5rem] h-[5rem] lg:w-[8rem] lg:h-[8rem] text-xl lg:text-2xl`
               )}
               style={{
                 backgroundColor: Color(getNodeColor(id, "value")).alpha(

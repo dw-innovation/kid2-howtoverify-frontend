@@ -79,22 +79,22 @@ const IndexPage = () => {
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
               <div className="text-center lg:text-left">
                 <h1
-                  className="font-bold text-3xl pb-3 font-georgia text-blue"
+                  className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-blue"
                   dangerouslySetInnerHTML={{ __html: t("title") }}
                 />
                 <h2
-                  className="font-noto"
+                  className="font-noto lg:text-xl"
                   dangerouslySetInnerHTML={{ __html: t("subtitle") }}
                 />
               </div>
               {pathNodes.length !== 0 ? (
                 <MediaTypeSelector />
               ) : (
-                <div className="h-[5rem] m-2" />
+                <div className="h-[5rem] lg:h-[8rem] m-2" />
               )}
             </div>
             <div className="relative">
-              <div className="absolute ml-8">
+              <div className="absolute ml-8 w-40">
                 <SearchBox />
                 <SearchResults />
               </div>
