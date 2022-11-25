@@ -8,7 +8,7 @@ const Button = ({
   style
 }) => (
   <button
-    className={clsx("font-sans", className)}
+    className={className}
     onClick={onClick}
     dangerouslySetInnerHTML={dangerouslySetInnerHTML}
     style={style}
