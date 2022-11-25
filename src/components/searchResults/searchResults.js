@@ -30,7 +30,7 @@ const SearchResults = () => {
     <>
       {showResults && queryString !== "" && (
         <div
-          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md"
+          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md z-30"
           ref={ref}
         >
           <button
@@ -40,7 +40,7 @@ const SearchResults = () => {
                 search: { ...prev.search, showResults: false },
               }))
             }
-            className="absolute right-0 top-0 aspect-square text-white p-2 rotate-45"
+            className="absolute right-0 top-0 z-30 aspect-square text-white p-2 rotate-45"
           >
             <PlusIcon />
           </button>
