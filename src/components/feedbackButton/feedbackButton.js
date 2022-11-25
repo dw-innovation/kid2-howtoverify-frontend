@@ -1,30 +1,22 @@
-import useTranslation from "next-translate/useTranslation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FeedbackIcon from "src/assets/svg/feedback";
+import ReactTooltip from "react-tooltip";
+import useTranslation from "next-translate/useTranslation";
 
 const FeedbackButton = () => {
-  // using the state to avoid hydration errors
-  const [isVisible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible(true);
-  }, []);
-
   const { t } = useTranslation("common");
-
   return (
     <>
-      {isVisible && (
-        <a
-          href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
-          target="_blank"
-          className="flex items-center gap-1 text-white bg-blue hover:brighter p-2 font-noto cursor-pointer"
-          rel="noopener noreferrer"
-        >
-          <FeedbackIcon />
-          <span>{t("sendFeedback")}</span>
-        </a>
-      )}
+      <a
+        href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
+        target="_blank"
+        className="flex items-center gap-1 text-white bg-blue hover:brighter p-2 font-noto cursor-pointer fixed right-0 z-[100] bottom-1/4"
+        rel="noopener noreferrer"
+        data-tip={t("sendFeedback")}
+      >
+        <FeedbackIcon />
+      </a>
+      <ReactTooltip />
     </>
   );
 };

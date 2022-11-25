@@ -14,6 +14,7 @@ import Modal from "@/components/modal";
 import Footer from "@/components/footer";
 import SearchBox from "@/components/searchBox";
 import SearchResults from "@/components/searchResults";
+import FeedbackButton from "@/components/feedbackButton";
 
 const IndexPage = () => {
   const {
@@ -72,6 +73,7 @@ const IndexPage = () => {
         className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
         style={{ filter: isOpen ? "blur(4px)" : "" }}
       >
+        <FeedbackButton/>
         <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
             <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
