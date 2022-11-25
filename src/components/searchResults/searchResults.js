@@ -71,7 +71,7 @@ const SearchResults = () => {
                         <span className="font-bold font-sans uppercase text-sm -mb-1 block">
                           {category.name}
                         </span>
-                        <div className="pl-3">
+                        <div className="pl-3 pr-2">
                           {results.map((result) => (
                             <ResultItem item={result} />
                           ))}
