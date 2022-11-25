@@ -36,9 +36,13 @@ const ResultItem = ({ item }) => {
       <div>
         {itemPathLabels.map((label, index) => (
           <Fragment key={index}>
-            {label}
-            {itemPathLabels.length !== index + 1 && (
-              <span className="px-2">&gt;</span>
+            {index !== 0 && (
+              <>
+                {label}
+                {itemPathLabels.length !== index + 1 && (
+                  <span className="px-2">&gt;</span>
+                )}
+              </>
             )}
           </Fragment>
         ))}

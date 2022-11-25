@@ -1,8 +1,7 @@
 import useAppContext from "@/lib/hooks/useAppContext";
-import { removePrefix } from "@/lib/lib";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-import React, { useRef } from "react";
+import React, { Fragment, useRef } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
 import clsx from "clsx";
@@ -65,16 +64,26 @@ const SearchResults = () => {
               </div>
             ) : (
               <>
-                {results.map((item, index) => (
-                  <div
-                    key={index}
-                    className={clsx(
-                      results.length > index + 1 &&
-                        "border-b-[1px] border-neutral-200"
+                {results.map(({ results, category }, index) => (
+                  <Fragment key={index}>
+                    {results.length > 0 && (
+                      <div
+                        className={clsx(
+                          results.length > index + 1 &&
+                            "border-b-[1px] border-neutral-200"
+                        )}
+                      >
+                        <span className="font-bold font-sans uppercase text-sm">
+                          {category.name}
+                        </span>
+                        <div className="pl-3">
+                          {results.map((result) => (
+                            <ResultItem item={result} />
+                          ))}
+                        </div>
+                      </div>
                     )}
-                  >
-                    <ResultItem item={item} />
-                  </div>
+                  </Fragment>
                 ))}
                 {results.length === 0 && t("noResults")}
               </>
