@@ -11,7 +11,7 @@ import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 const SearchResults = () => {
   const {
     appState: {
-      search: { queryString, category, results, showResults, isLoading },
+      search: { queryString, results, showResults, isLoading },
     },
     setAppState,
   } = useAppContext();
@@ -45,47 +45,41 @@ const SearchResults = () => {
           >
             <PlusIcon />
           </button>
-          {category !== "default" ? (
-            <>
-              <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2">
-                <Trans
-                  i18nKey="common:searchResultsTitle"
-                  components={{
-                    b: <b />,
-                  }}
-                  values={{
-                    category: removePrefix(category),
-                    queryString: queryString,
-                  }}
-                />
+
+          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2">
+            <Trans
+              i18nKey="common:searchResultsTitle"
+              components={{
+                b: <b />,
+              }}
+              values={{
+                queryString: queryString,
+              }}
+            />
+          </div>
+          <div className="pt-2">
+            {isLoading ? (
+              <div className="flex items-center gap-4">
+                <span>Loading</span>
+                <span className="loader block" />
               </div>
-              <div className="pt-2">
-                {isLoading ? (
-                  <div className="flex items-center gap-4">
-                    <span>Loading</span>
-                    <span className="loader block" />
+            ) : (
+              <>
+                {results.map((item, index) => (
+                  <div
+                    key={index}
+                    className={clsx(
+                      results.length > index + 1 &&
+                        "border-b-[1px] border-neutral-200"
+                    )}
+                  >
+                    <ResultItem item={item} />
                   </div>
-                ) : (
-                  <>
-                    {results.map((item, index) => (
-                      <div
-                        key={index}
-                        className={clsx(
-                          results.length > index + 1 &&
-                            "border-b-[1px] border-neutral-200"
-                        )}
-                      >
-                        <ResultItem item={item} />
-                      </div>
-                    ))}
-                    {results.length === 0 && t("noResults")}
-                  </>
-                )}
-              </div>
-            </>
-          ) : (
-            t("selectCategory")
-          )}
+                ))}
+                {results.length === 0 && t("noResults")}
+              </>
+            )}
+          </div>
         </div>
       )}
     </>

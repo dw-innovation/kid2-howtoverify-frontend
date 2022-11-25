@@ -6,25 +6,22 @@ import clsx from "clsx";
 import useTranslation from "next-translate/useTranslation";
 
 const AutoCompleteResults = () => {
-  const [items, setItems] = useState([]);
   const [inputString, setInputString] = useState("");
 
   const { t } = useTranslation("common");
 
   const {
     appState: {
-      search: { index, category, queryString },
+      search: { index, queryString },
     },
     setAppState,
   } = useAppContext();
 
   useEffect(() => {
-    setItems(filterIndex(index, category));
-
-    if (category !== "default" && queryString !== "") {
-      handleSearch(queryString, category, setAppState);
+    if (queryString !== "") {
+      handleSearch(queryString, setAppState);
     }
-  }, [index, category]);
+  }, [index]);
 
   useEffect(() => {
     setInputString(queryString);
@@ -38,7 +35,7 @@ const AutoCompleteResults = () => {
             ...prev,
             search: { ...prev.search, queryString: queryString },
           }));
-          handleSearch(queryString, category, setAppState);
+          handleSearch(queryString, setAppState);
         }}
         itemToString={(item) => (item ? item.value.toLowerCase() : "")}
         onSelect={() =>
@@ -74,7 +71,7 @@ const AutoCompleteResults = () => {
               value={inputString}
               className={clsx(
                 "h-full w-full relative p-3 bg-white rounded-r-md",
-                items.filter(
+                index.filter(
                   (item) =>
                     !inputString ||
                     item.name.toLowerCase().includes(inputString.toLowerCase())
@@ -85,7 +82,7 @@ const AutoCompleteResults = () => {
               }}
             />
             {isOpen &&
-              items.filter(
+              index.filter(
                 (item) =>
                   !inputString ||
                   item.name.toLowerCase().includes(inputString.toLowerCase())
@@ -94,7 +91,7 @@ const AutoCompleteResults = () => {
                   {...getMenuProps()}
                   className="absolute mt-1 ml-0 p-2 shadow-xl bg-white max-h-44 overflow-scroll w-full"
                 >
-                  {items
+                  {index
                     .filter(
                       (item) =>
                         !inputString ||

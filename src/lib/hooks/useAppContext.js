@@ -14,7 +14,6 @@ export const initialState = {
   },
   search: {
     queryString: "",
-    category: "default",
     results: [],
     index: [],
     showResults: false,

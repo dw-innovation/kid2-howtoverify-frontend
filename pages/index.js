@@ -56,16 +56,6 @@ const IndexPage = () => {
   useEffect(() => {
     if (typeof window !== "undefined" && pathNodes.length !== 0) {
       fetchGraphData(pathNodes, setAppState);
-
-      setAppState((prev) => ({
-        ...prev,
-        search: {
-          ...prev.search,
-          category: ROOTNODES.filter(({ id }) => id === pathNodes[0])
-            ? pathNodes[0]
-            : "default",
-        },
-      }));
     }
 
     typeof window !== "undefined" &&

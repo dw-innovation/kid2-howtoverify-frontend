@@ -8,7 +8,7 @@ const SearchBox = () => {
   const {
     setAppState,
     appState: {
-      search: { queryString, category },
+      search: { queryString },
     },
   } = useAppContext();
 
@@ -21,7 +21,7 @@ const SearchBox = () => {
       className="flex flex-row gap-1 font-montserrat mt-2"
       onSubmit={(e) => {
         e.preventDefault();
-        handleSearch(queryString, category, setAppState);
+        handleSearch(queryString, setAppState);
       }}
     >
       <div className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center">

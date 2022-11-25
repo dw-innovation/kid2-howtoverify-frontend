@@ -124,18 +124,11 @@ export const getLinkLength = (level, pathLength) =>
   getFactor("LINKLENGTH") *
   (1 - 1 / (10 - pathLength));
 
-export const handleSearch = async (queryString, category, setAppState) => {
+export const handleSearch = async (queryString, setAppState) => {
   setAppState((prev) => ({
     ...prev,
     search: { ...prev.search, showResults: true, isLoading: true },
   }));
-
-  if (category === "default") {
-    return setAppState((prev) => ({
-      ...prev,
-      search: { ...prev.search, error: "DEFAULT_CATEGORY" },
-    }));
-  }
 
   if (!queryString) {
     return setAppState((prev) => ({
@@ -144,7 +137,7 @@ export const handleSearch = async (queryString, category, setAppState) => {
     }));
   }
 
-  trackAction("search", `${removePrefix(category)}: ${queryString}`);
+  trackAction("search", queryString);
 
   const result = await axios({
     method: "post",
@@ -152,7 +145,7 @@ export const handleSearch = async (queryString, category, setAppState) => {
     headers: {
       "Content-Type": "application/json",
     },
-    data: JSON.stringify({ query: queryString, category: category }),
+    data: JSON.stringify({ query: queryString }),
   });
 
   setAppState((prev) => ({
@@ -172,13 +165,12 @@ export const getIndex = async (setAppState) => {
 
   setAppState((prev) => ({
     ...prev,
-    search: { ...prev.search, index: result.data },
+    search: { ...prev.search, index: result.data.map((el) => ({ ...el, value: el.name })) },
   }));
 };
 
-export const filterIndex = (index, category) =>
+export const filterIndex = (index) =>
   index
-    .filter(({ categories }) => categories.includes(category))
     .map((el) => ({ ...el, value: el.name }));
 
 const getFactor = (type) => {
