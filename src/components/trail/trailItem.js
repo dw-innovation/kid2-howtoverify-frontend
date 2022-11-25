@@ -39,7 +39,7 @@ const TrailItem = ({ id: nodeId, position }) => {
         position === pathNodes.length - 1
           ? "font-bold cursor-default"
           : "text-[#737373] hover:text-blue",
-        "font-noto"
+        "font-noto text-center leading-3"
       )}
     >
       {nodes.filter(({ id }) => id === nodeId)[0]?.name}

@@ -45,7 +45,7 @@ const SearchResults = () => {
             <PlusIcon />
           </button>
 
-          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2">
+          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2 leading-none">
             <Trans
               i18nKey="common:searchResultsTitle"
               components={{
@@ -68,7 +68,7 @@ const SearchResults = () => {
                   <Fragment key={index}>
                     {results.length > 0 && (
                       <div>
-                        <span className="font-bold font-sans uppercase text-sm">
+                        <span className="font-bold font-sans uppercase text-sm -mb-1 block">
                           {category.name}
                         </span>
                         <div className="pl-3">
