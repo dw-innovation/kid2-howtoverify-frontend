@@ -67,12 +67,7 @@ const SearchResults = () => {
                 {results.map(({ results, category }, index) => (
                   <Fragment key={index}>
                     {results.length > 0 && (
-                      <div
-                        className={clsx(
-                          results.length > index + 1 &&
-                            "border-b-[1px] border-neutral-200"
-                        )}
-                      >
+                      <div>
                         <span className="font-bold font-sans uppercase text-sm">
                           {category.name}
                         </span>
