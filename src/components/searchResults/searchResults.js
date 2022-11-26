@@ -4,7 +4,6 @@ import Trans from "next-translate/Trans";
 import React, { Fragment, useRef } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
-import clsx from "clsx";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 
 const SearchResults = () => {
@@ -45,7 +44,7 @@ const SearchResults = () => {
             <PlusIcon />
           </button>
 
-          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2 leading-none">
+          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2">
             <Trans
               i18nKey="common:searchResultsTitle"
               components={{

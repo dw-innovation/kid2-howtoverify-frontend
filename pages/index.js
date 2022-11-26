@@ -73,19 +73,23 @@ const IndexPage = () => {
         className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
         style={{ filter: isOpen ? "blur(4px)" : "" }}
       >
-        <FeedbackButton/>
+        <FeedbackButton />
         <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
-            <div className="flex flex-col lg:flex-row items-center p-2 pl-8 relative">
+            <div className="flex flex-col lg:flex-row items-center py-4 pl-8 relative">
               <div className="text-center lg:text-left">
                 <h1
-                  className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-blue"
+                  className="font-bold text-3xl xl:text-4xl pb-3 font-georgia text-blue"
                   dangerouslySetInnerHTML={{ __html: t("title") }}
                 />
                 <h2
-                  className="font-noto lg:text-xl"
+                  className="font-noto xl:text-lg pb-3"
                   dangerouslySetInnerHTML={{ __html: t("subtitle") }}
                 />
+                <div className="relative w-96">
+                  <SearchBox />
+                  <SearchResults />
+                </div>
               </div>
               {pathNodes.length !== 0 ? (
                 <MediaTypeSelector />
@@ -93,12 +97,7 @@ const IndexPage = () => {
                 <div className="h-[5rem] lg:h-[8rem] m-2" />
               )}
             </div>
-            <div className="relative">
-              <div className="absolute ml-8 w-40">
-                <SearchBox />
-                <SearchResults />
-              </div>
-            </div>
+
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
             <div className="w-full relative pl-8 p-2 bg-lightGrey">
               <Navigation />
