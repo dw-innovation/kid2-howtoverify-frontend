@@ -55,7 +55,7 @@ const SearchResults = () => {
               }}
             />
           </div>
-          <div className="pt-2">
+          <div className="pt-2 max-h-[50vh] overflow-y-scroll overflow-x-hidden">
             {isLoading ? (
               <div className="flex items-center gap-4">
                 <span>Loading</span>
