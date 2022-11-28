@@ -15,6 +15,7 @@ import Footer from "@/components/footer";
 import SearchBox from "@/components/searchBox";
 import SearchResults from "@/components/searchResults";
 import FeedbackButton from "@/components/feedbackButton";
+import Header from "@/components/header";
 
 const IndexPage = () => {
   const {
@@ -76,28 +77,7 @@ const IndexPage = () => {
         <FeedbackButton />
         <div className="flex flex-row flex-1">
           <div className="flex flex-col flex-1">
-            <div className="flex flex-col lg:flex-row items-center py-4 pl-8 relative">
-              <div className="text-center lg:text-left">
-                <h1
-                  className="font-bold text-3xl 2xl:text-4xl pb-3 font-georgia text-blue"
-                  dangerouslySetInnerHTML={{ __html: t("title") }}
-                />
-                <h2
-                  className="font-noto 2xl:text-lg pb-3"
-                  dangerouslySetInnerHTML={{ __html: t("subtitle") }}
-                />
-                <div className="relative w-96">
-                  <SearchBox />
-                  <SearchResults />
-                </div>
-              </div>
-              {pathNodes.length !== 0 ? (
-                <MediaTypeSelector />
-              ) : (
-                <div className="h-[5rem] lg:h-[8rem] m-2" />
-              )}
-            </div>
-
+            <Header />
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
             <div className="w-full relative pl-8 p-2 bg-lightGrey">
               <Navigation />
