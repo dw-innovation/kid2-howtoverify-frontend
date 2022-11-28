@@ -39,7 +39,7 @@ const Modal = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="bg-white shadow-xl w-3/4 h-3/4 p-10 relative modal"
+          className="bg-white shadow-xl w-3/4 h-3/4 p-10 relative modal overflow-x-hidden overflow-y-scroll"
           ref={ref}
         >
           <button
@@ -48,7 +48,7 @@ const Modal = () => {
           >
             <PlusIcon />
           </button>
-          <div className="overflow-auto">
+          <div>
             <ReactMarkdown children={t(`${content}Text`)} />
           </div>
         </div>
