@@ -79,7 +79,7 @@ const IndexPage = () => {
           <div className="flex flex-col flex-1">
             <Header />
             {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
-            <div className="w-full relative pl-8 p-2 bg-lightGrey">
+            <div className="w-full relative pl-2 lg:pl-8 p-2 bg-lightGrey">
               <Navigation />
             </div>
           </div>

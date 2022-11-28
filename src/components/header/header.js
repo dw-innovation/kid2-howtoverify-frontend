@@ -15,7 +15,7 @@ const Header = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="flex flex-col lg:flex-row items-center py-4 pl-8 relative">
+    <div className="flex flex-col lg:flex-row items-center py-4 px-2 lg:pl-8 relative">
       <div className="lg:text-left flex flex-col items-center lg:items-start mb-2 lg:mb-0">
         <h1
           className="font-bold text-3xl 2xl:text-4xl pb-3 font-georgia text-blue"
