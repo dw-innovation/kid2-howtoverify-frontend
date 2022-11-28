@@ -26,7 +26,7 @@ const Modal = () => {
     }));
 
   useOnClickOutside(ref, closeModal);
-  
+
   useEscapeKey(closeModal);
 
   return (
@@ -39,7 +39,7 @@ const Modal = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="bg-white shadow-xl w-3/4 h-3/4 p-10 relative modal overflow-y-auto overflow-x-hidden"
+          className="bg-white shadow-xl w-3/4 h-3/4 p-10 relative modal"
           ref={ref}
         >
           <button
@@ -48,7 +48,9 @@ const Modal = () => {
           >
             <PlusIcon />
           </button>
-          <ReactMarkdown children={t(`${content}Text`)} />
+          <div className="overflow-auto">
+            <ReactMarkdown children={t(`${content}Text`)} />
+          </div>
         </div>
       </div>
     </>
