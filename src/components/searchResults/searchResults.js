@@ -5,6 +5,7 @@ import React, { Fragment, useRef } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
+import useEscapeKey from "@/lib/hooks/useEscapeKey";
 
 const SearchResults = () => {
   const {
@@ -16,15 +17,18 @@ const SearchResults = () => {
 
   const ref = useRef(null);
 
-  useOnClickOutside(ref, () =>
+  const { t } = useTranslation("common");
+
+  const closeSearchResults = () =>
     setAppState((prev) => ({
       ...prev,
       search: { ...prev.search, showResults: false },
-    }))
-  );
+    }));
 
-  const { t } = useTranslation("common");
+  useOnClickOutside(ref, closeSearchResults);
 
+  useEscapeKey(closeSearchResults);
+  
   return (
     <>
       {showResults && queryString !== "" && (
