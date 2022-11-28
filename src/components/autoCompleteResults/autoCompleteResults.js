@@ -27,10 +27,24 @@ const AutoCompleteResults = () => {
     setInputString(queryString);
   }, [queryString]);
 
+  const stateReducer = (state, changes) => {
+    switch (changes.type) {
+      case Downshift.stateChangeTypes.keyDownEscape:
+        return {
+          ...changes,
+          ...state,
+          isOpen: false,
+          inputValue: state.selectedItem.label,
+        };
+      default:
+        return changes;
+    }
+  };
+
   return (
     <>
       <Downshift
-        onChange={({ value: queryString }) => {
+        onChange={({ value: queryString = "" }) => {
           setAppState((prev) => ({
             ...prev,
             search: { ...prev.search, queryString: queryString },
@@ -44,6 +58,7 @@ const AutoCompleteResults = () => {
             search: { ...prev.search, showResults: true },
           }))
         }
+        stateReducer={stateReducer}
       >
         {({
           getInputProps,
