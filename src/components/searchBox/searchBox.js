@@ -18,7 +18,7 @@ const SearchBox = () => {
 
   return (
     <form
-      className="flex flex-row gap-1 font-montserrat mt-2"
+      className="flex flex-row font-montserrat mt-2"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch(queryString, setAppState);
