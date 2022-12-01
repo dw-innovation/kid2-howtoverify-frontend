@@ -19,7 +19,7 @@ const Trail = () => {
           "font-noto",
           pathNodes.length === 0
             ? "cursor-default font-bold text-black"
-            : "font-noto text-[#737373] hover:text-blue"
+            : "text-blue"
         )}
         onClick={() =>
           setAppState((prev) => ({
