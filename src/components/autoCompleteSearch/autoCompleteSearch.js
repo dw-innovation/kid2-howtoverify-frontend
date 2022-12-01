@@ -1,5 +1,5 @@
 import useAppContext from "@/lib/hooks/useAppContext";
-import { filterIndex, handleSearch } from "@/lib/lib";
+import { handleSearch } from "@/lib/lib";
 import React, { useEffect, useState } from "react";
 import Downshift from "downshift";
 import clsx from "clsx";
