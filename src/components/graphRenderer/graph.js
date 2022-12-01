@@ -2,6 +2,7 @@ import {
   addNodeToPath,
   getNodeRadius,
   getNodeColor,
+  getNodeColorShade,
   validateLink,
   trackAction,
   generateURL,
@@ -167,9 +168,9 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
   var circle = newNode
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
-    .attr("fill", ({ id }) => {
+    .attr("fill", ({ id, level }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id) ? 0 : 0.6
+        getNodeColorShade(pathNodes.includes(id), maxLevel(data) === level)
       );
       return color;
     })

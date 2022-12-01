@@ -165,13 +165,15 @@ export const getIndex = async (setAppState) => {
 
   setAppState((prev) => ({
     ...prev,
-    search: { ...prev.search, index: result.data.map((el) => ({ ...el, value: el.name })) },
+    search: {
+      ...prev.search,
+      index: result.data.map((el) => ({ ...el, value: el.name })),
+    },
   }));
 };
 
 export const filterIndex = (index) =>
-  index
-    .map((el) => ({ ...el, value: el.name }));
+  index.map((el) => ({ ...el, value: el.name }));
 
 const getFactor = (type) => {
   switch (type) {
@@ -184,4 +186,15 @@ const getFactor = (type) => {
         (item) => item.minWidth < window.innerWidth
       ).at(-1).factor;
   }
+};
+
+export const getNodeColorShade = (isInClickHistory, isMaxLevel) => {
+  const shade = 0.6;
+  if (isInClickHistory) {
+    shade = 0;
+  }
+  if (isMaxLevel) {
+    shade = 0.3;
+  }
+  return shade;
 };
