@@ -18,5 +18,6 @@
   "searchStartTyping": "Start typing",
   "searchResultsTitle": "Search Results for <b>\"{{queryString}}\"</b>:",
   "noResults": "No search results.",
-  "sendFeedback": "Send feedback"
+  "sendFeedback": "Send feedback",
+  "shareTooltip": "Share this trail"
 }
