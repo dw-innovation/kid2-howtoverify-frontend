@@ -4,16 +4,12 @@ import { addPrefix, fetchGraphData, generateURL } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
 import MediaTypeSelector from "@/components/mediaTypeSelector";
-import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
 import Panel from "@/components/panel";
 import MobileScreen from "@/components/mobileScreen";
 import Navigation from "@/components/navigation";
-import { ROOTNODES } from "@/lib/const";
 import Modal from "@/components/modal";
 import Footer from "@/components/footer";
-import SearchBox from "@/components/searchBox";
-import SearchResults from "@/components/searchResults";
 import FeedbackButton from "@/components/feedbackButton";
 import Header from "@/components/header";
 
@@ -25,8 +21,6 @@ const IndexPage = () => {
       modal: { isOpen },
     },
   } = useAppContext();
-
-  const { t } = useTranslation("common");
 
   const { query } = useRouter();
 
