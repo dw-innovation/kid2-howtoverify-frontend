@@ -16,14 +16,14 @@ const FeatureTour = () => {
     {
       element: "#featureTour--2",
       intro: "Search for tools and verification workflows",
-      position: "right",
+      position: "top",
       tooltipClass: "myTooltipClass",
       highlightClass: "myHighlightClass",
     },
     {
       element: "#featureTour--3",
       intro: "Get information on the selected node",
-      position: "right",
+      position: "left",
       tooltipClass: "myTooltipClass",
       highlightClass: "myHighlightClass",
     },
