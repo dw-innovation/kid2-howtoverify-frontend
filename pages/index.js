@@ -12,6 +12,7 @@ import Modal from "@/components/modal";
 import Footer from "@/components/footer";
 import FeedbackButton from "@/components/feedbackButton";
 import Header from "@/components/header";
+import FeatureTour from "@/components/featureTour";
 
 const IndexPage = () => {
   const {
@@ -64,6 +65,7 @@ const IndexPage = () => {
 
   return (
     <>
+      <FeatureTour />
       <div
         className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
         style={{ filter: isOpen ? "blur(4px)" : "" }}

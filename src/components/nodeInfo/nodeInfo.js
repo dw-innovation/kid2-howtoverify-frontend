@@ -27,7 +27,7 @@ const NodeInfo = ({ className, style }) => {
   }, [nodes, pathNodes]);
 
   return (
-    <>
+    <div id="featureTour--3">
       {lastNode !== undefined ? (
         <Accordion title={lastNode["name"]} className={className} style={style}>
           {Object.keys(lastNode).map((property, index) => (
@@ -49,7 +49,7 @@ const NodeInfo = ({ className, style }) => {
           <ReactMarkdown children={t("introText")} className="nodeInfo" />
         </Accordion>
       )}
-    </>
+    </div>
   );
 };
 

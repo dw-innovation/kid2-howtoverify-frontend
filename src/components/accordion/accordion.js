@@ -2,7 +2,7 @@ import React from "react";
 import { getNodeColor } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 
-const Accordion = ({ title, children, open = true, isBlack, style = {} }) => {
+const Accordion = ({ title, children, isBlack, style = {} }) => {
   const {
     appState: {
       graph: { pathNodes },

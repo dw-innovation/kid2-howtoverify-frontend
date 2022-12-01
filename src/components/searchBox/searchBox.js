@@ -19,6 +19,7 @@ const SearchBox = () => {
   return (
     <form
       className="flex flex-row font-montserrat mt-2"
+      id="featureTour--1"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch(queryString, setAppState);
