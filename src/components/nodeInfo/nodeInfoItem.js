@@ -7,20 +7,13 @@ const NodeInfoItem = ({ name, body }) => {
   const { t } = useTranslation("nodeInfo");
 
   const parseBody = (body) => {
-    const parsedBody = "";
-    try {
-      parsedBody = JSON.parse(
-        body
-          .replaceAll("['", '["')
-          .replaceAll("', '", '", "')
-          .replaceAll("']", '"]')
-      );
-      parsedBody = parsedBody.map((item) => `- ${item}`);
-      parsedBody = parsedBody.join("\n");
-    } catch {
-      parsedBody = body;
+    console.log(typeof body)
+    if (typeof body === "string") {
+      return body;
     }
-    return parsedBody;
+    if (typeof body === "object") {
+      return body.map((item) => `- ${item}`).join("\n");
+    }
   };
 
   return (
