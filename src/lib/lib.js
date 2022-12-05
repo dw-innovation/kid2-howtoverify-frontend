@@ -66,7 +66,7 @@ export const getSizeFactor = (graphHeight) => {
 
 export const trackAction = async (action, payload = "") => {
   const params = {
-    idSite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
     rec: 1,
     rand: Math.floor(Math.random() * 10000000),
     res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
