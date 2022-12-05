@@ -12,7 +12,7 @@ const NodeInfoItem = ({ name, body }) => {
       return body;
     }
     if (typeof body === "object") {
-      return body.length === 1 ? body : body.map((item) => `- ${item}`).join("\n");
+      return body.length === 1 ? body[0] : body.map((item) => `- ${item}`).join("\n");
     }
   };
 
