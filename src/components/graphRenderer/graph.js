@@ -1,5 +1,4 @@
 import {
-  addNodeToPath,
   getNodeRadius,
   getNodeColor,
   getNodeColorShade,
