@@ -33,7 +33,8 @@ const linkId = (l) => (l.source.id || l.source) + (l.target.id || l.target);
 // diff them with the old ones, and then remove any we do not want.
 // doing this hopefully keeps the system with react in sync.
 // probably not the most efficient, but it works.
-const updateNodes = (_newNodes, pathNodes) => {
+const updateNodes = (_newNodes) => {
+  let pathNodes = useSessionStore.getState().pathNodes;
   //nodes = nodes.map((node) => ({ ...node, fx: node.x, fy: node.y }));
 
   const newNodes = cloneDeep(_newNodes);
@@ -74,41 +75,34 @@ const maxLevel = (data) =>
     data.nodes.map(({ level }) => level)
   );
 
-const handleNodeClick = (
-  // the event:
-  {
-    target: {
-      __data__: { id, level, x, y },
-    },
+const handleNodeClick = ({
+  target: {
+    __data__: { id, level, x, y },
   },
-  // the state setting function
-  setAppState,
-  pathNodes
-) => {
+}) => {
+  const pathNodes = useSessionStore.getState().pathNodes;
   if (id === pathNodes.at(-1)) return null;
-  const addPathNode = useSessionStore.getState().addPathNode;
+  let addPathNode = useSessionStore.getState().addPathNode;
+  let toggleShowResults = useSessionStore.getState().toggleShowResults;
+  let clearSearchQueryString =
+    useSessionStore.getState().clearSearchQueryString;
+
   addPathNode(id, level);
+  toggleShowResults(false);
+  clearSearchQueryString();
+
   // we received a click so we will hackily store our clicked position
   clickedX = x;
   clickedY = y;
-
-  // update pathNodes
-  setAppState((prev) => ({
-    ...prev,
-    search: {
-      ...prev.search,
-      showResults: false,
-      queryString: "",
-    },
-  }));
 
   // track click
   trackAction("graphClick", generateURL(useSessionStore.getState().pathNodes));
 };
 
-export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
+export const updateGraph = (ref, data, dimensions) => {
+  let pathNodes = useSessionStore.getState().pathNodes;
   //
-  updateNodes(data.nodes, pathNodes);
+  updateNodes(data.nodes);
 
   // reset our clicked position after the nodes have been added
   clickedX = 0;
@@ -173,7 +167,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
       return color;
     })
     .attr("class", "hover:brighter")
-    .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
+    .on("click", (e) => handleNodeClick(e));
 
   // attach labels to nodes for getting width
   var text = newNode
@@ -212,7 +206,7 @@ export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {
     .attr("y", 6)
     .attr("fill", pathNodes[0] === "http://dw.com/Audio" ? "#000" : "#fff")
     .attr("class", "cursor-pointer")
-    .on("click", (e) => handleNodeClick(e, setAppState, pathNodes));
+    .on("click", (e) => handleNodeClick(e));
 
   // make sure the links are always behind the nodes, this is the d3 way to z-index:
   d3.selectAll(".links").lower();
