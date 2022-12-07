@@ -1,22 +1,17 @@
 import React, { Fragment } from "react";
 import { ROOTNODES } from "@/lib/const";
-import useAppContext from "@/lib/hooks/useAppContext";
 import Button from "@/components/button";
-import {
-  generateURL,
-  getNodeColor,
-  trackAction,
-} from "@/lib/lib";
+import { generateURL, getNodeColor, trackAction } from "@/lib/lib";
 import clsx from "clsx";
 import Color from "color";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const MediaTypeSelector = () => {
-  const {
-    setAppState,
-    appState: {
-      graph: { pathNodes },
-    },
-  } = useAppContext();
+  const pathNodes = useSessionStore((state) => state.pathNodes);
+  const resetRootNode = useSessionStore((state) => state.resetRootNode);
+  const clearSearchQueryString = useSessionStore(
+    (state) => state.clearSearchQueryString
+  );
 
   return (
     <div className="flex flex-row flex-1 justify-center items-center">
@@ -25,17 +20,8 @@ const MediaTypeSelector = () => {
           {id !== pathNodes[0] && (
             <Button
               onClick={() => {
-                setAppState((prev) => ({
-                  ...prev,
-                  graph: {
-                    ...prev.graph,
-                    pathNodes: [id],
-                  },
-                  search: {
-                    ...prev.search,
-                    queryString: ""
-                  }
-                }));
+                resetRootNode(id);
+                clearSearchQueryString();
                 trackAction("mediaTypeSelectorClick", generateURL([id]));
               }}
               dangerouslySetInnerHTML={{ __html: label }}

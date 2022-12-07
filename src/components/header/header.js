@@ -1,17 +1,13 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import SearchBox from "../searchBox";
 import SearchResults from "../searchResults";
 import MediaTypeSelector from "../mediaTypeSelector";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const Header = () => {
-  const {
-    appState: {
-      graph: { pathNodes },
-    },
-  } = useAppContext();
-  
+  const pathNodes = useSessionStore((state) => state.pathNodes);
+
   const { t } = useTranslation("common");
 
   return (

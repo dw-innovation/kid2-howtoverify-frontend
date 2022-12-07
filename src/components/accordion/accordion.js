@@ -1,13 +1,9 @@
 import React from "react";
 import { getNodeColor } from "@/lib/lib";
-import useAppContext from "@/lib/hooks/useAppContext";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
-const Accordion = ({ title, children, open = true, isBlack, style = {} }) => {
-  const {
-    appState: {
-      graph: { pathNodes },
-    },
-  } = useAppContext();
+const Accordion = ({ title, children, isBlack, style = {} }) => {
+  const pathNodes = useSessionStore((state) => state.pathNodes);
 
   return (
     <details className="w-full font-montserrat" style={style} open>

@@ -1,26 +1,27 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useAppContext from "@/lib/hooks/useAppContext";
 import NodeInfoItem from "./nodeInfoItem";
 import { SAFELIST } from "@/lib/const";
 import Accordion from "../accordion";
 import useTranslation from "next-translate/useTranslation";
 import ReactMarkdown from "react-markdown";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const NodeInfo = ({ className, style }) => {
   const {
     appState: {
       graph: {
         data: { nodes },
-        pathNodes,
       },
     },
   } = useAppContext();
+
+  const pathNodes = useSessionStore((state) => state.pathNodes);
 
   const { t } = useTranslation("common");
   const [lastNode, setLastNode] = useState(undefined);
 
   useEffect(() => {
-    // console.log("pathNodes", pathNodes);
     nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]
       ? setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0])
       : setLastNode(undefined);

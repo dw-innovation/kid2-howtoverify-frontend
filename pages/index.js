@@ -4,29 +4,24 @@ import { addPrefix, fetchGraphData, generateURL } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import GraphRenderer from "@/components/graphRenderer";
 import MediaTypeSelector from "@/components/mediaTypeSelector";
-import useTranslation from "next-translate/useTranslation";
 import useLocation from "@/lib/hooks/useLocation";
 import Panel from "@/components/panel";
 import MobileScreen from "@/components/mobileScreen";
 import Navigation from "@/components/navigation";
-import { ROOTNODES } from "@/lib/const";
 import Modal from "@/components/modal";
 import Footer from "@/components/footer";
-import SearchBox from "@/components/searchBox";
-import SearchResults from "@/components/searchResults";
 import FeedbackButton from "@/components/feedbackButton";
 import Header from "@/components/header";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const IndexPage = () => {
+  const pathNodes = useSessionStore((state) => state.pathNodes);
   const {
     setAppState,
-    appState: {
-      graph: { pathNodes },
-      modal: { isOpen },
-    },
   } = useAppContext();
 
-  const { t } = useTranslation("common");
+  const modalIsOpen = useSessionStore((state) => state.modal.isOpen);
+  const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
 
   const { query } = useRouter();
 
@@ -37,21 +32,14 @@ const IndexPage = () => {
 
     if (pathArray[0] !== "") {
       const pathNodes = pathArray.map((item) => addPrefix(item));
-      setAppState((prev) => ({
-        ...prev,
-        graph: { ...prev.graph, pathNodes: pathNodes },
-      }));
+      replacePathNodes(pathNodes);
     }
   }, [location]);
 
   useEffect(() => {
     if (typeof query.path !== "undefined" && query?.path.length > 0) {
       const queryPath = query.path.map((item) => addPrefix(item));
-
-      setAppState((prev) => ({
-        ...prev,
-        graph: { ...prev.graph, pathNodes: queryPath },
-      }));
+      replacePathNodes(queryPath);
     }
   }, [query]);
 
@@ -72,7 +60,7 @@ const IndexPage = () => {
     <>
       <div
         className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
-        style={{ filter: isOpen ? "blur(4px)" : "" }}
+        style={{ filter: modalIsOpen ? "blur(4px)" : "" }}
       >
         <FeedbackButton />
         <div className="flex flex-row flex-1">

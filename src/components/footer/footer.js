@@ -1,18 +1,18 @@
-import useAppContext from "@/lib/hooks/useAppContext";
+import useSessionStore from "@/lib/stores/useSessionStore";
 import useTranslation from "next-translate/useTranslation";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import FooterLink from "../footerLink";
 
 const Footer = () => {
   const { t } = useTranslation("footer");
-  const { setAppState } = useAppContext();
+
+  const toggleModal = useSessionStore((state) => state.toggleModal);
+  const setModalContent = useSessionStore((state) => state.setModalContent);
 
   const handleClick = (e, target) => {
     e.preventDefault();
-    setAppState((prev) => ({
-      ...prev,
-      modal: { isOpen: true, content: target },
-    }));
+    toggleModal();
+    setModalContent(target);
   };
 
   const LINKS = ["about", "legal", "privacy"];

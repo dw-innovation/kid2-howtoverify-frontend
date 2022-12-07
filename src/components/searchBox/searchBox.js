@@ -6,14 +6,13 @@ import AutoCompleteSearch from "../autoCompleteSearch";
 
 const SearchBox = () => {
   const {
-    setAppState,
     appState: {
       search: { queryString },
     },
   } = useAppContext();
 
   useEffect(() => {
-    getIndex(setAppState);
+    getIndex();
   }, []);
 
   return (
@@ -21,7 +20,7 @@ const SearchBox = () => {
       className="flex flex-row font-montserrat mt-2"
       onSubmit={(e) => {
         e.preventDefault();
-        handleSearch(queryString, setAppState);
+        handleSearch(queryString);
       }}
     >
       <div className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center">

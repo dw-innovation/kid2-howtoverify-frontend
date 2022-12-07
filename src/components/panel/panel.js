@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import NodeInfo from "../nodeInfo";
 import clsx from "clsx";
 import { getNodeColor } from "@/lib/lib";
-import useAppContext from "@/lib/hooks/useAppContext";
 import Color from "color";
 import ArrowRight from "src/assets/svg/arrow";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const Panel = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const {
-    appState: {
-      graph: { pathNodes },
-    },
-  } = useAppContext();
+  const pathNodes = useSessionStore((state) => state.pathNodes);
   return (
     <div
       className={clsx(

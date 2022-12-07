@@ -7,6 +7,8 @@ import {
   RADIUSFACTORS,
 } from "@/lib/const";
 import axios from "axios";
+import usePersistedStore from "./stores/usePersistedStore";
+import useSessionStore from "./stores/useSessionStore";
 
 export const addPrefix = (string) => `${PREFIX}${string}`;
 
@@ -65,53 +67,56 @@ export const getSizeFactor = (graphHeight) => {
 };
 
 export const trackAction = async (action, payload = "") => {
-  const params = {
-    idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-    rec: 1,
-    rand: Math.floor(Math.random() * 10000000),
-    res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
-    ua: window?.navigator?.userAgent,
-    action_name: action,
-  };
+  let trackingEnabled = usePersistedStore.getState().trackingEnabled;
+  if (trackingEnabled) {
+    const params = {
+      idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+      rec: 1,
+      rand: Math.floor(Math.random() * 10000000),
+      res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
+      ua: window?.navigator?.userAgent,
+      action_name: action,
+    };
 
-  switch (action) {
-    case "search":
-      params = {
-        ...params,
-        search: payload,
-      };
-      break;
+    switch (action) {
+      case "search":
+        params = {
+          ...params,
+          search: payload,
+        };
+        break;
 
-    case "searchResultClick":
-    case "trailClick":
-    case "mediaTypeSelectorClick":
-    case "graphClick":
-      params = {
-        ...params,
-        url: payload,
-      };
-      break;
+      case "searchResultClick":
+      case "trailClick":
+      case "mediaTypeSelectorClick":
+      case "graphClick":
+        params = {
+          ...params,
+          url: payload,
+        };
+        break;
 
-    case "externalLink":
-      params = {
-        ...params,
-        link: payload,
-        url: payload,
-      };
-      break;
+      case "externalLink":
+        params = {
+          ...params,
+          link: payload,
+          url: payload,
+        };
+        break;
 
-    default:
-      params = {
-        ...params,
-        url: window?.location?.href,
-      };
+      default:
+        params = {
+          ...params,
+          url: window?.location?.href,
+        };
+    }
+
+    await axios({
+      method: "get",
+      url: process.env.NEXT_PUBLIC_MATOMO_URL,
+      params,
+    });
   }
-
-  await axios({
-    method: "get",
-    url: process.env.NEXT_PUBLIC_MATOMO_URL,
-    params,
-  });
 };
 
 export const generateURL = (pathNodes) =>
@@ -124,17 +129,16 @@ export const getLinkLength = (level, pathLength) =>
   getFactor("LINKLENGTH") *
   (1 - 1 / (10 - pathLength));
 
-export const handleSearch = async (queryString, setAppState) => {
-  setAppState((prev) => ({
-    ...prev,
-    search: { ...prev.search, showResults: true, isLoading: true },
-  }));
+export const handleSearch = async (queryString) => {
+  let toggleShowResults = useSessionStore.getState().toggleShowResults;
+  let toggleIsLoading = useSessionStore.getState().toggleIsLoading;
+  let setSearchResults = useSessionStore.getState().setSearchResults;
+
+  toggleShowResults(true);
+  toggleIsLoading(true);
 
   if (!queryString) {
-    return setAppState((prev) => ({
-      ...prev,
-      search: { ...prev.search, error: "QUERY_EMPTY" },
-    }));
+    return null;
   }
 
   trackAction("search", queryString);
@@ -148,13 +152,12 @@ export const handleSearch = async (queryString, setAppState) => {
     data: JSON.stringify({ query: queryString }),
   });
 
-  setAppState((prev) => ({
-    ...prev,
-    search: { ...prev.search, results: result.data, isLoading: false },
-  }));
+  setSearchResults(result.data);
+  toggleIsLoading(false);
 };
 
-export const getIndex = async (setAppState) => {
+export const getIndex = async () => {
+  let setSearchIndex = useSessionStore.getState().setSearchIndex;
   const result = await axios({
     method: "get",
     url: `${process.env.NEXT_PUBLIC_API}getIndex`,
@@ -163,13 +166,7 @@ export const getIndex = async (setAppState) => {
     },
   });
 
-  setAppState((prev) => ({
-    ...prev,
-    search: {
-      ...prev.search,
-      index: result.data.map((el) => ({ ...el, value: el.name })),
-    },
-  }));
+  setSearchIndex(result.data.map((el) => ({ ...el, value: el.name })));
 };
 
 export const filterIndex = (index) =>

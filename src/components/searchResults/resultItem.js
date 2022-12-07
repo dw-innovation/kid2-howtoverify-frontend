@@ -3,6 +3,7 @@ import { generateURL, trackAction } from "@/lib/lib";
 import React, { Fragment } from "react";
 import { isEqual } from "lodash";
 import clsx from "clsx";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const ResultItem = ({ item }) => {
   const {
@@ -12,6 +13,8 @@ const ResultItem = ({ item }) => {
     },
   } = useAppContext();
 
+  const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
+
   const itemPath = item.map(({ id }) => id);
   const itemPathLabels = item.map(({ name }) => name);
 
@@ -19,6 +22,7 @@ const ResultItem = ({ item }) => {
     <button
       onClick={() => {
         if (!isEqual(pathNodes, itemPath)) {
+          replacePathNodes(itemPath);
           setAppState((prev) => ({
             ...prev,
             graph: { ...prev.graph, pathNodes: itemPath },

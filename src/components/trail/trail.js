@@ -1,16 +1,13 @@
 import useAppContext from "@/lib/hooks/useAppContext";
+import useSessionStore from "@/lib/stores/useSessionStore";
 import clsx from "clsx";
 import React, { Fragment } from "react";
 import ShareButton from "../shareButton";
 import TrailItem from "./trailItem";
 
 const Trail = () => {
-  const {
-    appState: {
-      graph: { pathNodes },
-    },
-    setAppState,
-  } = useAppContext();
+  const pathNodes = useSessionStore((state) => state.pathNodes);
+  const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
   return (
     <div className="flex items-center text-sm lg:text-md 2xl:text-lg">
       <div className="font-noto font-bold pr-2">Trail:</div>
@@ -21,12 +18,9 @@ const Trail = () => {
             ? "cursor-default font-bold text-black"
             : "text-blue"
         )}
-        onClick={() =>
-          setAppState((prev) => ({
-            ...prev,
-            graph: { ...prev.graph, pathNodes: [] },
-          }))
-        }
+        onClick={() => {
+          clearPathNodes();
+        }}
       >
         Home
       </button>

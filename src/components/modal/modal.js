@@ -1,33 +1,23 @@
-import React, { useRef } from "react";
-import useAppContext from "@/lib/hooks/useAppContext";
+import React, { useRef, useEffect } from "react";
 import useTranslation from "next-translate/useTranslation";
 import ReactMarkdown from "react-markdown";
 import PlusIcon from "src/assets/svg/plusIcon";
 import clsx from "clsx";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 import useEscapeKey from "@/lib/hooks/useEscapeKey";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const Modal = () => {
   const { t } = useTranslation("footer");
 
   const ref = useRef(null);
+  const isOpen = useSessionStore((state) => state.modal.isOpen);
+  const closeModal = useSessionStore((state) => state.closeModal);
+  const content = useSessionStore((state) => state.modal.content);
 
-  const {
-    appState: {
-      modal: { isOpen, content },
-    },
-    setAppState,
-  } = useAppContext();
+  useOnClickOutside(ref, () => closeModal());
 
-  const closeModal = () =>
-    setAppState((prev) => ({
-      ...prev,
-      modal: { ...prev.modal, isOpen: false },
-    }));
-
-  useOnClickOutside(ref, closeModal);
-
-  useEscapeKey(closeModal);
+  useEscapeKey(() => closeModal());
 
   return (
     <>

@@ -2,17 +2,19 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import React from "react";
 import { generateURL, trackAction } from "@/lib/lib";
 import clsx from "clsx";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const TrailItem = ({ id: nodeId, position }) => {
   const {
     appState: {
       graph: {
         data: { nodes },
-        pathNodes,
       },
     },
     setAppState,
   } = useAppContext();
+  const pathNodes = useSessionStore((state) => state.pathNodes);
+  const truncatePathNodes = useSessionStore((state) => state.truncatePathNodes);
 
   const handleClick = () => {
     if (position === pathNodes.length - 1) {
@@ -28,7 +30,7 @@ const TrailItem = ({ id: nodeId, position }) => {
         pathNodes: newPathNodes,
       },
     }));
-
+    truncatePathNodes(position);
     trackAction("trailClick", generateURL(newPathNodes));
   };
 

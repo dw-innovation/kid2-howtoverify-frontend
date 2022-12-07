@@ -12,6 +12,7 @@ import * as d3 from "d3";
 import Color from "color";
 import { without } from "lodash/fp";
 import { cloneDeep } from "lodash";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 // so the graph does not reset every time, we have to store a mutable copy of the
 // nodes, that keeps their position and so on in memory.
@@ -85,7 +86,8 @@ const handleNodeClick = (
   pathNodes
 ) => {
   if (id === pathNodes.at(-1)) return null;
-  const newPathNodes = addNodeToPath(id, level, pathNodes);
+  const addPathNode = useSessionStore.getState().addPathNode;
+  addPathNode(id, level);
   // we received a click so we will hackily store our clicked position
   clickedX = x;
   clickedY = y;
@@ -93,10 +95,6 @@ const handleNodeClick = (
   // update pathNodes
   setAppState((prev) => ({
     ...prev,
-    graph: {
-      ...prev.graph,
-      pathNodes: newPathNodes,
-    },
     search: {
       ...prev.search,
       showResults: false,
@@ -105,7 +103,7 @@ const handleNodeClick = (
   }));
 
   // track click
-  trackAction("graphClick", generateURL(newPathNodes));
+  trackAction("graphClick", generateURL(useSessionStore.getState().pathNodes));
 };
 
 export const updateGraph = (ref, setAppState, data, dimensions, pathNodes) => {

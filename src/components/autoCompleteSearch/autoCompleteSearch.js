@@ -1,25 +1,26 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import { handleSearch } from "@/lib/lib";
 import React, { useEffect, useState } from "react";
 import Downshift from "downshift";
 import clsx from "clsx";
 import useTranslation from "next-translate/useTranslation";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const AutoCompleteResults = () => {
   const [inputString, setInputString] = useState("");
 
+  const toggleShowResults = useSessionStore((state) => state.toggleShowResults);
+
   const { t } = useTranslation("common");
 
-  const {
-    appState: {
-      search: { index, queryString },
-    },
-    setAppState,
-  } = useAppContext();
+  const queryString = useSessionStore((state) => state.search.queryString);
+  const setSearchQueryString = useSessionStore(
+    (state) => state.setSearchQueryString
+  );
+  const index = useSessionStore((state) => state.search.index);
 
   useEffect(() => {
     if (queryString !== "") {
-      handleSearch(queryString, setAppState);
+      handleSearch(queryString);
     }
   }, [index]);
 
@@ -45,19 +46,11 @@ const AutoCompleteResults = () => {
     <>
       <Downshift
         onChange={({ value: queryString = "" }) => {
-          setAppState((prev) => ({
-            ...prev,
-            search: { ...prev.search, queryString: queryString },
-          }));
-          handleSearch(queryString, setAppState);
+          setSearchQueryString(queryString);
+          handleSearch(queryString);
         }}
         itemToString={(item) => (item ? item.value.toLowerCase() : "")}
-        onSelect={() =>
-          setAppState((prev) => ({
-            ...prev,
-            search: { ...prev.search, showResults: true },
-          }))
-        }
+        onSelect={() => toggleShowResults(true)}
         stateReducer={stateReducer}
       >
         {({
@@ -73,11 +66,7 @@ const AutoCompleteResults = () => {
             <input
               {...getInputProps({
                 onChange: (e) => {
-                  setAppState((prev) => ({
-                    ...prev,
-                    search: { ...prev.search, showResults: false },
-                  }));
-
+                  toggleShowResults(false);
                   setInputString(e.target.value);
                 },
               })}
