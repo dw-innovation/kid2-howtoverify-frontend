@@ -11,7 +11,6 @@ const TrailItem = ({ id: nodeId, position }) => {
         data: { nodes },
       },
     },
-    setAppState,
   } = useAppContext();
   const pathNodes = useSessionStore((state) => state.pathNodes);
   const truncatePathNodes = useSessionStore((state) => state.truncatePathNodes);
@@ -22,14 +21,6 @@ const TrailItem = ({ id: nodeId, position }) => {
     }
 
     const newPathNodes = pathNodes.slice(0, position + 1);
-
-    setAppState((prev) => ({
-      ...prev,
-      graph: {
-        ...prev.graph,
-        pathNodes: newPathNodes,
-      },
-    }));
     truncatePathNodes(position);
     trackAction("trailClick", generateURL(newPathNodes));
   };

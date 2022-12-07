@@ -6,13 +6,6 @@ import clsx from "clsx";
 import useSessionStore from "@/lib/stores/useSessionStore";
 
 const ResultItem = ({ item }) => {
-  const {
-    setAppState,
-    appState: {
-      graph: { pathNodes },
-    },
-  } = useAppContext();
-
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
 
   const itemPath = item.map(({ id }) => id);
@@ -23,10 +16,6 @@ const ResultItem = ({ item }) => {
       onClick={() => {
         if (!isEqual(pathNodes, itemPath)) {
           replacePathNodes(itemPath);
-          setAppState((prev) => ({
-            ...prev,
-            graph: { ...prev.graph, pathNodes: itemPath },
-          }));
           trackAction("searchResultClick", generateURL(itemPath));
         } else {
           return null;
