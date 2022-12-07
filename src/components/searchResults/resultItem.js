@@ -1,4 +1,3 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import { generateURL, trackAction } from "@/lib/lib";
 import React, { Fragment } from "react";
 import { isEqual } from "lodash";
@@ -7,6 +6,7 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 const ResultItem = ({ item }) => {
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
+  const pathNodes = useSessionStore((state) => state.pathNodes);
 
   const itemPath = item.map(({ id }) => id);
   const itemPathLabels = item.map(({ name }) => name);
