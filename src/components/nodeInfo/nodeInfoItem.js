@@ -7,7 +7,6 @@ const NodeInfoItem = ({ name, body }) => {
   const { t } = useTranslation("nodeInfo");
 
   const parseBody = (body) => {
-    console.log(typeof body)
     if (typeof body === "string") {
       return body;
     }
