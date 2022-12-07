@@ -45,16 +45,10 @@ const useSessionStore = create((set) => ({
     isOpen: false,
     content: "",
   },
-  closeModal: () =>
+  toggleModal: (state) =>
     set(
       produce((draft) => {
-        draft.modal.isOpen = false;
-      })
-    ),
-  toggleModal: () =>
-    set(
-      produce((draft) => {
-        draft.modal.isOpen = !draft.modal.isOpen;
+        draft.modal.isOpen = state === undefined ? !draft.modal.isOpen : state;
       })
     ),
   setModalContent: (contentString) =>
@@ -63,6 +57,7 @@ const useSessionStore = create((set) => ({
         draft.modal.content = contentString;
       })
     ),
+    popOver: {isOpen: false},
   search: {
     queryString: "",
     results: [],

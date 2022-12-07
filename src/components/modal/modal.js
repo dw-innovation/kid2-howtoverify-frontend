@@ -12,12 +12,12 @@ const Modal = () => {
 
   const ref = useRef(null);
   const isOpen = useSessionStore((state) => state.modal.isOpen);
-  const closeModal = useSessionStore((state) => state.closeModal);
+  const toggleModal = useSessionStore((state) => state.toggleModal);
   const content = useSessionStore((state) => state.modal.content);
 
-  useOnClickOutside(ref, () => closeModal());
+  useOnClickOutside(ref, () => toggleModal(false));
 
-  useEscapeKey(() => closeModal());
+  useEscapeKey(() => toggleModal(false));
 
   return (
     <>
@@ -33,7 +33,7 @@ const Modal = () => {
           ref={ref}
         >
           <button
-            onClick={closeModal}
+            onClick={() => toggleModal(false)}
             className="absolute right-0 top-0 p-2 text-blue rotate-45"
           >
             <PlusIcon />
