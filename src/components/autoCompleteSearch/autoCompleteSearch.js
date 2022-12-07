@@ -113,9 +113,7 @@ const AutoCompleteResults = () => {
                             fontWeight:
                               inputString === item.value ? "bold" : "normal",
                           },
-                          onClick: ({ target: { value } }) => {
-                            setInputString(value);
-                          },
+                          onClick: () => setInputString(item.value),
                         })}
                         className={clsx(
                           "list-none cursor-pointer -mx-2 px-2 py-1",
