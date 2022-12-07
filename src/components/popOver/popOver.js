@@ -1,13 +1,12 @@
 import useAppContext from "@/lib/hooks/useAppContext";
+import useSessionStore from "@/lib/stores/useSessionStore";
 import useTranslation from "next-translate/useTranslation";
 import React, { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 const PopOver = () => {
-  const {
-    appState: { showPopOver },
-    setAppState,
-  } = useAppContext();
+  const showPopOver = useSessionStore((state) => state.popOver.isOpen);
+  const togglePopOver = useSessionStore((state) => state.togglePopOver);
 
   const [displayPopOver, setDisplayPopOver] = useState(false);
 
@@ -18,10 +17,7 @@ const PopOver = () => {
   useEffect(() => {
     if (showPopOver) {
       setDisplayPopOver(true);
-      setTimeout(
-        () => setAppState((prev) => ({ ...prev, showPopOver: false })),
-        4000
-      );
+      setTimeout(() => togglePopOver(false), 4000);
     } else {
       setTimeout(() => setDisplayPopOver(false), 100000);
     }

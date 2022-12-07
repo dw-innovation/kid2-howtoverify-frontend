@@ -2,8 +2,6 @@ import create from "zustand";
 import produce from "immer";
 
 const useSessionStore = create((set) => ({
-  showPopOver: false,
-  togglePopOver: () => set((state) => (state.showPopOver = !state.showPopOver)),
   pathNodes: [],
   addPathNode: (nodeID, level) =>
     set(
@@ -57,7 +55,14 @@ const useSessionStore = create((set) => ({
         draft.modal.content = contentString;
       })
     ),
-    popOver: {isOpen: false},
+  popOver: { isOpen: false },
+  togglePopOver: (state) =>
+    set(
+      produce((draft) => {
+        draft.popOver.isOpen =
+          state === undefined ? !draft.popOver.isOpen : state;
+      })
+    ),
   search: {
     queryString: "",
     results: [],
