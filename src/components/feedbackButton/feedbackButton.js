@@ -23,7 +23,9 @@ const FeedbackButton = () => {
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
       >
-        <FeedbackIcon />
+        <div className="pr-1">
+          <FeedbackIcon />
+        </div>
         <span ref={ref}>{t("sendFeedback")}</span>
       </a>
     </>
