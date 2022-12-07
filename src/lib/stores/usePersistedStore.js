@@ -4,15 +4,20 @@ import { persist } from "zustand/middleware";
 const usePersistedStore = create(
   persist(
     (set, get) => ({
-      trackingEnabled: true,
-      toggleTracking: () =>
-        set(() => ({ trackingEnabled: !get().trackingEnabled })),
-      showCookieBanner: true,
-      toggleCookieBanner: () =>
-        set(() => ({ showCookieBanner: !get().showCookieBanner })),
+      trackingEnabled: get()?.trackingEnabled ? get().trackingEnabled : true,
+      showCookieBanner: get()?.showCookieBanner ? get().showCookieBanner : true,
+      toggleCookieBanner: (state) =>
+        set(() => ({
+          showCookieBanner:
+            state === undefined ? !get().showCookieBanner : state,
+        })),
+      toggleTracking: (state) =>
+        set(() => ({
+          trackingEnabled: state === undefined ? !get().trackingEnabled : state,
+        })),
     }),
     {
-      name: "kid-howtoverify-storage",
+      name: "dw-kid2-howtoverify-storage",
       getStorage: () => localStorage,
     }
   )
