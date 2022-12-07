@@ -1,7 +1,6 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useRef } from "react";
 import PlusIcon from "src/assets/svg/plusIcon";
 import ResultItem from "./resultItem";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
@@ -9,34 +8,18 @@ import useEscapeKey from "@/lib/hooks/useEscapeKey";
 import useSessionStore from "@/lib/stores/useSessionStore";
 
 const SearchResults = () => {
-  const { setAppState } = useAppContext();
-
   const ref = useRef(null);
   const queryString = useSessionStore((state) => state.search.queryString);
   const results = useSessionStore((state) => state.search.results);
   const showResults = useSessionStore((state) => state.search.showResults);
   const isLoading = useSessionStore((state) => state.search.isLoading);
-  const setSearchResults = useSessionStore(
-    (state) => state.setSearchResults
-  );
-  const toggleShowResults = useSessionStore(
-    (state) => state.toggleShowResults
-  );
-  const toggleIsLoading = useSessionStore(
-    (state) => state.toggleIsLoading
-  );
+  const toggleShowResults = useSessionStore((state) => state.toggleShowResults);
 
   const { t } = useTranslation("common");
 
-  const closeSearchResults = () =>
-    setAppState((prev) => ({
-      ...prev,
-      search: { ...prev.search, showResults: false },
-    }));
+  useOnClickOutside(ref, () => toggleShowResults(false));
 
-  useOnClickOutside(ref, closeSearchResults);
-
-  useEscapeKey(closeSearchResults);
+  useEscapeKey(() => toggleShowResults(false));
 
   return (
     <>
@@ -46,12 +29,8 @@ const SearchResults = () => {
           ref={ref}
         >
           <button
-            onClick={() =>{
+            onClick={() => 
               toggleShowResults(false)
-              setAppState((prev) => ({
-                ...prev,
-                search: { ...prev.search, showResults: false },
-              }))}
             }
             className="absolute right-0 top-0 z-30 aspect-square text-white p-2 rotate-45"
           >
