@@ -12,6 +12,7 @@ import Color from "color";
 import { without } from "lodash/fp";
 import { cloneDeep } from "lodash";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import { SOFTWAREAPPLICATIONPATH } from "@/lib/const";
 
 // so the graph does not reset every time, we have to store a mutable copy of the
 // nodes, that keeps their position and so on in memory.
@@ -156,7 +157,16 @@ export const updateGraph = (ref, data, dimensions) => {
     .attr("id", (d) => nodeId(d));
 
   // render nodes
-  var circle = newNode
+  var circle = newNode.append("g").attr("class", ({ type }) => {
+    const nodeType = type.split("/").at(-1);
+
+    return nodeType === "SoftwareApplication"
+      ? "SoftwareApplication"
+      : "circle";
+  });
+
+  svgRef
+    .selectAll(".circle")
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
     .attr("fill", ({ id, level }) => {
@@ -167,7 +177,23 @@ export const updateGraph = (ref, data, dimensions) => {
     })
     .attr("class", "hover:brighter")
     .on("click", (e) => handleNodeClick(e));
-
+  svgRef
+    .selectAll(".SoftwareApplication")
+    .append("path")
+    .attr("d", SOFTWAREAPPLICATIONPATH[0].d)
+    .attr("width", 20)
+    .attr("height", 20)
+    .attr("transform", ({ type }) => {
+      return "scale(" + getNodeRadius(type) / 30 + ") translate(-46.5 -46.5)";
+    })
+    .attr("fill", ({ id, level }) => {
+      const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
+        getNodeColorShade(pathNodes.includes(id), maxLevel(data) === level)
+      );
+      return color;
+    })
+    .attr("class", "cursor-pointer hover:brighter")
+    .on("click", (e) => handleNodeClick(e));
   // attach labels to nodes for getting width
   var text = newNode
     .append("text")
@@ -185,7 +211,7 @@ export const updateGraph = (ref, data, dimensions) => {
       return e.bbox.width + 8;
     })
     .attr("height", 20)
-    .attr("fill", ({ id, level }) => {
+    .attr("fill", ({ id }) => {
       const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
         pathNodes.includes(id) ? 0 : 0.6
       );
