@@ -66,7 +66,7 @@ const AutoCompleteResults = () => {
             <input
               {...getInputProps({
                 onChange: ({ target: { value } }) => {
-                  selectedItem.name !== value && toggleShowResults(false);
+                  selectedItem?.name !== value && toggleShowResults(false);
                   setInputString(value);
                 },
               })}
