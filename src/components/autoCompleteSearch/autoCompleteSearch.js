@@ -65,9 +65,9 @@ const AutoCompleteResults = () => {
           <div className="flex-1 relative">
             <input
               {...getInputProps({
-                onChange: (e) => {
-                  toggleShowResults(false);
-                  setInputString(e.target.value);
+                onChange: ({ target: { value } }) => {
+                  selectedItem.name !== value && toggleShowResults(false);
+                  setInputString(value);
                 },
               })}
               onFocus={() => setState({ isOpen: true })}
@@ -111,7 +111,10 @@ const AutoCompleteResults = () => {
                           item,
                           style: {
                             fontWeight:
-                              selectedItem === item ? "bold" : "normal",
+                              inputString === item.value ? "bold" : "normal",
+                          },
+                          onClick: ({ target: { value } }) => {
+                            setInputString(value);
                           },
                         })}
                         className={clsx(
