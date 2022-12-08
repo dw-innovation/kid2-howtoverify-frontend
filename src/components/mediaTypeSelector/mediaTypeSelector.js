@@ -14,7 +14,7 @@ const MediaTypeSelector = () => {
   );
 
   return (
-    <div className="flex flex-row flex-1 justify-center items-center">
+    <div className="flex flex-row justify-center items-center px-6 flex-1">
       {ROOTNODES.map(({ id, label }, index) => (
         <Fragment key={index}>
           {id !== pathNodes[0] && (

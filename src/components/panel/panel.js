@@ -12,7 +12,7 @@ const Panel = () => {
   return (
     <div
       className={clsx(
-        "p-2 flex gap-3 flex-col z-50 relative max-h-screen",
+        "p-2 flex gap-3 flex-col z-50 relative overflow-hidden",
         isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
@@ -22,7 +22,7 @@ const Panel = () => {
       }}
     >
       <button
-        className="absolute top-0 bottom-0 left-0 -translate-x-1/2 bg-white hover:bg-blue hover:text-white transition-all duration-200 ease-in-out h-max my-auto rounded-full shadow-sm font-bold flex justify-center items-center"
+        className="absolute top-0 bottom-0 z-20 left-0 -translate-x-1/2 bg-white hover:bg-blue hover:text-white transition-all duration-200 ease-in-out h-max my-auto rounded-full shadow-sm font-bold flex justify-center items-center"
         style={{ height: "2rem", width: "2rem" }}
         onClick={() => setIsOpen(!isOpen)}
       >

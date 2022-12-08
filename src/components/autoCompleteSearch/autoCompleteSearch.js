@@ -74,7 +74,7 @@ const AutoCompleteResults = () => {
               placeholder={t("searchStartTyping")}
               value={inputString}
               className={clsx(
-                "h-full w-full relative p-3 bg-white rounded-r-md",
+                "h-full w-full relative p-3 bg-white",
                 index.filter(
                   (item) =>
                     !inputString ||
@@ -93,7 +93,7 @@ const AutoCompleteResults = () => {
               ).length > 0 && (
                 <ul
                   {...getMenuProps()}
-                  className="absolute mt-1 ml-0 p-2 shadow-xl bg-white max-h-44 overflow-scroll w-full"
+                  className="absolute mt-1 ml-0 p-2 shadow-xl bg-white max-h-44 z-[100] overflow-scroll w-full"
                 >
                   {index
                     .filter(

@@ -16,9 +16,7 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 const IndexPage = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
-  const {
-    setAppState,
-  } = useAppContext();
+  const { setAppState } = useAppContext();
 
   const modalIsOpen = useSessionStore((state) => state.modal.isOpen);
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
@@ -59,19 +57,27 @@ const IndexPage = () => {
   return (
     <>
       <div
-        className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col overflow-hidden"
+        className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col"
         style={{ filter: modalIsOpen ? "blur(4px)" : "" }}
       >
         <FeedbackButton />
-        <div className="flex flex-row flex-1">
-          <div className="flex flex-col flex-1">
-            <Header />
-            {pathNodes.length !== 0 ? <GraphRenderer /> : <MediaTypeSelector />}
-            <div className="w-full relative pl-2 lg:pl-8 p-2 bg-lightGrey">
-              <Navigation />
+        <div className="flex flex-col flex-1">
+          <Header />
+          <div className="flex flex-row flex-1">
+            <div className="flex flex-col flex-1">
+              <div className="flex-1 relative z-10">
+                {pathNodes.length !== 0 ? (
+                  <GraphRenderer />
+                ) : (
+                  <MediaTypeSelector />
+                )}
+              </div>
+              <div className="w-full relative pl-2 lg:pl-8 p-2 bg-lightGrey">
+                <Navigation />
+              </div>
             </div>
+            <Panel />
           </div>
-          <Panel />
         </div>
         <Footer />
       </div>
