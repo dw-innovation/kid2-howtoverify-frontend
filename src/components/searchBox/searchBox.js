@@ -1,15 +1,11 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import React, { useEffect } from "react";
 import LensIcon from "src/assets/svg/lens";
 import { getIndex, handleSearch } from "@/lib/lib";
 import AutoCompleteSearch from "../autoCompleteSearch";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const SearchBox = () => {
-  const {
-    appState: {
-      search: { queryString },
-    },
-  } = useAppContext();
+  const queryString = useSessionStore((state) => state.search.queryString);
 
   useEffect(() => {
     getIndex();
@@ -23,7 +19,7 @@ const SearchBox = () => {
         handleSearch(queryString);
       }}
     >
-      <div className="rounded-l-md bg-blue aspect-square px-4 flex justify-center items-center">
+      <div className="bg-blue aspect-square px-4 flex justify-center items-center">
         <LensIcon />
       </div>
       <AutoCompleteSearch />

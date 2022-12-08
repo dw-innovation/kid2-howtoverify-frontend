@@ -25,13 +25,11 @@ const SearchResults = () => {
     <>
       {showResults && queryString !== "" && (
         <div
-          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md z-30"
+          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md z-[100]"
           ref={ref}
         >
           <button
-            onClick={() => 
-              toggleShowResults(false)
-            }
+            onClick={() => toggleShowResults(false)}
             className="absolute right-0 top-0 z-30 aspect-square text-white p-2 rotate-45"
           >
             <PlusIcon />
@@ -59,7 +57,7 @@ const SearchResults = () => {
                 {results.map(({ results, category }, index) => (
                   <Fragment key={index}>
                     {results.length > 0 && (
-                      <div>
+                      <div className="pb-2">
                         <span className="font-bold font-sans uppercase text-sm -mb-1 block">
                           {category.name}
                         </span>
