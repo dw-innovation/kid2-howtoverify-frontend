@@ -3,7 +3,7 @@ import React from "react";
 const FooterLink = ({ innerHTML, onClickAction }) => (
   <a
     dangerouslySetInnerHTML={{ __html: innerHTML }}
-    className="text-blue hover:brighter cursor-pointer"
+    className="text-white hover:underline font-bold cursor-pointer px-2"
     onClick={onClickAction}
   />
 );
