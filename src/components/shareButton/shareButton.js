@@ -20,7 +20,7 @@ const ShareButton = () => {
             togglePopOver(true);
           }
         }}
-        className="text-blue hover:text-purple"
+        className="text-blue"
         data-tip={t("shareTooltip")}
       >
         <ShareIcon width={24} />
