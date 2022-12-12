@@ -30,7 +30,7 @@ const NodeInfoItem = ({ name, body }) => {
               href={body}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue hover:underline"
+              className="text-blue-primary hover:underline"
               onClick={() => {
                 trackAction("externalLink", body);
               }}

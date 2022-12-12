@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NodeInfo from "../nodeInfo";
 import clsx from "clsx";
 import { getNodeColor } from "@/lib/lib";
-import Color from "color";
 import ArrowRight from "src/assets/svg/arrow";
 import useSessionStore from "@/lib/stores/useSessionStore";
 
@@ -16,9 +15,10 @@ const Panel = () => {
         isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
-        backgroundColor: Color(
-          pathNodes?.length > 0 ? getNodeColor(pathNodes[0], "value") : "#000"
-        ).alpha(0.06),
+        backgroundColor:
+          pathNodes?.length > 0
+            ? getNodeColor(pathNodes[0], "background")
+            : "#000",
       }}
     >
       <button
@@ -38,11 +38,10 @@ const Panel = () => {
         <div className="flex flex-col flex-1 justify-between gap-2 overflow-y-scroll overflow-x-hidden">
           <NodeInfo
             style={{
-              backgroundColor: Color(
+              backgroundColor:
                 pathNodes?.length > 0
-                  ? getNodeColor(pathNodes[0], "value")
-                  : "#000"
-              ).alpha(0.06),
+                  ? getNodeColor(pathNodes[0], "nodeInfo")
+                  : "#000",
             }}
           />
         </div>

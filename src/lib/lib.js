@@ -7,6 +7,7 @@ import {
   RADIUSFACTORS,
 } from "@/lib/const";
 import axios from "axios";
+import tailwindConfig from "tailwind.config";
 import usePersistedStore from "./stores/usePersistedStore";
 import useSessionStore from "./stores/useSessionStore";
 
@@ -14,8 +15,10 @@ export const addPrefix = (string) => `${PREFIX}${string}`;
 
 export const removePrefix = (string) => string.replace(PREFIX, "");
 
-export const getNodeColor = (rootNode, property) => {
-  return ROOTNODES.filter((node) => node.id === rootNode)[0]?.color[property];
+export const getNodeColor = (rootNode, type) => {
+  let rootNodeColor = ROOTNODES.filter((node) => node.id === rootNode)[0]
+    ?.color["name"];
+  return tailwindConfig.theme.extend.colors[rootNodeColor][type];
 };
 
 export const getNodeRadius = (nodeType) =>

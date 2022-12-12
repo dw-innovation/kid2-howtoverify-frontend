@@ -16,7 +16,7 @@ const Trail = () => {
           "font-noto",
           pathNodes.length === 0
             ? "cursor-default font-bold text-black"
-            : "text-blue"
+            : "text-primary"
         )}
         onClick={() => {
           clearPathNodes();

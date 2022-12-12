@@ -2,23 +2,21 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { addPrefix, fetchGraphData, generateURL } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
-import GraphRenderer from "@/components/graphRenderer";
-import MediaTypeSelector from "@/components/mediaTypeSelector";
 import useLocation from "@/lib/hooks/useLocation";
 import Panel from "@/components/panel";
 import MobileScreen from "@/components/mobileScreen";
-import Navigation from "@/components/navigation";
 import Modal from "@/components/modal";
 import Footer from "@/components/footer";
 import FeedbackButton from "@/components/feedbackButton";
 import Header from "@/components/header";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import ContentWrapper from "@/components/contentWrapper";
+import GraphCanvas from "@/components/graphCanvas/graphCanvas";
 
 const IndexPage = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
   const { setAppState } = useAppContext();
 
-  const modalIsOpen = useSessionStore((state) => state.modal.isOpen);
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
 
   const { query } = useRouter();
@@ -56,31 +54,17 @@ const IndexPage = () => {
 
   return (
     <>
-      <div
-        className="w-screen h-screen relative bg-lightGrey hidden md:flex flex-col"
-        style={{ filter: modalIsOpen ? "blur(4px)" : "" }}
-      >
+      <ContentWrapper>
         <FeedbackButton />
         <div className="flex flex-col flex-1">
           <Header />
           <div className="flex flex-row flex-1">
-            <div className="flex flex-col flex-1">
-              <div className="flex-1 relative z-10">
-                {pathNodes.length !== 0 ? (
-                  <GraphRenderer />
-                ) : (
-                  <MediaTypeSelector />
-                )}
-              </div>
-              <div className="w-full relative pl-2 lg:pl-8 p-2 bg-lightGrey">
-                <Navigation />
-              </div>
-            </div>
+            <GraphCanvas />
             <Panel />
           </div>
         </div>
         <Footer />
-      </div>
+      </ContentWrapper>
       <Modal />
       <MobileScreen />
     </>

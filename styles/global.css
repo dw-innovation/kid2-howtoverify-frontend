@@ -76,7 +76,7 @@ ul li {
 }
 
 details a {
-  @apply text-blue;
+  @apply text-primary;
 }
 
 details a:hover {

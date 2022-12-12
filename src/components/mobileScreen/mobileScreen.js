@@ -6,7 +6,7 @@ const MobileScreen = () => {
   const { t } = useTranslation("common");
   return (
     <Div100vh className="md:hidden w-screen flex items-center justify-center flex-col p-3">
-      <h1 className="font-bold font-georgia text-blue text-2xl mb-2">
+      <h1 className="font-bold font-georgia text-blue-primary text-2xl mb-2">
         {t("mobileTitle")}
       </h1>
       <span className="text-center">{t("mobileDescription")}</span>

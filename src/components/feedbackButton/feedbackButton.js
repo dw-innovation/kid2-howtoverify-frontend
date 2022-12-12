@@ -17,7 +17,7 @@ const FeedbackButton = () => {
       <a
         href={process.env.NEXT_PUBLIC_FEEDBACK_URL}
         target="_blank"
-        className="flex items-center gap-1 text-white bg-blue hover:brighter p-2 font-noto cursor-pointer fixed right-0 z-[100] bottom-1/4"
+        className="flex items-center gap-1 text-white bg-blue-primary hover:brighter p-2 font-noto cursor-pointer fixed right-0 z-[100] bottom-1/4"
         rel="noopener noreferrer"
         style={{ transform: `translateX(${hover ? 0 : stripeWidth + 8}px)` }}
         onMouseOver={() => setHover(true)}

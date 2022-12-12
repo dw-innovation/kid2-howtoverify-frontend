@@ -14,7 +14,7 @@ const Header = () => {
     <div className="flex flex-col lg:flex-row items-center relative border-b-[1px]">
       <div className="py-4 px-2 lg:pl-8 pr-2 lg:pr-8 lg:text-left flex flex-col items-center lg:items-start justify-center lg:border-r-[1px] h-full">
         <h1
-          className="font-bold text-3xl 2xl:text-4xl pb-3 font-georgia text-blue"
+          className="font-bold text-3xl 2xl:text-4xl pb-3 font-georgia text-blue-primary"
           dangerouslySetInnerHTML={{ __html: t("title") }}
         />
         <h2
@@ -23,11 +23,13 @@ const Header = () => {
         />
       </div>
       <div className="py-4 px-2 lg:pr-8 flex flex-1 items-center justify-center">
-        {pathNodes.length !== 0 ? (
-          <MediaTypeSelector />
-        ) : (
-          <div className="h-[5rem] lg:h-[8rem] m-2" />
-        )}
+        <div className="flex flex-1 justify-center items-center">
+          {pathNodes.length !== 0 ? (
+            <MediaTypeSelector />
+          ) : (
+            <div className="h-[5rem] lg:h-[8rem] m-2" />
+          )}
+        </div>
         <div className="relative w-96">
           <SearchBox />
           <SearchResults />

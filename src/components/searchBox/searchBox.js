@@ -19,7 +19,7 @@ const SearchBox = () => {
         handleSearch(queryString);
       }}
     >
-      <div className="bg-blue aspect-square px-4 flex justify-center items-center">
+      <div className="bg-blue-primary aspect-square px-4 flex justify-center items-center">
         <LensIcon />
       </div>
       <AutoCompleteSearch />

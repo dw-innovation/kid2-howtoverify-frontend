@@ -4,6 +4,7 @@ import Downshift from "downshift";
 import clsx from "clsx";
 import useTranslation from "next-translate/useTranslation";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import tailwindConfig from "tailwind.config";
 
 const AutoCompleteResults = () => {
   const [inputString, setInputString] = useState("");
@@ -82,7 +83,7 @@ const AutoCompleteResults = () => {
                 ).length === 0 && "text-red"
               )}
               style={{
-                boxShadow: "inset 0 0 0 2px #23A6F0",
+                boxShadow: `inset 0 0 0 2px ${tailwindConfig.theme.extend.colors.blue.primary}`,
               }}
             />
             {isOpen &&
@@ -118,8 +119,8 @@ const AutoCompleteResults = () => {
                         className={clsx(
                           "list-none cursor-pointer -mx-2 px-2 py-1",
                           highlightedIndex === index
-                            ? "bg-blue hover:text-white"
-                            : "bg-white hover:text-blue"
+                            ? "bg-blue-nextClick hover:text-white"
+                            : "bg-white hover:text-blue-primary"
                         )}
                       >
                         {item.value}
