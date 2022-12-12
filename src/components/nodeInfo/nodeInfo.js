@@ -47,7 +47,6 @@ const NodeInfo = ({ className, style }) => {
           title={t("introTitle")}
           style={{ backgroundColor: "#fff" }}
         >
-          asdalkdsjaksdhjkajsdh
           <ReactMarkdown children={t("introText")} className="nodeInfo" components={REACTMARKDOWNCOMPONENTS} />
         </Accordion>
       )}
