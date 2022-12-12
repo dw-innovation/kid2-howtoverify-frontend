@@ -10,7 +10,6 @@ const About = ({ className }) => {
     <Accordion
       title="About"
       open={false}
-      isBlack
       style={{ backgroundColor: "#fff" }}
     >
       <ReactMarkdown children={t("aboutText")} />

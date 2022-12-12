@@ -24,10 +24,7 @@ const Panel = () => {
         isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
-        backgroundColor:
-          pathNodes?.length > 0
-            ? getNodeColor(pathNodes[0], "background")
-            : "#000",
+        backgroundColor: getNodeColor(pathNodes[0], "background"),
       }}
       ref={ref}
     >
@@ -52,10 +49,7 @@ const Panel = () => {
       >
         <NodeInfo
           style={{
-            backgroundColor:
-              pathNodes?.length > 0
-                ? getNodeColor(pathNodes[0], "nodeInfo")
-                : "#000",
+            backgroundColor: getNodeColor(pathNodes[0], "nodeInfo"),
           }}
         />
       </div>
