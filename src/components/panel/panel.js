@@ -17,7 +17,6 @@ const Panel = () => {
     setPanelHeight(ref?.current?.clientHeight);
   }, [ref, width, heigth]);
 
-
   return (
     <div
       className={clsx(
