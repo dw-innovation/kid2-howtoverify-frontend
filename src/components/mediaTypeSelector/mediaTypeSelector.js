@@ -12,7 +12,6 @@ const MediaTypeSelector = () => {
   const clearSearchQueryString = useSessionStore(
     (state) => state.clearSearchQueryString
   );
-
   return (
     <div className="flex flex-row justify-center items-center px-6 flex-1">
       {ROOTNODES.map(({ id, label }, index) => (
@@ -32,9 +31,9 @@ const MediaTypeSelector = () => {
                   : `w-[5rem] h-[5rem] xl:w-[8rem] xl:h-[8rem] text-xl xl:text-2xl`
               )}
               style={{
-                backgroundColor: Color(getNodeColor(id, "value")).alpha(
-                  pathNodes?.length === 0 ? 1 : 0.6
-                ),
+                backgroundColor: Color(
+                  getNodeColor(id, "primary")
+                ).alpha(pathNodes?.length === 0 ? 1 : 0.6),
               }}
             />
           )}

@@ -4,7 +4,7 @@
   h2,
   h3,
   h4 {
-    @apply font-bold text-darkBlue;
+    @apply font-bold text-blue-primary;
   }
   h1 {
     @apply text-2xl my-3;
@@ -21,11 +21,11 @@
   ol {
     @apply my-3;
     li {
-        @apply list-decimal ml-6 text-xl text-blue font-bold;
+        @apply list-decimal ml-6 text-xl text-blue-primary font-bold;
     }
   }
   a {
-    @apply text-blue underline;
+    @apply text-blue-primary underline;
   }
   a:hover {
     @apply no-underline;

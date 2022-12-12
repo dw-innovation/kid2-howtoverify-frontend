@@ -22,8 +22,8 @@ const ResultItem = ({ item }) => {
         }
       }}
       className={clsx(
-        "block hover:text-blue text-left leading-4 my-2 text-sm",
-        isEqual(pathNodes, itemPath) && "text-blue"
+        "block hover:text-blue-primary text-left leading-4 my-2 text-sm",
+        isEqual(pathNodes, itemPath) && "text-blue-primary"
       )}
     >
       <div>

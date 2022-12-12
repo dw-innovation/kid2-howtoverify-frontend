@@ -1,7 +1,6 @@
 import {
   getNodeRadius,
   getNodeColor,
-  getNodeColorShade,
   validateLink,
   trackAction,
   generateURL,
@@ -136,7 +135,7 @@ export const updateGraph = (ref, data, dimensions) => {
     .append("line")
     .attr("stroke-width", 3)
     .attr("stroke", (link) =>
-      Color(getNodeColor(pathNodes[0], "value")).lighten(
+      Color(getNodeColor(pathNodes[0], "primary")).lighten(
         validateLink(pathNodes, link) ? 0 : 0.5
       )
     );
@@ -170,10 +169,14 @@ export const updateGraph = (ref, data, dimensions) => {
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
     .attr("fill", ({ id, level }) => {
-      const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        getNodeColorShade(pathNodes.includes(id), maxLevel(data) === level)
-      );
-      return color;
+      if (maxLevel(data) === level) {
+        return getNodeColor(pathNodes[0], "nextClick");
+      }
+      if (pathNodes.includes(id)) {
+        return getNodeColor(pathNodes[0], "primary");
+      }
+
+      return getNodeColor(pathNodes[0], "inactive");
     })
     .attr("class", "hover:brighter")
     .on("click", (e) => handleNodeClick(e));
@@ -187,10 +190,14 @@ export const updateGraph = (ref, data, dimensions) => {
       return "scale(" + getNodeRadius(type) / 30 + ") translate(-46.5 -46.5)";
     })
     .attr("fill", ({ id, level }) => {
-      const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        getNodeColorShade(pathNodes.includes(id), maxLevel(data) === level)
-      );
-      return color;
+      if (maxLevel(data) === level) {
+        return getNodeColor(pathNodes[0], "nextClick");
+      }
+      if (pathNodes.includes(id)) {
+        return getNodeColor(pathNodes[0], "primary");
+      }
+
+      return getNodeColor(pathNodes[0], "inactive");
     })
     .attr("class", "cursor-pointer hover:brighter")
     .on("click", (e) => handleNodeClick(e));
@@ -211,11 +218,14 @@ export const updateGraph = (ref, data, dimensions) => {
       return e.bbox.width + 8;
     })
     .attr("height", 20)
-    .attr("fill", ({ id }) => {
-      const color = Color(getNodeColor(pathNodes[0], "value")).lighten(
-        pathNodes.includes(id) ? 0 : 0.6
-      );
-      return color;
+    .attr("fill", ({ id, level }) => {
+      if (maxLevel(data) === level) {
+        return getNodeColor(pathNodes[0], "nextClick");
+      }
+      if (pathNodes.includes(id)) {
+        return getNodeColor(pathNodes[0], "primary");
+      }
+      return getNodeColor(pathNodes[0], "inactive");
     })
     .attr("x", 10)
     .attr("y", -8)

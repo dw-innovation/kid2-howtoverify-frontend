@@ -10,10 +10,10 @@ const Accordion = ({ title, children, isBlack, style = {} }) => {
       <summary
         className="font-bold text-xl 2xl:text-2xl cursor-pointer flex flex-row items-center px-6 py-4"
         style={{
-          color: !isBlack ? getNodeColor(pathNodes[0], "value") : "#000",
+          color: !isBlack ? getNodeColor(pathNodes[0], "primary") : "#000",
           borderLeft: "3px solid",
           borderLeftColor: !isBlack
-            ? getNodeColor(pathNodes[0], "value")
+            ? getNodeColor(pathNodes[0], "primary")
             : "#000",
         }}
       >

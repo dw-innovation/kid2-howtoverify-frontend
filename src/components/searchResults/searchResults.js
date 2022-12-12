@@ -35,7 +35,7 @@ const SearchResults = () => {
             <PlusIcon />
           </button>
 
-          <div className="pb-2 pr-6 bg-blue text-white -mx-2 -mt-2 p-2">
+          <div className="pb-2 pr-6 bg-blue-primary text-white -mx-2 -mt-2 p-2">
             <Trans
               i18nKey="common:searchResultsTitle"
               components={{

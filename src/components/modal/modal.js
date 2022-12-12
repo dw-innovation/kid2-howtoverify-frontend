@@ -34,7 +34,7 @@ const Modal = () => {
         >
           <button
             onClick={() => toggleModal(false)}
-            className="absolute right-0 top-0 p-2 text-blue rotate-45"
+            className="absolute right-0 top-0 p-2 text-blue-primary rotate-45"
           >
             <PlusIcon />
           </button>
