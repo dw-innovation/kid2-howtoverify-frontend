@@ -14,13 +14,49 @@ module.exports = {
         georgia: ["Georgia", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        lightGrey: "#F8F8F8",
-        blue: "#23A6F0",
-        darkBlue: "#3FA9F5",
-        purple: "#791EBF",
-        yellow: "#DBC700",
-        red: "#E3336A",
-        green: "#40A51A",
+        grey: {
+          background: "#EEEEEE",
+          darker: "#5D5D5E",
+          dark: "#737373",
+          light: "#BDBDBD",
+        },
+        purple: {
+          primary: "#8E44AD",
+          inactive: "#DDCBE5",
+          nextClick: "#B382C6",
+          nodeInfo: "#D6BFE0",
+          background: "#E8DDED"
+        },
+        blue: {
+          primary: "#2980B9",
+          inactive: "#BAD4E5",
+          nextClick: "#72A9CE",
+          nodeInfo: "#B6D2E4",
+          background: "#D9E6EF"
+        },
+        green: {
+          primary: "#27AE60",
+          inactive: "#BAE2CB",
+          nextClick: "#66C58E",
+          nodeInfo: "#B6E1C7",
+          background: "#D9EDE1"
+        },
+
+        yellow: {
+          primary: "#F0C000",
+          inactive: "#F5E295",
+          nextClick: "#F3D663",
+          nodeInfo: "#F6E7A9",
+          background: "#F7F0D3"
+        },
+        red: {
+          primary: "#C0392B",
+          inactive: "#E8BFBB",
+          nextClick: "#D47C73",
+          nodeInfo: "#E7BCB6",
+          background: "#F0DCD9"
+        },
+        primary: "#0096FA",
       },
     },
   },

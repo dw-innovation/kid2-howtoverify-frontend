@@ -18,8 +18,8 @@ const Footer = () => {
   const LINKS = ["about", "legal", "privacy"];
 
   return (
-    <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-2 border-t-2 bg-darkGrey">
-      <span dangerouslySetInnerHTML={{ __html: t("copyright") }} className="text-lighterGrey" />
+    <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-2 bg-grey-darker">
+      <span dangerouslySetInnerHTML={{ __html: t("copyright") }} className="text-grey-light" />
       {LINKS.map((link, index) => (
         <Fragment key={index}>
           <FooterLink
