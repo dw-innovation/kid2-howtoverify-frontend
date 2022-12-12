@@ -80,7 +80,7 @@ const AutoCompleteResults = () => {
                   (item) =>
                     !inputString ||
                     item.name.toLowerCase().includes(inputString.toLowerCase())
-                ).length === 0 && "text-red"
+                ).length === 0 && "text-red-primary"
               )}
               style={{
                 boxShadow: `inset 0 0 0 2px ${tailwindConfig.theme.extend.colors.blue.primary}`,
