@@ -6,6 +6,7 @@ import Accordion from "../accordion";
 import useTranslation from "next-translate/useTranslation";
 import ReactMarkdown from "react-markdown";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import { REACTMARKDOWNCOMPONENTS } from "@/lib/components";
 
 const NodeInfo = ({ className, style }) => {
   const {
@@ -46,7 +47,8 @@ const NodeInfo = ({ className, style }) => {
           title={t("introTitle")}
           style={{ backgroundColor: "#fff" }}
         >
-          <ReactMarkdown children={t("introText")} className="nodeInfo" />
+          asdalkdsjaksdhjkajsdh
+          <ReactMarkdown children={t("introText")} className="nodeInfo" components={REACTMARKDOWNCOMPONENTS} />
         </Accordion>
       )}
     </>

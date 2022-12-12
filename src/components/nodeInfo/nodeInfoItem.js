@@ -2,6 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { trackAction } from "@/lib/lib";
+import { REACTMARKDOWNCOMPONENTS } from "@/lib/components";
 
 const NodeInfoItem = ({ name, body }) => {
   const { t } = useTranslation("nodeInfo");
@@ -38,7 +39,7 @@ const NodeInfoItem = ({ name, body }) => {
               {body}
             </a>
           ) : (
-            <ReactMarkdown children={parseBody(body)} />
+            <ReactMarkdown children={parseBody(body)} components={REACTMARKDOWNCOMPONENTS} />
           )}
         </div>
       )}
