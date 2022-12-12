@@ -169,6 +169,9 @@ export const updateGraph = (ref, data, dimensions) => {
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
     .attr("fill", ({ id, level }) => {
+      if (maxLevel(data) === level && pathNodes.includes(id)) {
+        return getNodeColor(pathNodes[0], "primary");
+      }
       if (maxLevel(data) === level) {
         return getNodeColor(pathNodes[0], "nextClick");
       }
@@ -190,6 +193,9 @@ export const updateGraph = (ref, data, dimensions) => {
       return "scale(" + getNodeRadius(type) / 30 + ") translate(-46.5 -46.5)";
     })
     .attr("fill", ({ id, level }) => {
+      if (maxLevel(data) === level && pathNodes.includes(id)) {
+        return getNodeColor(pathNodes[0], "primary");
+      }
       if (maxLevel(data) === level) {
         return getNodeColor(pathNodes[0], "nextClick");
       }
