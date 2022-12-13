@@ -80,7 +80,7 @@ const handleNodeClick = ({
   },
 }) => {
   const pathNodes = useSessionStore.getState().pathNodes;
-  if (id === pathNodes.at(-1)) return null;
+  if (id === pathNodes[pathNodes.length - 1]) return null;
   let addPathNode = useSessionStore.getState().addPathNode;
   let toggleShowResults = useSessionStore.getState().toggleShowResults;
   let clearSearchQueryString =
@@ -161,7 +161,8 @@ export const updateGraph = (ref, data, dimensions) => {
   d3.selectAll("rect").remove();
   // render nodes
   var circle = newNode.append("g").attr("class", ({ type }) => {
-    const nodeType = type.split("/").at(-1);
+    let nodeTypeSplit = type.split("/");
+    const nodeType = nodeTypeSplit[nodeTypeSplit.length - 1];
 
     return nodeType === "SoftwareApplication"
       ? "SoftwareApplication"

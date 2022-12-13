@@ -23,14 +23,20 @@ const NodeInfo = ({ className, style }) => {
   const [currentNode, setCurrentNode] = useState(undefined);
 
   useEffect(() => {
-    nodes.filter(({ id }) => pathNodes.at(-1) === id)[0] &&
-      setCurrentNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]);
+    nodes.filter(({ id }) => pathNodes[pathNodes.length - 1] === id)[0] &&
+      setCurrentNode(
+        nodes.filter(({ id }) => pathNodes[pathNodes.length - 1] === id)[0]
+      );
   }, [nodes, pathNodes]);
 
   return (
     <>
       {currentNode !== undefined ? (
-        <Accordion title={currentNode["name"]} className={className} style={style}>
+        <Accordion
+          title={currentNode["name"]}
+          className={className}
+          style={style}
+        >
           {Object.keys(currentNode).map((property, index) => (
             <Fragment key={index}>
               {SAFELIST.includes(property) ? (

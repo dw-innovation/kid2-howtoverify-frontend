@@ -59,7 +59,7 @@ export const fetchGraphData = async (pathNodes, setAppState) => {
 
 export const validateLink = (pathNodes, link) => {
   return (pathNodes.includes(link.source) && pathNodes.includes(link.target)) ||
-    pathNodes.at(-1) === link.source
+    pathNodes[pathNodes.length - 1] === link.source
     ? true
     : false;
 };
@@ -131,7 +131,9 @@ export const generateURL = (pathNodes) =>
     .join("")}`;
 
 export const getLinkLength = (level, pathLength) =>
-  (LINKLENGTHS[level] ? LINKLENGTHS[level] : LINKLENGTHS.at(-1)) *
+  (LINKLENGTHS[level]
+    ? LINKLENGTHS[level]
+    : LINKLENGTHS[LINKLENGTHS.length - 1]) *
   getFactor("LINKLENGTH") *
   (1 - 1 / (10 - pathLength));
 
@@ -181,13 +183,15 @@ export const filterIndex = (index) =>
 const getFactor = (type) => {
   switch (type) {
     case "LINKLENGTH":
-      return LINKLENGTHFACTORS.filter(
+      let lengths = LINKLENGTHFACTORS.filter(
         (item) => item.minWidth < window.innerWidth
-      ).at(-1).factor;
+      );
+      return lengths[lengths.length - 1].factor;
     default:
-      return RADIUSFACTORS.filter(
+      let factors = RADIUSFACTORS.filter(
         (item) => item.minWidth < window.innerWidth
-      ).at(-1).factor;
+      );
+      return factors[factors.length - 1].factor;
   }
 };
 
