@@ -22,10 +22,12 @@ const NodeInfo = ({ className, style }) => {
   const { t } = useTranslation("common");
   const [lastNode, setLastNode] = useState(undefined);
 
+  const currentNode = useSessionStore((state) => state.currentNode);
+  const setCurrentNode = useSessionStore((state) => state.setCurrentNode);
+
   useEffect(() => {
-    nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]
-      ? setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0])
-      : setLastNode(undefined);
+    nodes.filter(({ id }) => pathNodes.at(-1) === id)[0] &&
+      setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]);
   }, [nodes, pathNodes]);
 
   return (
@@ -43,11 +45,12 @@ const NodeInfo = ({ className, style }) => {
           ))}
         </Accordion>
       ) : (
-        <Accordion
-          title={t("introTitle")}
-          style={{ backgroundColor: "#fff" }}
-        >
-          <ReactMarkdown children={t("introText")} className="nodeInfo" components={REACTMARKDOWNCOMPONENTS} />
+        <Accordion title={t("introTitle")} style={{ backgroundColor: "#fff" }}>
+          <ReactMarkdown
+            children={t("introText")}
+            className="nodeInfo"
+            components={REACTMARKDOWNCOMPONENTS}
+          />
         </Accordion>
       )}
     </>
