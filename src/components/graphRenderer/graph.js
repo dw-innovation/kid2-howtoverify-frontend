@@ -155,6 +155,10 @@ export const updateGraph = (ref, data, dimensions) => {
     .attr("class", "nodes")
     .attr("id", (d) => nodeId(d));
 
+  d3.selectAll(".circle").remove();
+  d3.selectAll(".SoftwareApplication").remove();
+  d3.selectAll("text").remove();
+  d3.selectAll("rect").remove();
   // render nodes
   var circle = newNode.append("g").attr("class", ({ type }) => {
     const nodeType = type.split("/").at(-1);
