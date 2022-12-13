@@ -5,8 +5,8 @@ import { SAFELIST } from "@/lib/const";
 import Accordion from "../accordion";
 import useTranslation from "next-translate/useTranslation";
 import ReactMarkdown from "react-markdown";
-import useSessionStore from "@/lib/stores/useSessionStore";
 import { REACTMARKDOWNCOMPONENTS } from "@/lib/components";
+import useSessionStore from "@/lib/stores/useSessionStore";
 
 const NodeInfo = ({ className, style }) => {
   const {
@@ -20,24 +20,21 @@ const NodeInfo = ({ className, style }) => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
 
   const { t } = useTranslation("common");
-  const [lastNode, setLastNode] = useState(undefined);
-
-  const currentNode = useSessionStore((state) => state.currentNode);
-  const setCurrentNode = useSessionStore((state) => state.setCurrentNode);
+  const [currentNode, setCurrentNode] = useState(undefined);
 
   useEffect(() => {
     nodes.filter(({ id }) => pathNodes.at(-1) === id)[0] &&
-      setLastNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]);
+      setCurrentNode(nodes.filter(({ id }) => pathNodes.at(-1) === id)[0]);
   }, [nodes, pathNodes]);
 
   return (
     <>
-      {lastNode !== undefined ? (
-        <Accordion title={lastNode["name"]} className={className} style={style}>
-          {Object.keys(lastNode).map((property, index) => (
+      {currentNode !== undefined ? (
+        <Accordion title={currentNode["name"]} className={className} style={style}>
+          {Object.keys(currentNode).map((property, index) => (
             <Fragment key={index}>
               {SAFELIST.includes(property) ? (
-                <NodeInfoItem name={property} body={lastNode[property]} />
+                <NodeInfoItem name={property} body={currentNode[property]} />
               ) : (
                 <></>
               )}
