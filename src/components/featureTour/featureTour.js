@@ -33,7 +33,7 @@ const FeatureTour = () => {
   ];
 
   return (
-    <>
+    <div className="hidden md:block">
       {showFeatureTour && (
         <Steps
           enabled={showFeatureTour}
@@ -48,7 +48,7 @@ const FeatureTour = () => {
           onExit={() => toggleFeatureTour(false)}
         />
       )}
-    </>
+    </div>
   );
 };
 
