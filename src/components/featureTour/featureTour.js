@@ -1,7 +1,7 @@
 import usePersistedStore from "@/lib/stores/usePersistedStore";
 import React from "react";
 import "intro.js/introjs.css";
-import { Steps, Hints } from "intro.js-react";
+import { Steps } from "intro.js-react";
 import useSessionStore from "@/lib/stores/useSessionStore";
 
 const FeatureTour = () => {
@@ -10,6 +10,7 @@ const FeatureTour = () => {
     (state) => state.toggleFeatureTour
   );
   const addPathNode = useSessionStore((state) => state.addPathNode);
+  const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
 
   const steps = [
     {
@@ -22,8 +23,8 @@ const FeatureTour = () => {
       intro: "And those are buttons that you can click on",
     },
     {
-        element: "#What",
-        intro: "You can click on yet another button."
+      element: "#What",
+      intro: "You can click on yet another button.",
     },
     {
       element: "#featureTour-3",
@@ -40,6 +41,7 @@ const FeatureTour = () => {
           initialStep={0}
           onBeforeChange={(nextStepIndex) => {
             if (nextStepIndex === 2) {
+              clearPathNodes();
               addPathNode("http://dw.com/Video", 1);
             }
           }}
