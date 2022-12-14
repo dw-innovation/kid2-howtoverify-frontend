@@ -5,11 +5,11 @@ const usePersistedStore = create(
   persist(
     (set, get) => ({
       trackingEnabled: get()?.trackingEnabled ? get().trackingEnabled : true,
-      showCookieBanner: get()?.showCookieBanner ? get().showCookieBanner : true,
-      toggleCookieBanner: (state) =>
+      showFeatureTour: get()?.showFeatureTour ? get().showFeatureTour : true,
+      toggleFeatureTour: (state) =>
         set(() => ({
-          showCookieBanner:
-            state === undefined ? !get().showCookieBanner : state,
+          showFeatureTour:
+            state === undefined ? !get().showFeatureTour : state,
         })),
       toggleTracking: (state) =>
         set(() => ({
