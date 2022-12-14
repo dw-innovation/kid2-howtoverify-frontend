@@ -4,15 +4,25 @@ import SearchBox from "../searchBox";
 import SearchResults from "../searchResults";
 import MediaTypeSelector from "../mediaTypeSelector";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import usePersistedStore from "@/lib/stores/usePersistedStore";
 
 const Header = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
+  const toggleFeatureTour = usePersistedStore(
+    (state) => state.toggleFeatureTour
+  );
+  const showFeatureTour = usePersistedStore((state) => state.showFeatureTour);
 
   const { t } = useTranslation("common");
 
   return (
     <div className="flex flex-col lg:flex-row items-center relative border-b-[1px]">
       <div className="py-4 px-2 lg:pl-8 pr-2 lg:pr-8 lg:text-left flex flex-col items-center lg:items-start justify-center lg:border-r-[1px] h-full">
+        {!showFeatureTour && (
+          <button onClick={() => toggleFeatureTour(true)} className="absolute top-0 left-0 ">
+            show Feature Tour
+          </button>
+        )}
         <h1
           className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-grey-darker"
           id="featureTour-1"
