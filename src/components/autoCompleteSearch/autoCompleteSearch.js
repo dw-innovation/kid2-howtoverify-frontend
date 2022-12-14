@@ -71,6 +71,7 @@ const AutoCompleteResults = () => {
                   setInputString(value);
                 },
               })}
+              id="featureTour-3"
               onFocus={() => setState({ isOpen: true })}
               placeholder={t("searchStartTyping")}
               value={inputString}

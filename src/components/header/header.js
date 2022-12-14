@@ -15,6 +15,7 @@ const Header = () => {
       <div className="py-4 px-2 lg:pl-8 pr-2 lg:pr-8 lg:text-left flex flex-col items-center lg:items-start justify-center lg:border-r-[1px] h-full">
         <h1
           className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-grey-darker"
+          id="featureTour-1"
           dangerouslySetInnerHTML={{ __html: t("title") }}
         />
         <h2
