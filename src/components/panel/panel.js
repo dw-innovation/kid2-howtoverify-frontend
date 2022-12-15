@@ -11,16 +11,16 @@ const Panel = () => {
   const [panelHeight, setPanelHeight] = useState(0);
   const ref = useRef(null);
   const pathNodes = useSessionStore((state) => state.pathNodes);
-  const { width, heigth } = useWindowSize();
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     setPanelHeight(ref?.current?.clientHeight);
-  }, [ref, width, heigth]);
+  }, [ref, width, height]);
 
   return (
     <div
       className={clsx(
-        "flex gap-3 flex-col z-50 relative flex-nowrap max-h-full",
+        "relative z-50 flex max-h-full flex-col flex-nowrap gap-3",
         isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
@@ -29,7 +29,7 @@ const Panel = () => {
       ref={ref}
     >
       <button
-        className="-translate-x-1/2 absolute top-0 bottom-0 z-20 left-0 bg-blue-primary hover:bg-white text-white hover:text-blue-primary transition-all duration-200 ease-in-out h-max my-auto rounded-full shadow-sm font-bold flex justify-center items-center"
+        className="absolute top-0 bottom-0 left-0 z-20 my-auto flex h-max -translate-x-1/2 items-center justify-center rounded-full bg-blue-primary font-bold text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-white hover:text-blue-primary"
         style={{ height: "2rem", width: "2rem" }}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -43,7 +43,7 @@ const Panel = () => {
       </button>
       <div
         className={clsx(
-          isOpen ? "block overflow-scroll flex-grow-0 p-2" : "hidden"
+          isOpen ? "block flex-grow-0 overflow-scroll p-2" : "hidden"
         )}
         style={{ maxHeight: `${panelHeight}px` }}
       >
