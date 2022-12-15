@@ -1,10 +1,11 @@
 import usePersistedStore from "@/lib/stores/usePersistedStore";
-import React from "react";
+import React, { useRef } from "react";
 import "intro.js/introjs.css";
 import { Steps } from "intro.js-react";
 import useSessionStore from "@/lib/stores/useSessionStore";
 
 const FeatureTour = () => {
+  const ref = useRef(null);
   const showFeatureTour = usePersistedStore((state) => state.showFeatureTour);
   const toggleFeatureTour = usePersistedStore(
     (state) => state.toggleFeatureTour
@@ -12,7 +13,7 @@ const FeatureTour = () => {
   const addPathNode = useSessionStore((state) => state.addPathNode);
   const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
 
-  const steps = [
+  const STEPS = [
     {
       element: "#featureTour-1",
       intro: "This is our site name.",
@@ -25,7 +26,7 @@ const FeatureTour = () => {
     {
       element: "#What",
       intro: "You can click on yet another button.",
-      position: "right",
+      position: "bottom",
     },
     {
       element: "#featureTour-3",
@@ -33,23 +34,35 @@ const FeatureTour = () => {
     },
   ];
 
+  const stepPromise = (nextStep) =>
+    new Promise((resolve) => {
+      if (nextStep === 1) {
+        clearPathNodes();
+      }
+
+      if (nextStep === 2) {
+        clearPathNodes();
+        addPathNode("http://dw.com/Video", 1);
+      }
+
+      setTimeout(() => {
+        ref.current.updateStepElement(nextStep);
+        resolve();
+      }, 100);
+    });
+
   return (
     <div className="hidden md:block">
       {showFeatureTour && (
         <Steps
           enabled={showFeatureTour}
-          steps={steps}
+          steps={STEPS}
           initialStep={0}
-          onBeforeChange={(nextStepIndex) => {
-            if (nextStepIndex === 1) {
-              clearPathNodes();
-            }
-            if (nextStepIndex === 2) {
-              clearPathNodes();
-              addPathNode("http://dw.com/Video", 1);
-            }
-          }}
+          onBeforeChange={async (nextStepIndex) =>
+            await stepPromise(nextStepIndex)
+          }
           onExit={() => toggleFeatureTour(false)}
+          ref={ref}
         />
       )}
     </div>
