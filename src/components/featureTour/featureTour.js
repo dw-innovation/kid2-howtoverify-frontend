@@ -56,7 +56,7 @@ const FeatureTour = () => {
       setTimeout(() => {
         ref.current.updateStepElement(nextStep);
         resolve();
-      }, 200);
+      }, 300);
     });
 
   return (
