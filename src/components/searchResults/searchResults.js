@@ -25,17 +25,17 @@ const SearchResults = () => {
     <>
       {showResults && queryString !== "" && (
         <div
-          className="absolute w-full p-2 mt-1 shadow-xl bg-white rounded-b-md z-[100]"
+          className="absolute z-[100] mt-1 w-full rounded-b-md bg-white p-2 shadow-xl"
           ref={ref}
         >
           <button
             onClick={() => toggleShowResults(false)}
-            className="absolute right-0 top-0 z-30 aspect-square text-white p-2 rotate-45"
+            className="absolute right-0 top-0 z-30 aspect-square rotate-45 p-2 text-white"
           >
             <PlusIcon />
           </button>
 
-          <div className="pb-2 pr-6 bg-blue-primary text-white -mx-2 -mt-2 p-2">
+          <div className="-mx-2 -mt-2 bg-blue-primary p-2 pb-2 pr-6 text-white">
             <Trans
               i18nKey="common:searchResultsTitle"
               components={{
@@ -46,7 +46,7 @@ const SearchResults = () => {
               }}
             />
           </div>
-          <div className="pt-2 max-h-[50vh] overflow-y-scroll overflow-x-hidden">
+          <div className="max-h-[50vh] overflow-x-hidden overflow-y-scroll pt-2">
             {isLoading ? (
               <div className="flex items-center gap-4">
                 <span>Loading</span>
@@ -58,12 +58,14 @@ const SearchResults = () => {
                   <Fragment key={index}>
                     {results.length > 0 && (
                       <div className="pb-2">
-                        <span className="font-bold font-sans uppercase text-sm -mb-1 block">
+                        <span className="-mb-1 block font-sans text-sm font-bold uppercase">
                           {category.name}
                         </span>
                         <div className="pl-3 pr-2">
-                          {results.map((result) => (
-                            <ResultItem item={result} />
+                          {results.map((result, index) => (
+                            <Fragment key={index}>
+                              <ResultItem item={result} />
+                            </Fragment>
                           ))}
                         </div>
                       </div>

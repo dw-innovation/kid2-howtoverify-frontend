@@ -1,3 +1,7 @@
-import AutoCompleteResults from "./autoCompleteSearch";
+import dynamic from "next/dynamic";
 
-export default AutoCompleteResults
+const DynamicAutoCompleteSearch = dynamic(() => import("./autoCompleteSearch"), {
+  ssr: false,
+});
+
+export default DynamicAutoCompleteSearch;
