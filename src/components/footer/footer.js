@@ -10,6 +10,7 @@ const Footer = () => {
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
   const toggleFeatureTour = usePersistedStore((state) => state.toggleFeatureTour);
+  const toggleTracking = usePersistedStore((state) => state.toggleTracking);
 
   const handleClick = (e, target) => {
     e.preventDefault();
@@ -36,6 +37,10 @@ const Footer = () => {
       <FooterLink
         innerHTML="show feature tour"
         onClickAction={() => toggleFeatureTour(true)}
+      />
+       <FooterLink
+        innerHTML="disable tracking"
+        onClickAction={() => toggleTracking(false)}
       />
     </div>
   );

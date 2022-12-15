@@ -19,5 +19,8 @@
   "searchResultsTitle": "Search Results for <b>\"{{queryString}}\"</b>:",
   "noResults": "No search results.",
   "sendFeedback": "Send feedback",
-  "shareTooltip": "Share this trail"
+  "shareTooltip": "Share this trail",
+  "cookieBannerText": "To be able to provide you with relevant, high quality content we only use essential cookies to monitor usage of this website.",
+  "cookieBannerButtonOK": "I agree",
+  "cookieBannerButtonMoreInfo": "I need more info"
 }

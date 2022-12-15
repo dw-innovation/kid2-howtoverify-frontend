@@ -1,0 +1,15 @@
+.button {
+  @apply block flex-nowrap whitespace-nowrap px-2 py-1 font-bold;
+}
+
+.button:hover {
+  filter: brightness(120%);
+}
+
+.button--primary {
+  @apply bg-blue-primary text-white;
+}
+
+.button--secondary {
+  @apply bg-blue-nextClick text-white;
+}

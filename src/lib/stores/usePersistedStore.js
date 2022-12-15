@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 const usePersistedStore = create(
   persist(
     (set, get) => ({
-      trackingEnabled: get()?.trackingEnabled ? get().trackingEnabled : true,
+      trackingEnabled: get()?.trackingEnabled ? get().trackingEnabled : false,
       showFeatureTour: get()?.showFeatureTour ? get().showFeatureTour : true,
       toggleFeatureTour: (state) =>
         set(() => ({

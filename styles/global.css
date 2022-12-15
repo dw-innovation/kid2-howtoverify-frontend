@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import "./fonts.css";
 @import "./modal.css";
+@import "./button.css";
 
 .nodes circle {
   stroke: #fff;
