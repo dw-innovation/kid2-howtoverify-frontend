@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import { ROOTNODES } from "@/lib/const";
 import Button from "@/components/button";
-import { generateURL, getNodeColor, trackAction } from "@/lib/lib";
+import {
+  generateURL,
+  getNodeColor,
+  removePrefix,
+  trackAction,
+} from "@/lib/lib";
 import clsx from "clsx";
 import Color from "color";
 import useSessionStore from "@/lib/stores/useSessionStore";
@@ -14,7 +19,7 @@ const MediaTypeSelector = () => {
   );
   return (
     <div
-      className="flex flex-row justify-center items-center px-6 flex-1"
+      className="flex flex-1 flex-row items-center justify-center px-6"
       id="featureTour-2"
     >
       {ROOTNODES.map(({ id, label }, index) => (
@@ -26,12 +31,13 @@ const MediaTypeSelector = () => {
                 clearSearchQueryString();
                 trackAction("mediaTypeSelectorClick", generateURL([id]));
               }}
+              id={removePrefix(id)}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                "rounded-full m-2 text-white font-bold hover:brighter font-noto",
+                "hover:brighter m-2 rounded-full font-noto font-bold text-white",
                 pathNodes?.length === 0
-                  ? `w-[8rem] h-[8rem] xl:w-[12rem] xl:h-[12rem] text-2xl xl:text-3xl`
-                  : `w-[5rem] h-[5rem] xl:w-[8rem] xl:h-[8rem] text-xl xl:text-2xl`
+                  ? `h-[8rem] w-[8rem] text-2xl xl:h-[12rem] xl:w-[12rem] xl:text-3xl`
+                  : `h-[5rem] w-[5rem] text-xl xl:h-[8rem] xl:w-[8rem] xl:text-2xl`
               )}
               style={{
                 backgroundColor: Color(getNodeColor(id, "primary")).alpha(

@@ -24,6 +24,10 @@ const FeatureTour = () => {
       intro: "And those are buttons that you can click on",
     },
     {
+      element: "#Video",
+      intro: "Now let's click on Video.",
+    },
+    {
       element: "#What",
       intro: "You can click on yet another button.",
       position: "bottom",
@@ -40,7 +44,7 @@ const FeatureTour = () => {
         clearPathNodes();
       }
 
-      if (nextStep === 2) {
+      if (nextStep === 3) {
         clearPathNodes();
         addPathNode("http://dw.com/Video", 1);
       }
