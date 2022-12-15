@@ -27,6 +27,7 @@ const NodeInfo = ({ className, style }) => {
       setCurrentNode(
         nodes.filter(({ id }) => pathNodes[pathNodes.length - 1] === id)[0]
       );
+    pathNodes.length === 0 && setCurrentNode(undefined);
   }, [nodes, pathNodes]);
 
   return (
