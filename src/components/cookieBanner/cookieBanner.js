@@ -1,13 +1,13 @@
 import usePersistedStore from "@/lib/stores/usePersistedStore";
 import useSessionStore from "@/lib/stores/useSessionStore";
-import clsx from "clsx";
 import Color from "color";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import tailwindConfig from "tailwind.config";
 
 const CookieBanner = () => {
-  const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
+  //const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
+  const trackingEnabled = true
   const toggleTracking = usePersistedStore((state) => state.toggleTracking);
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
@@ -30,7 +30,7 @@ const CookieBanner = () => {
             />
             <ul className="flex flex-row">
               <button
-                onClick={() => toggleTracking(true)}
+                onClick={toggleTracking(true)}
                 className="button button--primary"
               >
                 {t("cookieBannerButtonOK")}
