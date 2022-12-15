@@ -25,6 +25,7 @@ const FeatureTour = () => {
     {
       element: "#What",
       intro: "You can click on yet another button.",
+      position: "right",
     },
     {
       element: "#featureTour-3",
@@ -40,6 +41,9 @@ const FeatureTour = () => {
           steps={steps}
           initialStep={0}
           onBeforeChange={(nextStepIndex) => {
+            if (nextStepIndex === 1) {
+              clearPathNodes();
+            }
             if (nextStepIndex === 2) {
               clearPathNodes();
               addPathNode("http://dw.com/Video", 1);
