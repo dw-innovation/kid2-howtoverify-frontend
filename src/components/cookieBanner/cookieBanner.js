@@ -6,8 +6,7 @@ import React from "react";
 import tailwindConfig from "tailwind.config";
 
 const CookieBanner = () => {
-  //const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
-  const trackingEnabled = true
+  const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
   const toggleTracking = usePersistedStore((state) => state.toggleTracking);
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
@@ -30,7 +29,7 @@ const CookieBanner = () => {
             />
             <ul className="flex flex-row">
               <button
-                onClick={toggleTracking(true)}
+                onClick={() => toggleTracking(true)}
                 className="button button--primary"
               >
                 {t("cookieBannerButtonOK")}

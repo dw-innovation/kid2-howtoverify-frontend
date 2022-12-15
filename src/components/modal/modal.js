@@ -30,7 +30,7 @@ const Modal = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="modal relative h-3/4 w-3/4 max-w-[50rem] overflow-x-hidden overflow-y-scroll bg-white p-10 shadow-xl"
+          className="modal relative h-3/4 w-3/4 max-w-[50rem] overflow-x-hidden bg-white p-10 shadow-xl"
           ref={ref}
         >
           <button
@@ -39,7 +39,7 @@ const Modal = () => {
           >
             <PlusIcon />
           </button>
-          <div>
+          <div className="overflow-y-scroll">
             {content === "privacy" && <DynamicPrivacySettingsManager />}
             <ReactMarkdown children={t(`${content}Text`)} />
           </div>
