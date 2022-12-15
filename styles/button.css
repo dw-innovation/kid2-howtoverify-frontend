@@ -1,5 +1,5 @@
 .button {
-  @apply block flex-nowrap whitespace-nowrap px-2 py-1 font-bold;
+  @apply block flex-nowrap whitespace-nowrap px-2 py-1 font-bold cursor-pointer;
 }
 
 .button:hover {

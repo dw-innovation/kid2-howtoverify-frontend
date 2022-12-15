@@ -4,6 +4,7 @@
 @import "./fonts.css";
 @import "./modal.css";
 @import "./button.css";
+@import "./switch.css";
 
 .nodes circle {
   stroke: #fff;

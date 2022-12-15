@@ -6,6 +6,7 @@ import clsx from "clsx";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 import useEscapeKey from "@/lib/hooks/useEscapeKey";
 import useSessionStore from "@/lib/stores/useSessionStore";
+import DynamicPrivacySettingsManager from "../privacySettingsManager";
 
 const Modal = () => {
   const { t } = useTranslation("footer");
@@ -23,22 +24,23 @@ const Modal = () => {
     <>
       <div
         className={clsx(
-          "absolute w-screen h-screen flex items-center justify-center top-0 left-0 z-50",
+          "absolute top-0 left-0 z-50 flex h-screen w-screen items-center justify-center",
           isOpen ? "block" : "hidden"
         )}
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="bg-white shadow-xl w-3/4 max-w-[50rem] h-3/4 p-10 relative modal overflow-x-hidden overflow-y-scroll"
+          className="modal relative h-3/4 w-3/4 max-w-[50rem] overflow-x-hidden overflow-y-scroll bg-white p-10 shadow-xl"
           ref={ref}
         >
           <button
             onClick={() => toggleModal(false)}
-            className="absolute right-0 top-0 p-2 text-blue-primary rotate-45"
+            className="absolute right-0 top-0 rotate-45 p-2 text-blue-primary"
           >
             <PlusIcon />
           </button>
           <div>
+            {content === "privacy" && <DynamicPrivacySettingsManager />}
             <ReactMarkdown children={t(`${content}Text`)} />
           </div>
         </div>
