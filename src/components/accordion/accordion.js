@@ -6,7 +6,7 @@ const Accordion = ({ title, children, style = {} }) => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
 
   return (
-    <details className="w-full font-montserrat" style={style} open>
+    <details className="w-full font-montserrat" style={style} open id="featureTour-5">
       <summary
         className="font-bold text-xl 2xl:text-2xl cursor-pointer flex flex-row items-center px-6 py-4"
         style={{

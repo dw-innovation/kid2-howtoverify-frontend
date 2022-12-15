@@ -33,7 +33,11 @@ const FeatureTour = () => {
       position: "bottom",
     },
     {
-      element: "#featureTour-3",
+      element: "#featureTour-5",
+      intro: "Here you can get some info on the node that you've clicked on.",
+    },
+    {
+      element: "#featureTour-6",
       intro: "Here you can type and search. It's like google.",
     },
   ];
