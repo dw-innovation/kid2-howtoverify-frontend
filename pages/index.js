@@ -12,8 +12,8 @@ import Header from "@/components/header";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import ContentWrapper from "@/components/contentWrapper";
 import GraphCanvas from "@/components/graphCanvas/graphCanvas";
-import FeatureTour from "@/components/featureTour/featureTour";
-import CookieBanner from "@/components/cookieBanner/cookieBanner";
+import FeatureTour from "@/components/featureTour";
+import CookieBanner from "@/components/cookieBanner";
 
 const IndexPage = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
