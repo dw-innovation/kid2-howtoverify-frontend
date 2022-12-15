@@ -29,7 +29,7 @@ const Modal = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="bg-white shadow-xl w-3/4 h-3/4 p-10 relative modal overflow-x-hidden overflow-y-scroll"
+          className="bg-white shadow-xl w-3/4 max-w-[50rem] h-3/4 p-10 relative modal overflow-x-hidden overflow-y-scroll"
           ref={ref}
         >
           <button

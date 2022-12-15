@@ -19,7 +19,7 @@ const MediaTypeSelector = () => {
   );
   return (
     <div
-      className="flex flex-1 flex-row items-center justify-center px-6"
+      className="flex flex-1 flex-row items-center justify-center px-10"
       id="featureTour-2"
     >
       {ROOTNODES.map(({ id, label }, index) => (
@@ -34,9 +34,9 @@ const MediaTypeSelector = () => {
               id={removePrefix(id)}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                "hover:brighter m-2 rounded-full font-noto font-bold text-white",
+                "hover:brighter m-2 2xl:mx-10 rounded-full font-noto font-bold text-white",
                 pathNodes?.length === 0
-                  ? `h-[8rem] w-[8rem] text-2xl xl:h-[12rem] xl:w-[12rem] xl:text-3xl`
+                  ? `h-[8rem] w-[8rem] text-2xl lg:h-[9rem] lg:w-[9rem] xl:h-[12rem] xl:w-[12rem] xl:text-3xl`
                   : `h-[5rem] w-[5rem] text-xl xl:h-[8rem] xl:w-[8rem] xl:text-2xl`
               )}
               style={{

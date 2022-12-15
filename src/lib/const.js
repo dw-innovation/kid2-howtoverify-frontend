@@ -12,7 +12,7 @@ export const NODETYPESTYLES = [
   { nodeType: "Question", properties: { radius: 30 } },
   { nodeType: "SubQuestion", properties: { radius: 25 } },
   { nodeType: "Task", properties: { radius: 20 } },
-  { nodeType: "SoftwareApplication", properties: { radius: 15 } },
+  { nodeType: "SoftwareApplication", properties: { radius: 10 } },
 ];
 
 export const ROOTNODES = [

@@ -5,7 +5,7 @@ import { useSpring, animated } from "react-spring";
 const ContentWrapper = ({ children }) => {
   const modalIsOpen = useSessionStore((state) => state.modal.isOpen);
   const blurStyle = useSpring({
-    filter: modalIsOpen ? `blur(4px)` : `blur(0px)`,
+    filter: modalIsOpen ? `blur(6px)` : `blur(0px)`,
   });
 
   return (
