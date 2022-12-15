@@ -12,7 +12,7 @@ const SettingsSwitch = ({ currentState, label, toggleState }) => (
       <span className='slider'></span>
     </label>
     <label
-      className='block text-lg uppercase font-bold text-grey-footer tracking-[0.1rem] cursor-pointer ml-2'
+      className='block text-md uppercase font-bold text-grey-footer tracking-[0.1rem] cursor-pointer ml-2'
       dangerouslySetInnerHTML={{ __html: label }}
       htmlFor={label}
     />
