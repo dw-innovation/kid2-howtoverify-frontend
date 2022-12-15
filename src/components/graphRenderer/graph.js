@@ -5,6 +5,7 @@ import {
   trackAction,
   generateURL,
   getLinkLength,
+  removePrefix,
 } from "@/lib/lib";
 import * as d3 from "d3";
 import Color from "color";
@@ -173,6 +174,7 @@ export const updateGraph = (ref, data, dimensions) => {
     .selectAll(".circle")
     .append("circle")
     .attr("r", ({ type }) => getNodeRadius(type, dimensions.width))
+    .attr("id", ({ id }) => removePrefix(id))
     .attr("fill", ({ id, level }) => {
       if (maxLevel(data) === level && pathNodes.includes(id)) {
         return getNodeColor(pathNodes[0], "primary");
