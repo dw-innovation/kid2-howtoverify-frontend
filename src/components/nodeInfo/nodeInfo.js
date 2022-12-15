@@ -51,7 +51,7 @@ const NodeInfo = ({ className, style }) => {
       ) : (
         <Accordion title={t("introTitle")} style={{ backgroundColor: "#fff" }}>
           <ReactMarkdown
-            children={t("introText")}
+            children={t("introText").replace(/\\-/g, "-")}
             className="nodeInfo"
             components={REACTMARKDOWNCOMPONENTS}
           />

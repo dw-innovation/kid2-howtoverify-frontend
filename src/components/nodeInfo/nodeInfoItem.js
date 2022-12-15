@@ -9,7 +9,7 @@ const NodeInfoItem = ({ name, body }) => {
 
   const parseBody = (body) => {
     if (typeof body === "string") {
-      return body;
+      return body.replace(/\\-/g, "-");
     }
     if (typeof body === "object") {
       return body.length === 1 ? body[0] : body.map((item) => `- ${item}`).join("\n");
