@@ -30,16 +30,16 @@ const Modal = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         <div
-          className="modal relative h-3/4 w-3/4 max-w-[50rem] overflow-x-hidden bg-white p-10 shadow-xl"
+          className="modal relative h-3/4 w-3/4 max-w-[50rem] overflow-hidden bg-white p-10 shadow-xl"
           ref={ref}
         >
           <button
             onClick={() => toggleModal(false)}
             className="absolute right-0 top-0 rotate-45 p-2 text-blue-primary"
           >
-            <PlusIcon />
+            <PlusIcon width={30} />
           </button>
-          <div className="overflow-y-scroll">
+          <div className="overflow-y-scroll max-h-full">
             {content === "privacy" && <DynamicPrivacySettingsManager />}
             <ReactMarkdown children={t(`${content}Text`)} />
           </div>
