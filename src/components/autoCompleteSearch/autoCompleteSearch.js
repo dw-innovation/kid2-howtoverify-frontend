@@ -76,7 +76,7 @@ const AutoCompleteResults = () => {
               placeholder={t("searchStartTyping")}
               value={inputString}
               className={clsx(
-                "h-full w-full relative p-3 bg-white h-full",
+                "h-full w-full relative p-3 bg-white",
                 index.filter(
                   (item) =>
                     !inputString ||

@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="relative flex flex-col items-center border-b-[1px] bg-grey-header lg:flex-row">
-      <div className="flex h-full flex-col items-center justify-center py-4 px-2 lg:items-start lg:pl-8 lg:text-left">
+      <div className="flex h-full flex-col items-center justify-center py-4 pl-2 lg:items-start lg:pl-8 lg:text-left">
         <h1
           className="pb-3 font-georgia text-3xl font-bold text-grey-darker lg:text-5xl"
           id="featureTour-1"

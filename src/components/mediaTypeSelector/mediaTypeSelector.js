@@ -20,7 +20,7 @@ const MediaTypeSelector = ({ header = false }) => {
   return (
     <div
       className={clsx(
-        "grid flex-1 grid-flow-col grid-cols-5 gap-4 px-4 py-2 lg:px-10 h-full",
+        "grid flex-1 grid-flow-col grid-cols-5 gap-4 px-4 py-2 lg:px-10 xl:px-20 h-full",
         header && pathNodes.length === 0 && "invisible"
       )}
       style={{
