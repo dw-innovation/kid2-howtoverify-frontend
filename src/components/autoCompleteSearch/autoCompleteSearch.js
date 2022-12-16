@@ -63,7 +63,7 @@ const AutoCompleteResults = () => {
           selectedItem,
           setState,
         }) => (
-          <div className="flex-1 relative">
+          <div className="flex-1 relative self-end">
             <input
               {...getInputProps({
                 onChange: ({ target: { value } }) => {

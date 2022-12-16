@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="flex flex-col lg:flex-row items-center relative border-b-[1px] bg-grey-header">
-      <div className="py-4 px-2 lg:pl-8 pr-2 lg:pr-8 lg:text-left flex flex-col items-center lg:items-start justify-center h-full">
+      <div className="py-4 px-2 lg:pl-8 lg:text-left flex flex-col items-center lg:items-start justify-center h-full">
         <h1
           className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-grey-darker"
           id="featureTour-1"
@@ -23,7 +23,7 @@ const Header = () => {
           dangerouslySetInnerHTML={{ __html: t("subtitle") }}
         />
       </div>
-      <div className="py-4 px-2 lg:pr-8 flex flex-1 items-center justify-center">
+      <div className="py-2 px-2 lg:pr-8 flex flex-1 items-center justify-center">
         <div className="flex flex-1 justify-center items-center">
           {pathNodes.length !== 0 ? (
             <MediaTypeSelector />
@@ -31,7 +31,7 @@ const Header = () => {
             <div className="h-[5rem] lg:h-[8rem] m-2" />
           )}
         </div>
-        <div className="relative w-96">
+        <div className="relative w-72 xl:w-96">
           <SearchBox />
           <SearchResults />
         </div>

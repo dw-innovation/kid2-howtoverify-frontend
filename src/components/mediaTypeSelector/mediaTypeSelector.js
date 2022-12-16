@@ -19,7 +19,12 @@ const MediaTypeSelector = () => {
   );
   return (
     <div
-      className="flex flex-1 flex-row items-center justify-center px-10"
+      className="grid flex-1 grid-flow-col grid-cols-5 gap-4 px-4 lg:px-10 py-2"
+      style={{
+        gridTemplateColumns: `repeat(${
+          pathNodes.length > 0 ? ROOTNODES.length - 1 : ROOTNODES.length
+        }, minmax(0, 1fr))`,
+      }}
       id="featureTour-2"
     >
       {ROOTNODES.map(({ id, label }, index) => (
@@ -34,10 +39,10 @@ const MediaTypeSelector = () => {
               id={removePrefix(id)}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                "hover:brighter m-2 2xl:mx-10 rounded-full font-noto font-bold text-white aspect-square h-full flex-1",
+                "hover:brighter col-span-1 aspect-square h-full rounded-full font-noto font-bold text-white",
                 pathNodes?.length === 0
                   ? `text-2xl xl:text-3xl`
-                  : `text-xl xl:text-2xl`
+                  : `text-lg xl:text-2xl`
               )}
               style={{
                 backgroundColor: Color(getNodeColor(id, "primary")).alpha(
