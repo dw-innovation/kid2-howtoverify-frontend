@@ -11,25 +11,21 @@ const Header = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="flex flex-col lg:flex-row items-center relative border-b-[1px] bg-grey-header">
-      <div className="py-4 px-2 lg:pl-8 lg:text-left flex flex-col items-center lg:items-start justify-center h-full">
+    <div className="relative flex flex-col items-center border-b-[1px] bg-grey-header lg:flex-row">
+      <div className="flex h-full flex-col items-center justify-center py-4 px-2 lg:items-start lg:pl-8 lg:text-left">
         <h1
-          className="font-bold text-3xl lg:text-5xl pb-3 font-georgia text-grey-darker"
+          className="pb-3 font-georgia text-3xl font-bold text-grey-darker lg:text-5xl"
           id="featureTour-1"
           dangerouslySetInnerHTML={{ __html: t("title") }}
         />
         <h2
-          className="font-noto 2xl:text-lg pb-3 text-grey-dark"
+          className="pb-3 font-noto text-grey-dark 2xl:text-lg"
           dangerouslySetInnerHTML={{ __html: t("subtitle") }}
         />
       </div>
-      <div className="py-2 px-2 lg:pr-8 flex flex-1 items-center justify-center">
-        <div className="flex flex-1 justify-center items-center">
-          {pathNodes.length !== 0 ? (
-            <MediaTypeSelector />
-          ) : (
-            <div className="h-[5rem] lg:h-[8rem] m-2" />
-          )}
+      <div className="flex flex-1 items-center justify-center py-2 px-2 lg:pr-8 h-full">
+        <div className="flex flex-1 items-center justify-center h-full">
+          <MediaTypeSelector header />
         </div>
         <div className="relative w-72 xl:w-96">
           <SearchBox />
