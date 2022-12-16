@@ -34,10 +34,10 @@ const MediaTypeSelector = () => {
               id={removePrefix(id)}
               dangerouslySetInnerHTML={{ __html: label }}
               className={clsx(
-                "hover:brighter m-2 2xl:mx-10 rounded-full font-noto font-bold text-white",
+                "hover:brighter m-2 2xl:mx-10 rounded-full font-noto font-bold text-white aspect-square h-full flex-1",
                 pathNodes?.length === 0
-                  ? `h-[8rem] w-[8rem] text-2xl lg:h-[9rem] lg:w-[9rem] xl:h-[12rem] xl:w-[12rem] xl:text-3xl`
-                  : `h-[5rem] w-[5rem] text-xl xl:h-[8rem] xl:w-[8rem] xl:text-2xl`
+                  ? `text-2xl xl:text-3xl`
+                  : `text-xl xl:text-2xl`
               )}
               style={{
                 backgroundColor: Color(getNodeColor(id, "primary")).alpha(
