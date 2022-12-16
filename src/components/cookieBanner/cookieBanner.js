@@ -20,6 +20,8 @@ const CookieBanner = () => {
             background: Color(
               tailwindConfig.theme.extend.colors.grey.dark
             ).alpha(0.9),
+            backdropFilter: "blur(3px)",
+            WebkitBackdropFilter: "blur(3px)",
           }}
         >
           <div className="mx-auto flex max-w-[50rem] flex-row">
