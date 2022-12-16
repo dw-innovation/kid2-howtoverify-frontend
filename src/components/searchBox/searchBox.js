@@ -13,16 +13,18 @@ const SearchBox = () => {
 
   return (
     <form
-      className="flex flex-row font-montserrat mt-2"
+      className="flex flex-row font-montserrat"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch(queryString);
       }}
     >
-      <div className="bg-blue-primary aspect-square px-4 flex justify-center items-center">
+      <div className="flex aspect-square items-center justify-center bg-blue-primary px-4">
         <LensIcon />
       </div>
-      <AutoCompleteSearch />
+      <div className="flex w-full">
+        <AutoCompleteSearch />
+      </div>
     </form>
   );
 };

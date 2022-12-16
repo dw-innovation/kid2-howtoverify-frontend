@@ -63,7 +63,7 @@ const AutoCompleteResults = () => {
           selectedItem,
           setState,
         }) => (
-          <div className="flex-1 relative self-end">
+          <div className="flex-1 relative self-end h-full">
             <input
               {...getInputProps({
                 onChange: ({ target: { value } }) => {
@@ -76,7 +76,7 @@ const AutoCompleteResults = () => {
               placeholder={t("searchStartTyping")}
               value={inputString}
               className={clsx(
-                "h-full w-full relative p-3 bg-white",
+                "h-full w-full relative p-3 bg-white h-full",
                 index.filter(
                   (item) =>
                     !inputString ||
