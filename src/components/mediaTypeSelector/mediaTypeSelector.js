@@ -20,7 +20,7 @@ const MediaTypeSelector = ({ header = false }) => {
   return (
     <div
       className={clsx(
-        "grid flex-1 grid-flow-col grid-cols-5 gap-4 px-4 py-2 lg:px-10 xl:px-20 h-full",
+        "grid flex-1 grid-flow-col grid-cols-5 gap-4 lg:gap-10 px-4 py-2 lg:px-10 xl:px-20 h-full",
         header && pathNodes.length === 0 && "invisible"
       )}
       style={{
@@ -43,10 +43,10 @@ const MediaTypeSelector = ({ header = false }) => {
                 id={removePrefix(id)}
                 dangerouslySetInnerHTML={{ __html: label }}
                 className={clsx(
-                  "h-full aspect-square hover:brighter rounded-full font-noto font-bold text-white ",
+                  " aspect-square hover:brighter rounded-full font-noto font-bold text-white ",
                   header
-                    ? `max-h-36 text-lg xl:text-2xl`
-                    : `max-h-72 text-2xl xl:text-3xl`
+                    ? `h-full max-h-36 text-lg xl:text-2xl`
+                    : `w-full max-w-72 text-2xl xl:text-3xl`
                 )}
                 style={{
                   backgroundColor: Color(getNodeColor(id, "primary")).alpha(
