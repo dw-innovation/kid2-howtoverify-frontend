@@ -18,7 +18,7 @@ const Footer = () => {
     setModalContent(target);
   };
 
-  const LINKS = ["about", "legal", "privacy"];
+  const LINKS = ["about", "legal-privacy"];
 
   return (
     <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-2 bg-grey-darker">

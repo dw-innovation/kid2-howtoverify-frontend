@@ -36,7 +36,7 @@ const CookieBanner = () => {
               </button>
               <button
                 onClick={() => {
-                  setModalContent("privacy");
+                  setModalContent("legal-privacy");
                   toggleModal(true);
                 }}
                 className="button button--secondary ml-2"

@@ -40,7 +40,7 @@ const Modal = () => {
             <PlusIcon width={30} />
           </button>
           <div className="overflow-y-scroll max-h-full">
-            {content === "privacy" && <DynamicPrivacySettingsManager />}
+            {content === "legal-privacy" && <DynamicPrivacySettingsManager />}
             <ReactMarkdown children={t(`${content}Text`)} />
           </div>
         </div>
