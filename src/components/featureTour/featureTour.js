@@ -57,7 +57,7 @@ const FeatureTour = () => {
 
   const stepPromise = (nextStep) =>
     new Promise((resolve) => {
-      if (nextStep === 1) {
+      if (nextStep === 0) {
         clearPathNodes();
       }
 
