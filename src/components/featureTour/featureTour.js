@@ -27,7 +27,7 @@ const FeatureTour = () => {
     },
     {
       element: "#Image",
-      intro: "Now let's click on Video.",
+      intro: "Now let's click on Image.",
     },
     {
       element: "#InVid",
@@ -75,7 +75,7 @@ const FeatureTour = () => {
         setTimeout(() => {
           ref.current.updateStepElement(nextStep);
           resolve();
-        }, 300);
+        }, 500);
       } else {
         resolve();
       }
