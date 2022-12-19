@@ -20,7 +20,7 @@ const MediaTypeSelector = ({ header = false }) => {
   return (
     <div
       className={clsx(
-        "grid flex-1 grid-flow-col grid-cols-5 gap-4 lg:gap-10 px-4 py-2 lg:px-10 xl:px-20 h-full",
+        "grid h-full flex-1 grid-flow-col grid-cols-5 gap-4 px-4 py-2 lg:gap-10 lg:px-10 xl:px-20",
         header && pathNodes.length === 0 && "invisible"
       )}
       style={{
@@ -33,20 +33,20 @@ const MediaTypeSelector = ({ header = false }) => {
       {ROOTNODES.map(({ id, label }, index) => (
         <Fragment key={index}>
           {id !== pathNodes[0] && (
-            <div className="col-span-1 flex justify-evenly h-full items-center">
+            <div className="col-span-1 flex h-full items-center justify-evenly">
               <Button
                 onClick={() => {
                   resetRootNode(id);
                   clearSearchQueryString();
                   trackAction("mediaTypeSelectorClick", generateURL([id]));
                 }}
-                id={removePrefix(id)}
+                id={header && removePrefix(id)}
                 dangerouslySetInnerHTML={{ __html: label }}
                 className={clsx(
-                  " aspect-square hover:brighter rounded-full font-noto font-bold text-white ",
+                  " hover:brighter aspect-square rounded-full font-noto font-bold text-white ",
                   header
                     ? `h-full max-h-36 text-lg xl:text-2xl`
-                    : `w-full max-w-72 text-2xl xl:text-3xl`
+                    : `max-w-72 w-full text-2xl xl:text-3xl`
                 )}
                 style={{
                   backgroundColor: Color(getNodeColor(id, "primary")).alpha(

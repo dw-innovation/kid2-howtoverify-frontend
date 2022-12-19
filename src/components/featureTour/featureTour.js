@@ -26,7 +26,7 @@ const FeatureTour = () => {
         "What media type are you trying to verify? Choose from the five types to open up the respective overview.",
     },
     {
-      element: "#Video",
+      element: "#Image",
       intro: "Now let's click on Video.",
     },
     {
