@@ -22,5 +22,7 @@
   "shareTooltip": "Share this trail",
   "cookieBannerText": "To be able to provide you with relevant, high quality content we only use essential cookies to monitor usage of this website.",
   "cookieBannerButtonOK": "I agree",
-  "cookieBannerButtonMoreInfo": "I need more info"
+  "cookieBannerButtonMoreInfo": "I need more info",
+  "privacyManagerTitle": "Manage your privacy settings",
+  "privacyManagerText": "We strongly support the right to privacy. The Privacy Policy below explains all details on the anonymous user data we would like process to allow us to learn from your usage of this website. Manage your consent to anonymous analytics on our site here:"
 }
