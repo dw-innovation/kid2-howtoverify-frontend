@@ -22,6 +22,7 @@ const FeedbackButton = () => {
         style={{ transform: `translateX(${hover ? 0 : stripeWidth + 8}px)` }}
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
+        id="featureTour-7"
       >
         <div className="pr-1">
           <FeedbackIcon />

@@ -28,7 +28,7 @@ const MediaTypeSelector = ({ header = false }) => {
           pathNodes.length > 0 ? ROOTNODES.length - 1 : ROOTNODES.length
         }, minmax(0, 1fr))`,
       }}
-      id="featureTour-2"
+      id={!header && "featureTour-2"}
     >
       {ROOTNODES.map(({ id, label }, index) => (
         <Fragment key={index}>

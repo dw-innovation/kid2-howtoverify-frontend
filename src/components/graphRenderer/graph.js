@@ -194,6 +194,7 @@ export const updateGraph = (ref, data, dimensions) => {
     .selectAll(".SoftwareApplication")
     .append("path")
     .attr("d", SOFTWAREAPPLICATIONPATH[0].d)
+    .attr("id", ({ id }) => removePrefix(id))
     .attr("width", 20)
     .attr("height", 20)
     .attr("transform", ({ type }) => {

@@ -10,35 +10,48 @@ const FeatureTour = () => {
   const toggleFeatureTour = usePersistedStore(
     (state) => state.toggleFeatureTour
   );
-  const addPathNode = useSessionStore((state) => state.addPathNode);
+  const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
   const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
 
   const STEPS = [
     {
-      element: "#featureTour-1",
-      intro: "This is our site name.",
-      position: "right",
+      title: "How to Verify",
+      intro:
+        'Welcome to "How to Verify"! This site offers an overview of workflows and tools for your verification challenge.',
     },
     {
       element: "#featureTour-2",
-      intro: "And those are buttons that you can click on",
+      title: "Media Types",
+      intro:
+        "What media type are you trying to verify? Choose from the five types to open up the respective overview.",
     },
     {
       element: "#Video",
       intro: "Now let's click on Video.",
     },
     {
-      element: "#What",
-      intro: "You can click on yet another button.",
+      element: "#InVid",
+      intro:
+        "At the end of each workflow, you can find a selection of tools. Click on it once more for a detailed description.",
       position: "bottom",
     },
     {
       element: "#featureTour-5",
-      intro: "Here you can get some info on the node that you've clicked on.",
+      intro:
+        "All steps of the workflows as well as all tools are described in detail, including how to best use it as well as tips and tricks.",
+      position: "left",
     },
     {
       element: "#featureTour-6",
-      intro: "Here you can type and search. It's like google.",
+      intro:
+        "If you are looking for a specific step, method or tool, you can search for it here. All available options will be displayed for you to choose from.",
+      position: "left",
+    },
+    {
+      element: "#featureTour-7",
+      intro:
+        "If you feel like there is something missing or you found a bug or just want to leave a general remark, you may do so via the feedback option here.",
+      position: "left",
     },
   ];
 
@@ -50,13 +63,22 @@ const FeatureTour = () => {
 
       if (nextStep === 3) {
         clearPathNodes();
-        addPathNode("http://dw.com/Video", 1);
+        replacePathNodes([
+          "http://dw.com/Image",
+          "http://dw.com/Who",
+          "http://dw.com/Who_created_content",
+          "http://dw.com/Metadata",
+          "http://dw.com/InVid",
+        ]);
       }
-
-      setTimeout(() => {
-        ref.current.updateStepElement(nextStep);
+      if (nextStep === 3) {
+        setTimeout(() => {
+          ref.current.updateStepElement(nextStep);
+          resolve();
+        }, 300);
+      } else {
         resolve();
-      }, 300);
+      }
     });
 
   return (
