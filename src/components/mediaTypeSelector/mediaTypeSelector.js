@@ -40,7 +40,7 @@ const MediaTypeSelector = ({ header = false }) => {
                   clearSearchQueryString();
                   trackAction("mediaTypeSelectorClick", generateURL([id]));
                 }}
-                id={header && removePrefix(id)}
+                id={!header && removePrefix(id)}
                 dangerouslySetInnerHTML={{ __html: label }}
                 className={clsx(
                   " hover:brighter aspect-square rounded-full font-noto font-bold text-white ",
