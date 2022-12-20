@@ -7,7 +7,8 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 import useWindowSize from "@/lib/hooks/useWindowSize";
 
 const Panel = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const showPanel = useSessionStore((state) => state.showPanel);
+  const togglePanel = useSessionStore((state) => state.togglePanel);
   const [panelHeight, setPanelHeight] = useState(0);
   const ref = useRef(null);
   const pathNodes = useSessionStore((state) => state.pathNodes);
@@ -21,7 +22,7 @@ const Panel = () => {
     <div
       className={clsx(
         "relative z-50 flex max-h-full flex-col flex-nowrap gap-3",
-        isOpen ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
+        showPanel ? "md-[20rem] lg:w-[30rem]" : "w-[1.5rem]"
       )}
       style={{
         backgroundColor: getNodeColor(pathNodes[0], "background"),
@@ -31,9 +32,9 @@ const Panel = () => {
       <button
         className="absolute top-0 bottom-0 left-0 z-20 my-auto flex h-max -translate-x-1/2 items-center justify-center rounded-full bg-blue-primary font-bold text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-white hover:text-blue-primary"
         style={{ height: "2rem", width: "2rem" }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => togglePanel(!showPanel)}
       >
-        {isOpen ? (
+        {showPanel ? (
           <ArrowRight />
         ) : (
           <div className="rotate-180">
@@ -43,7 +44,7 @@ const Panel = () => {
       </button>
       <div
         className={clsx(
-          isOpen ? "block flex-grow-0 overflow-scroll p-2" : "hidden"
+          showPanel ? "block flex-grow-0 overflow-scroll p-2" : "hidden"
         )}
         style={{ maxHeight: `${panelHeight}px` }}
       >
