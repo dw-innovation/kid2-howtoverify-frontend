@@ -5,7 +5,7 @@ export const REACTMARKDOWNCOMPONENTS = {
     children[0] === "<<PRIVACY_MANAGER>>" ? (
       <DynamicPrivacySettingsManager />
     ) : (
-      <p>{children}</p>
+      <p className="pb-2">{children}</p>
     ),
   a: ({ href, children }) => (
     <a
