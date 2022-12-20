@@ -15,6 +15,7 @@ const FeatureTour = () => {
 
   const STEPS = [
     {
+      element: "#featureTour-1",
       title: "How to Verify",
       intro:
         'Welcome to "How to Verify"! This site offers an overview of workflows and tools for your verification challenge.',
@@ -57,7 +58,7 @@ const FeatureTour = () => {
 
   const stepPromise = (nextStep) =>
     new Promise((resolve) => {
-      if (nextStep === 0) {
+      if ([0, 1, 2].includes(nextStep)) {
         clearPathNodes();
       }
 
@@ -70,7 +71,8 @@ const FeatureTour = () => {
           "http://dw.com/InVid",
         ]);
       }
-      if (nextStep === 3) {
+
+      if ([0, 1, 2, 3].includes(nextStep)) {
         setTimeout(() => {
           ref.current.updateStepElement(nextStep);
           resolve();

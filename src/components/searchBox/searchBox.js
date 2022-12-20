@@ -18,6 +18,7 @@ const SearchBox = () => {
         e.preventDefault();
         handleSearch(queryString);
       }}
+      id="featureTour-6"
     >
       <div className="flex aspect-square items-center justify-center bg-blue-primary px-4">
         <LensIcon />
