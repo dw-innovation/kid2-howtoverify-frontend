@@ -3,7 +3,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import Accordion from "../accordion";
 
-const About = ({ className }) => {
+const About = () => {
   const { t } = useTranslation("common");
 
   return (

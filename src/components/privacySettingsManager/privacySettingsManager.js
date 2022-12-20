@@ -2,7 +2,7 @@ import usePersistedStore from "@/lib/stores/usePersistedStore";
 import React from "react";
 import SettingsSwitch from "./settingsSwitch";
 import useTranslation from "next-translate/useTranslation";
-import ReactMarkdown from "react-markdown/lib/react-markdown";
+import ReactMarkdown from "react-markdown";
 
 const SettingsManager = () => {
   const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
@@ -11,7 +11,7 @@ const SettingsManager = () => {
 
   return (
     <div>
-      <h1 dangerouslySetInnerHTML={{ __html: t("privacyManagerTitle") }} />
+      <h2>{t("privacyManagerTitle")}</h2>
       <div className="pb-5 pl-5">
         <ReactMarkdown children={t("privacyManagerText")} />
         <SettingsSwitch

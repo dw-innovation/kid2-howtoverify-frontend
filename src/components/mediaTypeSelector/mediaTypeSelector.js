@@ -28,7 +28,7 @@ const MediaTypeSelector = ({ header = false }) => {
           pathNodes.length > 0 ? ROOTNODES.length - 1 : ROOTNODES.length
         }, minmax(0, 1fr))`,
       }}
-      id={!header && "featureTour-2"}
+      id={!header ? "featureTour-2" : undefined}
     >
       {ROOTNODES.map(({ id, label }, index) => (
         <Fragment key={index}>
@@ -40,7 +40,7 @@ const MediaTypeSelector = ({ header = false }) => {
                   clearSearchQueryString();
                   trackAction("mediaTypeSelectorClick", generateURL([id]));
                 }}
-                id={!header && removePrefix(id)}
+                id={!header ? removePrefix(id) : undefined}
                 dangerouslySetInnerHTML={{ __html: label }}
                 className={clsx(
                   " hover:brighter aspect-square rounded-full font-noto font-bold text-white ",

@@ -1,4 +1,12 @@
+import DynamicPrivacySettingsManager from "@/components/privacySettingsManager";
+
 export const REACTMARKDOWNCOMPONENTS = {
+  p: ({ children }) =>
+    children[0] === "<<PRIVACY_MANAGER>>" ? (
+      <DynamicPrivacySettingsManager />
+    ) : (
+      <p>{children}</p>
+    ),
   a: ({ href, children }) => (
     <a
       href={href}

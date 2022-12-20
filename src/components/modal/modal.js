@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import useTranslation from "next-translate/useTranslation";
 import ReactMarkdown from "react-markdown";
 import PlusIcon from "src/assets/svg/plusIcon";
@@ -7,6 +7,7 @@ import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 import useEscapeKey from "@/lib/hooks/useEscapeKey";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import DynamicPrivacySettingsManager from "../privacySettingsManager";
+import { REACTMARKDOWNCOMPONENTS } from "@/lib/components";
 
 const Modal = () => {
   const { t } = useTranslation("footer");
@@ -40,8 +41,7 @@ const Modal = () => {
             <PlusIcon width={30} />
           </button>
           <div className="overflow-y-scroll max-h-full">
-            {content === "legal-privacy" && <DynamicPrivacySettingsManager />}
-            <ReactMarkdown children={t(`${content}Text`)} />
+            <ReactMarkdown children={t(`${content}Text`)} components={REACTMARKDOWNCOMPONENTS} />
           </div>
         </div>
       </div>
