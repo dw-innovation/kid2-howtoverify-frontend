@@ -18,4 +18,8 @@ export const REACTMARKDOWNCOMPONENTS = {
     </a>
   ),
   ul: ({ children }) => <ul className="my-2 list-disc pl-4">{children}</ul>,
+  img: ({ src, alt }) => {
+    let width = alt.split("|")[1];
+    return <img src={src} width={width ? width : 300} alt={alt[0]} className="block mx-auto py-4" />;
+  },
 };
