@@ -32,6 +32,12 @@ const FeatureTour = () => {
       intro: "Now let's click on Image.",
     },
     {
+      element: "#featureTour-3",
+      title: "Open Full Graph",
+      intro:
+        "Clicking on the respective bubbles gradually opens up the workflows and leads to the tool level. Workflows and tools are sorted by the five main research questions.",
+    },
+    {
       element: "#InVid",
       intro:
         "At the end of each workflow, you can find a selection of tools. Click on it once more for a detailed description.",
@@ -74,7 +80,7 @@ const FeatureTour = () => {
         ]);
       }
 
-      if ([0, 1, 2, 3].includes(nextStep)) {
+      if ([1, 2, 3, 4].includes(nextStep)) {
         setTimeout(() => {
           ref.current.updateStepElement(nextStep);
           resolve();
