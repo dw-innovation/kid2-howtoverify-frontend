@@ -75,7 +75,7 @@ export const getSizeFactor = (graphHeight) => {
 export const trackAction = async (action, payload = "") => {
   let trackingEnabled = usePersistedStore.getState().trackingEnabled;
   if (trackingEnabled) {
-    const params = {
+    let params = {
       idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
       rec: 1,
       rand: Math.floor(Math.random() * 10000000),
@@ -196,7 +196,7 @@ const getFactor = (type) => {
 };
 
 export const getNodeColorShade = (isInClickHistory, isMaxLevel) => {
-  const shade = 0.6;
+  let shade = 0.6;
   if (isInClickHistory) {
     shade = 0;
   }
