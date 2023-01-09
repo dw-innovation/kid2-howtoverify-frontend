@@ -17,46 +17,46 @@ const FeatureTour = () => {
   const STEPS = [
     {
       element: "#featureTour-1",
-      title: "How to Verify",
+      title: 'Welcome to "How to Verify"!',
       intro:
-        'Welcome to "How to Verify"! This site offers an overview of workflows and tools for your verification challenge.',
+        'This site offers an overview of workflows and tools for your verification challenge.',
     },
     {
       element: "#featureTour-2",
-      title: "Media Types",
+      title: "Select a media type to get started",
       intro:
         "What media type are you trying to verify? Choose from the five types to open up the respective overview.",
     },
     {
-      element: "#Image",
-      intro: "Now let's click on Image.",
-    },
-    {
       element: "#featureTour-3",
-      title: "Open Full Graph",
+      title: "Verification Workflows",
       intro:
         "Clicking on the respective bubbles gradually opens up the workflows and leads to the tool level. Workflows and tools are sorted by the five main research questions.",
     },
     {
       element: "#InVid",
+      title: "Verification Tools",
       intro:
         "At the end of each workflow, you can find a selection of tools. Click on it once more for a detailed description.",
       position: "bottom",
     },
     {
       element: "#featureTour-5",
+      title: "Detailed descriptions",
       intro:
         "All steps of the workflows as well as all tools are described in detail, including how to best use it as well as tips and tricks.",
       position: "left",
     },
     {
       element: "#featureTour-6",
+      title: "Search",
       intro:
         "If you are looking for a specific step, method or tool, you can search for it here. All available options will be displayed for you to choose from.",
       position: "left",
     },
     {
       element: "#featureTour-7",
+      title: "Give us Feedback!",
       intro:
         "If you feel like there is something missing or you found a bug or just want to leave a general remark, you may do so via the feedback option here.",
       position: "left",
@@ -66,11 +66,11 @@ const FeatureTour = () => {
   const stepPromise = (nextStep) =>
     new Promise((resolve) => {
       togglePanel(true);
-      if ([0, 1, 2].includes(nextStep)) {
+      if ([0, 1].includes(nextStep)) {
         clearPathNodes();
       }
 
-      if (nextStep === 3) {
+      if (nextStep === 2) {
         replacePathNodes([
           "http://dw.com/Image",
           "http://dw.com/Who",
@@ -80,7 +80,7 @@ const FeatureTour = () => {
         ]);
       }
 
-      if ([1, 2, 3, 4].includes(nextStep)) {
+      if ([1, 2, 3].includes(nextStep)) {
         setTimeout(() => {
           ref.current.updateStepElement(nextStep);
           resolve();
