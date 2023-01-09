@@ -21,6 +21,7 @@ const MediaTypeSelector = ({ header = false }) => {
     <div
       className={clsx(
         "flex items-center justify-center",
+        !header && "w-full",
         header && pathNodes.length === 0 && "invisible"
       )}
     >
@@ -50,8 +51,8 @@ const MediaTypeSelector = ({ header = false }) => {
                   className={clsx(
                     "p-5 hover:brighter aspect-square rounded-full font-noto font-bold text-white ",
                     header
-                      ? `h-full max-h-36 text-lg xl:text-2xl`
-                      : `max-w-72 w-full text-2xl xl:text-3xl`
+                      ? `h-32 text-lg xl:text-xl`
+                      : `max-w-[72rem] w-full text-2xl xl:text-3xl`
                   )}
                   style={{
                     backgroundColor: Color(getNodeColor(id, "primary")).alpha(
