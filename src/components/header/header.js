@@ -13,15 +13,16 @@ const Header = () => {
   return (
     <div className="relative flex flex-col items-center border-b-[1px] bg-grey-header lg:flex-row">
       <div className="flex h-full flex-col items-center justify-center py-4 pl-2 lg:items-start lg:pl-8 lg:text-left">
-        <h1
-          className="pb-3 font-georgia text-3xl font-bold text-grey-darker lg:text-5xl"
-          id="featureTour-1"
-          dangerouslySetInnerHTML={{ __html: t("title") }}
-        />
-        <h2
-          className="pb-3 font-noto text-grey-dark 2xl:text-lg"
-          dangerouslySetInnerHTML={{ __html: t("subtitle") }}
-        />
+        <div id="featureTour-1">
+          <h1
+            className="pb-3 font-georgia text-3xl font-bold text-grey-darker lg:text-5xl"
+            dangerouslySetInnerHTML={{ __html: t("title") }}
+          />
+          <h2
+            className="pb-3 font-noto text-grey-dark 2xl:text-lg"
+            dangerouslySetInnerHTML={{ __html: t("subtitle") }}
+          />
+        </div>
       </div>
       <div className="flex flex-1 items-center justify-center py-2 px-2 lg:pr-8 h-full">
         <div className="flex flex-1 items-center justify-center h-full">
