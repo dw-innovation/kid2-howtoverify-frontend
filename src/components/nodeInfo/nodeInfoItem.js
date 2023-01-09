@@ -21,7 +21,7 @@ const NodeInfoItem = ({ name, body }) => {
       {body !== "" && body !== null && (
         <div className="flex flex-col pb-2">
           {name !== "comment" && (
-            <span
+            <h3
               dangerouslySetInnerHTML={{ __html: t(name) }}
               className="font-bold"
             />

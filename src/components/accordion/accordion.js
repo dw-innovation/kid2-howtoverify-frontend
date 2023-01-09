@@ -15,7 +15,7 @@ const Accordion = ({ title, children, style = {} }) => {
           borderLeftColor: getNodeColor(pathNodes[0], "primary"),
         }}
       >
-        <span className="flex-1">{title}</span>
+        <h2 className="flex-1">{title}</h2>
       </summary>
       <span className="py-4 block px-6 text-md 2xl:text-lg">{children}</span>
     </details>
