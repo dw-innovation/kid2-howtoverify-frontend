@@ -33,6 +33,8 @@ const Panel = () => {
         className="absolute top-0 bottom-0 left-0 z-20 my-auto flex h-max -translate-x-1/2 items-center justify-center rounded-full bg-blue-primary font-bold text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-white hover:text-blue-primary"
         style={{ height: "2rem", width: "2rem" }}
         onClick={() => togglePanel(!showPanel)}
+        role="button"
+        aria-label="Toggle panel"
       >
         {showPanel ? (
           <ArrowRight />
