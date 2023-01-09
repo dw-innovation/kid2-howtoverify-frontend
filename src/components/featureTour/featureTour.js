@@ -12,6 +12,7 @@ const FeatureTour = () => {
   );
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
   const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
+  const pathNodes = useSessionStore((state) => state.pathNodes);
   const togglePanel = useSessionStore((state) => state.togglePanel);
 
   const STEPS = [
@@ -70,7 +71,7 @@ const FeatureTour = () => {
         clearPathNodes();
       }
 
-      if (nextStep === 2) {
+      if (nextStep >= 2 && pathNodes.length === 0) {
         replacePathNodes([
           "http://dw.com/Image",
           "http://dw.com/Who",
