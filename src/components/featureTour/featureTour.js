@@ -37,14 +37,14 @@ const FeatureTour = () => {
       element: "#InVid",
       title: "Verification Tools",
       intro:
-        "At the end of each workflow, you can find a selection of tools. Click on it once more for a detailed description.",
+        "At the end of each workflow, you can find a selection of tools. You can click on each of them once more for a detailed description.",
       position: "bottom",
     },
     {
       element: "#featureTour-5",
       title: "Detailed descriptions",
       intro:
-        "All steps of the workflows as well as all tools are described in detail, including how to best use it as well as tips and tricks.",
+        "All steps of the workflows as well as all tools are described in detail, including how to best use them as well as tips and tricks.",
       position: "left",
     },
     {
