@@ -1,5 +1,5 @@
-import create from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 const usePersistedStore = create(
   persist(
@@ -8,8 +8,7 @@ const usePersistedStore = create(
       showFeatureTour: get()?.showFeatureTour ? get().showFeatureTour : true,
       toggleFeatureTour: (state) =>
         set(() => ({
-          showFeatureTour:
-            state === undefined ? !get().showFeatureTour : state,
+          showFeatureTour: state === undefined ? !get().showFeatureTour : state,
         })),
       toggleTracking: (state) =>
         set(() => ({
@@ -18,7 +17,7 @@ const usePersistedStore = create(
     }),
     {
       name: "dw-kid2-howtoverify-storage",
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
