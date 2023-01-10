@@ -49,10 +49,10 @@ const MediaTypeSelector = ({ header = false }) => {
                   id={!header ? removePrefix(id) : undefined}
                   dangerouslySetInnerHTML={{ __html: label }}
                   className={clsx(
-                    "p-5 hover:brighter aspect-square rounded-full font-noto font-bold text-white ",
+                    "hover:brighter aspect-square rounded-full font-noto font-bold text-white ",
                     header
-                      ? `h-32 text-lg xl:text-xl`
-                      : `max-w-[72rem] w-full text-2xl xl:text-3xl`
+                      ? `p-2 h-20 xl:h-24 text-lg xl:text-xl`
+                      : `p-2 2xl:p-5 max-w-[72rem] w-full text-md xl:text-2xl 2xl:text-3xl`
                   )}
                   style={{
                     backgroundColor: Color(getNodeColor(id, "primary")).alpha(
