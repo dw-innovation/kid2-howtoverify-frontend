@@ -6,11 +6,10 @@ import clsx from "clsx";
 import useOnClickOutside from "@/lib/hooks/useOutsideClick";
 import useEscapeKey from "@/lib/hooks/useEscapeKey";
 import useSessionStore from "@/lib/stores/useSessionStore";
-import DynamicPrivacySettingsManager from "../privacySettingsManager";
 import { REACTMARKDOWNCOMPONENTS } from "@/lib/components";
 
 const Modal = () => {
-  const { t } = useTranslation("footer");
+  const { t } = useTranslation("modal");
 
   const ref = useRef(null);
   const isOpen = useSessionStore((state) => state.modal.isOpen);
