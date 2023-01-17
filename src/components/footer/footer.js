@@ -9,7 +9,9 @@ const Footer = () => {
 
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
-  const toggleFeatureTour = usePersistedStore((state) => state.toggleFeatureTour);
+  const toggleFeatureTour = usePersistedStore(
+    (state) => state.toggleFeatureTour
+  );
   const toggleTracking = usePersistedStore((state) => state.toggleTracking);
 
   const handleClick = (e, target) => {
@@ -20,10 +22,14 @@ const Footer = () => {
 
   const LINKS = ["about", "legal-privacy"];
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-2 bg-grey-darker">
       <span
-        dangerouslySetInnerHTML={{ __html: t("copyright") }}
+        dangerouslySetInnerHTML={{
+          __html: t("copyright").replace("{{YEAR}}", currentYear),
+        }}
         className="text-grey-light"
       />
       {LINKS.map((link, index) => (
@@ -38,7 +44,7 @@ const Footer = () => {
         innerHTML="show feature tour"
         onClickAction={() => toggleFeatureTour(true)}
       />
-       <FooterLink
+      <FooterLink
         innerHTML="disable tracking"
         onClickAction={() => toggleTracking(false)}
       />
