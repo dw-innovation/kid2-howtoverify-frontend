@@ -109,13 +109,6 @@ const useSessionStore = create((set) => ({
           state === undefined ? !draft.search.isLoading : state;
       })
     ),
-  showPanel: true,
-  togglePanel: (state) =>
-    set(
-      produce((draft) => {
-        draft.showPanel = state === undefined ? !draft.showPanel : state;
-      })
-    ),
 }));
 
 export default useSessionStore;
