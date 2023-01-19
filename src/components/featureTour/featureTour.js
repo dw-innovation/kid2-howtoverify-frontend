@@ -17,7 +17,7 @@ const FeatureTour = () => {
   const STEPS = [
     {
       element: "#featureTour-1",
-      title: 'Welcome!',
+      title: "Welcome!",
       intro:
         "This site offers an overview of workflows and tools for verification of digital media",
     },
@@ -96,6 +96,10 @@ const FeatureTour = () => {
           enabled={showFeatureTour}
           steps={STEPS}
           initialStep={0}
+          options={{
+            doneLabel: "Finish",
+            hideNext: false,
+          }}
           onBeforeChange={async (nextStepIndex) =>
             await stepPromise(nextStepIndex)
           }
