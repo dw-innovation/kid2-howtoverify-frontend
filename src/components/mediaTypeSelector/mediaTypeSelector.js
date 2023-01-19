@@ -13,7 +13,6 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 const MediaTypeSelector = ({ header = false }) => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
-  const showFeatureTour = useSessionStore((state) => state.showFeatureTour);
   const resetRootNode = useSessionStore((state) => state.resetRootNode);
   const clearSearchQueryString = useSessionStore(
     (state) => state.clearSearchQueryString
