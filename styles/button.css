@@ -13,3 +13,13 @@
 .button--secondary {
   @apply bg-blue-nextClick text-white;
 }
+
+.introjs-donebutton {
+  background-color: #2980B9 !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+
+.introjs-donebutton:hover {
+  filter: brightness(120%) !important;
+}
