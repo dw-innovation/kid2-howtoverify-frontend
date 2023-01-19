@@ -13,6 +13,7 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 const MediaTypeSelector = ({ header = false }) => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
+  const showFeatureTour = useSessionStore((state) => state.showFeatureTour);
   const resetRootNode = useSessionStore((state) => state.resetRootNode);
   const clearSearchQueryString = useSessionStore(
     (state) => state.clearSearchQueryString
@@ -21,20 +22,21 @@ const MediaTypeSelector = ({ header = false }) => {
     <div
       className={clsx(
         "flex items-center justify-center",
-        !header && "w-full",
+        !header && "w-full mx-1",
         header && pathNodes.length === 0 && "invisible"
       )}
     >
       <div
+        id={!header ? "featureTour-2" : undefined}
         className={clsx(
-          "grid w-full grid-flow-col grid-cols-5 gap-4 px-4 py-2 lg:gap-10 lg:px-10 xl:px-20"
+          "grid grid-flow-col grid-cols-5 gap-4 px-2 py-2 lg:gap-10 lg:px-4 xl:px-10"
         )}
         style={{
           gridTemplateColumns: `repeat(${
             pathNodes.length > 0 ? ROOTNODES.length - 1 : ROOTNODES.length
           }, minmax(0, 1fr))`,
+          width: "calc(100% - 2rem)"
         }}
-        id={!header ? "featureTour-2" : undefined}
       >
         {ROOTNODES.map(({ id, label }, index) => (
           <Fragment key={index}>
