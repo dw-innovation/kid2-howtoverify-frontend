@@ -55,14 +55,6 @@ const useSessionStore = create((set) => ({
         draft.modal.content = contentString;
       })
     ),
-  popOver: { isOpen: false },
-  togglePopOver: (state) =>
-    set(
-      produce((draft) => {
-        draft.popOver.isOpen =
-          state === undefined ? !draft.popOver.isOpen : state;
-      })
-    ),
   search: {
     queryString: "",
     results: [],

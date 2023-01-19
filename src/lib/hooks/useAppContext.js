@@ -7,7 +7,6 @@ export const initialState = {
     pathNodes: [],
     dimensions: { width: 100, height: 100 },
   },
-  showPopOver: false,
   modal: {
     isOpen: false,
     content: "",

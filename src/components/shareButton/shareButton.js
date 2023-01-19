@@ -1,31 +1,38 @@
-import useAppContext from "@/lib/hooks/useAppContext";
 import { trackAction } from "@/lib/lib";
-import useSessionStore from "@/lib/stores/useSessionStore";
 import useTranslation from "next-translate/useTranslation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import ShareIcon from "src/assets/svg/share";
-import PopOver from "../popOver";
 
 const ShareButton = () => {
   const { t } = useTranslation("common");
-  const togglePopOver = useSessionStore((state) => state.togglePopOver);
+
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+    const timer = setTimeout(() => setButtonClicked(false), 2000);
+    return () => clearTimeout(timer);
+  }, [buttonClicked]);
+
   return (
     <>
       <button
+        key={
+          buttonClicked ? "urlCopied" : "shareTooltip"
+        }
         onClick={() => {
           if (typeof navigator !== "undefined") {
             navigator.clipboard.writeText(window.location.href);
             trackAction("urlCopied");
-            togglePopOver(true);
+            setButtonClicked(true);
           }
         }}
         className="text-primary"
-        data-tip={t("shareTooltip")}
+        data-tip={buttonClicked ? t("urlCopied") : t("shareTooltip")}
       >
         <ShareIcon width={24} />
       </button>
-      <PopOver />
       <ReactTooltip />
     </>
   );
