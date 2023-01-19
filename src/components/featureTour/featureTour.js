@@ -20,46 +20,46 @@ const FeatureTour = () => {
       element: "#featureTour-1",
       title: 'Welcome to "How to Verify"!',
       intro:
-        'This site offers an overview of workflows and tools for your verification challenge.',
+        "This site offers an overview of workflows and tools for verification of digital media",
     },
     {
       element: "#featureTour-2",
       title: "Select a media type to get started",
       intro:
-        "What media type are you trying to verify? Choose from the five types to open up the respective overview.",
+        "What media type do you want to verify? Choose from these five to open up the respective verification workflow.",
     },
     {
       element: "#featureTour-3",
       title: "Verification Workflows",
       intro:
-        "Clicking on the respective bubbles gradually opens up the workflows and leads to the tool level. Workflows and tools are sorted by the five main research questions.",
+        "Click on a bubble to open a workflow and drill down to the tool level. Workflows are set up to answer the main journalistic verification questions. Tip: you can drag bubbles with your mouse.",
     },
     {
       element: "#InVid",
       title: "Verification Tools",
       intro:
-        "At the end of each workflow, you can find a selection of tools. You can click on each of them once more for a detailed description.",
+        "At the end of each workflow, you find a selection of tools. Click on them for a detailed description and tips on how to use the tool.",
       position: "bottom",
     },
     {
       element: "#featureTour-5",
       title: "Detailed descriptions",
       intro:
-        "All steps of the workflows as well as all tools are described in detail, including how to best use them as well as tips and tricks.",
+        "Each step of the workflows and each tool are described in detail. Including tips and tricks on how to best use them.",
       position: "left",
     },
     {
       element: "#featureTour-6",
       title: "Search",
       intro:
-        "If you are looking for a specific step, method or tool, you can search for it here. All available options will be displayed for you to choose from.",
+        "Are you looking for a specific method or tool? Search for it here.",
       position: "left",
     },
     {
       element: "#featureTour-7",
       title: "Give us Feedback!",
       intro:
-        "If you feel like there is something missing or you found a bug or just want to leave a general remark, you may do so via the feedback option here.",
+        "Found a bug, is something missing or do you want to leave a general remark? Provide us with your feedback here. Much appreciated!",
       position: "left",
     },
   ];
