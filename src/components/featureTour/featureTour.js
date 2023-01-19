@@ -18,13 +18,13 @@ const FeatureTour = () => {
   const STEPS = [
     {
       element: "#featureTour-1",
-      title: 'Welcome to "How to Verify"!',
+      title: 'Welcome!',
       intro:
         "This site offers an overview of workflows and tools for verification of digital media",
     },
     {
       element: "#featureTour-2",
-      title: "Select a media type to get started",
+      title: "Select media type",
       intro:
         "What media type do you want to verify? Choose from these five to open up the respective verification workflow.",
     },
@@ -43,7 +43,7 @@ const FeatureTour = () => {
     },
     {
       element: "#featureTour-5",
-      title: "Detailed descriptions",
+      title: "Detailed Descriptions",
       intro:
         "Each step of the workflows and each tool are described in detail. Including tips and tricks on how to best use them.",
       position: "left",
