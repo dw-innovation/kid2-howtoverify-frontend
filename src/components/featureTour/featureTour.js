@@ -13,7 +13,6 @@ const FeatureTour = () => {
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
   const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
   const pathNodes = useSessionStore((state) => state.pathNodes);
-  const togglePanel = useSessionStore((state) => state.togglePanel);
 
   const STEPS = [
     {
@@ -66,7 +65,6 @@ const FeatureTour = () => {
 
   const stepPromise = (nextStep) =>
     new Promise((resolve) => {
-      togglePanel(true);
       if ([0, 1].includes(nextStep)) {
         clearPathNodes();
       }
