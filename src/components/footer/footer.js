@@ -25,7 +25,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="font-noto text-sm md:text-md flex gap-3 justify-center py-2 bg-grey-darker">
+    <div className="font-noto text-sm md:text-md flex gap-5 justify-center py-2 bg-grey-darker">
       <span
         dangerouslySetInnerHTML={{
           __html: t("copyright").replace("{{YEAR}}", currentYear),
