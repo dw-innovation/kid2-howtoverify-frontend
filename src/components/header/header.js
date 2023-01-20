@@ -26,7 +26,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex flex-1 items-center justify-center py-2 px-2 lg:pr-8 h-full">
-        <div className={clsx("flex flex-1 items-center justify-center h-full", pathNodes.length === 0 && "hidden")}>
+        <div className={clsx("flex flex-1 items-center justify-center h-full", pathNodes.length === 0 && "hidden lg:flex")}>
           <MediaTypeSelector header />
         </div>
         <div className="relative w-72 xl:w-96">
