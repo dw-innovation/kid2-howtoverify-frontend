@@ -34,7 +34,6 @@ const MediaTypeSelector = ({ header = false }) => {
           gridTemplateColumns: `repeat(${
             pathNodes.length > 0 ? ROOTNODES.length - 1 : ROOTNODES.length
           }, minmax(0, 1fr))`,
-          width: "calc(100% - 2rem)"
         }}
       >
         {ROOTNODES.map(({ id, label }, index) => (
