@@ -30,7 +30,7 @@ const SearchResults = () => {
         >
           <button
             onClick={() => toggleShowResults(false)}
-            className="absolute right-0 top-0 z-30 aspect-square rotate-45 p-2 text-white"
+            className="absolute right-0 top-0 z-30 aspect--1-1 rotate-45 p-2 text-white"
           >
             <PlusIcon />
           </button>
