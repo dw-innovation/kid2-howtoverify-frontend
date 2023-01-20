@@ -28,7 +28,7 @@ const MediaTypeSelector = ({ header = false }) => {
       <div
         id={!header ? "featureTour-2" : undefined}
         className={clsx(
-          "grid grid-flow-col grid-cols-5 gap-4 px-2 py-2 lg:gap-10 lg:px-4 xl:px-10"
+          "grid grid-flow-col grid-cols-5 gap-4 px-2 py-2 lg:gap-10 lg:px-4 xl:px-10 w-full"
         )}
         style={{
           gridTemplateColumns: `repeat(${
