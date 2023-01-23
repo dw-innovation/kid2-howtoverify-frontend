@@ -6,14 +6,17 @@ import React from "react";
 import tailwindConfig from "tailwind.config";
 
 const CookieBanner = () => {
-  const trackingEnabled = usePersistedStore((state) => state.trackingEnabled);
+  const showCookieBanner = usePersistedStore((state) => state.showCookieBanner);
+  const toggleCookieBanner = usePersistedStore(
+    (state) => state.toggleCookieBanner
+  );
   const toggleTracking = usePersistedStore((state) => state.toggleTracking);
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
   const { t } = useTranslation("common");
   return (
     <>
-      {!trackingEnabled && (
+      {showCookieBanner && (
         <div
           className="fixed bottom-0 z-50 block w-screen py-6"
           style={{
@@ -31,7 +34,10 @@ const CookieBanner = () => {
             />
             <ul className="flex flex-row">
               <button
-                onClick={() => toggleTracking(true)}
+                onClick={() => {
+                  toggleCookieBanner(false);
+                  toggleTracking(true);
+                }}
                 className="button button--primary"
               >
                 {t("cookieBannerButtonOK")}
@@ -44,6 +50,15 @@ const CookieBanner = () => {
                 className="button button--secondary ml-2"
               >
                 {t("cookieBannerButtonMoreInfo")}
+              </button>
+              <button
+                onClick={() => {
+                  toggleTracking(false);
+                  toggleCookieBanner(false);
+                }}
+                className="button button--secondary ml-2"
+              >
+                {t("cookieBannerButtonDisagree")}
               </button>
             </ul>
           </div>

@@ -12,7 +12,7 @@ const Footer = () => {
   const toggleFeatureTour = usePersistedStore(
     (state) => state.toggleFeatureTour
   );
-  const toggleTracking = usePersistedStore((state) => state.toggleTracking);
+  const toggleCookieBanner = usePersistedStore((state) => state.toggleCookieBanner);
 
   const handleClick = (e, target) => {
     e.preventDefault();
@@ -45,8 +45,8 @@ const Footer = () => {
         onClickAction={() => toggleFeatureTour(true)}
       />
       <FooterLink
-        innerHTML="disable tracking"
-        onClickAction={() => toggleTracking(false)}
+        innerHTML="show cookie banner"
+        onClickAction={() => toggleCookieBanner(true)}
       />
     </div>
   );
