@@ -27,10 +27,10 @@ const CookieBanner = () => {
             WebkitBackdropFilter: "blur(3px)",
           }}
         >
-          <div className="mx-auto flex max-w-[50rem] flex-row">
+          <div className="mx-auto flex max-w-[60rem] flex-row">
             <span
               dangerouslySetInnerHTML={{ __html: t("cookieBannerText") }}
-              className="text-white"
+              className="text-white pr-0 md:pr-4"
             />
             <ul className="flex flex-row">
               <button
