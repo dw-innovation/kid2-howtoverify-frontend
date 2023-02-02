@@ -40,14 +40,6 @@ const Footer = () => {
           />
         </Fragment>
       ))}
-      <FooterLink
-        innerHTML="show feature tour"
-        onClickAction={() => toggleFeatureTour(true)}
-      />
-      <FooterLink
-        innerHTML="show cookie banner"
-        onClickAction={() => toggleCookieBanner(true)}
-      />
     </div>
   );
 };
