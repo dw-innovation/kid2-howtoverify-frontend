@@ -6,6 +6,7 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 const ResultItem = ({ item }) => {
   const replacePathNodes = useSessionStore((state) => state.replacePathNodes);
+  const toggleShowResults = useSessionStore((state) => state.toggleShowResults);
   const pathNodes = useSessionStore((state) => state.pathNodes);
 
   const itemPath = item.map(({ id }) => id);
@@ -16,6 +17,7 @@ const ResultItem = ({ item }) => {
       onClick={() => {
         if (!isEqual(pathNodes, itemPath)) {
           replacePathNodes(itemPath);
+          toggleShowResults(false);
           trackAction("searchResultClick", generateURL(itemPath));
         } else {
           return null;
