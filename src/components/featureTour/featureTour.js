@@ -71,7 +71,7 @@ const FeatureTour = () => {
 
       if (nextStep >= 2 && pathNodes.length === 0) {
         replacePathNodes([
-          "http://dw.com/Image",
+          "http://dw.com/Video",
           "http://dw.com/Who",
           "http://dw.com/Who_created_content",
           "http://dw.com/Metadata",
