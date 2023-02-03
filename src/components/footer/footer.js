@@ -42,14 +42,6 @@ const Footer = () => {
           />
         </Fragment>
       ))}
-      <a
-        href="https://innovation.dw.com"
-        className="text-white hover:underline font-bold cursor-pointer px-4"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        DW Innovation
-      </a>
     </div>
   )
 }
