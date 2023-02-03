@@ -54,6 +54,8 @@ const IndexPage = () => {
       );
   }, [pathNodes]);
 
+  const { width } = useWindowSize();
+
   return (
     <>
       <ContentWrapper>
@@ -69,8 +71,8 @@ const IndexPage = () => {
       </ContentWrapper>
       <Modal />
       <MobileScreen />
-      <FeatureTour />
-      <CookieBanner/>
+      {width > 768 && <FeatureTour />}
+      <CookieBanner />
     </>
   );
 };
