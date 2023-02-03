@@ -8,10 +8,13 @@ const Panel = () => {
   const [panelHeight, setPanelHeight] = useState(0);
   const ref = useRef(null);
   const pathNodes = useSessionStore((state) => state.pathNodes);
+  const headerHeight = useSessionStore((state) => state.headerHeight);
+  const footerHeight = useSessionStore((state) => state.footerHeight);
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    setPanelHeight(ref?.current?.clientHeight);
+    if (typeof window === "undefined") return;
+    setPanelHeight(window.innerHeight - headerHeight - footerHeight);
   }, [ref, width, height]);
 
   return (
