@@ -1,18 +1,32 @@
 import useTranslation from "next-translate/useTranslation";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import SearchBox from "../searchBox";
 import SearchResults from "../searchResults";
 import MediaTypeSelector from "../mediaTypeSelector";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import clsx from "clsx";
+import useWindowSize from "@/lib/hooks/useWindowSize";
 
 const Header = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
+  const setHeaderHeight = useSessionStore((state) => state.setHeaderHeight);
+  const ref = useRef(null);
+
+  const { width, height } = useWindowSize();
 
   const { t } = useTranslation("common");
 
+  useEffect(() => {
+    if (!ref?.current) return;
+    const headerHeight = ref?.current?.clientHeight;
+    setHeaderHeight(headerHeight);
+  }, [width, height]);
+
   return (
-    <div className="relative flex flex-col items-center border-b-[1px] bg-grey-header lg:flex-row">
+    <div
+      className="relative flex flex-col items-center border-b-[1px] bg-grey-header lg:flex-row"
+      ref={ref}
+    >
       <div className="flex h-full flex-col items-center justify-center pt-4 lg:py-4 pl-0 lg:items-start lg:pl-8 text-center lg:text-left">
         <div id="featureTour-1">
           <h1
@@ -26,7 +40,12 @@ const Header = () => {
         </div>
       </div>
       <div className="flex flex-1 items-center justify-center py-2 px-2 lg:pr-8 h-full">
-        <div className={clsx("flex flex-1 items-center justify-center h-full", pathNodes.length === 0 && "hidden lg:flex")}>
+        <div
+          className={clsx(
+            "flex flex-1 items-center justify-center h-full",
+            pathNodes.length === 0 && "hidden lg:flex"
+          )}
+        >
           <MediaTypeSelector header />
         </div>
         <div className="relative w-72 xl:w-96">

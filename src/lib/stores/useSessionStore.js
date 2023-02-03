@@ -101,6 +101,20 @@ const useSessionStore = create((set) => ({
           state === undefined ? !draft.search.isLoading : state;
       })
     ),
+  footerHeight: 0,
+  setFooterHeight: (height) =>
+    set(
+      produce((draft) => {
+        draft.footerHeight = height;
+      })
+    ),
+  headerHeight: 0,
+  setHeaderHeight: (height) =>
+    set(
+      produce((draft) => {
+        draft.headerHeight = height;
+      })
+    ),
 }));
 
 export default useSessionStore;

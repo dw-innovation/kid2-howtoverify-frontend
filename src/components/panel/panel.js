@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import NodeInfo from "../nodeInfo";
-import clsx from "clsx";
 import { getNodeColor } from "@/lib/lib";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import useWindowSize from "@/lib/hooks/useWindowSize";

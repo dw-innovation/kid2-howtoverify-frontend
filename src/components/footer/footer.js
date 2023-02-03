@@ -1,15 +1,27 @@
-import usePersistedStore from "@/lib/stores/usePersistedStore";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import useTranslation from "next-translate/useTranslation";
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useEffect } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import FooterLink from "../footerLink";
+import useWindowSize from "@/lib/hooks/useWindowSize";
 
 const Footer = () => {
   const { t } = useTranslation("footer");
+  const { width, height } = useWindowSize();
+
+  const ref = useRef(null);
 
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
+  const setFooterHeight = useSessionStore((state) => state.setFooterHeight);
+
+  useEffect(() => {
+    if (!ref?.current) return;
+    const footerHeight = ref?.current?.clientHeight;
+    setFooterHeight(footerHeight);
+  }, [width, height]);
+
+
 
   const handleClick = (e, target) => {
     e.preventDefault();
@@ -22,7 +34,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="footer font-noto text-sm md:text-md flex gap-5 justify-center py-2 bg-grey-darker">
+    <div
+      className="footer font-noto text-sm md:text-md flex gap-5 justify-center py-2 bg-grey-darker"
+      ref={ref}
+    >
       <ReactMarkdown
         children={t("copyright").replace("{{YEAR}}", currentYear)}
         className="text-grey-light"
