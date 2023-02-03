@@ -22,7 +22,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="font-noto text-sm md:text-md flex gap-5 justify-center py-2 bg-grey-darker">
+    <div className="footer font-noto text-sm md:text-md flex gap-5 justify-center py-2 bg-grey-darker">
       <ReactMarkdown
         children={t("copyright").replace("{{YEAR}}", currentYear)}
         className="text-grey-light"

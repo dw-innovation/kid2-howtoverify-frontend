@@ -133,3 +133,7 @@ details a:hover {
     }
   }
 }
+
+.footer a:hover {
+  @apply underline;
+}
