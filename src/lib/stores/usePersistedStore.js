@@ -4,8 +4,6 @@ import { persist, createJSONStorage } from "zustand/middleware";
 const usePersistedStore = create(
   persist(
     (set, get) => ({
-      trackingEnabled:
-        get()?.trackingEnabled !== undefined ? get().trackingEnabled : false,
       showCookieBanner:
         get()?.showCookieBanner !== undefined ? get().showCookieBanner : true,
       showFeatureTour:
@@ -19,10 +17,6 @@ const usePersistedStore = create(
       toggleFeatureTour: (state) =>
         set(() => ({
           showFeatureTour: state === undefined ? !get().showFeatureTour : state,
-        })),
-      toggleTracking: (state) =>
-        set(() => ({
-          trackingEnabled: state === undefined ? !get().trackingEnabled : state,
         })),
     }),
     {

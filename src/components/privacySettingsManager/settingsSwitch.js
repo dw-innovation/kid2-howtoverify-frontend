@@ -1,6 +1,6 @@
 import React from "react";
 
-const SettingsSwitch = ({ currentState, label, toggleState }) => (
+const SettingsSwitch = ({ currentState, label, toggleState, disabled = false }) => (
   <div className='flex flex-gap-2 py-2 items-center'>
     <label className='switch'>
       <input
@@ -8,6 +8,7 @@ const SettingsSwitch = ({ currentState, label, toggleState }) => (
         type={"checkbox"}
         checked={currentState}
         onChange={toggleState}
+        disabled={disabled}
       />
       <span className='slider'></span>
     </label>

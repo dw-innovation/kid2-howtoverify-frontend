@@ -73,56 +73,53 @@ export const getSizeFactor = (graphHeight) => {
 };
 
 export const trackAction = async (action, payload = "") => {
-  let trackingEnabled = usePersistedStore.getState().trackingEnabled;
-  if (trackingEnabled) {
-    let params = {
-      idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-      rec: 1,
-      rand: Math.floor(Math.random() * 10000000),
-      res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
-      ua: window?.navigator?.userAgent,
-      action_name: action,
-    };
+  let params = {
+    idsite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    rec: 1,
+    rand: Math.floor(Math.random() * 10000000),
+    res: `${window?.screen?.availWidth}x${window?.screen?.availHeight}`,
+    ua: window?.navigator?.userAgent,
+    action_name: action,
+  };
 
-    switch (action) {
-      case "search":
-        params = {
-          ...params,
-          search: payload,
-        };
-        break;
+  switch (action) {
+    case "search":
+      params = {
+        ...params,
+        search: payload,
+      };
+      break;
 
-      case "searchResultClick":
-      case "trailClick":
-      case "mediaTypeSelectorClick":
-      case "graphClick":
-        params = {
-          ...params,
-          url: payload,
-        };
-        break;
+    case "searchResultClick":
+    case "trailClick":
+    case "mediaTypeSelectorClick":
+    case "graphClick":
+      params = {
+        ...params,
+        url: payload,
+      };
+      break;
 
-      case "externalLink":
-        params = {
-          ...params,
-          link: payload,
-          url: payload,
-        };
-        break;
+    case "externalLink":
+      params = {
+        ...params,
+        link: payload,
+        url: payload,
+      };
+      break;
 
-      default:
-        params = {
-          ...params,
-          url: window?.location?.href,
-        };
-    }
-
-    await axios({
-      method: "get",
-      url: process.env.NEXT_PUBLIC_MATOMO_URL,
-      params,
-    });
+    default:
+      params = {
+        ...params,
+        url: window?.location?.href,
+      };
   }
+
+  await axios({
+    method: "get",
+    url: process.env.NEXT_PUBLIC_MATOMO_URL,
+    params,
+  });
 };
 
 export const generateURL = (pathNodes) =>

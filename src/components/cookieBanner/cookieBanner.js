@@ -10,7 +10,6 @@ const CookieBanner = () => {
   const toggleCookieBanner = usePersistedStore(
     (state) => state.toggleCookieBanner
   );
-  const toggleTracking = usePersistedStore((state) => state.toggleTracking);
   const toggleModal = useSessionStore((state) => state.toggleModal);
   const setModalContent = useSessionStore((state) => state.setModalContent);
   const { t } = useTranslation("common");
@@ -36,11 +35,10 @@ const CookieBanner = () => {
               <button
                 onClick={() => {
                   toggleCookieBanner(false);
-                  toggleTracking(true);
                 }}
                 className="button button--primary"
               >
-                {t("cookieBannerButtonOK")}
+                {t("cookieEssentialOK")}
               </button>
               <button
                 onClick={() => {
@@ -50,15 +48,6 @@ const CookieBanner = () => {
                 className="button button--secondary ml-2"
               >
                 {t("cookieBannerButtonMoreInfo")}
-              </button>
-              <button
-                onClick={() => {
-                  toggleTracking(false);
-                  toggleCookieBanner(false);
-                }}
-                className="button button--secondary ml-2"
-              >
-                {t("cookieBannerButtonDisagree")}
               </button>
             </ul>
           </div>
