@@ -31,7 +31,7 @@ const CookieBanner = () => {
               dangerouslySetInnerHTML={{ __html: t("cookieBannerText") }}
               className="text-white pr-0 md:pr-4"
             />
-            <ul className="flex flex-row">
+            <ul className="flex flex-row gap-4">
               <button
                 onClick={() => {
                   toggleCookieBanner(false);
