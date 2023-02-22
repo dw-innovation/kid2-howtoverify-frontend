@@ -3,7 +3,7 @@ import Trail from "../trail";
 
 const Navigation = () => (
   <div className="flex">
-    <div className="flex-1 flex flex-row gap-2 relative items-center">
+    <div className="relative flex flex-row items-center flex-1 gap-2">
       <Trail />
     </div>
   </div>

@@ -7,7 +7,7 @@ import useSessionStore from "@/lib/stores/useSessionStore";
 
 // the <svg> element will be controlled by d3 completely and never needs to get updated.
 const RenderOnce = React.memo((props) => {
-  return <svg ref={props.svgref} className="h-full w-full" id="featureTour-3"/>;
+  return <svg ref={props.svgref} className="w-full h-full" id="featureTour-3"/>;
 });
 
 const GraphRenderer = () => {

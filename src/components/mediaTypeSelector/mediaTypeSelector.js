@@ -39,7 +39,7 @@ const MediaTypeSelector = ({ header = false }) => {
         {ROOTNODES.map(({ id, label }, index) => (
           <Fragment key={index}>
             {id !== pathNodes[0] && (
-              <div className="col-span-1 flex h-full items-center justify-evenly">
+              <div className="flex items-center h-full col-span-1 justify-evenly">
                 <Button
                   onClick={() => {
                     resetRootNode(id);

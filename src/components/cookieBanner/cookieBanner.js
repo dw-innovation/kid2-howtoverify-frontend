@@ -29,7 +29,7 @@ const CookieBanner = () => {
           <div className="mx-auto flex max-w-[60rem] flex-row">
             <span
               dangerouslySetInnerHTML={{ __html: t("cookieBannerText") }}
-              className="text-white pr-0 md:pr-4"
+              className="pr-0 text-white md:pr-4"
             />
             <ul className="flex flex-row gap-4">
               <button
@@ -45,7 +45,7 @@ const CookieBanner = () => {
                   setModalContent("legal-privacy");
                   toggleModal(true);
                 }}
-                className="button button--secondary ml-2"
+                className="ml-2 button button--secondary"
               >
                 {t("cookieBannerButtonMoreInfo")}
               </button>

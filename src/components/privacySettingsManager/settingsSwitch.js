@@ -1,7 +1,7 @@
 import React from "react";
 
 const SettingsSwitch = ({ currentState, label, toggleState, disabled = false }) => (
-  <div className='flex flex-gap-2 py-2 items-center'>
+  <div className='flex items-center py-2 flex-gap-2'>
     <label className='switch'>
       <input
         id={label}

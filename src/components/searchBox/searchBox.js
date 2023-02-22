@@ -20,7 +20,7 @@ const SearchBox = () => {
       }}
       id="featureTour-6"
     >
-      <div className="flex aspect--1-1 items-center justify-center bg-blue-primary px-4">
+      <div className="flex items-center justify-center px-4 aspect--1-1 bg-blue-primary">
         <LensIcon />
       </div>
       <div className="flex w-full">

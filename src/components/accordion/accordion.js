@@ -8,7 +8,7 @@ const Accordion = ({ title, children, style = {} }) => {
   return (
     <details className="w-full font-montserrat" style={style} open id="featureTour-5">
       <summary
-        className="font-bold text-xl 2xl:text-2xl cursor-pointer flex flex-row items-center px-6 py-4"
+        className="flex flex-row items-center px-6 py-4 text-xl font-bold cursor-pointer 2xl:text-2xl"
         style={{
           color: getNodeColor(pathNodes[0], "primary"),
           borderLeft: "3px solid",
@@ -17,7 +17,7 @@ const Accordion = ({ title, children, style = {} }) => {
       >
         <h2 className="flex-1">{title}</h2>
       </summary>
-      <span className="py-4 block px-6 text-md 2xl:text-lg">{children}</span>
+      <span className="block px-6 py-4 text-md 2xl:text-lg">{children}</span>
     </details>
   );
 };

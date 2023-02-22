@@ -30,12 +30,12 @@ const SearchResults = () => {
         >
           <button
             onClick={() => toggleShowResults(false)}
-            className="absolute right-0 top-0 z-30 aspect--1-1 rotate-45 p-2 text-white"
+            className="absolute top-0 right-0 z-30 p-2 text-white aspect--1-1 rotate-45"
           >
             <PlusIcon />
           </button>
 
-          <div className="-mx-2 -mt-2 bg-blue-primary p-2 pb-2 pr-6 text-white">
+          <div className="p-2 pb-2 pr-6 -mx-2 -mt-2 text-white bg-blue-primary">
             <Trans
               i18nKey="common:searchResultsTitle"
               components={{
@@ -50,7 +50,7 @@ const SearchResults = () => {
             {isLoading ? (
               <div className="flex items-center gap-4">
                 <span>Loading</span>
-                <span className="loader block" />
+                <span className="block loader" />
               </div>
             ) : (
               <>
@@ -58,7 +58,7 @@ const SearchResults = () => {
                   <Fragment key={index}>
                     {results.length > 0 && (
                       <div className="pb-2">
-                        <span className="-mb-1 block font-sans text-sm font-bold uppercase">
+                        <span className="block -mb-1 font-sans text-sm font-bold uppercase">
                           {category.name}
                         </span>
                         <div className="pl-3 pr-2">

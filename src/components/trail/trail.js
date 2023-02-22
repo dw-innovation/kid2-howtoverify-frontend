@@ -10,7 +10,7 @@ const Trail = () => {
   const clearPathNodes = useSessionStore((state) => state.clearPathNodes);
   return (
     <div className="flex items-center text-sm lg:text-md 2xl:text-lg">
-      <div className="font-noto font-bold pr-2">Trail:</div>
+      <div className="pr-2 font-bold font-noto">Trail:</div>
       <button
         className={clsx(
           "font-noto",
@@ -27,12 +27,12 @@ const Trail = () => {
       {pathNodes.map((node, index) => (
         <Fragment key={index}>
           {index < pathNodes.length && (
-            <span className="font-bold px-2 font-noto">–</span>
+            <span className="px-2 font-bold font-noto">–</span>
           )}
           <TrailItem id={node} position={index} />
         </Fragment>
       ))}
-      <div className="pl-2 flex items-center">
+      <div className="flex items-center pl-2">
         <ShareButton />
       </div>
     </div>

@@ -35,11 +35,11 @@ const Modal = () => {
         >
           <button
             onClick={() => toggleModal(false)}
-            className="absolute right-0 top-0 rotate-45 p-2 text-blue-primary"
+            className="absolute top-0 right-0 p-2 rotate-45 text-blue-primary"
           >
             <PlusIcon width={30} />
           </button>
-          <div className="overflow-y-scroll max-h-full">
+          <div className="max-h-full overflow-y-scroll">
             <ReactMarkdown children={t(`${content}Text`)} components={REACTMARKDOWNCOMPONENTS} />
           </div>
         </div>

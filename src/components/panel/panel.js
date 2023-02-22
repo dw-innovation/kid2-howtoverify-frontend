@@ -26,7 +26,7 @@ const Panel = () => {
       ref={ref}
     >
       <div
-        className="block flex-grow-0 overflow-scroll p-2"
+        className="flex-grow-0 block p-2 overflow-scroll"
         style={{ maxHeight: `${panelHeight}px` }}
       >
         <NodeInfo
