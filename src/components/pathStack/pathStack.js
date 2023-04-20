@@ -19,6 +19,9 @@ const PathStack = () => {
 
   return (
     <div className="w-full">
+      {Object.keys(groupedNodes).length === 0 && (
+        <PathStackRow nodes={ROOTNODES} level={0} />
+      )}
       {Object.keys(groupedNodes).map((level, index) => (
         <Fragment key={index}>
           <PathStackRow
