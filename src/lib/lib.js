@@ -202,3 +202,20 @@ export const getNodeColorShade = (isInClickHistory, isMaxLevel) => {
   }
   return shade;
 };
+
+export const groupByLevel = (data) => {
+  const groupedData = {};
+
+  for (const item of data) {
+    if (!groupedData[item.level]) {
+      groupedData[item.level] = [];
+    }
+    groupedData[item.level].push(item);
+
+    for (const level in groupedData) {
+      groupedData[level].sort((a, b) => a.name.localeCompare(b.name));
+    }
+  }
+
+  return groupedData;
+};

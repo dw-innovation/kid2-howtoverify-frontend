@@ -14,6 +14,7 @@ import GraphCanvas from "@/components/graphCanvas/graphCanvas";
 import FeatureTour from "@/components/featureTour";
 import CookieBanner from "@/components/cookieBanner";
 import useWindowSize from "@/lib/hooks/useWindowSize";
+import PathStack from "@/components/pathStack/pathStack";
 
 const IndexPage = () => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
@@ -65,6 +66,9 @@ const IndexPage = () => {
           <div className="flex-row flex-1 hidden md:flex">
             <GraphCanvas />
             <Panel />
+          </div>
+          <div className="flex md:hidden">
+            <PathStack />
           </div>
         </div>
         <Footer />

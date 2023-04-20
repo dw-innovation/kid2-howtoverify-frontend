@@ -36,7 +36,7 @@ const MediaTypeSelector = ({ header = false }) => {
           }, minmax(0, 1fr))`,
         }}
       >
-        {ROOTNODES.map(({ id, label }, index) => (
+        {ROOTNODES.map(({ id, name }, index) => (
           <Fragment key={index}>
             {id !== pathNodes[0] && (
               <div className="flex items-center h-full col-span-1 justify-evenly">
@@ -47,7 +47,7 @@ const MediaTypeSelector = ({ header = false }) => {
                     trackAction("mediaTypeSelectorClick", generateURL([id]));
                   }}
                   id={!header ? removePrefix(id) : undefined}
-                  dangerouslySetInnerHTML={{ __html: label }}
+                  dangerouslySetInnerHTML={{ __html: name }}
                   className={clsx(
                     "hover:brighter aspect--1-1 rounded-full font-noto font-bold text-white flex justify-center items-center",
                     header

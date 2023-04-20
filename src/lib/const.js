@@ -17,27 +17,27 @@ export const NODETYPESTYLES = [
 
 export const ROOTNODES = [
   {
-    label: "Image",
+    name: "Image",
     id: "http://dw.com/Image",
     color: { name: "purple", value: "#791EBF" },
   },
   {
-    label: "Video",
+    name: "Video",
     id: "http://dw.com/Video",
     color: { name: "blue", value: "#23A6F0" },
   },
   {
-    label: "Audio",
+    name: "Audio",
     id: "http://dw.com/Audio",
     color: { name: "yellow", value: "#DBC700" },
   },
   {
-    label: "Source",
+    name: "Source",
     id: "http://dw.com/Source",
     color: { name: "red", value: "#E3336A" },
   },
   {
-    label: "Text",
+    name: "Text",
     id: "http://dw.com/Text",
     color: { name: "green", value: "#40A51A" },
   },

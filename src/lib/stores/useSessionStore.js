@@ -9,6 +9,7 @@ const useSessionStore = create((set) => ({
         if (draft.pathNodes.length <= level) {
           draft.pathNodes.push(nodeID);
         } else {
+          console.log("replacing node at level", level, "with", nodeID);
           const history = Object.assign([], draft.pathNodes);
           history[level] = nodeID;
           draft.pathNodes = history.slice(0, level + 1);
