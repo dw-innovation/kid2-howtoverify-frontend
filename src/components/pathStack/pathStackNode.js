@@ -1,6 +1,7 @@
 import React from "react";
 import useSessionStore from "@/lib/stores/useSessionStore";
 import clsx from "clsx";
+import { getNodeColor } from "@/lib/lib";
 
 const PathStackNode = ({ node, level }) => {
   const pathNodes = useSessionStore((state) => state.pathNodes);
@@ -26,9 +27,13 @@ const PathStackNode = ({ node, level }) => {
     <button
       onClick={handleClick}
       className={clsx(
-        pathNodes.includes(node.id) && "bg-blue-primary text-white",
-        " p-2 rounded-md my-2"
+        pathNodes.includes(node.id) && " text-white",
+        "p-2 rounded-md my-2 leading-tight"
       )}
+      style={{
+        backgroundColor:
+          pathNodes.includes(node.id) && getNodeColor(pathNodes[0], "primary"),
+      }}
     >
       {node.name}
     </button>

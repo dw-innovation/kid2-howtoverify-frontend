@@ -67,8 +67,9 @@ const IndexPage = () => {
             <GraphCanvas />
             <Panel />
           </div>
-          <div className="flex md:hidden">
+          <div className="flex flex-col md:hidden">
             <PathStack />
+            <Panel />
           </div>
         </div>
         <Footer />

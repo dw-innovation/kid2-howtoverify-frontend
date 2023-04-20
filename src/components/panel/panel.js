@@ -19,7 +19,7 @@ const Panel = () => {
 
   return (
     <div
-      className="relative z-50 flex max-h-full flex-col flex-nowrap gap-3 md-[20rem] w-[20rem] lg:w-[30rem]"
+      className="relative z-50 flex max-h-full flex-col flex-nowrap gap-3 w-full md:w-[20rem] lg:w-[30rem]"
       style={{
         backgroundColor: getNodeColor(pathNodes[0], "background"),
       }}
