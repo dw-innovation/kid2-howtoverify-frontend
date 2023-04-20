@@ -21,8 +21,6 @@ const Footer = () => {
     setFooterHeight(footerHeight);
   }, [width, height]);
 
-
-
   const handleClick = (e, target) => {
     e.preventDefault();
     toggleModal();
@@ -35,7 +33,7 @@ const Footer = () => {
 
   return (
     <div
-      className="flex justify-center py-2 text-sm footer font-noto md:text-md gap-5 bg-grey-darker"
+      className="flex justify-center gap-5 px-2 py-2 text-sm footer font-noto md:text-md bg-grey-darker"
       ref={ref}
     >
       <ReactMarkdown

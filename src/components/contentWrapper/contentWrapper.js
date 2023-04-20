@@ -10,7 +10,7 @@ const ContentWrapper = ({ children }) => {
 
   return (
     <animated.div
-      className="relative flex-col hidden w-screen h-screen max-h-screen overflow-hidden max-w-screen bg-lightGrey md:flex"
+      className="relative flex flex-col w-screen h-screen max-h-screen overflow-hidden max-w-screen bg-lightGrey"
       style={blurStyle}
     >
       {children}

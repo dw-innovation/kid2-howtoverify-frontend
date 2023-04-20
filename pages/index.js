@@ -4,7 +4,6 @@ import { addPrefix, fetchGraphData, generateURL } from "@/lib/lib";
 import useAppContext from "@/lib/hooks/useAppContext";
 import useLocation from "@/lib/hooks/useLocation";
 import Panel from "@/components/panel";
-import MobileScreen from "@/components/mobileScreen";
 import Modal from "@/components/modal";
 import Footer from "@/components/footer";
 import FeedbackButton from "@/components/feedbackButton";
@@ -63,7 +62,7 @@ const IndexPage = () => {
         <FeedbackButton />
         <div className="flex flex-col flex-1">
           <Header />
-          <div className="flex flex-row flex-1">
+          <div className="flex-row flex-1 hidden md:flex">
             <GraphCanvas />
             <Panel />
           </div>
@@ -71,7 +70,6 @@ const IndexPage = () => {
         <Footer />
       </ContentWrapper>
       <Modal />
-      <MobileScreen />
       {width > 768 && <FeatureTour />}
       <CookieBanner />
     </>
