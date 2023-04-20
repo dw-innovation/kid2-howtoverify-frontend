@@ -26,12 +26,12 @@ const CookieBanner = () => {
             WebkitBackdropFilter: "blur(3px)",
           }}
         >
-          <div className="mx-auto flex max-w-[60rem] flex-row">
+          <div className="mx-auto flex max-w-[60rem] flex-col md:flex-row px-2">
             <span
               dangerouslySetInnerHTML={{ __html: t("cookieBannerText") }}
               className="pr-0 text-white md:pr-4"
             />
-            <ul className="flex flex-row gap-4">
+            <ul className="flex flex-col gap-2 mt-2 md:gap-4 md:flex-row md:mt-0">
               <button
                 onClick={() => {
                   toggleCookieBanner(false);
@@ -45,7 +45,7 @@ const CookieBanner = () => {
                   setModalContent("legal-privacy");
                   toggleModal(true);
                 }}
-                className="ml-2 button button--secondary"
+                className="md:ml-2 button button--secondary"
               >
                 {t("cookieBannerButtonMoreInfo")}
               </button>
