@@ -27,8 +27,8 @@ const PathStackNode = ({ node, level }) => {
     <button
       onClick={handleClick}
       className={clsx(
-        pathNodes.includes(node.id) && " text-white",
-        "p-2 rounded-md my-2 leading-tight"
+        pathNodes.includes(node.id) && "text-white",
+        "p-2 rounded-md my-2 leading-tight text-lg"
       )}
       style={{
         backgroundColor:
