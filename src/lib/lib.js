@@ -8,7 +8,6 @@ import {
 } from "@/lib/const";
 import axios from "axios";
 import tailwindConfig from "tailwind.config";
-import usePersistedStore from "./stores/usePersistedStore";
 import useSessionStore from "./stores/useSessionStore";
 
 export const addPrefix = (string) => `${PREFIX}${string}`;
