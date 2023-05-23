@@ -34,7 +34,12 @@ const PathStackNode = ({ node, level }) => {
       style={{
         backgroundColor:
           ROOTNODES.filter(({ id }) => node.id === id).length === 1
-            ? getNodeColor(node.id, "primary")
+            ? getNodeColor(
+                node.id,
+                pathNodes.length > 0 && !pathNodes.includes(node.id)
+                  ? "nextClick"
+                  : "primary"
+              )
             : pathNodes.includes(node.id)
             ? getNodeColor(pathNodes[0], "primary")
             : node.level < pathNodes.length
