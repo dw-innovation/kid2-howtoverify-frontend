@@ -23,14 +23,13 @@ const PathStackNode = ({ node, level }) => {
     toggleShowResults(false);
     clearSearchQueryString();
   };
-  console.log(node.level < pathNodes.length);
 
   return (
     <button
       onClick={handleClick}
       className={clsx(
         "text-white",
-        "p-2 rounded-md my-2 leading-tight text-lg"
+        "p-2 rounded-md my-2 mx-2 leading-tight text-lg min-w-0 flex-shrink-0"
       )}
       style={{
         backgroundColor:
