@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 function useScroll(ref) {
   const [scrollPositions, setScrollPositions] = useState({
@@ -6,7 +6,7 @@ function useScroll(ref) {
     right: 0,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) {
       return;
     }
@@ -20,6 +20,8 @@ function useScroll(ref) {
           ref.current.clientWidth,
       });
     };
+
+    handleScroll();
 
     ref.current.addEventListener("scroll", handleScroll);
 
