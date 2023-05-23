@@ -4,8 +4,10 @@ import useAppContext from "@/lib/hooks/useAppContext";
 import { groupByLevel } from "@/lib/lib";
 import PathStackRow from "./pathStackRow";
 import { ROOTNODES } from "@/lib/const";
+import useTranslation from "next-translate/useTranslation";
 
 const PathStack = () => {
+  const { t } = useTranslation("common");
   const [groupedNodes, setGroupedNodes] = useState([]);
   const {
     appState: {
@@ -19,6 +21,7 @@ const PathStack = () => {
 
   return (
     <div className="w-full">
+      <h2 className="mt-2 text-center">{t("selectMediaType")}</h2>
       {Object.keys(groupedNodes).length === 0 && (
         <PathStackRow nodes={ROOTNODES} level={0} />
       )}
