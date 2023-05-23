@@ -23,14 +23,13 @@ const PathStackNode = ({ node, level }) => {
     toggleShowResults(false);
     clearSearchQueryString();
   };
+  console.log(node.level < pathNodes.length);
 
   return (
     <button
       onClick={handleClick}
       className={clsx(
-        (pathNodes.includes(node.id) ||
-          ROOTNODES.filter(({ id }) => node.id === id).length === 1) &&
-          "text-white",
+        "text-white",
         "p-2 rounded-md my-2 leading-tight text-lg"
       )}
       style={{
@@ -39,7 +38,9 @@ const PathStackNode = ({ node, level }) => {
             ? getNodeColor(node.id, "primary")
             : pathNodes.includes(node.id)
             ? getNodeColor(pathNodes[0], "primary")
-            : "#ccc",
+            : node.level < pathNodes.length
+            ? getNodeColor(pathNodes[0], "inactive")
+            : getNodeColor(pathNodes[0], "nextClick"),
       }}
     >
       {node.name}
