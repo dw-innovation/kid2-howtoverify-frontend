@@ -33,7 +33,7 @@ const Footer = () => {
 
   return (
     <div
-      className="flex justify-center gap-5 px-2 py-2 text-sm footer font-noto md:text-md bg-grey-darker"
+      className="flex flex-col-reverse items-center justify-center gap-5 py-2 text-sm md:flex-row footer font-noto md:text-md bg-grey-darker"
       ref={ref}
     >
       <ReactMarkdown
