@@ -41,6 +41,11 @@ export const ROOTNODES = [
     id: "http://dw.com/Text",
     color: { name: "green", value: "#40A51A" },
   },
+  {
+    name: "Synthetic media",
+    id: "http://dw.com/SyntheticMedia",
+    color: { name: "orange", value: "#FF7F00" },
+  },
 ];
 
 export const PREFIX = "http://dw.com/";
