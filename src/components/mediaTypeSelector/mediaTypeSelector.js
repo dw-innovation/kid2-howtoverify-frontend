@@ -34,7 +34,15 @@ const MediaTypeSelector = ({ header = false }) => {
         {ROOTNODES.map(({ id, name }, index) => (
           <Fragment key={index}>
             {id !== pathNodes[0] && (
-              <div className="flex items-center h-full col-span-1 justify-evenly">
+              <div
+                className={clsx(
+                  'flex items-center flex-1  col-span-1 justify-evenly',
+                  !header ? 'h-36' : 'h-20',
+                )}
+                style={{
+                  flex: !header && '1 0 25%;',
+                }}
+              >
                 <Button
                   onClick={() => {
                     resetRootNode(id)
