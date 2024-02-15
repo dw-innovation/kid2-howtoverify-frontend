@@ -5,7 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  safelist: ["bg-purple", "bg-yellow", "bg-green", "bg-red", "bg-blue"],
+  safelist: ["bg-purple", "bg-yellow", "bg-green", "bg-red", "bg-blue", "grid-cols-3", "grid-cols-4", "grid-cols-5", "grid-cols-6"],
   theme: {
     extend: {
       fontFamily: {
@@ -26,36 +26,42 @@ module.exports = {
           inactive: "#DDCBE5",
           nextClick: "#B382C6",
           nodeInfo: "#D6BFE0",
-          background: "#E8DDED"
+          background: "#E8DDED",
         },
         blue: {
           primary: "#2980B9",
           inactive: "#BAD4E5",
           nextClick: "#72A9CE",
           nodeInfo: "#B6D2E4",
-          background: "#D9E6EF"
+          background: "#D9E6EF",
         },
         green: {
           primary: "#27AE60",
           inactive: "#BAE2CB",
           nextClick: "#66C58E",
           nodeInfo: "#B6E1C7",
-          background: "#D9EDE1"
+          background: "#D9EDE1",
         },
-
         yellow: {
           primary: "#F0C000",
           inactive: "#F5E295",
           nextClick: "#F3D663",
           nodeInfo: "#F6E7A9",
-          background: "#F7F0D3"
+          background: "#F7F0D3",
         },
         red: {
           primary: "#C0392B",
           inactive: "#E8BFBB",
           nextClick: "#D47C73",
           nodeInfo: "#E7BCB6",
-          background: "#F0DCD9"
+          background: "#F0DCD9",
+        },
+        orange: {
+          primary: "#FF7F00",
+          inactive: "#FFB27A",
+          nextClick: "#FF9933",
+          nodeInfo: "#FFA54D",
+          background: "#FFE5CC",
         },
         primary: "#0096FA",
       },
