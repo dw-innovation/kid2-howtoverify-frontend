@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 const usePersistedStore = create(
   persist(
@@ -12,17 +12,24 @@ const usePersistedStore = create(
         set(() => ({
           showCookieBanner:
             state === undefined ? !get().showCookieBanner : state,
-        }));
+        }))
       },
+      toggleTracking: (newState) => {
+        set(() => ({
+          trackingEnabled:
+            newState === undefined ? !get().trackingEnabled : newState,
+        }))
+      },
+      trackingEnabled: true,
       toggleFeatureTour: (state) =>
         set(() => ({
           showFeatureTour: state === undefined ? !get().showFeatureTour : state,
         })),
     }),
     {
-      name: "dw-kid2-howtoverify-storage",
+      name: 'dw-kid2-howtoverify-storage',
       storage: createJSONStorage(() => localStorage),
-    }
-  )
-);
-export default usePersistedStore;
+    },
+  ),
+)
+export default usePersistedStore
