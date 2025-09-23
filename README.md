@@ -1,3 +1,5 @@
+<img width="1280" height="200" alt="Github-Banner__htv" src="https://github.com/user-attachments/assets/47682c9c-74a1-4bf6-bd70-0bf3fc563a63" />
+
 # NextJS frontend for the KID2 knowledge graph website on verification worflows
 
 This frontend application renders and explorable network graph of knowledge on verification workflows. To get the app up and running perform the following steps:
