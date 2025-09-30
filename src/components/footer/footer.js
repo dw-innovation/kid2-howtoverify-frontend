@@ -40,6 +40,12 @@ const Footer = () => {
         children={t("copyright").replace("{{YEAR}}", currentYear)}
         className="text-grey-light"
       />
+
+      <ReactMarkdown
+        children={t("github")}
+        className="text-grey-light"
+      />
+
       {LINKS.map((link, index) => (
         <Fragment key={index}>
           <FooterLink
