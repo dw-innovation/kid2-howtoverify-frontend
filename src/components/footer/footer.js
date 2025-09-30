@@ -43,7 +43,6 @@ const Footer = () => {
 
       <ReactMarkdown
         children={t("github")}
-        className="text-grey-light"
       />
 
       {LINKS.map((link, index) => (
